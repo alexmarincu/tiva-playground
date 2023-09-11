@@ -33,8 +33,12 @@ void hal_SysTick_intDisable(void) {
 
 void hal_SysTick_setPeriodMillis(uint32_t const periodMillis) {
     self.periodMillis = periodMillis;
-    uint32_t const ucTicksPerMillis = 16777216 / 1000;
-    SysTickPeriodSet(ucTicksPerMillis * self.periodMillis);
+    uint32_t const ucTicksPerSecond = 16777216;
+    uint16_t const millisInSecond = 1000;
+    SysTickPeriodSet(
+        ucTicksPerSecond / millisInSecond * self.periodMillis //
+        + (ucTicksPerSecond % millisInSecond) * self.periodMillis / millisInSecond
+    );
 }
 
 uint32_t hal_SysTick_getPeriod(void) {

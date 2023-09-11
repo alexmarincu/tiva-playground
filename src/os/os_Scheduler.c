@@ -1,24 +1,34 @@
 #include "os_Scheduler.h"
-// #include <stddef.h>
 
-typedef struct Scheduler Scheduler;
-struct Scheduler {
+struct os_Scheduler {
     os_Task * tasks;
-    uint8_t count;
+    uint8_t taskCount;
 };
 
-static Scheduler self = {
-    .tasks = 0,
-    .count = 0
-};
-
-void os_Scheduler_setTasks(os_Task * const tasks, uint8_t const count) {
-    self.tasks = tasks;
-    self.count = count;
+os_Scheduler * os_Scheduler_(void) {
+    static os_Scheduler self;
+    return &self;
 }
 
-void os_Scheduler_main(void) {
-    for (uint8_t i = 0; i < self.count; i++) {
-        os_Task_main(&self.tasks[i]);
+os_Scheduler * os_Scheduler_init(os_Scheduler * const self, os_Task * const tasks, uint8_t const taskCount) {
+    self->tasks = tasks;
+    self->taskCount = taskCount;
+    return self;
+}
+
+void os_Scheduler_main(os_Scheduler * const self) {
+    for (uint8_t i = 0; i < self->taskCount; i++) {
+        os_Task * task = &self->tasks[i];
+        switch (os_Task_getState(task)) {
+            case os_TaskState_READY:
+                os_Task_processReady(task);
+                break;
+            case os_TaskState_WAITING:
+                os_Task_processWaiting(task);
+                break;
+            case os_TaskState_SUSPENDED:
+            default:
+                break;
+        }
     }
 }

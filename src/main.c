@@ -1,13 +1,13 @@
 #include "led.h"
+#include "os/os_Os.h"
+#include "os/os_Scheduler.h"
+#include "os/os_Task.h"
 #include "state.h"
 #include <stdint.h>
-#include "os/os_Task.h"
-#include "os/os_Scheduler.h"
-#include "os/os_Os.h"
 
 void delay(void);
 
-static void task100Millis(void) {
+static void task1(os_Task * const self) {
     static STATE state = STATE_RED;
     switch (state) {
         case STATE_RED:
@@ -21,6 +21,19 @@ static void task100Millis(void) {
             break;
     }
     state = StateGetNext(state);
+    os_Task_delayFromLastRun(self, 100);
+}
+
+static void task2(os_Task * const self) {
+    os_Task_delayFromLastRun(self, 100);
+}
+
+void app_main(void) {
+    LedInit();
+    os_Task tasks[2];
+    os_Task_init(&tasks[0], task1);
+    os_Task_init(&tasks[1], task2);
+    os_Os_main(os_Os_init(os_Os_(), tasks, 2));
 }
 
 //*****************************************************************************
@@ -29,43 +42,8 @@ static void task100Millis(void) {
 //
 //*****************************************************************************
 int main(void) {
-    // STATE state = STATE_RED;
-
-    LedInit();
-    // hal_SysTick_intRegister(systick);
-    // hal_SysTick_intEnable();
-    // hal_SysTick_setPeriodMillis(100);
-    // hal_SysTick_enable();
-
-     while (1) {
-        // Set the LED color based on the current state.
-        // switch(state)
-        // {
-        //     case STATE_RED:
-        //         LedSetRed();
-        //         break;
-        //     case STATE_GREEN:
-        //         LedSetGreen();
-        //         break;
-        //     case STATE_BLUE:
-        //         LedSetBlue();
-        //         break;
-        // }
-
-        // // Delay and then turn the LED off.
-        // delay();
-        // LedSetOff();
-        // delay();
-
-    // // Update the state.
-    // state = StateGetNext(state);
-      os_Task tasks[1];
-    os_Task_init(&tasks[0], 1000, task100Millis);
-    os_Scheduler_setTasks(tasks, 1);
-    os_Os_main(os_Os_init(os_Os_ref()));
-     }
-
-   
+    app_main();
+    return 0;
 }
 
 void delay(void) {
