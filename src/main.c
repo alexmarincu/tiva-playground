@@ -30,9 +30,10 @@ static void task2(os_Task * const self) {
 
 void app_main(void) {
     LedInit();
-    os_Task tasks[2];
-    os_Task_init(&tasks[0], task1);
-    os_Task_init(&tasks[1], task2);
+    os_Task * tasks[] = {
+        os_Task_init(&(os_Task){ 0 }, task1),
+        os_Task_init(&(os_Task){ 0 }, task2),
+    };
     os_Os_main(os_Os_init(os_Os_(), tasks, 2));
 }
 

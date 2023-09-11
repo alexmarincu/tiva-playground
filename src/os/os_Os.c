@@ -11,7 +11,7 @@ os_Os * os_Os_(void) {
     return &self;
 }
 
-os_Os * os_Os_init(os_Os * const self, os_Task * const tasks, uint8_t const taskCount) {
+os_Os * os_Os_init(os_Os * const self, os_Task ** const tasks, uint8_t const taskCount) {
     self->sysTime = os_SysTime_init(os_SysTime_());
     self->scheduler = os_Scheduler_init(os_Scheduler_(), tasks, taskCount);
     os_TaskClass_init(os_TaskClass_());
