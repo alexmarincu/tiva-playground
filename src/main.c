@@ -1,6 +1,6 @@
-#include "System.h"
+#include "App.h"
 
 int main(void) {
-    System_main();
+    App_main();
     return 0;
 }

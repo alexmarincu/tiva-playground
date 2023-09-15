@@ -1,5 +1,6 @@
 #include "hal_SysTick.h"
 #include "../../lib/TivaWare/driverlib/systick.h"
+#include "hal_SysClock.h"
 
 typedef struct {
     uint32_t periodMillis;
@@ -33,14 +34,13 @@ void hal_SysTick_intDisable(void) {
 
 void hal_SysTick_setPeriodMillis(uint32_t const periodMillis) {
     self.periodMillis = periodMillis;
-    uint32_t const ucTicksPerSecond = 16777216;
     uint16_t const millisInSecond = 1000;
     SysTickPeriodSet(
-        ucTicksPerSecond / millisInSecond * self.periodMillis //
-        + (ucTicksPerSecond % millisInSecond) * self.periodMillis / millisInSecond
+        hal_SysClock_getFrequency() / millisInSecond * self.periodMillis //
+        + (hal_SysClock_getFrequency() % millisInSecond) * self.periodMillis / millisInSecond
     );
 }
 
-uint32_t hal_SysTick_getPeriod(void) {
+uint32_t hal_SysTick_getPeriodMillis(void) {
     return self.periodMillis;
 }
