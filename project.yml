@@ -73,7 +73,6 @@
             - -mfloat-abi=softfp
             - -ffunction-sections
             - -fdata-sections
-            - -fno-builtin
             - -MD
             - -std=c99
             - -Wall
@@ -87,11 +86,11 @@
             - -Dgcc
             - -o ${2}
     :release_linker:
-        :executable: arm-none-eabi-ld
+        :executable: arm-none-eabi-gcc
         :arguments:
             - -T project.ld
             - --entry ResetISR
-            - --gc-sections
+            - -nostartfiles
             - -o ${2}
             - ${1}
             - lib/TivaWare/driverlib/gcc/libdriver.a
