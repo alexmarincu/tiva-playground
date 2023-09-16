@@ -1,5 +1,7 @@
 #ifndef VSOS_TASK_H
 #define VSOS_TASK_H
+#include "../utils/utils_Queue.h"
+#include "vsos_Event.h"
 #include "vsos_TaskState.h"
 #include <stdint.h>
 
@@ -9,6 +11,7 @@ typedef void (*vsos_Task_operationFun)(vsos_Task * const self);
 struct vsos_Task {
     vsos_TaskClass const * klass;
     vsos_Task_operationFun operation;
+    utils_Queue * eventQueue;
     vsos_TaskState state;
     uint32_t lastRunTimeMillis;
     uint32_t delayMillis;
@@ -16,7 +19,11 @@ struct vsos_Task {
 
 vsos_TaskClass * vsos_TaskClass_(void);
 vsos_TaskClass * vsos_TaskClass_init(vsos_TaskClass * const self);
-vsos_Task * vsos_Task_init(vsos_Task * const self, vsos_Task_operationFun const operation);
+vsos_Task * vsos_Task_init(
+    vsos_Task * const self,
+    vsos_Task_operationFun const operation,
+    utils_Queue * const eventQueue
+);
 vsos_TaskState vsos_Task_getState(vsos_Task * const self);
 void vsos_Task_processReady(vsos_Task * const self);
 void vsos_Task_processWaiting(vsos_Task * const self);
@@ -24,5 +31,6 @@ void vsos_Task_delayFromLastRun(vsos_Task * const self, uint32_t const delayMill
 void vsos_Task_delay(vsos_Task * const self, uint32_t const delayMillis);
 void vsos_Task_suspend(vsos_Task * const self);
 void vsos_Task_resume(vsos_Task * const self);
+void vsos_Task_post(vsos_Task * const self, vsos_Event * const event);
 
 #endif // VSOS_TASK_H

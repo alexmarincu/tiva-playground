@@ -15,9 +15,14 @@ vsos_TaskClass * vsos_TaskClass_init(vsos_TaskClass * const self) {
     return self;
 }
 
-vsos_Task * vsos_Task_init(vsos_Task * const self, vsos_Task_operationFun const operation) {
+vsos_Task * vsos_Task_init(
+    vsos_Task * const self,
+    vsos_Task_operationFun const operation,
+    utils_Queue * const eventQueue
+) {
     self->klass = vsos_TaskClass_();
     self->operation = operation;
+    self->eventQueue = eventQueue;
     self->state = vsos_TaskState_READY;
     self->lastRunTimeMillis = 0;
     self->delayMillis = 0;
@@ -55,4 +60,8 @@ void vsos_Task_suspend(vsos_Task * const self) {
 
 void vsos_Task_resume(vsos_Task * const self) {
     self->state = vsos_TaskState_READY;
+}
+
+void vsos_Task_post(vsos_Task * const self, vsos_Event * const event) {
+    utils_Queue_enqueue(self->eventQueue, event);
 }
