@@ -2,19 +2,36 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "(gdb) Launch",
+            "name": "Debug with OpenOCD",
             "type": "cppdbg",
             "request": "launch",
             "preLaunchTask": "openocd",
             "program": "${workspaceFolder}/build/release/project.axf",
-            "targetArchitecture": "arm",
             "args": [],
             "stopAtEntry": true,
             "cwd": "${workspaceFolder}",
             "environment": [],
-            "MIMode": "gdb",
-            "miDebuggerServerAddress": "localhost:3333",
             "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                },
+                {
+                    "description": "Connect to the OpenOCD GDB server",
+                    "text": "target extended-remote localhost:3333"
+                },
+                {
+                    "description": "Reset the target and halt",
+                    "text": "monitor reset halt"
+                },
+                {
+                    "description": "Initialize the target",
+                    "text": "monitor reset init"
+                }
+            ],
             "miDebuggerPath": "arm-none-eabi-gdb"
         }
     ]
