@@ -11,6 +11,7 @@
 #include "vsos/vsos_Os.h"
 #include "vsos/vsos_Scheduler.h"
 #include "vsos/vsos_Task.h"
+#include "vsos/vsos_TimeEvent.h"
 #include <stdint.h>
 
 // static void task1(vsos_Task * const self, vsos_Event * const event) {
@@ -40,6 +41,7 @@ static void setupClockFrequency(void) {
 
 static void sysTickInt(void) {
     vsos_SysTime_sysTickInt(vsos_SysTime_(), hal_SysTick_getPeriodMillis());
+    vsos_TimeEvent_tick();
 }
 
 static void setupSysTick(void) {
@@ -83,8 +85,35 @@ void App_main(void) {
         ),
         0
     );
-    vsos_Task_post(utils_Array_get(taskArray, 0), (vsos_Event *)RedEvent_());
-    vsos_Task_post(utils_Array_get(taskArray, 0), (vsos_Event *)BlueEvent_());
-    vsos_Task_post(utils_Array_get(taskArray, 0), (vsos_Event *)GreenEvent_());
+    vsos_TimeEvent_arm(
+        vsos_TimeEvent_init(
+            utils_salloc(vsos_TimeEvent),
+            (vsos_Event *)RedEvent_(),
+            (vsos_Task *)BlinkyTask_()
+        ),
+        1,
+        3000
+    );
+    vsos_TimeEvent_arm(
+        vsos_TimeEvent_init(
+            utils_salloc(vsos_TimeEvent),
+            (vsos_Event *)BlueEvent_(),
+            (vsos_Task *)BlinkyTask_()
+        ),
+        1000,
+        3000
+    );
+    vsos_TimeEvent_arm(
+        vsos_TimeEvent_init(
+            utils_salloc(vsos_TimeEvent),
+            (vsos_Event *)GreenEvent_(),
+            (vsos_Task *)BlinkyTask_()
+        ),
+        2000,
+        3000
+    );
+    // vsos_Task_post(utils_Array_get(taskArray, 0), (vsos_Event *)RedEvent_());
+    // vsos_Task_post(utils_Array_get(taskArray, 0), (vsos_Event *)BlueEvent_());
+    // vsos_Task_post(utils_Array_get(taskArray, 0), (vsos_Event *)GreenEvent_());
     vsos_Os_start(vsos_Os_init(vsos_Os_(), taskArray, onIdle));
 }
