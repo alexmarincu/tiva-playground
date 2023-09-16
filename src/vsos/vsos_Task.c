@@ -29,13 +29,21 @@ vsos_Task * vsos_Task_init(
     return self;
 }
 
+bool vsos_Task_isReady(vsos_Task * const self) {
+    return (utils_Queue_isEmpty(self->eventQueue) == false);
+}
+
 vsos_TaskState vsos_Task_getState(vsos_Task * const self) {
     return self->state;
 }
 
+void vsos_Task_operation(vsos_Task * const self) {
+    self->operation(self, utils_Queue_dequeue(self->eventQueue));
+}
+
 void vsos_Task_processReady(vsos_Task * const self) {
     self->lastRunTimeMillis = vsos_SysTime_getMillisCount(self->klass->sysTime);
-    self->operation(self);
+    self->operation(self, utils_Queue_dequeue(self->eventQueue));
 }
 
 void vsos_Task_processWaiting(vsos_Task * const self) {

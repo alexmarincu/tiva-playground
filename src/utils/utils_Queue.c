@@ -11,7 +11,7 @@ utils_Queue * utils_Queue_init(
 }
 
 bool utils_Queue_isEmpty(utils_Queue * const self) {
-    return (self->front == self->rear);
+    return ((self->front == -1) && (self->rear == -1));
 }
 
 bool utils_Queue_isFull(utils_Queue * const self) {
@@ -27,6 +27,7 @@ void utils_Queue_enqueue(utils_Queue * const self, void * const item) {
         utils_Array_insert(self->array, item, self->rear);
     }
 }
+
 void * utils_Queue_dequeue(utils_Queue * const self) {
     void * item = 0;
     if (utils_Queue_isEmpty(self) == false) {

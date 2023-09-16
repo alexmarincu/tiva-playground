@@ -7,7 +7,7 @@
 
 typedef struct vsos_TaskClass vsos_TaskClass;
 typedef struct vsos_Task vsos_Task;
-typedef void (*vsos_Task_operationFun)(vsos_Task * const self);
+typedef void (*vsos_Task_operationFun)(vsos_Task * const self, vsos_Event * const event);
 struct vsos_Task {
     vsos_TaskClass const * klass;
     vsos_Task_operationFun operation;
@@ -25,6 +25,8 @@ vsos_Task * vsos_Task_init(
     utils_Queue * const eventQueue
 );
 vsos_TaskState vsos_Task_getState(vsos_Task * const self);
+bool vsos_Task_isReady(vsos_Task * const self);
+void vsos_Task_operation(vsos_Task * const self);
 void vsos_Task_processReady(vsos_Task * const self);
 void vsos_Task_processWaiting(vsos_Task * const self);
 void vsos_Task_delayFromLastRun(vsos_Task * const self, uint32_t const delayMillis);
