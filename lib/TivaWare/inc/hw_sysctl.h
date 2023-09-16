@@ -2,7 +2,7 @@
 //
 // hw_sysctl.h - Macros used when accessing the system control hardware.
 //
-// Copyright (c) 2005-2015 Texas Instruments Incorporated.  All rights reserved.
+// Copyright (c) 2005-2020 Texas Instruments Incorporated.  All rights reserved.
 // Software License Agreement
 // 
 //   Redistribution and use in source and binary forms, with or without
@@ -33,7 +33,7 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 // 
-// This is part of revision 2.1.1.71 of the Tiva Firmware Development Package.
+// This is part of revision 2.2.0.295 of the Tiva Firmware Development Package.
 //
 //*****************************************************************************
 
@@ -425,6 +425,10 @@
 #define SYSCTL_PRLCD            0x400FEA90  // LCD Controller Peripheral Ready
 #define SYSCTL_PROWIRE          0x400FEA98  // 1-Wire Peripheral Ready
 #define SYSCTL_PREMAC           0x400FEA9C  // Ethernet MAC Peripheral Ready
+#define SYSCTL_UNIQUEID0        0x400FEF20  // Unique ID 0
+#define SYSCTL_UNIQUEID1        0x400FEF24  // Unique ID 1
+#define SYSCTL_UNIQUEID2        0x400FEF28  // Unique ID 2
+#define SYSCTL_UNIQUEID3        0x400FEF2C  // Unique ID 3
 #define SYSCTL_CCMCGREQ         0x44030204  // Cryptographic Modules Clock
                                             // Gating Request
 
@@ -3656,6 +3660,42 @@
 //*****************************************************************************
 #define SYSCTL_PREMAC_R0        0x00000001  // Ethernet MAC Module 0 Peripheral
                                             // Ready
+
+//*****************************************************************************
+//
+// The following are defines for the bit fields in the SYSCTL_UNIQUEID0
+// register.
+//
+//*****************************************************************************
+#define SYSCTL_UNIQUEID0_ID_M   0xFFFFFFFF  // Unique ID
+#define SYSCTL_UNIQUEID0_ID_S   0
+
+//*****************************************************************************
+//
+// The following are defines for the bit fields in the SYSCTL_UNIQUEID1
+// register.
+//
+//*****************************************************************************
+#define SYSCTL_UNIQUEID1_ID_M   0xFFFFFFFF  // Unique ID
+#define SYSCTL_UNIQUEID1_ID_S   0
+
+//*****************************************************************************
+//
+// The following are defines for the bit fields in the SYSCTL_UNIQUEID2
+// register.
+//
+//*****************************************************************************
+#define SYSCTL_UNIQUEID2_ID_M   0xFFFFFFFF  // Unique ID
+#define SYSCTL_UNIQUEID2_ID_S   0
+
+//*****************************************************************************
+//
+// The following are defines for the bit fields in the SYSCTL_UNIQUEID3
+// register.
+//
+//*****************************************************************************
+#define SYSCTL_UNIQUEID3_ID_M   0xFFFFFFFF  // Unique ID
+#define SYSCTL_UNIQUEID3_ID_S   0
 
 //*****************************************************************************
 //

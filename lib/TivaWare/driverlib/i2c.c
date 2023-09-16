@@ -2,7 +2,7 @@
 //
 // i2c.c - Driver for Inter-IC (I2C) bus block.
 //
-// Copyright (c) 2005-2015 Texas Instruments Incorporated.  All rights reserved.
+// Copyright (c) 2005-2020 Texas Instruments Incorporated.  All rights reserved.
 // Software License Agreement
 // 
 //   Redistribution and use in source and binary forms, with or without
@@ -33,7 +33,7 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 // 
-// This is part of revision 2.1.1.71 of the Tiva Peripheral Driver Library.
+// This is part of revision 2.2.0.295 of the Tiva Peripheral Driver Library.
 //
 //*****************************************************************************
 
@@ -190,10 +190,12 @@ _I2CIntNumberGet(uint32_t ui32Base)
 //! initial communication with the slave is done at either 100 Kbps or
 //! 400 Kbps.
 //!
-//! The peripheral clock is the same as the processor clock.  This value is
-//! returned by SysCtlClockGet(), or it can be explicitly hard coded if it is
-//! constant and known (to save the code/execution overhead of a call to
-//! SysCtlClockGet()).
+//! The peripheral clock is the same as the processor clock.  The frequency of
+//! the system clock is the value returned by SysCtlClockGet() for TM4C123x
+//! devices or the value returned by SysCtlClockFreqSet() for TM4C129x devices,
+//! or it can be explicitly hard coded if it is constant and known (to save the
+//! code/execution overhead of a call to SysCtlClockGet() or fetch of the 
+//! variable call holding the return value of SysCtlClockFreqSet()).
 //!
 //! \return None.
 //
@@ -1780,7 +1782,7 @@ I2CRxFIFOFlush(uint32_t ui32Base)
 //!
 //! This function retrieves the status for both the transmit (TX) and receive
 //! (RX) FIFOs.  The trigger level for the transmit FIFO is set using
-//! I2CTxFIFOConfigSet() and for the receive FIFO using I2CTxFIFOConfigSet().
+//! I2CTxFIFOConfigSet() and for the receive FIFO using I2CRxFIFOConfigSet().
 //!
 //! \note Not all Tiva devices have an I2C FIFO.  Please consult the
 //! device data sheet to determine if this feature is supported.
@@ -2061,9 +2063,28 @@ I2CMasterGlitchFilterConfigSet(uint32_t ui32Base, uint32_t ui32Config)
     ASSERT(_I2CBaseValid(ui32Base));
 
     //
-    // Configure the glitch filter field of MTPR.
+    // Configure the glitch filter field of MTPR if it is TM4C129
     //
-    HWREG(ui32Base + I2C_O_MTPR) |= ui32Config;
+    if(CLASS_IS_TM4C129)
+    {
+        HWREG(ui32Base + I2C_O_MTPR) |= ui32Config;
+    }
+
+    //
+    // Configure the glitch filter if it is TM4C123
+    //
+    if(CLASS_IS_TM4C123)
+    {
+        //
+        // Configure the glitch filter pulse width
+        //
+        HWREG(ui32Base + I2C_O_MCR2) |= (ui32Config >> 12);
+
+        //
+        // Enable the glitch filter by setting the GFE bit
+        //
+        HWREG(ui32Base + I2C_O_MCR) |= I2C_MCR_GFE;
+    }
 }
 
 //*****************************************************************************
@@ -2133,6 +2154,35 @@ I2CSlaveFIFODisable(uint32_t ui32Base)
     // Disable slave FIFOs.
     //
     HWREG(ui32Base + I2C_O_SCSR) = I2C_SCSR_DA;
+}
+
+//*****************************************************************************
+//
+//! Enables internal loopback mode for an I2C port.
+//!
+//! \param ui32Base is the base address of the I2C module.
+//!
+//! This function configures an I2C port in internal loopback mode to help with
+//! diagnostics and debug.  In this mode, the SDA and SCL signals from master
+//! and slave modules are internally connected.  This allows data to be
+//! transferred between the master and slave modules of the same I2C port,
+//! without having to go through I/O's.  I2CMasterDataPut(), I2CSlaveDataPut(),
+//! I2CMasterDataGet(),I2CSlaveDataGet() can be used along with this function.
+//!
+//! \return None.
+//
+//*****************************************************************************
+void I2CLoopbackEnable(uint32_t ui32Base)
+{
+    //
+    // Check the arguments.
+    //
+    ASSERT(_I2CBaseValid(ui32Base));
+
+    //
+    // Write the loopback enable bit to the register.
+    //
+    HWREG(ui32Base + I2C_O_MCR) |= I2C_MCR_LPBK;
 }
 
 //*****************************************************************************

@@ -1,6 +1,6 @@
 Manifest for Texas Instruments TivaWare Clickwrap License Agreement
 
-TivaWare version 2.1.1.71
+TivaWare version 2.2.0.295
 
 Legend (explanation of the fields in the Manifest table below)
 
@@ -10,27 +10,35 @@ Version: Version of the application or file
 
 License Type: Type of license(s) under which TI will be providing software to 
 the licensee (e.g. BSD, GPLv2, TI TSPA License, TI Commercial License). See 
-Open Source Reference License Disclaimer in the Disclaimers Section.
+Open Source Reference License Disclaimer in the Disclaimers Section. Whenever 
+possible, TI will use an SPDX Short Identifier for an Open Source License. TI 
+Commercial license terms are not usually included in the manifest and are 
+conveyed through a variety of means such as a clickwrap license upon install, a 
+signed license agreement and so forth.
 
 Location: The directory name and path on the media (or in an archive) where the 
-Software is located.
+Software is located. Typically fully qualified path names are not used and 
+instead the relevant top level directory of the application is given. A 
+notation often used in the manifests is [as installed]/directory/*. Note that 
+the asterisk implies that all files under that directory are licensed as the 
+License Type field denotes. Any exceptions to this will generally be denoted as 
+[as installed]/directory/* except as noted below which means as shown in 
+subsequent rows of the manifest.
 
 Delivered As: This field will either be "Source", "Binary" or "Source and 
-Binary" and is the form the content of the Software is delivered in. If the 
-Software is delivered in an archive format, this field applies to the contents 
-of the archive. If the word Limited is used with Source, as in "Limited Source" 
-or "Limited Source and Binary" then only portions of the Source for the 
-application are provided.
+Binary" and is the primary form the content of the Software is delivered in. If 
+the Software is delivered in an archive format, this field applies to the 
+contents of the archive. If the word Limited is used with Source, as in 
+"Limited Source" or "Limited Source and Binary" then only portions of the 
+Source for the application are provided.
 
 Modified by TI: This field will either be "Yes" or "No". A "Yes" means TI has 
 made changes to the Software. A "No" means TI has not made any changes. Note: 
 This field is not applicable for Software "Obtained from" TI.
 
 Obtained from: This field specifies from where or from whom TI obtained the 
-Software. It may be a URL to an Open Source site, a 3rd party licensor, or TI 
-(if TI developed the software). If this field contains a link to Open Source 
-software, the date TI downloaded the Software is also recorded. See Links 
-Disclaimer in the Disclaimers Section.
+Software. It may be a URL to an Open Source site, a 3rd party licensor, or TI. 
+See Links Disclaimer in the Disclaimers Section.
 
 DISCLAIMERS
 
@@ -61,19 +69,20 @@ such Software.
 
 Export Information
 
-ECCN for Software included in this release: 3D991
+ECCN for Software included in this release:
 
-ECCN for Technology (e.g., user documentation, specifications) included in this 
-release: 3D991
+5D992
 
 Manifest
 
 See Legend above for a description of the fields and possible values.
 
+Manifest for Texas Instruments TivaWare Clickwrap License Agreement
+
 
 
 Software Name:  TivaWare make definitions
-Version:        2.1.1.71
+Version:        2.2.0.295
 License Type:   BSD-3-Clause
 Delivered As:   Source
 Modified by TI: N/A
@@ -81,7 +90,7 @@ Location:       ./makedefs
 Obtained From:  TI
 
 Software Name:  TivaWare master Makefile
-Version:        2.1.1.71
+Version:        2.2.0.295
 License Type:   BSD-3-Clause
 Delivered As:   Source
 Modified by TI: N/A
@@ -89,23 +98,15 @@ Location:       ./Makefile
 Obtained From:  TI
 
 Software Name:  Tiva Boot Loader
-Version:        2.1.1.71
+Version:        2.2.0.295
 License Type:   TI Commercial
 Delivered As:   Source
 Modified by TI: N/A
 Location:       ./boot_loader
 Obtained From:  TI
 
-Software Name:  CC3000 Library
-Version:        N/A
-License Type:   TI Commercial
-Delivered As:   Source
-Modified by TI: N/A
-Location:       ./cc3000
-Obtained From:  TI
-
 Software Name:  Tiva Peripheral Driver Library
-Version:        2.1.1.71
+Version:        2.2.0.295
 License Type:   BSD-3-Clause
 Delivered As:   Source
 Modified by TI: N/A
@@ -113,7 +114,7 @@ Location:       ./driverlib
 Obtained From:  TI
 
 Software Name:  Tiva Examples Makefile
-Version:        2.1.1.71
+Version:        2.2.0.295
 License Type:   TI Commercial
 Delivered As:   Source
 Modified by TI: N/A
@@ -121,7 +122,7 @@ Location:       ./examples/Makefile
 Obtained From:  TI
 
 Software Name:  Tiva Board Examples
-Version:        2.1.1.71
+Version:        2.2.0.295
 License Type:   TI Commercial
 Delivered As:   Source
 Modified by TI: N/A
@@ -129,7 +130,7 @@ Location:       ./examples/boards
 Obtained From:  TI
 
 Software Name:  Tiva Peripheral Examples
-Version:        2.1.1.71
+Version:        2.2.0.295
 License Type:   BSD-3-Clause
 Delivered As:   Source
 Modified by TI: N/A
@@ -137,7 +138,7 @@ Location:       ./examples/peripherals
 Obtained From:  TI
 
 Software Name:  Tiva Project Example
-Version:        2.1.1.71
+Version:        2.2.0.295
 License Type:   BSD-3-Clause
 Delivered As:   Source
 Modified by TI: N/A
@@ -145,7 +146,7 @@ Location:       ./examples/project
 Obtained From:  TI
 
 Software Name:  Tiva Graphics Library
-Version:        2.1.1.71
+Version:        2.2.0.295
 License Type:   TI Commercial
 Delivered As:   Source
 Modified by TI: N/A
@@ -153,31 +154,15 @@ Location:       ./grlib
 Obtained From:  TI
 
 Software Name:  Tiva Device Header Files
-Version:        2.1.1.71
+Version:        2.2.0.295
 License Type:   BSD-3-Clause
 Delivered As:   Source
 Modified by TI: N/A
 Location:       ./inc
 Obtained From:  TI
 
-Software Name:  TI IQmath Fixed Point Library
-Version:        2.1.1.71
-License Type:   TI Commercial
-Delivered As:   Binary
-Modified by TI: N/A
-Location:       ./IQmath
-Obtained From:  TI
-
-Software Name:  TI NFC Network Stack
-Version:        2.1.1.71
-License Type:   TI Commercial
-Delivered As:   Source
-Modified by TI: N/A
-Location:       ./nfclib
-Obtained From:  TI
-
 Software Name:  Tiva Sensor Library
-Version:        2.1.1.71
+Version:        2.2.0.295
 License Type:   TI Commercial
 Delivered As:   Source
 Modified by TI: N/A
@@ -185,7 +170,7 @@ Location:       ./sensorlib
 Obtained From:  TI
 
 Software Name:  Host tools
-Version:        2.1.1.71
+Version:        2.2.0.295
 License Type:   TI Commercial
 Delivered As:   Source
 Modified by TI: N/A
@@ -193,7 +178,7 @@ Location:       ./tools
 Obtained From:  TI
 
 Software Name:  Tiva USB Library
-Version:        2.1.1.71
+Version:        2.2.0.295
 License Type:   TI Commercial
 Delivered As:   Source
 Modified by TI: N/A
@@ -201,7 +186,7 @@ Location:       ./usblib
 Obtained From:  TI
 
 Software Name:  Utility Functions
-Version:        2.1.1.71
+Version:        2.2.0.295
 License Type:   TI Commercial
 Delivered As:   Source
 Modified by TI: N/A
@@ -209,7 +194,7 @@ Location:       ./utils
 Obtained From:  TI
 
 Software Name:  Custom Windows Drivers
-Version:        2.1.1.71
+Version:        2.2.0.295
 License Type:   TI Commercial
 Delivered As:   Binary
 Modified by TI: N/A
@@ -249,7 +234,7 @@ Location:       ./third_party/fonts/apl
 Obtained From:  http://www.study-area.org/apt/firefly-font/
 
 Software Name:  Custom Font Generation Demo
-Version:        2.1.1.71
+Version:        2.2.0.295
 License Type:   TI Commercial
 Delivered As:   Source
 Modified by TI: N/A
@@ -278,12 +263,12 @@ Location:       ./third_party/fonts/other
 Obtained From:  (Sazanami) http://sourceforge.jp/projects/efont/releases/#10087
 
 Software Name:  FreeRTOS
-Version:        7.1.1
+Version:        8.2.3
 License Type:   GPL-2-0 with linking exception
 Delivered As:   Source
-Modified by TI: Yes - CCS port added
+Modified by TI: Yes - Removed support for non-TM4C Devices
 Location:       ./third_party/FreeRTOS
-Obtained From:  http://sourceforge.net/projects/freertos/files/FreeRTOS/V7.1.1
+Obtained From:  http://sourceforge.net/projects/freertos/files/FreeRTOS/V8.2.3
 
 Software Name:  LWIP Network Stack
 Version:        1.4.1

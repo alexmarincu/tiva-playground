@@ -2,7 +2,7 @@
 //
 // rom.h - Macros to facilitate calling functions in the ROM.
 //
-// Copyright (c) 2007-2015 Texas Instruments Incorporated.  All rights reserved.
+// Copyright (c) 2007-2020 Texas Instruments Incorporated.  All rights reserved.
 // Software License Agreement
 // 
 //   Redistribution and use in source and binary forms, with or without
@@ -33,7 +33,7 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 // 
-// This is part of revision 2.1.1.71 of the Tiva Peripheral Driver Library.
+// This is part of revision 2.2.0.295 of the Tiva Peripheral Driver Library.
 //
 //*****************************************************************************
 
@@ -123,6 +123,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -134,6 +135,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -144,6 +146,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -154,6 +157,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -165,6 +169,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -175,6 +180,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -185,6 +191,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -195,6 +202,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -207,6 +215,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -219,6 +228,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -229,6 +239,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -239,6 +250,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -249,6 +261,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -259,6 +272,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -269,6 +283,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -279,6 +294,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -290,6 +306,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -302,6 +319,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -314,6 +332,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -324,6 +343,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -334,6 +354,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -343,6 +364,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -353,6 +375,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -363,6 +386,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -372,6 +396,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -382,6 +407,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -599,7 +625,8 @@
         ((void (*)(uint32_t ui32Base,                                         \
                    uint32_t *pui32TagData))ROM_AESTABLE[21])
 #endif
-#if defined(TARGET_IS_TM4C129_RA1)
+#if defined(TARGET_IS_TM4C129_RA1) ||                                         \
+    defined(TARGET_IS_TM4C129_RA2)
 #define ROM_AESIVRead                                                         \
         ((void (*)(uint32_t ui32Base,                                         \
                    uint32_t *pui32IVdata))ROM_AESTABLE[22])
@@ -613,6 +640,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -623,6 +651,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -632,6 +661,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -641,6 +671,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -650,6 +681,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -660,6 +692,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -670,6 +703,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -682,6 +716,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -694,6 +729,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -704,6 +740,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -714,6 +751,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -724,6 +762,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -734,6 +773,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -744,6 +784,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -753,6 +794,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -763,6 +805,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -774,6 +817,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -791,6 +835,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -801,6 +846,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -812,6 +858,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -822,6 +869,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -832,6 +880,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -842,6 +891,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -852,6 +902,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -1030,6 +1081,7 @@
 //*****************************************************************************
 #if defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -1040,6 +1092,7 @@
 #endif
 #if defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -1048,6 +1101,7 @@
 #endif
 #if defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -1056,6 +1110,7 @@
 #endif
 #if defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -1064,6 +1119,7 @@
 #endif
 #if defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -1074,6 +1130,7 @@
 #endif
 #if defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -1082,6 +1139,7 @@
 #endif
 #if defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -1091,6 +1149,7 @@
 #endif
 #if defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -1101,6 +1160,7 @@
 #endif
 #if defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -1109,6 +1169,7 @@
 #endif
 #if defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -1117,6 +1178,7 @@
 #endif
 #if defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -1125,6 +1187,7 @@
 #endif
 #if defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -1138,6 +1201,7 @@
 #endif
 #if defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -1148,6 +1212,7 @@
 #endif
 #if defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -1157,6 +1222,7 @@
 #endif
 #if defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -1165,6 +1231,7 @@
 #endif
 #if defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -1173,6 +1240,7 @@
 #endif
 #if defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -1490,7 +1558,8 @@
         ((void (*)(uint32_t ui32Base,                                         \
                    uint32_t ui32FilterOpts))ROM_EMACTABLE[7])
 #endif
-#if defined(TARGET_IS_TM4C129_RA1)
+#if defined(TARGET_IS_TM4C129_RA1) ||                                         \
+    defined(TARGET_IS_TM4C129_RA2)
 #define ROM_EMACInit                                                          \
         ((void (*)(uint32_t ui32Base,                                         \
                    uint32_t ui32SysClk,                                       \
@@ -1520,7 +1589,8 @@
         ((void (*)(uint32_t ui32Base,                                         \
                    uint32_t ui32IntFlags))ROM_EMACTABLE[11])
 #endif
-#if defined(TARGET_IS_TM4C129_RA1)
+#if defined(TARGET_IS_TM4C129_RA1) ||                                         \
+    defined(TARGET_IS_TM4C129_RA2)
 #define ROM_EMACPHYConfigSet                                                  \
         ((void (*)(uint32_t ui32Base,                                         \
                    uint32_t ui32Config))ROM_EMACTABLE[12])
@@ -1667,22 +1737,26 @@
 #define ROM_EMACTxFlush                                                       \
         ((void (*)(uint32_t ui32Base))ROM_EMACTABLE[34])
 #endif
-#if defined(TARGET_IS_TM4C129_RA1)
+#if defined(TARGET_IS_TM4C129_RA1) ||                                         \
+    defined(TARGET_IS_TM4C129_RA2)
 #define ROM_EMACAddrFilterGet                                                 \
         ((uint32_t (*)(uint32_t ui32Base,                                     \
                        uint32_t ui32Index))ROM_EMACTABLE[35])
 #endif
-#if defined(TARGET_IS_TM4C129_RA1)
+#if defined(TARGET_IS_TM4C129_RA1) ||                                         \
+    defined(TARGET_IS_TM4C129_RA2)
 #define ROM_EMACAddrFilterSet                                                 \
         ((void (*)(uint32_t ui32Base,                                         \
                    uint32_t ui32Index,                                        \
                    uint32_t ui32Config))ROM_EMACTABLE[36])
 #endif
-#if defined(TARGET_IS_TM4C129_RA1)
+#if defined(TARGET_IS_TM4C129_RA1) ||                                         \
+    defined(TARGET_IS_TM4C129_RA2)
 #define ROM_EMACHashFilterBitCalculate                                        \
         ((uint32_t (*)(uint8_t *pui8MACAddr))ROM_EMACTABLE[37])
 #endif
-#if defined(TARGET_IS_TM4C129_RA1)
+#if defined(TARGET_IS_TM4C129_RA1) ||                                         \
+    defined(TARGET_IS_TM4C129_RA2)
 #define ROM_EMACHashFilterGet                                                 \
         ((void (*)(uint32_t ui32Base,                                         \
                    uint32_t *pui32HashHi,                                     \
@@ -1696,164 +1770,196 @@
                    uint32_t ui32HashHi,                                       \
                    uint32_t ui32HashLo))ROM_EMACTABLE[39])
 #endif
-#if defined(TARGET_IS_TM4C129_RA1)
+#if defined(TARGET_IS_TM4C129_RA1) ||                                         \
+    defined(TARGET_IS_TM4C129_RA2)
 #define ROM_EMACNumAddrGet                                                    \
         ((uint32_t (*)(uint32_t ui32Base))ROM_EMACTABLE[40])
 #endif
-#if defined(TARGET_IS_TM4C129_RA1)
+#if defined(TARGET_IS_TM4C129_RA1) ||                                         \
+    defined(TARGET_IS_TM4C129_RA2)
 #define ROM_EMACPHYExtendedRead                                               \
         ((uint16_t (*)(uint32_t ui32Base,                                     \
                        uint8_t ui8PhyAddr,                                    \
                        uint16_t ui16RegAddr))ROM_EMACTABLE[41])
 #endif
-#if defined(TARGET_IS_TM4C129_RA1)
+#if defined(TARGET_IS_TM4C129_RA1) ||                                         \
+    defined(TARGET_IS_TM4C129_RA2)
 #define ROM_EMACPHYExtendedWrite                                              \
         ((void (*)(uint32_t ui32Base,                                         \
                    uint8_t ui8PhyAddr,                                        \
                    uint16_t ui16RegAddr,                                      \
                    uint16_t ui16Data))ROM_EMACTABLE[42])
 #endif
-#if defined(TARGET_IS_TM4C129_RA1)
+#if defined(TARGET_IS_TM4C129_RA1) ||                                         \
+    defined(TARGET_IS_TM4C129_RA2)
 #define ROM_EMACPowerManagementControlGet                                     \
         ((uint32_t (*)(uint32_t ui32Base))ROM_EMACTABLE[43])
 #endif
-#if defined(TARGET_IS_TM4C129_RA1)
+#if defined(TARGET_IS_TM4C129_RA1) ||                                         \
+    defined(TARGET_IS_TM4C129_RA2)
 #define ROM_EMACPowerManagementControlSet                                     \
         ((void (*)(uint32_t ui32Base,                                         \
                    uint32_t ui32Flags))ROM_EMACTABLE[44])
 #endif
-#if defined(TARGET_IS_TM4C129_RA1)
+#if defined(TARGET_IS_TM4C129_RA1) ||                                         \
+    defined(TARGET_IS_TM4C129_RA2)
 #define ROM_EMACPowerManagementStatusGet                                      \
         ((uint32_t (*)(uint32_t ui32Base))ROM_EMACTABLE[45])
 #endif
-#if defined(TARGET_IS_TM4C129_RA1)
+#if defined(TARGET_IS_TM4C129_RA1) ||                                         \
+    defined(TARGET_IS_TM4C129_RA2)
 #define ROM_EMACRemoteWakeUpFrameFilterGet                                    \
         ((void (*)(uint32_t ui32Base,                                         \
                    tEMACWakeUpFrameFilter *pFilter))ROM_EMACTABLE[46])
 #endif
-#if defined(TARGET_IS_TM4C129_RA1)
+#if defined(TARGET_IS_TM4C129_RA1) ||                                         \
+    defined(TARGET_IS_TM4C129_RA2)
 #define ROM_EMACRemoteWakeUpFrameFilterSet                                    \
         ((void (*)(uint32_t ui32Base,                                         \
                    const tEMACWakeUpFrameFilter *pFilter))ROM_EMACTABLE[47])
 #endif
-#if defined(TARGET_IS_TM4C129_RA1)
+#if defined(TARGET_IS_TM4C129_RA1) ||                                         \
+    defined(TARGET_IS_TM4C129_RA2)
 #define ROM_EMACTimestampAddendSet                                            \
         ((void (*)(uint32_t ui32Base,                                         \
                    uint32_t ui32Seconds))ROM_EMACTABLE[48])
 #endif
-#if defined(TARGET_IS_TM4C129_RA1)
+#if defined(TARGET_IS_TM4C129_RA1) ||                                         \
+    defined(TARGET_IS_TM4C129_RA2)
 #define ROM_EMACTimestampConfigGet                                            \
         ((uint32_t (*)(uint32_t ui32Base,                                     \
                        uint32_t *pui32SubSecondInc))ROM_EMACTABLE[49])
 #endif
-#if defined(TARGET_IS_TM4C129_RA1)
+#if defined(TARGET_IS_TM4C129_RA1) ||                                         \
+    defined(TARGET_IS_TM4C129_RA2)
 #define ROM_EMACTimestampConfigSet                                            \
         ((void (*)(uint32_t ui32Base,                                         \
                    uint32_t ui32Config,                                       \
                    uint32_t ui32SubSecondInc))ROM_EMACTABLE[50])
 #endif
-#if defined(TARGET_IS_TM4C129_RA1)
+#if defined(TARGET_IS_TM4C129_RA1) ||                                         \
+    defined(TARGET_IS_TM4C129_RA2)
 #define ROM_EMACTimestampDisable                                              \
         ((void (*)(uint32_t ui32Base))ROM_EMACTABLE[51])
 #endif
-#if defined(TARGET_IS_TM4C129_RA1)
+#if defined(TARGET_IS_TM4C129_RA1) ||                                         \
+    defined(TARGET_IS_TM4C129_RA2)
 #define ROM_EMACTimestampEnable                                               \
         ((void (*)(uint32_t ui32Base))ROM_EMACTABLE[52])
 #endif
-#if defined(TARGET_IS_TM4C129_RA1)
+#if defined(TARGET_IS_TM4C129_RA1) ||                                         \
+    defined(TARGET_IS_TM4C129_RA2)
 #define ROM_EMACTimestampIntStatus                                            \
         ((uint32_t (*)(uint32_t ui32Base))ROM_EMACTABLE[53])
 #endif
-#if defined(TARGET_IS_TM4C129_RA1)
+#if defined(TARGET_IS_TM4C129_RA1) ||                                         \
+    defined(TARGET_IS_TM4C129_RA2)
 #define ROM_EMACTimestampPPSCommand                                           \
         ((void (*)(uint32_t ui32Base,                                         \
                    uint8_t ui8Cmd))ROM_EMACTABLE[54])
 #endif
-#if defined(TARGET_IS_TM4C129_RA1)
+#if defined(TARGET_IS_TM4C129_RA1) ||                                         \
+    defined(TARGET_IS_TM4C129_RA2)
 #define ROM_EMACTimestampPPSCommandModeSet                                    \
         ((void (*)(uint32_t ui32Base,                                         \
                    uint32_t ui32Config))ROM_EMACTABLE[55])
 #endif
-#if defined(TARGET_IS_TM4C129_RA1)
+#if defined(TARGET_IS_TM4C129_RA1) ||                                         \
+    defined(TARGET_IS_TM4C129_RA2)
 #define ROM_EMACTimestampPPSPeriodSet                                         \
         ((void (*)(uint32_t ui32Base,                                         \
                    uint32_t ui32Period,                                       \
                    uint32_t ui32Width))ROM_EMACTABLE[56])
 #endif
-#if defined(TARGET_IS_TM4C129_RA1)
+#if defined(TARGET_IS_TM4C129_RA1) ||                                         \
+    defined(TARGET_IS_TM4C129_RA2)
 #define ROM_EMACTimestampPPSSimpleModeSet                                     \
         ((void (*)(uint32_t ui32Base,                                         \
                    uint32_t ui32FreqConfig))ROM_EMACTABLE[57])
 #endif
-#if defined(TARGET_IS_TM4C129_RA1)
+#if defined(TARGET_IS_TM4C129_RA1) ||                                         \
+    defined(TARGET_IS_TM4C129_RA2)
 #define ROM_EMACTimestampSysTimeGet                                           \
         ((void (*)(uint32_t ui32Base,                                         \
                    uint32_t *pui32Seconds,                                    \
                    uint32_t *pui32SubSeconds))ROM_EMACTABLE[58])
 #endif
-#if defined(TARGET_IS_TM4C129_RA1)
+#if defined(TARGET_IS_TM4C129_RA1) ||                                         \
+    defined(TARGET_IS_TM4C129_RA2)
 #define ROM_EMACTimestampSysTimeSet                                           \
         ((void (*)(uint32_t ui32Base,                                         \
                    uint32_t ui32Seconds,                                      \
                    uint32_t ui32SubSeconds))ROM_EMACTABLE[59])
 #endif
-#if defined(TARGET_IS_TM4C129_RA1)
+#if defined(TARGET_IS_TM4C129_RA1) ||                                         \
+    defined(TARGET_IS_TM4C129_RA2)
 #define ROM_EMACTimestampSysTimeUpdate                                        \
         ((void (*)(uint32_t ui32Base,                                         \
                    uint32_t ui32Seconds,                                      \
                    uint32_t ui32SubSeconds,                                   \
                    bool bInc))ROM_EMACTABLE[60])
 #endif
-#if defined(TARGET_IS_TM4C129_RA1)
+#if defined(TARGET_IS_TM4C129_RA1) ||                                         \
+    defined(TARGET_IS_TM4C129_RA2)
 #define ROM_EMACTimestampTargetIntDisable                                     \
         ((void (*)(uint32_t ui32Base))ROM_EMACTABLE[61])
 #endif
-#if defined(TARGET_IS_TM4C129_RA1)
+#if defined(TARGET_IS_TM4C129_RA1) ||                                         \
+    defined(TARGET_IS_TM4C129_RA2)
 #define ROM_EMACTimestampTargetIntEnable                                      \
         ((void (*)(uint32_t ui32Base))ROM_EMACTABLE[62])
 #endif
-#if defined(TARGET_IS_TM4C129_RA1)
+#if defined(TARGET_IS_TM4C129_RA1) ||                                         \
+    defined(TARGET_IS_TM4C129_RA2)
 #define ROM_EMACTimestampTargetSet                                            \
         ((void (*)(uint32_t ui32Base,                                         \
                    uint32_t ui32Seconds,                                      \
                    uint32_t ui32Nanoseconds))ROM_EMACTABLE[63])
 #endif
-#if defined(TARGET_IS_TM4C129_RA1)
+#if defined(TARGET_IS_TM4C129_RA1) ||                                         \
+    defined(TARGET_IS_TM4C129_RA2)
 #define ROM_EMACVLANHashFilterBitCalculate                                    \
         ((uint32_t (*)(uint16_t ui16Tag))ROM_EMACTABLE[64])
 #endif
-#if defined(TARGET_IS_TM4C129_RA1)
+#if defined(TARGET_IS_TM4C129_RA1) ||                                         \
+    defined(TARGET_IS_TM4C129_RA2)
 #define ROM_EMACVLANHashFilterGet                                             \
         ((uint32_t (*)(uint32_t ui32Base))ROM_EMACTABLE[65])
 #endif
-#if defined(TARGET_IS_TM4C129_RA1)
+#if defined(TARGET_IS_TM4C129_RA1) ||                                         \
+    defined(TARGET_IS_TM4C129_RA2)
 #define ROM_EMACVLANHashFilterSet                                             \
         ((void (*)(uint32_t ui32Base,                                         \
                    uint32_t ui32Hash))ROM_EMACTABLE[66])
 #endif
-#if defined(TARGET_IS_TM4C129_RA1)
+#if defined(TARGET_IS_TM4C129_RA1) ||                                         \
+    defined(TARGET_IS_TM4C129_RA2)
 #define ROM_EMACVLANRxConfigGet                                               \
         ((uint32_t (*)(uint32_t ui32Base,                                     \
                        uint16_t *pui16Tag))ROM_EMACTABLE[67])
 #endif
-#if defined(TARGET_IS_TM4C129_RA1)
+#if defined(TARGET_IS_TM4C129_RA1) ||                                         \
+    defined(TARGET_IS_TM4C129_RA2)
 #define ROM_EMACVLANRxConfigSet                                               \
         ((void (*)(uint32_t ui32Base,                                         \
                    uint16_t ui16Tag,                                          \
                    uint32_t ui32Config))ROM_EMACTABLE[68])
 #endif
-#if defined(TARGET_IS_TM4C129_RA1)
+#if defined(TARGET_IS_TM4C129_RA1) ||                                         \
+    defined(TARGET_IS_TM4C129_RA2)
 #define ROM_EMACVLANTxConfigGet                                               \
         ((uint32_t (*)(uint32_t ui32Base,                                     \
                        uint16_t *pui16Tag))ROM_EMACTABLE[69])
 #endif
-#if defined(TARGET_IS_TM4C129_RA1)
+#if defined(TARGET_IS_TM4C129_RA1) ||                                         \
+    defined(TARGET_IS_TM4C129_RA2)
 #define ROM_EMACVLANTxConfigSet                                               \
         ((void (*)(uint32_t ui32Base,                                         \
                    uint16_t ui16Tag,                                          \
                    uint32_t ui32Config))ROM_EMACTABLE[70])
 #endif
-#if defined(TARGET_IS_TM4C129_RA1)
+#if defined(TARGET_IS_TM4C129_RA1) ||                                         \
+    defined(TARGET_IS_TM4C129_RA2)
 #define ROM_UpdateEMAC                                                        \
         ((void (*)(uint32_t ui32Clock))ROM_EMACTABLE[71])
 #endif
@@ -1866,6 +1972,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -1877,6 +1984,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -1886,6 +1994,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -1895,6 +2004,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -1905,6 +2015,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -1914,6 +2025,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -1924,6 +2036,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -1934,6 +2047,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -1943,6 +2057,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -1952,6 +2067,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -1961,6 +2077,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -1970,6 +2087,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -1985,6 +2103,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -1994,6 +2113,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -2003,6 +2123,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -2012,6 +2133,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -2021,6 +2143,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -2030,6 +2153,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -2039,6 +2163,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -2048,6 +2173,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -2057,6 +2183,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -2072,6 +2199,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -2083,6 +2211,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -2094,6 +2223,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -2104,6 +2234,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -2115,6 +2246,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -2124,7 +2256,8 @@
 #endif
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
-    defined(TARGET_IS_TM4C123_RB1)
+    defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2)
 #define ROM_GPIOPadConfigSet                                                  \
         ((void (*)(uint32_t ui32Port,                                         \
                    uint8_t ui8Pins,                                           \
@@ -2134,6 +2267,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -2146,6 +2280,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -2155,7 +2290,8 @@
 #endif
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
-    defined(TARGET_IS_TM4C123_RB1)
+    defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2)
 #define ROM_GPIOPinTypeCAN                                                    \
         ((void (*)(uint32_t ui32Port,                                         \
                    uint8_t ui8Pins))ROM_GPIOTABLE[12])
@@ -2163,6 +2299,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -2173,6 +2310,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -2183,6 +2321,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -2193,6 +2332,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -2203,6 +2343,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -2213,6 +2354,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -2223,6 +2365,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -2233,6 +2376,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -2243,6 +2387,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -2253,6 +2398,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -2263,6 +2409,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -2273,6 +2420,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -2283,6 +2431,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -2292,6 +2441,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -2302,6 +2452,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -2312,6 +2463,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -2322,6 +2474,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -2332,6 +2485,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -2341,6 +2495,7 @@
 #endif
 #if defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -2397,12 +2552,6 @@
         ((uint32_t (*)(uint32_t ui32Port,                                     \
                        bool bMasked))ROM_GPIOTABLE[54])
 #endif
-#if defined(TARGET_IS_TM4C129_RA0) ||                                         \
-    defined(TARGET_IS_TM4C129_RA1) ||                                         \
-    defined(TARGET_IS_TM4C129_RA2)
-#define ROM_GPIOPinWakeStatus                                                 \
-        ((uint32_t (*)(uint32_t ui32Port))ROM_GPIOTABLE[55])
-#endif
 
 //*****************************************************************************
 //
@@ -2412,6 +2561,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -2421,6 +2571,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -2430,6 +2581,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -2439,6 +2591,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -2448,6 +2601,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -2457,6 +2611,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -2466,6 +2621,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -2475,6 +2631,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -2484,6 +2641,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -2493,6 +2651,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -2502,6 +2661,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -2511,6 +2671,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -2520,6 +2681,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -2529,6 +2691,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -2539,6 +2702,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -2549,6 +2713,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -2558,6 +2723,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -2567,6 +2733,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -2576,6 +2743,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -2585,6 +2753,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -2594,6 +2763,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -2603,6 +2773,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -2612,6 +2783,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -2621,6 +2793,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -2741,11 +2914,13 @@
 #define ROM_HibernateTamperStatusGet                                          \
         ((uint32_t (*)(void))ROM_HIBERNATETABLE[48])
 #endif
-#if defined(TARGET_IS_TM4C129_RA1)
+#if defined(TARGET_IS_TM4C129_RA1) ||                                         \
+    defined(TARGET_IS_TM4C129_RA2)
 #define ROM_HibernateRTCMatchGet                                              \
         ((uint32_t (*)(uint32_t ui32Match))ROM_HIBERNATETABLE[49])
 #endif
-#if defined(TARGET_IS_TM4C129_RA1)
+#if defined(TARGET_IS_TM4C129_RA1) ||                                         \
+    defined(TARGET_IS_TM4C129_RA2)
 #define ROM_HibernateRTCMatchSet                                              \
         ((void (*)(uint32_t ui32Match,                                        \
                    uint32_t ui32Value))ROM_HIBERNATETABLE[50])
@@ -2756,7 +2931,8 @@
 #define ROM_HibernateRTCSSMatchGet                                            \
         ((uint32_t (*)(uint32_t ui32Match))ROM_HIBERNATETABLE[51])
 #endif
-#if defined(TARGET_IS_TM4C129_RA1)
+#if defined(TARGET_IS_TM4C129_RA1) ||                                         \
+    defined(TARGET_IS_TM4C129_RA2)
 #define ROM_HibernateRTCSSMatchSet                                            \
         ((void (*)(uint32_t ui32Match,                                        \
                    uint32_t ui32Value))ROM_HIBERNATETABLE[52])
@@ -2770,6 +2946,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -2780,6 +2957,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -2788,7 +2966,8 @@
                    uint32_t ui32I2CClk,                                       \
                    bool bFast))ROM_I2CTABLE[1])
 #endif
-#if defined(TARGET_IS_TM4C129_RA1)
+#if defined(TARGET_IS_TM4C129_RA1) ||                                         \
+    defined(TARGET_IS_TM4C129_RA2)
 #define ROM_I2CSlaveInit                                                      \
         ((void (*)(uint32_t ui32Base,                                         \
                    uint8_t ui8SlaveAddr))ROM_I2CTABLE[2])
@@ -2796,58 +2975,67 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
 #define ROM_I2CMasterEnable                                                   \
         ((void (*)(uint32_t ui32Base))ROM_I2CTABLE[3])
 #endif
-#if defined(TARGET_IS_TM4C129_RA1)
+#if defined(TARGET_IS_TM4C129_RA1) ||                                         \
+    defined(TARGET_IS_TM4C129_RA2)
 #define ROM_I2CSlaveEnable                                                    \
         ((void (*)(uint32_t ui32Base))ROM_I2CTABLE[4])
 #endif
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
 #define ROM_I2CMasterDisable                                                  \
         ((void (*)(uint32_t ui32Base))ROM_I2CTABLE[5])
 #endif
-#if defined(TARGET_IS_TM4C129_RA1)
+#if defined(TARGET_IS_TM4C129_RA1) ||                                         \
+    defined(TARGET_IS_TM4C129_RA2)
 #define ROM_I2CSlaveDisable                                                   \
         ((void (*)(uint32_t ui32Base))ROM_I2CTABLE[6])
 #endif
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
 #define ROM_I2CMasterIntEnable                                                \
         ((void (*)(uint32_t ui32Base))ROM_I2CTABLE[7])
 #endif
-#if defined(TARGET_IS_TM4C129_RA1)
+#if defined(TARGET_IS_TM4C129_RA1) ||                                         \
+    defined(TARGET_IS_TM4C129_RA2)
 #define ROM_I2CSlaveIntEnable                                                 \
         ((void (*)(uint32_t ui32Base))ROM_I2CTABLE[8])
 #endif
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
 #define ROM_I2CMasterIntDisable                                               \
         ((void (*)(uint32_t ui32Base))ROM_I2CTABLE[9])
 #endif
-#if defined(TARGET_IS_TM4C129_RA1)
+#if defined(TARGET_IS_TM4C129_RA1) ||                                         \
+    defined(TARGET_IS_TM4C129_RA2)
 #define ROM_I2CSlaveIntDisable                                                \
         ((void (*)(uint32_t ui32Base))ROM_I2CTABLE[10])
 #endif
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -2855,7 +3043,8 @@
         ((bool (*)(uint32_t ui32Base,                                         \
                    bool bMasked))ROM_I2CTABLE[11])
 #endif
-#if defined(TARGET_IS_TM4C129_RA1)
+#if defined(TARGET_IS_TM4C129_RA1) ||                                         \
+    defined(TARGET_IS_TM4C129_RA2)
 #define ROM_I2CSlaveIntStatus                                                 \
         ((bool (*)(uint32_t ui32Base,                                         \
                    bool bMasked))ROM_I2CTABLE[12])
@@ -2863,19 +3052,22 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
 #define ROM_I2CMasterIntClear                                                 \
         ((void (*)(uint32_t ui32Base))ROM_I2CTABLE[13])
 #endif
-#if defined(TARGET_IS_TM4C129_RA1)
+#if defined(TARGET_IS_TM4C129_RA1) ||                                         \
+    defined(TARGET_IS_TM4C129_RA2)
 #define ROM_I2CSlaveIntClear                                                  \
         ((void (*)(uint32_t ui32Base))ROM_I2CTABLE[14])
 #endif
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -2887,6 +3079,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -2896,6 +3089,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -2905,6 +3099,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -2915,6 +3110,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -2924,50 +3120,59 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
 #define ROM_I2CMasterDataGet                                                  \
         ((uint32_t (*)(uint32_t ui32Base))ROM_I2CTABLE[20])
 #endif
-#if defined(TARGET_IS_TM4C129_RA1)
+#if defined(TARGET_IS_TM4C129_RA1) ||                                         \
+    defined(TARGET_IS_TM4C129_RA2)
 #define ROM_I2CSlaveStatus                                                    \
         ((uint32_t (*)(uint32_t ui32Base))ROM_I2CTABLE[21])
 #endif
-#if defined(TARGET_IS_TM4C129_RA1)
+#if defined(TARGET_IS_TM4C129_RA1) ||                                         \
+    defined(TARGET_IS_TM4C129_RA2)
 #define ROM_I2CSlaveDataPut                                                   \
         ((void (*)(uint32_t ui32Base,                                         \
                    uint8_t ui8Data))ROM_I2CTABLE[22])
 #endif
-#if defined(TARGET_IS_TM4C129_RA1)
+#if defined(TARGET_IS_TM4C129_RA1) ||                                         \
+    defined(TARGET_IS_TM4C129_RA2)
 #define ROM_I2CSlaveDataGet                                                   \
         ((uint32_t (*)(uint32_t ui32Base))ROM_I2CTABLE[23])
 #endif
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
 #define ROM_UpdateI2C                                                         \
         ((void (*)(void))ROM_I2CTABLE[24])
 #endif
-#if defined(TARGET_IS_TM4C129_RA1)
+#if defined(TARGET_IS_TM4C129_RA1) ||                                         \
+    defined(TARGET_IS_TM4C129_RA2)
 #define ROM_I2CSlaveIntEnableEx                                               \
         ((void (*)(uint32_t ui32Base,                                         \
                    uint32_t ui32IntFlags))ROM_I2CTABLE[25])
 #endif
-#if defined(TARGET_IS_TM4C129_RA1)
+#if defined(TARGET_IS_TM4C129_RA1) ||                                         \
+    defined(TARGET_IS_TM4C129_RA2)
 #define ROM_I2CSlaveIntDisableEx                                              \
         ((void (*)(uint32_t ui32Base,                                         \
                    uint32_t ui32IntFlags))ROM_I2CTABLE[26])
 #endif
-#if defined(TARGET_IS_TM4C129_RA1)
+#if defined(TARGET_IS_TM4C129_RA1) ||                                         \
+    defined(TARGET_IS_TM4C129_RA2)
 #define ROM_I2CSlaveIntStatusEx                                               \
         ((uint32_t (*)(uint32_t ui32Base,                                     \
                        bool bMasked))ROM_I2CTABLE[27])
 #endif
-#if defined(TARGET_IS_TM4C129_RA1)
+#if defined(TARGET_IS_TM4C129_RA1) ||                                         \
+    defined(TARGET_IS_TM4C129_RA2)
 #define ROM_I2CSlaveIntClearEx                                                \
         ((void (*)(uint32_t ui32Base,                                         \
                    uint32_t ui32IntFlags))ROM_I2CTABLE[28])
@@ -2975,6 +3180,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -2985,6 +3191,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -2995,6 +3202,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -3005,6 +3213,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -3015,6 +3224,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -3022,17 +3232,20 @@
         ((void (*)(uint32_t ui32Base,                                         \
                    uint32_t ui32Value))ROM_I2CTABLE[33])
 #endif
-#if defined(TARGET_IS_TM4C129_RA1)
+#if defined(TARGET_IS_TM4C129_RA1) ||                                         \
+    defined(TARGET_IS_TM4C129_RA2)
 #define ROM_I2CSlaveACKOverride                                               \
         ((void (*)(uint32_t ui32Base,                                         \
                    bool bEnable))ROM_I2CTABLE[34])
 #endif
-#if defined(TARGET_IS_TM4C129_RA1)
+#if defined(TARGET_IS_TM4C129_RA1) ||                                         \
+    defined(TARGET_IS_TM4C129_RA2)
 #define ROM_I2CSlaveACKValueSet                                               \
         ((void (*)(uint32_t ui32Base,                                         \
                    bool bACK))ROM_I2CTABLE[35])
 #endif
-#if defined(TARGET_IS_TM4C129_RA1)
+#if defined(TARGET_IS_TM4C129_RA1) ||                                         \
+    defined(TARGET_IS_TM4C129_RA2)
 #define ROM_I2CSlaveAddressSet                                                \
         ((void (*)(uint32_t ui32Base,                                         \
                    uint8_t ui8AddrNum,                                        \
@@ -3041,6 +3254,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -3119,11 +3333,13 @@
 #define ROM_I2CMasterBurstCountGet                                            \
         ((uint32_t (*)(uint32_t ui32Base))ROM_I2CTABLE[49])
 #endif
-#if defined(TARGET_IS_TM4C129_RA1)
+#if defined(TARGET_IS_TM4C129_RA1) ||                                         \
+    defined(TARGET_IS_TM4C129_RA2)
 #define ROM_I2CSlaveFIFODisable                                               \
         ((void (*)(uint32_t ui32Base))ROM_I2CTABLE[50])
 #endif
-#if defined(TARGET_IS_TM4C129_RA1)
+#if defined(TARGET_IS_TM4C129_RA1) ||                                         \
+    defined(TARGET_IS_TM4C129_RA2)
 #define ROM_I2CSlaveFIFOEnable                                                \
         ((void (*)(uint32_t ui32Base,                                         \
                    uint32_t ui32Config))ROM_I2CTABLE[51])
@@ -3144,6 +3360,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -3153,6 +3370,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -3162,6 +3380,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -3171,6 +3390,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -3180,6 +3400,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -3189,6 +3410,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -3198,6 +3420,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -3208,6 +3431,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -3217,6 +3441,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -3226,6 +3451,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -3235,6 +3461,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -3244,6 +3471,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -3257,7 +3485,8 @@
 #define ROM_IntIsEnabled                                                      \
         ((uint32_t (*)(uint32_t ui32Interrupt))ROM_INTERRUPTTABLE[12])
 #endif
-#if defined(TARGET_IS_TM4C129_RA1)
+#if defined(TARGET_IS_TM4C129_RA1) ||                                         \
+    defined(TARGET_IS_TM4C129_RA2)
 #define ROM_IntTrigger                                                        \
         ((void (*)(uint32_t ui32Interrupt))ROM_INTERRUPTTABLE[13])
 #endif
@@ -3470,7 +3699,8 @@
         ((void (*)(uint32_t ui32Base,                                         \
                    const tLCDRasterTiming *pTiming))ROM_LCDTABLE[26])
 #endif
-#if defined(TARGET_IS_TM4C129_RA1)
+#if defined(TARGET_IS_TM4C129_RA1) ||                                         \
+    defined(TARGET_IS_TM4C129_RA2)
 #define ROM_LCDRasterEnabled                                                  \
         ((bool (*)(uint32_t ui32Base))ROM_LCDTABLE[27])
 #endif
@@ -3483,6 +3713,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -3492,6 +3723,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -3501,6 +3733,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -3510,6 +3743,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -3519,6 +3753,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -3528,6 +3763,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -3539,6 +3775,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -3646,6 +3883,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -3657,6 +3895,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -3668,6 +3907,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -3679,6 +3919,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -3689,6 +3930,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -3699,6 +3941,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -3709,6 +3952,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -3719,6 +3963,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -3731,6 +3976,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -3741,6 +3987,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -3751,6 +3998,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -3761,6 +4009,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -3772,6 +4021,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -3783,6 +4033,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -3794,6 +4045,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -3805,6 +4057,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -3816,6 +4069,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -3827,6 +4081,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -3838,6 +4093,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -3848,6 +4104,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -3858,6 +4115,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -3867,6 +4125,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -3877,6 +4136,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -3888,6 +4148,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -3898,6 +4159,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -3910,6 +4172,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -3922,6 +4185,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -3933,6 +4197,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -3944,6 +4209,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -3984,6 +4250,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -3993,6 +4260,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -4002,6 +4270,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -4011,6 +4280,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -4022,6 +4292,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -4032,6 +4303,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -4041,6 +4313,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -4050,6 +4323,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -4059,6 +4333,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -4068,6 +4343,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -4079,6 +4355,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -4088,6 +4365,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -4098,6 +4376,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -4108,6 +4387,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -4118,6 +4398,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -4261,6 +4542,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -4270,6 +4552,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -4279,6 +4562,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -4288,6 +4572,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -4299,6 +4584,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -4310,6 +4596,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -4320,6 +4607,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -4331,6 +4619,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -4341,6 +4630,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -4351,6 +4641,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -4360,6 +4651,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -4370,6 +4662,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -4379,6 +4672,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -4392,6 +4686,7 @@
 #endif
 #if defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -4404,6 +4699,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -4417,6 +4713,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -4428,6 +4725,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -4439,6 +4737,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -4452,6 +4751,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -4465,6 +4765,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -4476,6 +4777,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -4488,6 +4790,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -4500,6 +4803,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -4514,6 +4818,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -4525,6 +4830,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -4534,6 +4840,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -4547,6 +4854,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -4558,6 +4866,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -4567,6 +4876,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -4576,6 +4886,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -4585,6 +4896,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -4595,6 +4907,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -4606,6 +4919,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -4615,6 +4929,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -4625,6 +4940,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -4634,6 +4950,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -4644,6 +4961,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -4653,6 +4971,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -4662,6 +4981,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -4671,6 +4991,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -4680,6 +5001,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -4689,6 +5011,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -4699,6 +5022,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -4708,6 +5032,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -4717,6 +5042,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -4726,6 +5052,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -4735,6 +5062,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -4744,6 +5072,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -4753,6 +5082,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -4762,6 +5092,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -4771,6 +5102,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -4782,6 +5114,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -4791,6 +5124,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -4802,6 +5136,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -4812,6 +5147,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -4820,6 +5156,7 @@
 #endif
 #if defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -5050,6 +5387,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -5060,6 +5398,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -5074,6 +5413,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -5083,6 +5423,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -5092,6 +5433,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -5102,6 +5444,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -5112,6 +5455,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -5122,6 +5466,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -5132,6 +5477,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -5142,6 +5488,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -5152,6 +5499,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -5162,6 +5510,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -5171,6 +5520,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -5181,6 +5531,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -5191,6 +5542,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -5200,6 +5552,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -5209,6 +5562,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -5258,6 +5612,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -5267,6 +5622,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -5276,6 +5632,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -5285,6 +5642,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -5294,6 +5652,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -5303,6 +5662,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -5312,6 +5672,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -5321,6 +5682,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -5330,6 +5692,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -5339,6 +5702,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -5348,6 +5712,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -5357,6 +5722,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -5366,6 +5732,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -5375,6 +5742,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -5384,6 +5752,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -5393,6 +5762,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -5402,6 +5772,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -5411,6 +5782,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -5420,6 +5792,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -5429,6 +5802,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -5437,43 +5811,50 @@
 #endif
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
-    defined(TARGET_IS_TM4C123_RB1)
+    defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2)
 #define ROM_SysCtlClockSet                                                    \
         ((void (*)(uint32_t ui32Config))ROM_SYSCTLTABLE[23])
 #endif
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
-    defined(TARGET_IS_TM4C123_RB1)
+    defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2)
 #define ROM_SysCtlClockGet                                                    \
         ((uint32_t (*)(void))ROM_SYSCTLTABLE[24])
 #endif
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
-    defined(TARGET_IS_TM4C123_RB1)
+    defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2)
 #define ROM_SysCtlPWMClockSet                                                 \
         ((void (*)(uint32_t ui32Config))ROM_SYSCTLTABLE[25])
 #endif
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
-    defined(TARGET_IS_TM4C123_RB1)
+    defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2)
 #define ROM_SysCtlPWMClockGet                                                 \
         ((uint32_t (*)(void))ROM_SYSCTLTABLE[26])
 #endif
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
-    defined(TARGET_IS_TM4C123_RB1)
+    defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2)
 #define ROM_SysCtlUSBPLLEnable                                                \
         ((void (*)(void))ROM_SYSCTLTABLE[31])
 #endif
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
-    defined(TARGET_IS_TM4C123_RB1)
+    defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2)
 #define ROM_SysCtlUSBPLLDisable                                               \
         ((void (*)(void))ROM_SYSCTLTABLE[32])
 #endif
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -5483,6 +5864,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -5492,6 +5874,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -5501,6 +5884,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -5510,6 +5894,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -5519,6 +5904,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -5527,7 +5913,8 @@
 #endif
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
-    defined(TARGET_IS_TM4C123_RB1)
+    defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2)
 #define ROM_SysCtlDeepSleepClockSet                                           \
         ((void (*)(uint32_t ui32Config))ROM_SYSCTLTABLE[46])
 #endif
@@ -5537,11 +5924,6 @@
 #define ROM_SysCtlDeepSleepClockConfigSet                                     \
         ((void (*)(uint32_t ui32Div,                                          \
                    uint32_t ui32Config))ROM_SYSCTLTABLE[47])
-#endif
-#if defined(TARGET_IS_TM4C129_RA1)
-#define ROM_SysCtlClockFreqSet                                                \
-        ((uint32_t (*)(uint32_t ui32Config,                                   \
-                       uint32_t ui32SysClock))ROM_SYSCTLTABLE[48])
 #endif
 #if defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
@@ -5614,6 +5996,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -5623,6 +6006,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -5632,6 +6016,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -5641,6 +6026,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -5656,6 +6042,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -5665,6 +6052,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -5674,6 +6062,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -5683,6 +6072,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -5692,6 +6082,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -5701,6 +6092,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -5710,6 +6102,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -5725,6 +6118,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -5735,6 +6129,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -5745,6 +6140,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -5755,6 +6151,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -5765,6 +6162,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -5776,6 +6174,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA1)
 #define ROM_TimerControlTrigger                                               \
         ((void (*)(uint32_t ui32Base,                                         \
@@ -5785,6 +6184,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -5796,6 +6196,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -5807,6 +6208,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -5816,6 +6218,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -5825,6 +6228,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -5836,6 +6240,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -5846,6 +6251,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -5857,6 +6263,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -5867,6 +6274,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -5878,6 +6286,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -5888,6 +6297,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -5898,6 +6308,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -5909,6 +6320,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -5919,6 +6331,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -5929,6 +6342,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -5939,6 +6353,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -5949,6 +6364,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -5959,33 +6375,38 @@
 #endif
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
-    defined(TARGET_IS_TM4C123_RB1)
+    defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2)
 #define ROM_TimerLoadSet64                                                    \
         ((void (*)(uint32_t ui32Base,                                         \
                    uint64_t ui64Value))ROM_TIMERTABLE[23])
 #endif
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
-    defined(TARGET_IS_TM4C123_RB1)
+    defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2)
 #define ROM_TimerLoadGet64                                                    \
         ((uint64_t (*)(uint32_t ui32Base))ROM_TIMERTABLE[24])
 #endif
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
-    defined(TARGET_IS_TM4C123_RB1)
+    defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2)
 #define ROM_TimerValueGet64                                                   \
         ((uint64_t (*)(uint32_t ui32Base))ROM_TIMERTABLE[25])
 #endif
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
-    defined(TARGET_IS_TM4C123_RB1)
+    defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2)
 #define ROM_TimerMatchSet64                                                   \
         ((void (*)(uint32_t ui32Base,                                         \
                    uint64_t ui64Value))ROM_TIMERTABLE[26])
 #endif
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
-    defined(TARGET_IS_TM4C123_RB1)
+    defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2)
 #define ROM_TimerMatchGet64                                                   \
         ((uint64_t (*)(uint32_t ui32Base))ROM_TIMERTABLE[27])
 #endif
@@ -6044,6 +6465,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -6054,6 +6476,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -6064,6 +6487,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -6073,6 +6497,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -6084,6 +6509,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -6095,6 +6521,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -6107,6 +6534,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -6119,6 +6547,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -6128,6 +6557,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -6137,6 +6567,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -6147,6 +6578,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -6156,6 +6588,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -6165,6 +6598,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -6174,6 +6608,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -6183,6 +6618,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -6192,6 +6628,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -6202,6 +6639,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -6212,6 +6650,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -6222,6 +6661,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -6232,6 +6672,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -6242,6 +6683,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -6252,6 +6694,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -6261,6 +6704,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -6271,6 +6715,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -6281,6 +6726,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -6290,6 +6736,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -6299,6 +6746,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -6308,6 +6756,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -6318,6 +6767,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -6327,6 +6777,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -6336,6 +6787,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -6345,6 +6797,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -6355,6 +6808,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -6364,6 +6818,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -6373,6 +6828,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -6382,6 +6838,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -6393,6 +6850,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -6461,6 +6919,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -6474,6 +6933,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -6483,6 +6943,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -6492,6 +6953,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -6501,6 +6963,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -6510,6 +6973,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -6519,6 +6983,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -6528,6 +6993,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -6537,6 +7003,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -6546,6 +7013,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -6555,6 +7023,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -6564,6 +7033,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -6574,6 +7044,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -6584,6 +7055,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -6593,6 +7065,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -6603,6 +7076,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -6612,6 +7086,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -6621,6 +7096,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -6630,6 +7106,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -6639,6 +7116,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -6648,6 +7126,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -6657,6 +7136,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -6666,6 +7146,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -6678,6 +7159,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -6693,6 +7175,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -6702,6 +7185,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -6712,6 +7196,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -6721,6 +7206,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -6730,6 +7216,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -6742,6 +7229,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -6753,6 +7241,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -6764,6 +7253,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -6775,6 +7265,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -6786,6 +7277,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -6798,6 +7290,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -6810,6 +7303,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -6821,6 +7315,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -6832,6 +7327,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -6842,6 +7338,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -6852,6 +7349,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -6865,6 +7363,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -6878,6 +7377,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -6889,6 +7389,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -6898,6 +7399,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -6909,6 +7411,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -6920,6 +7423,7 @@
 #endif
 #if defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -6934,6 +7438,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -6944,6 +7449,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -6956,6 +7462,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -6967,6 +7474,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -6978,6 +7486,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -6990,6 +7499,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -6999,6 +7509,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -7008,6 +7519,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -7018,6 +7530,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -7027,6 +7540,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -7036,6 +7550,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -7046,6 +7561,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -7055,6 +7571,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -7065,6 +7582,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -7075,6 +7593,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -7084,6 +7603,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -7093,6 +7613,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -7105,6 +7626,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -7116,6 +7638,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -7127,6 +7650,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -7137,6 +7661,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -7146,6 +7671,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -7157,6 +7683,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -7167,6 +7694,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -7177,6 +7705,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -7186,6 +7715,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -7196,6 +7726,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -7206,6 +7737,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -7215,6 +7747,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -7224,6 +7757,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -7233,6 +7767,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -7242,6 +7777,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -7250,6 +7786,7 @@
 #endif
 #if defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -7259,6 +7796,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -7540,17 +8078,20 @@
         ((void (*)(uint32_t ui32Base,                                         \
                    bool bStart))ROM_USBTABLE[98])
 #endif
-#if defined(TARGET_IS_TM4C129_RA1)
+#if defined(TARGET_IS_TM4C129_RA1) ||                                         \
+    defined(TARGET_IS_TM4C129_RA2)
 #define ROM_USBDMANumChannels                                                 \
         ((uint32_t (*)(uint32_t ui32Base))ROM_USBTABLE[99])
 #endif
-#if defined(TARGET_IS_TM4C129_RA1)
+#if defined(TARGET_IS_TM4C129_RA1) ||                                         \
+    defined(TARGET_IS_TM4C129_RA2)
 #define ROM_USBEndpointDMAConfigSet                                           \
         ((void (*)(uint32_t ui32Base,                                         \
                    uint32_t ui32Endpoint,                                     \
                    uint32_t ui32Config))ROM_USBTABLE[100])
 #endif
-#if defined(TARGET_IS_TM4C129_RA1)
+#if defined(TARGET_IS_TM4C129_RA1) ||                                         \
+    defined(TARGET_IS_TM4C129_RA2)
 #define ROM_USBLPMRemoteWakeEnabled                                           \
         ((bool (*)(uint32_t ui32Base))ROM_USBTABLE[102])
 #endif
@@ -7570,6 +8111,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -7579,6 +8121,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -7588,6 +8131,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -7597,6 +8141,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -7606,6 +8151,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -7615,6 +8161,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -7624,6 +8171,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -7633,6 +8181,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -7642,6 +8191,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -7652,6 +8202,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -7661,6 +8212,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -7670,6 +8222,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -7679,6 +8232,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -7689,6 +8243,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -7698,6 +8253,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -7707,6 +8263,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -7723,6 +8280,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -7733,6 +8291,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -7744,6 +8303,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -7755,6 +8315,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
@@ -7774,6 +8335,7 @@
 #if defined(TARGET_IS_TM4C123_RA1) ||                                         \
     defined(TARGET_IS_TM4C123_RA3) ||                                         \
     defined(TARGET_IS_TM4C123_RB1) ||                                         \
+    defined(TARGET_IS_TM4C123_RB2) ||                                         \
     defined(TARGET_IS_TM4C129_RA0) ||                                         \
     defined(TARGET_IS_TM4C129_RA1) ||                                         \
     defined(TARGET_IS_TM4C129_RA2)
