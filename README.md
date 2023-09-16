@@ -1,12 +1,12 @@
-# Blinky app for the Tiva C Series Launchpad
+# Playground for the Tiva C Series Launchpad
 
-A blinky app for the [Tiva C Series Launchpad (EK-TM4C123GXL)](http://www.ti.com/ww/en/launchpad/launchpads-connected-ek-tm4c123gxl.html). When loaded and run the Launchpad LED flashes -- switching between red, green and blue.
+Board: [Tiva C Series Launchpad (EK-TM4C123GXL)](http://www.ti.com/ww/en/launchpad/launchpads-connected-ek-tm4c123gxl.html).
 
-The project source is in **src**. The main loop in main.c drives the application.
+The project source is in **src**.
 
-There are two software modules -- **state** and **led** -- used to determine the LED color (the state) and to set the color of the LED. Each of these modules implements units tests. Unit tests are in **test**.
+Unit tests are in **test**.
 
-In the **led** module, the TivaWare Peripheral Driver Library is used to initialize and control the GPIO pins connected the multi-color LED. This library is in **lib/TivaWare/driverlib** and is built automatically if necessary.
+The TivaWare Peripheral Driver Library is is in **lib/TivaWare/driverlib** and is built automatically if necessary.
 
 ## Building and loading
 
