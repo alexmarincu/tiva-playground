@@ -12,6 +12,7 @@ vsos_Os * vsos_Os_init(
     vsos_Scheduler_onIdleFun const onIdle
 );
 
+void vsos_Os_onSysTick(vsos_Os * const self, uint32_t const periodMillis);
 void vsos_Os_start(vsos_Os * const self);
 
 #endif // VSOS_OS_H

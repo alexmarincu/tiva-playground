@@ -1,10 +1,10 @@
 #include "vsos_Os.h"
 #include "vsos_Scheduler.h"
+#include "vsos_TimeEvent.h"
 
 struct vsos_Os {
     vsos_SysTime * sysTime;
     vsos_Scheduler * scheduler;
-    vsos_TaskClass * taskClass;
 };
 
 vsos_Os * vsos_Os_(void) {
@@ -19,8 +19,12 @@ vsos_Os * vsos_Os_init(
 ) {
     self->sysTime = vsos_SysTime_init(vsos_SysTime_());
     self->scheduler = vsos_Scheduler_init(vsos_Scheduler_(), taskArray, onIdle);
-    self->taskClass = vsos_TaskClass_init(vsos_TaskClass_());
     return self;
+}
+
+void vsos_Os_onSysTick(vsos_Os * const self, uint32_t const periodMillis) {
+    vsos_SysTime_onSysTick(self->sysTime, periodMillis);
+    vsos_TimeEvent_onSysTick();
 }
 
 void vsos_Os_start(vsos_Os * const self) {

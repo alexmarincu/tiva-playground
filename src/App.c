@@ -14,34 +14,12 @@
 #include "vsos/vsos_TimeEvent.h"
 #include <stdint.h>
 
-// static void task1(vsos_Task * const self, vsos_Event * const event) {
-//     static uint8_t state = STATE_RED;
-//     switch (state) {
-//         case STATE_RED:
-
-//             break;
-//         case STATE_GREEN:
-//             LedSetGreen();
-//             break;
-//         case STATE_BLUE:
-//             LedSetBlue();
-//             break;
-//     }
-//     state = StateGetNext(state);
-//     vsos_Task_delayFromLastRun(self, 1000);
-// }
-
-// static void task2(vsos_Task * const self, vsos_Event * const event) {
-//     vsos_Task_delayFromLastRun(self, 100);
-// }
-
 static void setupClockFrequency(void) {
     hal_SysClock_setMaxFrequency();
 }
 
 static void sysTickInt(void) {
-    vsos_SysTime_sysTickInt(vsos_SysTime_(), hal_SysTick_getPeriodMillis());
-    vsos_TimeEvent_tick();
+    vsos_Os_onSysTick(vsos_Os_(), hal_SysTick_getPeriodMillis());
 }
 
 static void setupSysTick(void) {
@@ -112,8 +90,5 @@ void App_main(void) {
         2000,
         3000
     );
-    // vsos_Task_post(utils_Array_get(taskArray, 0), (vsos_Event *)RedEvent_());
-    // vsos_Task_post(utils_Array_get(taskArray, 0), (vsos_Event *)BlueEvent_());
-    // vsos_Task_post(utils_Array_get(taskArray, 0), (vsos_Event *)GreenEvent_());
     vsos_Os_start(vsos_Os_init(vsos_Os_(), taskArray, onIdle));
 }

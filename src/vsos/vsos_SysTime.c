@@ -24,7 +24,7 @@ static void vsos_SysTime_increment(vsos_SysTime * const self, uint32_t const per
     }
 }
 
-void vsos_SysTime_sysTickInt(vsos_SysTime * const self, uint32_t const periodMillis) {
+void vsos_SysTime_onSysTick(vsos_SysTime * const self, uint32_t const periodMillis) {
     vsos_SysTime_increment(self, periodMillis);
 }
 

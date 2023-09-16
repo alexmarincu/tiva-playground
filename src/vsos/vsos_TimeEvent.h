@@ -16,6 +16,6 @@ struct vsos_TimeEvent {
 vsos_TimeEvent * vsos_TimeEvent_init(vsos_TimeEvent * const self, vsos_Event * const event, vsos_Task * const task);
 void vsos_TimeEvent_arm(vsos_TimeEvent * const self, uint32_t const delayMillis, uint32_t const periodMillis);
 void vsos_TimeEvent_disarm(vsos_TimeEvent * const self);
-void vsos_TimeEvent_tick(void);
+void vsos_TimeEvent_onSysTick(void);
 
 #endif // VSOS_TIMEEVENT_H
