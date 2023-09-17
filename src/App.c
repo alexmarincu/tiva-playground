@@ -19,7 +19,7 @@ static void setupClockFrequency(void) {
 }
 
 static void sysTickInt(void) {
-    vsos_Os_onSysTick(vsos_Os_(), hal_SysTick_getPeriodMillis());
+    vsos_Os_onSysTick(vsos_Os_());
 }
 
 static void setupSysTick(void) {
@@ -90,5 +90,5 @@ void App_main(void) {
         2000,
         3000
     );
-    vsos_Os_start(vsos_Os_init(vsos_Os_(), taskArray, onIdle));
+    vsos_Os_start(vsos_Os_init(vsos_Os_(), taskArray, onIdle, hal_SysTick_getPeriodMillis()));
 }

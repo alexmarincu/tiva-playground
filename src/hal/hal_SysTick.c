@@ -3,7 +3,7 @@
 #include "hal_SysClock.h"
 
 typedef struct {
-    uint32_t periodMillis;
+    uint16_t periodMillis;
 } hal_SysTick;
 
 static hal_SysTick self = { 0 };
@@ -32,7 +32,7 @@ void hal_SysTick_intDisable(void) {
     SysTickIntDisable();
 }
 
-void hal_SysTick_setPeriodMillis(uint32_t const periodMillis) {
+void hal_SysTick_setPeriodMillis(uint16_t const periodMillis) {
     self.periodMillis = periodMillis;
     uint16_t const millisInSecond = 1000;
     SysTickPeriodSet(
@@ -41,6 +41,6 @@ void hal_SysTick_setPeriodMillis(uint32_t const periodMillis) {
     );
 }
 
-uint32_t hal_SysTick_getPeriodMillis(void) {
+uint16_t hal_SysTick_getPeriodMillis(void) {
     return self.periodMillis;
 }

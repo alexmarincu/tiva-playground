@@ -15,15 +15,16 @@ vsos_Os * vsos_Os_(void) {
 vsos_Os * vsos_Os_init(
     vsos_Os * const self,
     utils_Array * const taskArray,
-    vsos_Scheduler_onIdleFun const onIdle
+    vsos_Scheduler_onIdleFun const onIdle,
+    uint16_t const tickPeriodMillis
 ) {
-    self->sysTime = vsos_SysTime_init(vsos_SysTime_());
+    self->sysTime = vsos_SysTime_init(vsos_SysTime_(), tickPeriodMillis);
     self->scheduler = vsos_Scheduler_init(vsos_Scheduler_(), taskArray, onIdle);
     return self;
 }
 
-void vsos_Os_onSysTick(vsos_Os * const self, uint32_t const periodMillis) {
-    vsos_SysTime_onSysTick(self->sysTime, periodMillis);
+void vsos_Os_onSysTick(vsos_Os * const self) {
+    vsos_SysTime_onSysTick(self->sysTime);
     vsos_TimeEvent_onSysTick();
 }
 
