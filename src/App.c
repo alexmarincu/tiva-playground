@@ -7,7 +7,7 @@
 #include "hal/hal_SysTick.h"
 #include "led.h"
 #include "state.h"
-#include "utils/utils.h"
+#include "utl/utl.h"
 #include "vsos/vsos_EventTimer.h"
 #include "vsos/vsos_Os.h"
 #include "vsos/vsos_Scheduler.h"
@@ -77,20 +77,20 @@ static void onStart(void) {
 }
 
 void App_main(void) {
-    utils_Array * taskArray = utils_Array_init(
-        utils_salloc(utils_Array),
-        utils_salloca(void *, 1),
+    utl_Array * taskArray = utl_Array_init(
+        utl_salloc(utl_Array),
+        utl_salloca(void *, 1),
         1
     );
-    utils_Array_insert(
+    utl_Array_insert(
         taskArray,
         BlinkyTask_init(
             BlinkyTask_(),
-            utils_Queue_init(
-                utils_salloc(utils_Queue),
-                utils_Array_init(
-                    utils_salloc(utils_Array),
-                    utils_salloca(void *, 3),
+            utl_Queue_init(
+                utl_salloc(utl_Queue),
+                utl_Array_init(
+                    utl_salloc(utl_Array),
+                    utl_salloca(void *, 3),
                     3
                 )
             )

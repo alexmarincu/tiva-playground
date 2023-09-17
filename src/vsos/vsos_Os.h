@@ -12,7 +12,7 @@ vsos_Os * vsos_Os_init(
     vsos_Os_onStartFun const onStart,
     uint16_t const tickPeriodMillis,
     vsos_Scheduler_onIdleFun const onIdle,
-    utils_Array * const taskArray
+    utl_Array * const taskArray
 );
 
 void vsos_Os_onSysTick(vsos_Os * const self);

@@ -1,7 +1,7 @@
 #include "vsos_Scheduler.h"
 
 struct vsos_Scheduler {
-    utils_Array * taskArray;
+    utl_Array * taskArray;
     vsos_Scheduler_onIdleFun onIdle;
 };
 
@@ -13,7 +13,7 @@ vsos_Scheduler * vsos_Scheduler_(void) {
 vsos_Scheduler * vsos_Scheduler_init(
     vsos_Scheduler * const self,
     vsos_Scheduler_onIdleFun const onIdle,
-    utils_Array * const taskArray
+    utl_Array * const taskArray
 ) {
     self->taskArray = taskArray;
     self->onIdle = onIdle;
@@ -22,8 +22,8 @@ vsos_Scheduler * vsos_Scheduler_init(
 
 void vsos_Scheduler_start(vsos_Scheduler * const self) {
     while (1) {
-        for (uint8_t i = 0; i < utils_Array_length(self->taskArray); i++) {
-            vsos_Task * task = utils_Array_get(self->taskArray, i);
+        for (uint8_t i = 0; i < utl_Array_length(self->taskArray); i++) {
+            vsos_Task * task = utl_Array_get(self->taskArray, i);
             if (vsos_Task_isReady(task)) {
                 vsos_Task_operation(task);
             } else {

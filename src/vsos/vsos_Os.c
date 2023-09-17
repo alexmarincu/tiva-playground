@@ -20,7 +20,7 @@ vsos_Os * vsos_Os_init(
     vsos_Os_onStartFun const onStart,
     uint16_t const tickPeriodMillis,
     vsos_Scheduler_onIdleFun const onIdle,
-    utils_Array * const taskArray
+    utl_Array * const taskArray
 ) {
     self->sysTime = vsos_SysTime_init(vsos_SysTime_(), tickPeriodMillis);
     self->scheduler = vsos_Scheduler_init(vsos_Scheduler_(), onIdle, taskArray);

@@ -4,7 +4,7 @@
 vsos_Task * vsos_Task_init(
     vsos_Task * const self,
     vsos_Task_operationFun const operation,
-    utils_Queue * const eventQueue
+    utl_Queue * const eventQueue
 ) {
     self->operation = operation;
     self->eventQueue = eventQueue;
@@ -12,13 +12,13 @@ vsos_Task * vsos_Task_init(
 }
 
 bool vsos_Task_isReady(vsos_Task * const self) {
-    return (utils_Queue_isEmpty(self->eventQueue) == false);
+    return (utl_Queue_isEmpty(self->eventQueue) == false);
 }
 
 void vsos_Task_operation(vsos_Task * const self) {
-    self->operation(self, utils_Queue_dequeue(self->eventQueue));
+    self->operation(self, utl_Queue_dequeue(self->eventQueue));
 }
 
 void vsos_Task_postEvent(vsos_Task * const self, vsos_Event * const event) {
-    utils_Queue_enqueue(self->eventQueue, event);
+    utl_Queue_enqueue(self->eventQueue, event);
 }

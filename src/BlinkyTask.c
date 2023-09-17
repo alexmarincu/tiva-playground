@@ -9,7 +9,7 @@ BlinkyTask * BlinkyTask_(void) {
 
 BlinkyTask * BlinkyTask_init(
     BlinkyTask * const self,
-    utils_Queue * const eventQueue
+    utl_Queue * const eventQueue
 ) {
     vsos_Task_init(&self->task, (vsos_Task_operationFun)BlinkyTask_operation, eventQueue);
     return self;
