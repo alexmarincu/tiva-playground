@@ -5,7 +5,7 @@
             "name": "Debug with OpenOCD",
             "type": "cppdbg",
             "request": "launch",
-            "preLaunchTask": "openocd",
+            "preLaunchTask": "openocd: Launch",
             "program": "${workspaceFolder}/build/release/project.axf",
             "args": [],
             "stopAtEntry": true,
