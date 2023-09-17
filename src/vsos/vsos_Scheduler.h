@@ -9,8 +9,8 @@ typedef void (*vsos_Scheduler_onIdleFun)(void);
 vsos_Scheduler * vsos_Scheduler_(void);
 vsos_Scheduler * vsos_Scheduler_init(
     vsos_Scheduler * const self,
-    utils_Array * const taskArray,
-    vsos_Scheduler_onIdleFun const onIdle
+    vsos_Scheduler_onIdleFun const onIdle,
+    utils_Array * const taskArray
 );
 void vsos_Scheduler_start(vsos_Scheduler * const self);
 

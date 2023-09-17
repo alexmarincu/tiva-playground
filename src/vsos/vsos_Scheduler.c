@@ -2,7 +2,7 @@
 
 struct vsos_Scheduler {
     utils_Array * taskArray;
-    void (*onIdle)(void);
+    vsos_Scheduler_onIdleFun onIdle;
 };
 
 vsos_Scheduler * vsos_Scheduler_(void) {
@@ -12,8 +12,8 @@ vsos_Scheduler * vsos_Scheduler_(void) {
 
 vsos_Scheduler * vsos_Scheduler_init(
     vsos_Scheduler * const self,
-    utils_Array * const taskArray,
-    vsos_Scheduler_onIdleFun const onIdle
+    vsos_Scheduler_onIdleFun const onIdle,
+    utils_Array * const taskArray
 ) {
     self->taskArray = taskArray;
     self->onIdle = onIdle;

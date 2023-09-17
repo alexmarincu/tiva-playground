@@ -8,10 +8,10 @@
 #include "led.h"
 #include "state.h"
 #include "utils/utils.h"
+#include "vsos/vsos_EventTimer.h"
 #include "vsos/vsos_Os.h"
 #include "vsos/vsos_Scheduler.h"
 #include "vsos/vsos_Task.h"
-#include "vsos/vsos_TimeEvent.h"
 #include <stdint.h>
 
 static void setupClockFrequency(void) {
@@ -38,11 +38,45 @@ static void setupEvents(void) {
 static void onIdle(void) {
 }
 
-void App_main(void) {
+static vsos_EventTimer redEventTimer;
+static vsos_EventTimer blueEventTimer;
+static vsos_EventTimer greenEventTimer;
+
+static void onStart(void) {
     setupClockFrequency();
     setupSysTick();
     LedInit();
     setupEvents();
+    vsos_EventTimer_arm(
+        vsos_EventTimer_init(
+            &redEventTimer,
+            (vsos_Event *)RedEvent_(),
+            (vsos_Task *)BlinkyTask_()
+        ),
+        1,
+        3000
+    );
+    vsos_EventTimer_arm(
+        vsos_EventTimer_init(
+            &blueEventTimer,
+            (vsos_Event *)BlueEvent_(),
+            (vsos_Task *)BlinkyTask_()
+        ),
+        1000,
+        3000
+    );
+    vsos_EventTimer_arm(
+        vsos_EventTimer_init(
+            &greenEventTimer,
+            (vsos_Event *)GreenEvent_(),
+            (vsos_Task *)BlinkyTask_()
+        ),
+        2000,
+        3000
+    );
+}
+
+void App_main(void) {
     utils_Array * taskArray = utils_Array_init(
         utils_salloc(utils_Array),
         utils_salloca(void *, 1),
@@ -63,32 +97,13 @@ void App_main(void) {
         ),
         0
     );
-    vsos_TimeEvent_arm(
-        vsos_TimeEvent_init(
-            utils_salloc(vsos_TimeEvent),
-            (vsos_Event *)RedEvent_(),
-            (vsos_Task *)BlinkyTask_()
-        ),
-        1,
-        3000
+    vsos_Os_start(
+        vsos_Os_init(
+            vsos_Os_(),
+            onStart,
+            hal_SysTick_getPeriodMillis(),
+            onIdle,
+            taskArray
+        )
     );
-    vsos_TimeEvent_arm(
-        vsos_TimeEvent_init(
-            utils_salloc(vsos_TimeEvent),
-            (vsos_Event *)BlueEvent_(),
-            (vsos_Task *)BlinkyTask_()
-        ),
-        1000,
-        3000
-    );
-    vsos_TimeEvent_arm(
-        vsos_TimeEvent_init(
-            utils_salloc(vsos_TimeEvent),
-            (vsos_Event *)GreenEvent_(),
-            (vsos_Task *)BlinkyTask_()
-        ),
-        2000,
-        3000
-    );
-    vsos_Os_start(vsos_Os_init(vsos_Os_(), taskArray, onIdle, hal_SysTick_getPeriodMillis()));
 }
