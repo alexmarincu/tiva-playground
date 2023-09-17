@@ -14,11 +14,15 @@ vsk_SysTime * vsk_SysTime_(void) {
     return &self;
 }
 
-vsk_SysTime * vsk_SysTime_init(vsk_SysTime * const self, uint16_t const tickPeriodMillis) {
+vsk_SysTime * vsk_SysTime_init(vsk_SysTime * const self) {
     self->opTimeSeconds = 0;
     self->millisCount = 0;
-    self->tickPeriodMillis = tickPeriodMillis;
+    self->tickPeriodMillis = 0;
     return self;
+}
+
+void vsk_SysTime_informTickPeriodMillis(vsk_SysTime * const self, uint16_t const tickPeriodMillis) {
+    self->tickPeriodMillis = tickPeriodMillis;
 }
 
 void vsk_SysTime_onSysTick(vsk_SysTime * const self) {
@@ -35,6 +39,10 @@ uint32_t vsk_SysTime_getMillisCount(vsk_SysTime * const self) {
 
 uint32_t vsk_SysTime_getOpTimeSeconds(vsk_SysTime * const self) {
     return self->opTimeSeconds;
+}
+
+uint16_t vsk_SysTime_getTickPeriodMillis(vsk_SysTime * const self) {
+    return self->tickPeriodMillis;
 }
 
 #endif // VSK_SYSTIME_C

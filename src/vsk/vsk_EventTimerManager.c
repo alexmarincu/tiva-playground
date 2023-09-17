@@ -5,7 +5,8 @@ vsk_EventTimerManager * vsk_EventTimerManager_(void) {
     return &self;
 }
 
-vsk_EventTimerManager * vsk_EventTimerManager_init(vsk_EventTimerManager * const self) {
+vsk_EventTimerManager * vsk_EventTimerManager_init(vsk_EventTimerManager * const self, vsk_SysTime * const sysTime) {
+    self->sysTime = sysTime;
     self->eventTimerHead = 0;
     return self;
 }
@@ -18,11 +19,11 @@ void vsk_EventTimerManager_register(vsk_EventTimerManager * const self, vsk_Even
 void vsk_EventTimerManager_onSysTick(vsk_EventTimerManager * const self) {
     for (vsk_EventTimer * eventTimer = self->eventTimerHead; (eventTimer != 0); eventTimer = eventTimer->next) {
         if (eventTimer->delayMillis != 0) {
-            if (eventTimer->delayMillis == 1) {
+            if (eventTimer->delayMillis <= vsk_SysTime_getTickPeriodMillis(self->sysTime)) {
                 eventTimer->delayMillis = eventTimer->periodMillis;
                 vsk_Task_postEvent(eventTimer->task, eventTimer->event);
             } else {
-                eventTimer->delayMillis--;
+                eventTimer->delayMillis -= vsk_SysTime_getTickPeriodMillis(self->sysTime);
             }
         }
     }

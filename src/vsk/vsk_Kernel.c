@@ -18,15 +18,18 @@ vsk_Kernel * vsk_Kernel_(void) {
 vsk_Kernel * vsk_Kernel_init(
     vsk_Kernel * const self,
     vsk_Kernel_onStartFun const onStart,
-    uint16_t const tickPeriodMillis,
     vsk_TaskScheduler_onIdleFun const onIdle,
     utl_Array * const taskArray
 ) {
-    self->sysTime = vsk_SysTime_init(vsk_SysTime_(), tickPeriodMillis);
+    self->sysTime = vsk_SysTime_init(vsk_SysTime_());
     self->taskScheduler = vsk_TaskScheduler_init(vsk_TaskScheduler_(), onIdle, taskArray);
-    self->eventTimerManager = vsk_EventTimerManager_init(vsk_EventTimerManager_());
+    self->eventTimerManager = vsk_EventTimerManager_init(vsk_EventTimerManager_(), self->sysTime);
     self->onStart = onStart;
     return self;
+}
+
+void vsk_Kernel_informTickPeriodMillis(vsk_Kernel * const self, uint16_t const tickPeriodMillis) {
+    vsk_SysTime_informTickPeriodMillis(self->sysTime, tickPeriodMillis);
 }
 
 void vsk_Kernel_onSysTick(vsk_Kernel * const self) {

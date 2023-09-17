@@ -26,6 +26,7 @@ static void setupSysTick(void) {
     hal_SysTick_intRegister(sysTickInt);
     hal_SysTick_intEnable();
     hal_SysTick_setPeriodMillis(1);
+    vsk_Kernel_informTickPeriodMillis(vsk_Kernel_(), hal_SysTick_getPeriodMillis());
     hal_SysTick_enable();
 }
 
@@ -101,7 +102,6 @@ void App_main(void) {
         vsk_Kernel_init(
             vsk_Kernel_(),
             onStart,
-            hal_SysTick_getPeriodMillis(),
             onIdle,
             taskArray
         )
