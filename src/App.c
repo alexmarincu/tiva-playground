@@ -8,10 +8,10 @@
 #include "led.h"
 #include "state.h"
 #include "utl/utl.h"
-#include "vsos/vsos_EventTimer.h"
-#include "vsos/vsos_Os.h"
-#include "vsos/vsos_Scheduler.h"
-#include "vsos/vsos_Task.h"
+#include "vsk/vsk_EventTimer.h"
+#include "vsk/vsk_Kernel.h"
+#include "vsk/vsk_Task.h"
+#include "vsk/vsk_TaskScheduler.h"
 #include <stdint.h>
 
 static void setupClockFrequency(void) {
@@ -19,7 +19,7 @@ static void setupClockFrequency(void) {
 }
 
 static void sysTickInt(void) {
-    vsos_Os_onSysTick(vsos_Os_());
+    vsk_Kernel_onSysTick(vsk_Kernel_());
 }
 
 static void setupSysTick(void) {
@@ -38,38 +38,38 @@ static void setupEvents(void) {
 static void onIdle(void) {
 }
 
-static vsos_EventTimer redEventTimer;
-static vsos_EventTimer blueEventTimer;
-static vsos_EventTimer greenEventTimer;
+static vsk_EventTimer redEventTimer;
+static vsk_EventTimer blueEventTimer;
+static vsk_EventTimer greenEventTimer;
 
 static void onStart(void) {
     setupClockFrequency();
     setupSysTick();
     LedInit();
     setupEvents();
-    vsos_EventTimer_arm(
-        vsos_EventTimer_init(
+    vsk_EventTimer_arm(
+        vsk_EventTimer_init(
             &redEventTimer,
-            (vsos_Event *)RedEvent_(),
-            (vsos_Task *)BlinkyTask_()
+            (vsk_Event *)RedEvent_(),
+            (vsk_Task *)BlinkyTask_()
         ),
         1,
         3000
     );
-    vsos_EventTimer_arm(
-        vsos_EventTimer_init(
+    vsk_EventTimer_arm(
+        vsk_EventTimer_init(
             &blueEventTimer,
-            (vsos_Event *)BlueEvent_(),
-            (vsos_Task *)BlinkyTask_()
+            (vsk_Event *)BlueEvent_(),
+            (vsk_Task *)BlinkyTask_()
         ),
         1000,
         3000
     );
-    vsos_EventTimer_arm(
-        vsos_EventTimer_init(
+    vsk_EventTimer_arm(
+        vsk_EventTimer_init(
             &greenEventTimer,
-            (vsos_Event *)GreenEvent_(),
-            (vsos_Task *)BlinkyTask_()
+            (vsk_Event *)GreenEvent_(),
+            (vsk_Task *)BlinkyTask_()
         ),
         2000,
         3000
@@ -97,9 +97,9 @@ void App_main(void) {
         ),
         0
     );
-    vsos_Os_start(
-        vsos_Os_init(
-            vsos_Os_(),
+    vsk_Kernel_start(
+        vsk_Kernel_init(
+            vsk_Kernel_(),
             onStart,
             hal_SysTick_getPeriodMillis(),
             onIdle,

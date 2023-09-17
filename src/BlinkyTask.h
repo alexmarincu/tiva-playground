@@ -1,10 +1,10 @@
 #ifndef BLINKYTASK_H
 #define BLINKYTASK_H
-#include "vsos/vsos_Task.h"
+#include "vsk/vsk_Task.h"
 
 typedef struct BlinkyTask BlinkyTask;
 struct BlinkyTask {
-    vsos_Task task;
+    vsk_Task task;
 };
 
 BlinkyTask * BlinkyTask_(void);
@@ -13,4 +13,4 @@ BlinkyTask * BlinkyTask_init(
     utl_Queue * const eventQueue
 );
 
-#endif // BlinkyTask_H
+#endif // BLINKYTASK_H

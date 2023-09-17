@@ -2,7 +2,7 @@
 #include "led.h"
 
 struct GreenEvent {
-    vsos_Event event;
+    vsk_Event event;
 };
 
 static void GreenEvent_dispatch(GreenEvent * const self);
@@ -13,7 +13,7 @@ GreenEvent * GreenEvent_(void) {
 }
 
 GreenEvent * GreenEvent_init(GreenEvent * const self) {
-    vsos_Event_init(&self->event, (vsos_Event_dispatchFun)GreenEvent_dispatch);
+    vsk_Event_init(&self->event, (vsk_Event_dispatchFun)GreenEvent_dispatch);
     return self;
 }
 

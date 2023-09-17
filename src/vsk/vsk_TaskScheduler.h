@@ -1,0 +1,17 @@
+#ifndef VSK_TASKSCHEDULER_H
+#define VSK_TASKSCHEDULER_H
+#include "../utl/utl_Array.h"
+#include "vsk_Task.h"
+
+typedef struct vsk_TaskScheduler vsk_TaskScheduler;
+typedef void (*vsk_TaskScheduler_onIdleFun)(void);
+
+vsk_TaskScheduler * vsk_TaskScheduler_(void);
+vsk_TaskScheduler * vsk_TaskScheduler_init(
+    vsk_TaskScheduler * const self,
+    vsk_TaskScheduler_onIdleFun const onIdle,
+    utl_Array * const taskArray
+);
+void vsk_TaskScheduler_start(vsk_TaskScheduler * const self);
+
+#endif // VSK_TASKSCHEDULER_H

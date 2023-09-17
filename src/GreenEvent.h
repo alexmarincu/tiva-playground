@@ -1,6 +1,6 @@
 #ifndef GREENEVENT_H
 #define GREENEVENT_H
-#include "vsos/vsos_Event.h"
+#include "vsk/vsk_Event.h"
 
 typedef struct GreenEvent GreenEvent;
 

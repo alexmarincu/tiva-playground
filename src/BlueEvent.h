@@ -1,6 +1,6 @@
 #ifndef BLUEEVENT_H
 #define BLUEEVENT_H
-#include "vsos/vsos_Event.h"
+#include "vsk/vsk_Event.h"
 
 typedef struct BlueEvent BlueEvent;
 
