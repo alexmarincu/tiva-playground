@@ -36,7 +36,12 @@ static void setupEvents(void) {
     GreenEvent_init(GreenEvent_());
 }
 
+static void waitForInterrupt(void) {
+    __asm("wfi");
+}
+
 static void onIdle(void) {
+    waitForInterrupt();
 }
 
 static vsk_EventTimer redEventTimer;
