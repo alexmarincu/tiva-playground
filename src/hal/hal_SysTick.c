@@ -33,12 +33,16 @@ void hal_SysTick_intDisable(void) {
 }
 
 void hal_SysTick_setPeriodMillis(uint16_t const periodMillis) {
-    self.periodMillis = periodMillis;
     uint16_t const millisInSecond = 1000;
-    SysTickPeriodSet(
-        hal_SysClock_getFrequency() / millisInSecond * self.periodMillis //
-        + (hal_SysClock_getFrequency() % millisInSecond) * self.periodMillis / millisInSecond
-    );
+    uint32_t const maxTickPeriod = 16777216;
+    uint32_t tickPeriod =
+        hal_SysClock_getFrequency() / millisInSecond * periodMillis //
+        + (hal_SysClock_getFrequency() % millisInSecond) * periodMillis / millisInSecond;
+    if (tickPeriod > maxTickPeriod) {
+        tickPeriod = maxTickPeriod;
+    }
+    self.periodMillis = (tickPeriod / 100) * (millisInSecond / 100) / (hal_SysClock_getFrequency() / 100) * 100;
+    SysTickPeriodSet(tickPeriod);
 }
 
 uint16_t hal_SysTick_getPeriodMillis(void) {

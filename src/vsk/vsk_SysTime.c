@@ -23,6 +23,7 @@ vsk_SysTime * vsk_SysTime_init(vsk_SysTime * const self) {
 
 void vsk_SysTime_informTickPeriodMillis(vsk_SysTime * const self, uint16_t const tickPeriodMillis) {
     self->tickPeriodMillis = tickPeriodMillis;
+    self->millisCount = -tickPeriodMillis;
 }
 
 void vsk_SysTime_onSysTick(vsk_SysTime * const self) {

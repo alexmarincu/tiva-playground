@@ -25,7 +25,7 @@ static void sysTickInt(void) {
 static void setupSysTick(void) {
     hal_SysTick_intRegister(sysTickInt);
     hal_SysTick_intEnable();
-    hal_SysTick_setPeriodMillis(1);
+    hal_SysTick_setPeriodMillis(200);
     vsk_Kernel_informTickPeriodMillis(vsk_Kernel_(), hal_SysTick_getPeriodMillis());
     hal_SysTick_enable();
 }
@@ -54,7 +54,7 @@ static void onStart(void) {
             (vsk_Event *)RedEvent_(),
             (vsk_Task *)BlinkyTask_()
         ),
-        1,
+        1000,
         3000
     );
     vsk_EventTimer_arm(
@@ -63,7 +63,7 @@ static void onStart(void) {
             (vsk_Event *)BlueEvent_(),
             (vsk_Task *)BlinkyTask_()
         ),
-        1000,
+        2000,
         3000
     );
     vsk_EventTimer_arm(
@@ -72,7 +72,7 @@ static void onStart(void) {
             (vsk_Event *)GreenEvent_(),
             (vsk_Task *)BlinkyTask_()
         ),
-        2000,
+        3000,
         3000
     );
 }
