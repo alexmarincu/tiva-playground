@@ -4,10 +4,10 @@
 #include "utl_BasicArray.h"
 #include "utl_Queue.h"
 
-#define utl_salloca(type, length) \
+#define utl_stkArr(type, length) \
     ((type[length]){ 0 })
 
-#define utl_salloc(type) \
+#define utl_stkObj(type) \
     (&(type){ 0 })
 
 #endif // UTILS_H

@@ -84,8 +84,8 @@ static void onStart(void) {
 
 void App_main(void) {
     utl_Array * taskArray = utl_Array_init(
-        utl_salloc(utl_Array),
-        utl_salloca(void *, 1),
+        utl_stkObj(utl_Array),
+        utl_stkArr(void *, 1),
         1
     );
     utl_Array_insert(
@@ -93,10 +93,10 @@ void App_main(void) {
         BlinkyTask_init(
             BlinkyTask_(),
             utl_Queue_init(
-                utl_salloc(utl_Queue),
+                utl_stkObj(utl_Queue),
                 utl_Array_init(
-                    utl_salloc(utl_Array),
-                    utl_salloca(void *, 3),
+                    utl_stkObj(utl_Array),
+                    utl_stkArr(void *, 3),
                     3
                 )
             )
