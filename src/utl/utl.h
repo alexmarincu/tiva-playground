@@ -4,8 +4,8 @@
 #include "utl_BasicArray.h"
 #include "utl_Queue.h"
 
-#define utl_stkArr(type, length) \
-    ((type[length]){ 0 })
+#define utl_stkArr(itemType, length) \
+    ((itemType[length]){ 0 })
 
 #define utl_stkObj(type) \
     (&(type){ 0 })
