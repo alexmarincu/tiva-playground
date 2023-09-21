@@ -1,13 +1,17 @@
 #include "hal_LButton.h"
 
-#include "inc/hw_memmap.h"
-#include "inc/tm4c123gh6pm.h"
+#include "../../lib/TivaWare/inc/hw_memmap.h"
+#include "../../lib/TivaWare/inc/tm4c123gh6pm.h"
 
 #include <stdbool.h>
 #include <stdint.h>
 
-#include "../driverlib/gpio.h"
-#include "../driverlib/sysctl.h"
+#include "../../lib/TivaWare/driverlib/gpio.h"
+#include "../../lib/TivaWare/driverlib/sysctl.h"
+
+#define hal_LButton_peripheral SYSCTL_PERIPH_GPIOF
+#define hal_LButton_port GPIO_PORTF_BASE
+#define hal_LButton_pin GPIO_PIN_4 // todo: check correct pin
 
 struct hal_LButton {
     hal_Button button;
@@ -27,14 +31,13 @@ hal_LButton * hal_LButton_init(hal_LButton * const self) {
         (hal_ButtonEnableInt)hal_LButton_enableInt,
         (hal_ButtonDisableInt)hal_LButton_disableInt
     );
-
-    SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOF);
-    GPIOPinTypeGPIOInput(GPIO_PORTF_BASE, GPIO_PIN_0);
+    SysCtlPeripheralEnable(hal_LButton_peripheral);
+    GPIOPinTypeGPIOInput(hal_LButton_port, hal_LButton_pin);
     return self;
 }
 
 void hal_LButton_registerInt(hal_LButton * const self, void (*const fun)(void)) {
-    GPIOIntRegister(GPIO_PORTF_BASE, fun);
+    GPIOIntRegister(hal_LButton_port, fun);
 }
 
 void hal_LButton_unregisterInt(hal_LButton * const self) {

@@ -1,6 +1,7 @@
 #include "hal_SysTick.h"
-#include "../../lib/TivaWare/driverlib/systick.h"
 #include "hal_SysClock.h"
+
+#include "../../lib/TivaWare/driverlib/systick.h"
 
 typedef struct {
     uint16_t periodMillis;

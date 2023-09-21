@@ -1,5 +1,5 @@
 #include "BlueEvent.h"
-#include "led.h"
+#include "hal/hal_Led.h"
 
 struct BlueEvent {
     vsk_Event event;
@@ -18,5 +18,5 @@ BlueEvent * BlueEvent_init(BlueEvent * const self) {
 }
 
 static void BlueEvent_dispatch(BlueEvent * const self) {
-    LedSetBlue();
+    hal_Led_setBlue();
 }

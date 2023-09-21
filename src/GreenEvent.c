@@ -1,5 +1,5 @@
 #include "GreenEvent.h"
-#include "led.h"
+#include "hal/hal_Led.h"
 
 struct GreenEvent {
     vsk_Event event;
@@ -18,5 +18,5 @@ GreenEvent * GreenEvent_init(GreenEvent * const self) {
 }
 
 static void GreenEvent_dispatch(GreenEvent * const self) {
-    LedSetGreen();
+    hal_Led_setGreen();
 }

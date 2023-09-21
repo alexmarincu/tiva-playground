@@ -3,9 +3,9 @@
 #include "BlueEvent.h"
 #include "GreenEvent.h"
 #include "RedEvent.h"
+#include "hal/hal_Led.h"
 #include "hal/hal_SysClock.h"
 #include "hal/hal_SysTick.h"
-#include "led.h"
 #include "utl/utl.h"
 #include "vsk/vsk_EventTimer.h"
 #include "vsk/vsk_Kernel.h"
@@ -50,7 +50,7 @@ static vsk_EventTimer greenEventTimer;
 static void onStart(void) {
     setupClockFrequency();
     setupSysTick();
-    LedInit();
+    hal_Led_init();
     setupEvents();
     vsk_EventTimer_arm(
         vsk_EventTimer_init(
