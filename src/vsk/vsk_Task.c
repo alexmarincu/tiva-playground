@@ -3,7 +3,7 @@
 
 vsk_Task * vsk_Task_init(
     vsk_Task * const self,
-    vsk_Task_operationFun const operation,
+    vsk_TaskOperation const operation,
     utl_Queue * const eventQueue
 ) {
     self->operation = operation;

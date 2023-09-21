@@ -6,9 +6,9 @@ typedef struct hal_LButton hal_LButton;
 
 hal_LButton * hal_LButton_(void);
 hal_LButton * hal_LButton_init(hal_LButton * const self);
-void hal_LButton_intRegister(hal_LButton * const self, void (*const fun)(void));
-void hal_LButton_intUnregister(hal_LButton * const self);
-void hal_LButton_intEnable(hal_LButton * const self);
-void hal_LButton_intDisable(hal_LButton * const self);
+void hal_LButton_registerInt(hal_LButton * const self, void (*const fun)(void));
+void hal_LButton_unregisterInt(hal_LButton * const self);
+void hal_LButton_enableInt(hal_LButton * const self);
+void hal_LButton_disableInt(hal_LButton * const self);
 
 #endif // HAL_LBUTTON_H

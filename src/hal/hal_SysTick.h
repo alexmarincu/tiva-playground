@@ -4,10 +4,10 @@
 
 void hal_SysTick_enable(void);
 void hal_SysTick_disable(void);
-void hal_SysTick_intRegister(void (*const fun)(void));
-void hal_SysTick_intUnregister(void);
-void hal_SysTick_intEnable(void);
-void hal_SysTick_intDisable(void);
+void hal_SysTick_registerInt(void (*const fun)(void));
+void hal_SysTick_unregisterInt(void);
+void hal_SysTick_enableInt(void);
+void hal_SysTick_disableInt(void);
 void hal_SysTick_setPeriodMillis(uint16_t const periodMillis);
 uint16_t hal_SysTick_getPeriodMillis(void);
 

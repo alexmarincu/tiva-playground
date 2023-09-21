@@ -22,10 +22,10 @@ hal_LButton * hal_LButton_init(hal_LButton * const self) {
     hal_Button_init(
         &self->button,
         self,
-        (hal_Button_intRegisterFun)hal_LButton_intRegister,
-        (hal_Button_intUnregisterFun)hal_LButton_intUnregister,
-        (hal_Button_intEnableFun)hal_LButton_intEnable,
-        (hal_Button_intDisableFun)hal_LButton_intDisable
+        (hal_ButtonRegisterInt)hal_LButton_registerInt,
+        (hal_ButtonUnregisterInt)hal_LButton_unregisterInt,
+        (hal_ButtonEnableInt)hal_LButton_enableInt,
+        (hal_ButtonDisableInt)hal_LButton_disableInt
     );
 
     SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOF);
@@ -33,13 +33,13 @@ hal_LButton * hal_LButton_init(hal_LButton * const self) {
     return self;
 }
 
-void hal_LButton_intRegister(hal_LButton * const self, void (*const fun)(void)) {
+void hal_LButton_registerInt(hal_LButton * const self, void (*const fun)(void)) {
     GPIOIntRegister(GPIO_PORTF_BASE, fun);
 }
 
-void hal_LButton_intUnregister(hal_LButton * const self) {
+void hal_LButton_unregisterInt(hal_LButton * const self) {
 }
-void hal_LButton_intEnable(hal_LButton * const self) {
+void hal_LButton_enableInt(hal_LButton * const self) {
 }
-void hal_LButton_intDisable(hal_LButton * const self) {
+void hal_LButton_disableInt(hal_LButton * const self) {
 }

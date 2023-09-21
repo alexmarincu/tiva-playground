@@ -11,7 +11,7 @@ BlinkyTask * BlinkyTask_init(
     BlinkyTask * const self,
     utl_Queue * const eventQueue
 ) {
-    vsk_Task_init(&self->task, (vsk_Task_operationFun)BlinkyTask_operation, eventQueue);
+    vsk_Task_init(&self->task, (vsk_TaskOperation)BlinkyTask_operation, eventQueue);
     return self;
 }
 

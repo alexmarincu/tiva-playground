@@ -13,7 +13,7 @@ BlueEvent * BlueEvent_(void) {
 }
 
 BlueEvent * BlueEvent_init(BlueEvent * const self) {
-    vsk_Event_init(&self->event, (vsk_Event_dispatchFun)BlueEvent_dispatch);
+    vsk_Event_init(&self->event, (vsk_EventDispatch)BlueEvent_dispatch);
     return self;
 }
 

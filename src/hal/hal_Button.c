@@ -3,29 +3,29 @@
 hal_Button * hal_Button_init(
     hal_Button * const self,
     void * const impl,
-    hal_Button_intRegisterFun const intRegister,
-    hal_Button_intUnregisterFun const intUnregister,
-    hal_Button_intEnableFun const intEnable,
-    hal_Button_intDisableFun const intDisable
+    hal_ButtonRegisterInt const registerInt,
+    hal_ButtonUnregisterInt const unregisterInt,
+    hal_ButtonEnableInt const enableInt,
+    hal_ButtonDisableInt const disableInt
 ) {
     self->impl = impl;
-    self->intRegister = intRegister;
-    self->intUnregister = intUnregister;
-    self->intEnable = intEnable;
-    self->intDisable = intDisable;
+    self->registerInt = registerInt;
+    self->unregisterInt = unregisterInt;
+    self->enableInt = enableInt;
+    self->disableInt = disableInt;
     return self;
 }
 
-void hal_Button_intRegister(hal_Button * const self, void (*const fun)(void)) {
-    self->intRegister(self->impl, fun);
+void hal_Button_registerInt(hal_Button * const self, void (*const fun)(void)) {
+    self->registerInt(self->impl, fun);
 }
 
-void hal_Button_intUnregister(hal_Button * const self) {
-    self->intUnregister(self->impl);
+void hal_Button_unregisterInt(hal_Button * const self) {
+    self->unregisterInt(self->impl);
 }
-void hal_Button_intEnable(hal_Button * const self) {
-    self->intEnable(self->impl);
+void hal_Button_enableInt(hal_Button * const self) {
+    self->enableInt(self->impl);
 }
-void hal_Button_intDisable(hal_Button * const self) {
-    self->intDisable(self->impl);
+void hal_Button_disableInt(hal_Button * const self) {
+    self->disableInt(self->impl);
 }

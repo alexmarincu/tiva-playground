@@ -4,13 +4,13 @@
 #include "vsk_TaskScheduler.h"
 
 typedef struct vsk_Kernel vsk_Kernel;
-typedef void (*vsk_Kernel_onStartFun)(void);
+typedef void (*vsk_KernelOnStart)(void);
 
 vsk_Kernel * vsk_Kernel_(void);
 vsk_Kernel * vsk_Kernel_init(
     vsk_Kernel * const self,
-    vsk_Kernel_onStartFun const onStart,
-    vsk_TaskScheduler_onIdleFun const onIdle,
+    vsk_KernelOnStart const onStart,
+    vsk_TaskSchedulerOnIdle const onIdle,
     utl_Array * const taskArray
 );
 

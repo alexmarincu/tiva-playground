@@ -16,19 +16,19 @@ void hal_SysTick_disable(void) {
     SysTickDisable();
 }
 
-void hal_SysTick_intRegister(void (*const fun)(void)) {
+void hal_SysTick_registerInt(void (*const fun)(void)) {
     SysTickIntRegister(fun);
 }
 
-void hal_SysTick_intUnregister(void) {
+void hal_SysTick_unregisterInt(void) {
     SysTickIntUnregister();
 }
 
-void hal_SysTick_intEnable(void) {
+void hal_SysTick_enableInt(void) {
     SysTickIntEnable();
 }
 
-void hal_SysTick_intDisable(void) {
+void hal_SysTick_disableInt(void) {
     SysTickIntDisable();
 }
 

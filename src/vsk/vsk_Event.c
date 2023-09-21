@@ -1,6 +1,6 @@
 #include "vsk_Event.h"
 
-vsk_Event * vsk_Event_init(vsk_Event * const self, vsk_Event_dispatchFun const dispatch) {
+vsk_Event * vsk_Event_init(vsk_Event * const self, vsk_EventDispatch const dispatch) {
     self->dispatch = dispatch;
     return self;
 }

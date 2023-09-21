@@ -6,7 +6,6 @@
 #include "hal/hal_SysClock.h"
 #include "hal/hal_SysTick.h"
 #include "led.h"
-#include "state.h"
 #include "utl/utl.h"
 #include "vsk/vsk_EventTimer.h"
 #include "vsk/vsk_Kernel.h"
@@ -23,8 +22,8 @@ static void sysTickInt(void) {
 }
 
 static void setupSysTick(void) {
-    hal_SysTick_intRegister(sysTickInt);
-    hal_SysTick_intEnable();
+    hal_SysTick_registerInt(sysTickInt);
+    hal_SysTick_enableInt();
     hal_SysTick_setPeriodMillis(200);
     vsk_Kernel_informTickPeriodMillis(vsk_Kernel_(), hal_SysTick_getPeriodMillis());
     hal_SysTick_enable();

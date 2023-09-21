@@ -13,7 +13,7 @@ GreenEvent * GreenEvent_(void) {
 }
 
 GreenEvent * GreenEvent_init(GreenEvent * const self) {
-    vsk_Event_init(&self->event, (vsk_Event_dispatchFun)GreenEvent_dispatch);
+    vsk_Event_init(&self->event, (vsk_EventDispatch)GreenEvent_dispatch);
     return self;
 }
 

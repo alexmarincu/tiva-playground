@@ -5,15 +5,15 @@
 #include <stdint.h>
 
 typedef struct vsk_Task vsk_Task;
-typedef void (*vsk_Task_operationFun)(vsk_Task * const self, vsk_Event * const event);
+typedef void (*vsk_TaskOperation)(vsk_Task * const self, vsk_Event * const event);
 struct vsk_Task {
-    vsk_Task_operationFun operation;
+    vsk_TaskOperation operation;
     utl_Queue * eventQueue;
 };
 
 vsk_Task * vsk_Task_init(
     vsk_Task * const self,
-    vsk_Task_operationFun const operation,
+    vsk_TaskOperation const operation,
     utl_Queue * const eventQueue
 );
 bool vsk_Task_isReady(vsk_Task * const self);

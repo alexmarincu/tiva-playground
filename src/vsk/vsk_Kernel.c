@@ -7,7 +7,7 @@ struct vsk_Kernel {
     vsk_SysTime * sysTime;
     vsk_TaskScheduler * taskScheduler;
     vsk_EventTimerManager * eventTimerManager;
-    vsk_Kernel_onStartFun onStart;
+    vsk_KernelOnStart onStart;
 };
 
 vsk_Kernel * vsk_Kernel_(void) {
@@ -17,8 +17,8 @@ vsk_Kernel * vsk_Kernel_(void) {
 
 vsk_Kernel * vsk_Kernel_init(
     vsk_Kernel * const self,
-    vsk_Kernel_onStartFun const onStart,
-    vsk_TaskScheduler_onIdleFun const onIdle,
+    vsk_KernelOnStart const onStart,
+    vsk_TaskSchedulerOnIdle const onIdle,
     utl_Array * const taskArray
 ) {
     self->sysTime = vsk_SysTime_init(vsk_SysTime_());

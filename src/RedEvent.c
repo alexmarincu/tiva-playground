@@ -13,7 +13,7 @@ RedEvent * RedEvent_(void) {
 }
 
 RedEvent * RedEvent_init(RedEvent * const self) {
-    vsk_Event_init(&self->event, (vsk_Event_dispatchFun)RedEvent_dispatch);
+    vsk_Event_init(&self->event, (vsk_EventDispatch)RedEvent_dispatch);
     return self;
 }
 
