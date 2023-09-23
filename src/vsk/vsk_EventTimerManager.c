@@ -18,13 +18,6 @@ void vsk_EventTimerManager_register(vsk_EventTimerManager * const self, vsk_Even
 
 void vsk_EventTimerManager_onSysTick(vsk_EventTimerManager * const self) {
     for (vsk_EventTimer * eventTimer = self->eventTimerHead; (eventTimer != 0); eventTimer = eventTimer->next) {
-        if (eventTimer->delayMillis != 0) {
-            if (eventTimer->delayMillis <= vsk_SysTime_getTickPeriodMillis(self->sysTime)) {
-                eventTimer->delayMillis = eventTimer->periodMillis;
-                vsk_Event_raise(eventTimer->event);
-            } else {
-                eventTimer->delayMillis -= vsk_SysTime_getTickPeriodMillis(self->sysTime);
-            }
-        }
+        vsk_EventTimer_onSysTick(eventTimer);
     }
 }

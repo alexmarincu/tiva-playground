@@ -18,3 +18,14 @@ void vsk_EventTimer_disarm(vsk_EventTimer * const self) {
     self->delayMillis = 0;
     self->periodMillis = 0;
 }
+
+void vsk_EventTimer_onSysTick(vsk_EventTimer * const self) {
+    if (self->delayMillis != 0) {
+        if (self->delayMillis <= vsk_SysTime_getTickPeriodMillis(vsk_SysTime_())) {
+            self->delayMillis = self->periodMillis;
+            vsk_Event_raise(self->event);
+        } else {
+            self->delayMillis -= vsk_SysTime_getTickPeriodMillis(vsk_SysTime_());
+        }
+    }
+}
