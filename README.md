@@ -6,7 +6,7 @@ The project source is in **src**.
 
 Unit tests are in **test**.
 
-The TivaWare Peripheral Driver Library is is in **lib/TivaWare/driverlib** and is built automatically if necessary.
+The TivaWare Peripheral Driver Library is in **lib/TivaWare/driverlib** and is built automatically if necessary.
 
 ## Building and loading
 
