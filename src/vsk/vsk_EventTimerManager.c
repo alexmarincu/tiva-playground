@@ -21,7 +21,7 @@ void vsk_EventTimerManager_onSysTick(vsk_EventTimerManager * const self) {
         if (eventTimer->delayMillis != 0) {
             if (eventTimer->delayMillis <= vsk_SysTime_getTickPeriodMillis(self->sysTime)) {
                 eventTimer->delayMillis = eventTimer->periodMillis;
-                vsk_Task_postEvent(eventTimer->task, eventTimer->event);
+                vsk_Event_raise(eventTimer->event);
             } else {
                 eventTimer->delayMillis -= vsk_SysTime_getTickPeriodMillis(self->sysTime);
             }

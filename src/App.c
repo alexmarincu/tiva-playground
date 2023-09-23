@@ -1,16 +1,21 @@
 #include "App.h"
 #include "BlinkyTask.h"
-#include "BlueEvent.h"
-#include "GreenEvent.h"
-#include "RedEvent.h"
+#include "BlueTimeoutEvent.h"
+#include "GreenTimeoutEvent.h"
+#include "RedTimeoutEvent.h"
+
 #include "hal/hal_Led.h"
 #include "hal/hal_SysClock.h"
+#include "hal/hal_SysCtrl.h"
 #include "hal/hal_SysTick.h"
+
 #include "utl/utl.h"
+
 #include "vsk/vsk_EventTimer.h"
 #include "vsk/vsk_Kernel.h"
 #include "vsk/vsk_Task.h"
 #include "vsk/vsk_TaskScheduler.h"
+
 #include <stdint.h>
 
 static void setupClockFrequency(void) {
@@ -30,33 +35,26 @@ static void setupSysTick(void) {
 }
 
 static void setupEvents(void) {
-    RedEvent_init(RedEvent_());
-    BlueEvent_init(BlueEvent_());
-    GreenEvent_init(GreenEvent_());
-}
-
-static void waitForInterrupt(void) {
-    __asm("wfi");
+    RedTimeoutEvent_init(RedTimeoutEvent_());
+    BlueTimeoutEvent_init(BlueTimeoutEvent_());
+    GreenTimeoutEvent_init(GreenTimeoutEvent_());
 }
 
 static void onIdle(void) {
-    waitForInterrupt();
+    hal_SysCtrl_waitForInt();
 }
-
-static vsk_EventTimer redEventTimer;
-static vsk_EventTimer blueEventTimer;
-static vsk_EventTimer greenEventTimer;
 
 static void onStart(void) {
     setupClockFrequency();
     setupSysTick();
     hal_Led_init();
-    setupEvents();
+    static vsk_EventTimer redEventTimer;
+    static vsk_EventTimer blueEventTimer;
+    static vsk_EventTimer greenEventTimer;
     vsk_EventTimer_arm(
         vsk_EventTimer_init(
             &redEventTimer,
-            (vsk_Event *)RedEvent_(),
-            (vsk_Task *)BlinkyTask_()
+            (vsk_Event *)RedTimeoutEvent_()
         ),
         1000,
         3000
@@ -64,8 +62,7 @@ static void onStart(void) {
     vsk_EventTimer_arm(
         vsk_EventTimer_init(
             &blueEventTimer,
-            (vsk_Event *)BlueEvent_(),
-            (vsk_Task *)BlinkyTask_()
+            (vsk_Event *)BlueTimeoutEvent_()
         ),
         2000,
         3000
@@ -73,8 +70,7 @@ static void onStart(void) {
     vsk_EventTimer_arm(
         vsk_EventTimer_init(
             &greenEventTimer,
-            (vsk_Event *)GreenEvent_(),
-            (vsk_Task *)BlinkyTask_()
+            (vsk_Event *)GreenTimeoutEvent_()
         ),
         3000,
         3000
@@ -82,6 +78,7 @@ static void onStart(void) {
 }
 
 void App_main(void) {
+    setupEvents();
     utl_Array * taskArray = utl_Array_init(
         utl_stkObj(utl_Array),
         utl_stkArr(void *, 1),

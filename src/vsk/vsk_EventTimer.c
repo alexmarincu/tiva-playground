@@ -1,9 +1,8 @@
 #include "vsk_EventTimer.h"
 #include "vsk_EventTimerManager.h"
 
-vsk_EventTimer * vsk_EventTimer_init(vsk_EventTimer * const self, vsk_Event * const event, vsk_Task * const task) {
+vsk_EventTimer * vsk_EventTimer_init(vsk_EventTimer * const self, vsk_Event * const event) {
     self->event = event;
-    self->task = task;
     self->delayMillis = 0;
     self->periodMillis = 0;
     vsk_EventTimerManager_register(vsk_EventTimerManager_(), self);

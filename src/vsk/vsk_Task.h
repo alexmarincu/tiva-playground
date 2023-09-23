@@ -1,23 +1,28 @@
 #ifndef VSK_TASK_H
 #define VSK_TASK_H
 #include "../utl/utl_Queue.h"
-#include "vsk_Event.h"
 #include <stdint.h>
 
 typedef struct vsk_Task vsk_Task;
-typedef void (*vsk_TaskOperation)(vsk_Task * const self, vsk_Event * const event);
+typedef void (*vsk_TaskHandler)(vsk_Task * const self);
+
+typedef struct vsk_TaskMessage vsk_TaskMessage;
+struct vsk_TaskMessage {
+    vsk_Task * receiver;
+    vsk_TaskHandler handler;
+    vsk_TaskMessage * next;
+};
+
 struct vsk_Task {
-    vsk_TaskOperation operation;
-    utl_Queue * eventQueue;
+    utl_Queue * messageQueue;
 };
 
 vsk_Task * vsk_Task_init(
     vsk_Task * const self,
-    vsk_TaskOperation const operation,
     utl_Queue * const eventQueue
 );
 bool vsk_Task_isReady(vsk_Task * const self);
-void vsk_Task_operation(vsk_Task * const self);
-void vsk_Task_postEvent(vsk_Task * const self, vsk_Event * const event);
+void vsk_Task_run(vsk_Task * const self);
+void vsk_Task_postMessage(vsk_Task * const self, vsk_TaskMessage * const message);
 
 #endif // VSK_TASK_H

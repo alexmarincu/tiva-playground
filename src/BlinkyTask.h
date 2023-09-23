@@ -10,7 +10,7 @@ struct BlinkyTask {
 BlinkyTask * BlinkyTask_(void);
 BlinkyTask * BlinkyTask_init(
     BlinkyTask * const self,
-    utl_Queue * const eventQueue
+    utl_Queue * const messageQueue
 );
 
 #endif // BLINKYTASK_H

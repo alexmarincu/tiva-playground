@@ -38,3 +38,8 @@ void hal_Led_setRed(void) {
 void hal_Led_setOff(void) {
     GPIOPinWrite(hal_Led_port, hal_Led_redPin | hal_Led_bluePin | hal_Led_greenPin, 0);
 }
+
+void hal_Led_toggleRed(void) {
+    uint32_t currentState = GPIOPinRead(hal_Led_port, hal_Led_redPin);
+    GPIOPinWrite(hal_Led_port, hal_Led_redPin, currentState ^ hal_Led_redPin);
+}

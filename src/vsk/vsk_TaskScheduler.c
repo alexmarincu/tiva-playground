@@ -25,7 +25,7 @@ void vsk_TaskScheduler_start(vsk_TaskScheduler * const self) {
         for (uint8_t i = 0; i < utl_Array_length(self->taskArray); i++) {
             vsk_Task * task = utl_Array_get(self->taskArray, i);
             if (vsk_Task_isReady(task)) {
-                vsk_Task_operation(task);
+                vsk_Task_run(task);
             } else {
                 self->onIdle();
             }
