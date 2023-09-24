@@ -15,7 +15,7 @@ bool vsk_Task_isReady(vsk_Task * const self) {
 
 void vsk_Task_run(vsk_Task * const self) {
     vsk_TaskMessage * message = utl_Queue_dequeue(self->messageQueue);
-    message->handler(message->receiver);
+    message->handler(self);
 }
 
 void vsk_Task_postMessage(vsk_Task * const self, vsk_TaskMessage * const message) {

@@ -1,6 +1,6 @@
 #ifndef GREENTIMEOUTEVENT_H
 #define GREENTIMEOUTEVENT_H
-#include "vsk/vsk_Event.h"
+#include "../vsk/vsk_Event.h"
 
 typedef struct GreenTimeoutEvent GreenTimeoutEvent;
 

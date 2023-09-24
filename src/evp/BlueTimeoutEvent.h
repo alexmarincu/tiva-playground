@@ -1,6 +1,6 @@
 #ifndef BLUETIMEOUTEVENT_H
 #define BLUETIMEOUTEVENT_H
-#include "vsk/vsk_Event.h"
+#include "../vsk/vsk_Event.h"
 
 typedef struct BlueTimeoutEvent BlueTimeoutEvent;
 

@@ -24,22 +24,22 @@ void test_whenLedsAreInitialized_thenGpioPortFIsEnabledAndLedPinsAreSetAsOutputs
 void test_whenLedSetToGreen_thenGreenPinIsSetHighAndOtherSignalsAreSetLow(void) {
     GPIOPinWrite_Expect(GPIO_PORTF_BASE, GPIO_PIN_3, GPIO_PIN_3);
     GPIOPinWrite_Expect(GPIO_PORTF_BASE, GPIO_PIN_1 | GPIO_PIN_2, 0);
-    hal_Led_setGreen();
+    hal_Led_setGreenOn();
 }
 
 void test_whenLedSetToBlue_thenBluePinIsSetHighAndOtherSignalsAreSetLow(void) {
     GPIOPinWrite_Expect(GPIO_PORTF_BASE, GPIO_PIN_2, GPIO_PIN_2);
     GPIOPinWrite_Expect(GPIO_PORTF_BASE, GPIO_PIN_1 | GPIO_PIN_3, 0);
-    hal_Led_setBlue();
+    hal_Led_setBlueOn();
 }
 
 void test_whenLedSetToRed_thenRedPinIsSetHighAndOtherSignalsAreSetLow(void) {
     GPIOPinWrite_Expect(GPIO_PORTF_BASE, GPIO_PIN_1, GPIO_PIN_1);
     GPIOPinWrite_Expect(GPIO_PORTF_BASE, GPIO_PIN_2 | GPIO_PIN_3, 0);
-    hal_Led_setRed();
+    hal_Led_setRedOn();
 }
 
 void test_whenLedTurnedOff_thenAllLedPinsAreSetLow(void) {
     GPIOPinWrite_Expect(GPIO_PORTF_BASE, GPIO_PIN_1 | GPIO_PIN_2 | GPIO_PIN_3, 0);
-    hal_Led_setOff();
+    hal_Led_setAllOff();
 }

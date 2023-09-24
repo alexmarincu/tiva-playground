@@ -1,20 +1,25 @@
-#include "App.h"
-#include "BlinkyTask.h"
-#include "BlueTimeoutEvent.h"
-#include "GreenTimeoutEvent.h"
-#include "RedTimeoutEvent.h"
+#include "../blinky/BlinkyTask.h"
+#include "../evp/BlueTimeoutEvent.h"
+#include "../evp/GreenTimeoutEvent.h"
+#include "../evp/LButtonPressEvent.h"
+#include "../evp/LButtonReleaseEvent.h"
+#include "../evp/RButtonPressEvent.h"
+#include "../evp/RButtonReleaseEvent.h"
+#include "../evp/RedTimeoutEvent.h"
 
-#include "hal/hal_Led.h"
-#include "hal/hal_SysClock.h"
-#include "hal/hal_SysCtrl.h"
-#include "hal/hal_SysTick.h"
+#include "../hal/hal_LButton.h"
+#include "../hal/hal_Led.h"
+#include "../hal/hal_RButton.h"
+#include "../hal/hal_SysClock.h"
+#include "../hal/hal_SysCtrl.h"
+#include "../hal/hal_SysTick.h"
 
-#include "utl/utl.h"
+#include "../utl/utl.h"
 
-#include "vsk/vsk_EventTimer.h"
-#include "vsk/vsk_Kernel.h"
-#include "vsk/vsk_Task.h"
-#include "vsk/vsk_TaskScheduler.h"
+#include "../vsk/vsk_EventTimer.h"
+#include "../vsk/vsk_Kernel.h"
+#include "../vsk/vsk_Task.h"
+#include "../vsk/vsk_TaskScheduler.h"
 
 #include <stdint.h>
 
@@ -26,6 +31,26 @@ static void sysTickInt(void) {
     vsk_Kernel_onSysTick(vsk_Kernel_());
 }
 
+static void lButtonInt(void) {
+    hal_LButton * button = hal_LButton_();
+    hal_LButton_clearIntFlag(button);
+    if (hal_LButton_isPressed(button)) {
+        vsk_Event_raise((vsk_Event *)LButtonPressEvent_());
+    } else {
+        vsk_Event_raise((vsk_Event *)LButtonReleaseEvent_());
+    }
+}
+
+static void rButtonInt(void) {
+    hal_RButton * button = hal_RButton_();
+    hal_RButton_clearIntFlag(button);
+    if (hal_RButton_isPressed(button)) {
+        vsk_Event_raise((vsk_Event *)RButtonPressEvent_());
+    } else {
+        vsk_Event_raise((vsk_Event *)RButtonReleaseEvent_());
+    }
+}
+
 static void setupSysTick(void) {
     hal_SysTick_registerInt(sysTickInt);
     hal_SysTick_enableInt();
@@ -34,10 +59,28 @@ static void setupSysTick(void) {
     hal_SysTick_enable();
 }
 
+static void setupLButton(void) {
+    hal_LButton * button = hal_LButton_();
+    hal_LButton_init(button);
+    hal_LButton_setIntTypeBothEdges(button);
+    hal_LButton_registerInt(button, lButtonInt);
+    hal_LButton_enableInt(button);
+}
+
+static void setupRButton(void) {
+    hal_RButton * button = hal_RButton_();
+    hal_RButton_init(button);
+    hal_RButton_setIntTypeBothEdges(button);
+    hal_RButton_registerInt(button, rButtonInt);
+    hal_RButton_enableInt(button);
+}
+
 static void setupEvents(void) {
     RedTimeoutEvent_init(RedTimeoutEvent_());
     BlueTimeoutEvent_init(BlueTimeoutEvent_());
     GreenTimeoutEvent_init(GreenTimeoutEvent_());
+    LButtonPressEvent_init(LButtonPressEvent_());
+    LButtonReleaseEvent_init(LButtonReleaseEvent_());
 }
 
 static void onIdle(void) {
@@ -48,6 +91,8 @@ static void onStart(void) {
     setupClockFrequency();
     setupSysTick();
     hal_Led_init();
+    setupLButton();
+    setupRButton();
     static vsk_EventTimer redEventTimer;
     static vsk_EventTimer blueEventTimer;
     static vsk_EventTimer greenEventTimer;
@@ -77,7 +122,7 @@ static void onStart(void) {
     );
 }
 
-void App_main(void) {
+int bsp_main(void) {
     setupEvents();
     utl_Array * taskArray = utl_Array_init(
         utl_stkObj(utl_Array),
@@ -107,4 +152,5 @@ void App_main(void) {
             taskArray
         )
     );
+    return 0;
 }

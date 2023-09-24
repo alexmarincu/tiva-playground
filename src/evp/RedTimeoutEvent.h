@@ -1,6 +1,6 @@
 #ifndef REDTIMEOUTEVENT_H
 #define REDTIMEOUTEVENT_H
-#include "vsk/vsk_Event.h"
+#include "../vsk/vsk_Event.h"
 
 typedef struct RedTimeoutEvent RedTimeoutEvent;
 

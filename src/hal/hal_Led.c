@@ -20,26 +20,46 @@ void hal_Led_init(void) {
     GPIOPinTypeGPIOOutput(hal_Led_port, hal_Led_redPin | hal_Led_bluePin | hal_Led_greenPin);
 }
 
-void hal_Led_setGreen(void) {
+void hal_Led_setGreenOn(void) {
     GPIOPinWrite(hal_Led_port, hal_Led_greenPin, hal_Led_greenPin);
-    GPIOPinWrite(hal_Led_port, hal_Led_redPin | hal_Led_bluePin, 0);
 }
 
-void hal_Led_setBlue(void) {
+void hal_Led_setGreenOff(void) {
+    GPIOPinWrite(hal_Led_port, hal_Led_greenPin, 0);
+}
+
+void hal_Led_setBlueOn(void) {
     GPIOPinWrite(hal_Led_port, hal_Led_bluePin, hal_Led_bluePin);
-    GPIOPinWrite(hal_Led_port, hal_Led_redPin | hal_Led_greenPin, 0);
 }
 
-void hal_Led_setRed(void) {
+void hal_Led_setBlueOff(void) {
+    GPIOPinWrite(hal_Led_port, hal_Led_bluePin, 0);
+}
+
+void hal_Led_setRedOn(void) {
     GPIOPinWrite(hal_Led_port, hal_Led_redPin, hal_Led_redPin);
-    GPIOPinWrite(hal_Led_port, hal_Led_bluePin | hal_Led_greenPin, 0);
 }
 
-void hal_Led_setOff(void) {
+void hal_Led_setRedOff(void) {
+    GPIOPinWrite(hal_Led_port, hal_Led_redPin, 0);
+}
+
+void hal_Led_setAllOn(void) {
+    GPIOPinWrite(
+        hal_Led_port,
+        hal_Led_redPin | hal_Led_bluePin | hal_Led_greenPin,
+        hal_Led_redPin | hal_Led_bluePin | hal_Led_greenPin
+    );
+}
+
+void hal_Led_setAllOff(void) {
     GPIOPinWrite(hal_Led_port, hal_Led_redPin | hal_Led_bluePin | hal_Led_greenPin, 0);
 }
 
 void hal_Led_toggleRed(void) {
-    uint32_t currentState = GPIOPinRead(hal_Led_port, hal_Led_redPin);
-    GPIOPinWrite(hal_Led_port, hal_Led_redPin, currentState ^ hal_Led_redPin);
+    GPIOPinWrite(
+        hal_Led_port,
+        hal_Led_redPin,
+        GPIOPinRead(hal_Led_port, hal_Led_redPin) ^ hal_Led_redPin
+    );
 }

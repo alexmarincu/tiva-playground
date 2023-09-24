@@ -1,6 +1,6 @@
 #ifndef BLINKYTASK_H
 #define BLINKYTASK_H
-#include "vsk/vsk_Task.h"
+#include "../vsk/vsk_Task.h"
 
 typedef struct BlinkyTask BlinkyTask;
 struct BlinkyTask {

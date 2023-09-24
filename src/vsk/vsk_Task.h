@@ -5,14 +5,11 @@
 
 typedef struct vsk_Task vsk_Task;
 typedef void (*vsk_TaskHandler)(vsk_Task * const self);
-
 typedef struct vsk_TaskMessage vsk_TaskMessage;
+typedef void (*vsk_TaskMessageHandler)(vsk_Task * const self);
 struct vsk_TaskMessage {
-    vsk_Task * receiver;
-    vsk_TaskHandler handler;
-    vsk_TaskMessage * next;
+    vsk_TaskMessageHandler handler;
 };
-
 struct vsk_Task {
     utl_Queue * messageQueue;
 };

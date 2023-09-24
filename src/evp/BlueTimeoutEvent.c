@@ -1,5 +1,4 @@
 #include "BlueTimeoutEvent.h"
-#include "hal/hal_Led.h"
 
 struct BlueTimeoutEvent {
     vsk_Event event;
