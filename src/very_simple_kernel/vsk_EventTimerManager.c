@@ -5,7 +5,7 @@ vsk_EventTimerManager * vsk_EventTimerManager_(void) {
     return &self;
 }
 
-vsk_EventTimerManager * vsk_EventTimerManager_init(vsk_EventTimerManager * const self, vsk_SysTime * const sysTime) {
+vsk_EventTimerManager * vsk_EventTimerManager_init(vsk_EventTimerManager * const self, vsk_Time * const sysTime) {
     self->sysTime = sysTime;
     self->eventTimerHead = 0;
     return self;

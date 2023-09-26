@@ -1,7 +1,7 @@
 #ifndef VSK_KERNEL_H
 #define VSK_KERNEL_H
-#include "vsk_SysTime.h"
 #include "vsk_TaskScheduler.h"
+#include "vsk_Time.h"
 
 typedef struct vsk_Kernel vsk_Kernel;
 typedef void (*vsk_KernelOnStart)(void);

@@ -4,7 +4,7 @@
 #include "vsk_TaskScheduler.h"
 
 struct vsk_Kernel {
-    vsk_SysTime * sysTime;
+    vsk_Time * sysTime;
     vsk_TaskScheduler * taskScheduler;
     vsk_EventTimerManager * eventTimerManager;
     vsk_KernelOnStart onStart;
@@ -21,7 +21,7 @@ vsk_Kernel * vsk_Kernel_init(
     vsk_TaskSchedulerOnIdle const onIdle,
     ut_Array * const taskArray
 ) {
-    self->sysTime = vsk_SysTime_init(vsk_SysTime_());
+    self->sysTime = vsk_Time_init(vsk_Time_());
     self->taskScheduler = vsk_TaskScheduler_init(vsk_TaskScheduler_(), onIdle, taskArray);
     self->eventTimerManager = vsk_EventTimerManager_init(vsk_EventTimerManager_(), self->sysTime);
     self->onStart = onStart;
@@ -29,11 +29,11 @@ vsk_Kernel * vsk_Kernel_init(
 }
 
 void vsk_Kernel_informTickPeriodMillis(vsk_Kernel * const self, uint16_t const tickPeriodMillis) {
-    vsk_SysTime_informTickPeriodMillis(self->sysTime, tickPeriodMillis);
+    vsk_Time_informTickPeriodMillis(self->sysTime, tickPeriodMillis);
 }
 
 void vsk_Kernel_onSysTick(vsk_Kernel * const self) {
-    vsk_SysTime_onSysTick(self->sysTime);
+    vsk_Time_onSysTick(self->sysTime);
     vsk_EventTimerManager_onSysTick(self->eventTimerManager);
 }
 
