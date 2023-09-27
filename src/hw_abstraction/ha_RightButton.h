@@ -7,7 +7,7 @@ typedef struct ha_RightButton ha_RightButton;
 ha_RightButton * ha_RightButton_(void);
 ha_RightButton * ha_RightButton_init(ha_RightButton * const self);
 void ha_RightButton_setIntTypeBothEdges(ha_RightButton * const self);
-void ha_RightButton_registerInt(ha_RightButton * const self, void (*const fun)(void));
+void ha_RightButton_registerInt(ha_RightButton * const self, ha_InterruptHandler const intHandler);
 void ha_RightButton_unregisterInt(ha_RightButton * const self);
 void ha_RightButton_enableInt(ha_RightButton * const self);
 void ha_RightButton_disableInt(ha_RightButton * const self);

@@ -45,8 +45,8 @@ void ha_RightButton_setIntTypeBothEdges(ha_RightButton * const self) {
     GPIOIntTypeSet(ha_RightButton_port, ha_RightButton_pin, GPIO_BOTH_EDGES);
 }
 
-void ha_RightButton_registerInt(ha_RightButton * const self, void (*const fun)(void)) {
-    ha_per_PortF_registerRButtonInt(ha_per_PortF_(), fun);
+void ha_RightButton_registerInt(ha_RightButton * const self, ha_InterruptHandler const intHandler) {
+    ha_per_PortF_registerRightButtonInt(ha_per_PortF_(), intHandler);
 }
 
 void ha_RightButton_unregisterInt(ha_RightButton * const self) {

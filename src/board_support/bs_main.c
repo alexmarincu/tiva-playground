@@ -27,11 +27,11 @@ static void setupClockFrequency(void) {
     ha_SysClock_setMaxFrequency();
 }
 
-static void sysTickInt(void) {
+static void sysTickIntHandler(void) {
     vsk_Kernel_onSysTick(vsk_Kernel_());
 }
 
-static void lButtonInt(void) {
+static void leftButtonIntHandler(void) {
     ha_LeftButton * button = ha_LeftButton_();
     ha_LeftButton_clearIntFlag(button);
     if (ha_LeftButton_isPressed(button)) {
@@ -41,7 +41,7 @@ static void lButtonInt(void) {
     }
 }
 
-static void rButtonInt(void) {
+static void rightButtonIntHandler(void) {
     ha_RightButton * button = ha_RightButton_();
     ha_RightButton_clearIntFlag(button);
     if (ha_RightButton_isPressed(button)) {
@@ -52,26 +52,30 @@ static void rButtonInt(void) {
 }
 
 static void setupSysTick(void) {
-    ha_SysTick_registerInt(sysTickInt);
+    ha_SysTick_registerInt(sysTickIntHandler);
     ha_SysTick_enableInt();
     ha_SysTick_setPeriodMillis(10);
     vsk_Kernel_informTickPeriodMillis(vsk_Kernel_(), ha_SysTick_getPeriodMillis());
     ha_SysTick_enable();
 }
 
-static void setupLButton(void) {
+static void setupLeftButton(void) {
     ha_LeftButton * button = ha_LeftButton_();
     ha_LeftButton_init(button);
     ha_LeftButton_setIntTypeBothEdges(button);
-    ha_LeftButton_registerInt(button, lButtonInt);
+    ha_LeftButton_registerInt(button, leftButtonIntHandler);
     ha_LeftButton_enableInt(button);
 }
 
-static void setupRButton(void) {
+static void setupLed(void) {
+    ha_Led_init();
+}
+
+static void setupRightButton(void) {
     ha_RightButton * button = ha_RightButton_();
     ha_RightButton_init(button);
     ha_RightButton_setIntTypeBothEdges(button);
-    ha_RightButton_registerInt(button, rButtonInt);
+    ha_RightButton_registerInt(button, rightButtonIntHandler);
     ha_RightButton_enableInt(button);
 }
 
@@ -90,9 +94,9 @@ static void onIdle(void) {
 static void onStart(void) {
     setupClockFrequency();
     setupSysTick();
-    ha_Led_init();
-    setupLButton();
-    setupRButton();
+    setupLed();
+    setupLeftButton();
+    setupRightButton();
     static vsk_EventTimer redEventTimer;
     static vsk_EventTimer blueEventTimer;
     static vsk_EventTimer greenEventTimer;

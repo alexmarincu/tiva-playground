@@ -1,10 +1,12 @@
 #ifndef HA_BUTTON_H
 #define HA_BUTTON_H
+#include "ha_Interrupt.h"
+
 #include <stdbool.h>
 
 typedef struct ha_Button ha_Button;
 typedef void (*ha_ButtonSetIntTypeBothEdges)(ha_Button * const self);
-typedef void (*ha_ButtonRegisterInt)(ha_Button * const self, void (*const fun)(void));
+typedef void (*ha_ButtonRegisterInt)(ha_Button * const self, ha_InterruptHandler const intHandler);
 typedef void (*ha_ButtonUnregisterInt)(ha_Button * const self);
 typedef void (*ha_ButtonEnableInt)(ha_Button * const self);
 typedef void (*ha_ButtonDisableInt)(ha_Button * const self);
@@ -33,7 +35,7 @@ ha_Button * ha_Button_init(
     ha_ButtonIsPressed const isPressed
 );
 void ha_Button_setIntTypeBothEdges(ha_Button * const self);
-void ha_Button_registerInt(ha_Button * const self, void (*const fun)(void));
+void ha_Button_registerInt(ha_Button * const self, ha_InterruptHandler const intHandler);
 void ha_Button_unregisterInt(ha_Button * const self);
 void ha_Button_enableInt(ha_Button * const self);
 void ha_Button_disableInt(ha_Button * const self);

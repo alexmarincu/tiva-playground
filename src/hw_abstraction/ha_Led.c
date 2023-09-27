@@ -1,5 +1,7 @@
 #include "ha_Led.h"
 
+#include "peripherals/ha_per_PortF.h"
+
 #include "../../lib/TivaWare/inc/hw_memmap.h"
 #include "../../lib/TivaWare/inc/tm4c123gh6pm.h"
 
@@ -9,14 +11,13 @@
 #include "../../lib/TivaWare/driverlib/gpio.h"
 #include "../../lib/TivaWare/driverlib/sysctl.h"
 
-#define ha_Led_peripheral SYSCTL_PERIPH_GPIOF
 #define ha_Led_port GPIO_PORTF_BASE
 #define ha_Led_redPin GPIO_PIN_1
 #define ha_Led_bluePin GPIO_PIN_2
 #define ha_Led_greenPin GPIO_PIN_3
 
 void ha_Led_init(void) {
-    SysCtlPeripheralEnable(ha_Led_peripheral);
+    ha_per_PortF_init(ha_per_PortF_());
     GPIOPinTypeGPIOOutput(ha_Led_port, ha_Led_redPin | ha_Led_bluePin | ha_Led_greenPin);
 }
 

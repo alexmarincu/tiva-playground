@@ -17,8 +17,8 @@ void ha_SysTick_disable(void) {
     SysTickDisable();
 }
 
-void ha_SysTick_registerInt(void (*const fun)(void)) {
-    SysTickIntRegister(fun);
+void ha_SysTick_registerInt(ha_InterruptHandler const intHandler) {
+    SysTickIntRegister(intHandler);
 }
 
 void ha_SysTick_unregisterInt(void) {

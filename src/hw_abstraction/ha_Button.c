@@ -26,8 +26,8 @@ void ha_Button_setIntTypeBothEdges(ha_Button * const self) {
     self->setIntTypeBothEdges(self->impl);
 }
 
-void ha_Button_registerInt(ha_Button * const self, void (*const fun)(void)) {
-    self->registerInt(self->impl, fun);
+void ha_Button_registerInt(ha_Button * const self, ha_InterruptHandler const intHandler) {
+    self->registerInt(self->impl, intHandler);
 }
 
 void ha_Button_unregisterInt(ha_Button * const self) {
