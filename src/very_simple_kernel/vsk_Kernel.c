@@ -1,12 +1,11 @@
 #include "vsk_Kernel.h"
 #include "vsk_EventTimer.h"
-#include "vsk_EventTimerManager.h"
 #include "vsk_TaskScheduler.h"
 
 struct vsk_Kernel {
     vsk_Time * sysTime;
     vsk_TaskScheduler * taskScheduler;
-    vsk_EventTimerManager * eventTimerManager;
+    vsk_EventTimerClass * eventTimerManager;
     vsk_KernelOnStart onStart;
 };
 
@@ -23,7 +22,7 @@ vsk_Kernel * vsk_Kernel_init(
 ) {
     self->sysTime = vsk_Time_init(vsk_Time_());
     self->taskScheduler = vsk_TaskScheduler_init(vsk_TaskScheduler_(), onIdle, taskArray);
-    self->eventTimerManager = vsk_EventTimerManager_init(vsk_EventTimerManager_(), self->sysTime);
+    self->eventTimerManager = vsk_EventTimerClass_init(vsk_EventTimerClass_(), self->sysTime);
     self->onStart = onStart;
     return self;
 }
@@ -34,7 +33,7 @@ void vsk_Kernel_informTickPeriodMillis(vsk_Kernel * const self, uint16_t const t
 
 void vsk_Kernel_onSysTick(vsk_Kernel * const self) {
     vsk_Time_onSysTick(self->sysTime);
-    vsk_EventTimerManager_onSysTick(self->eventTimerManager);
+    vsk_EventTimerClass_onSysTick(self->eventTimerManager);
 }
 
 void vsk_Kernel_start(vsk_Kernel * const self) {
