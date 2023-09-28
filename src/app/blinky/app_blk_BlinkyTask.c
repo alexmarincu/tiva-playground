@@ -22,13 +22,14 @@ struct app_blk_BlinkyTask {
     } eventSubscribers;
 };
 
+static void app_blk_BlinkyTask_setupEventSubscribers(app_blk_BlinkyTask * const self);
 static void app_blk_BlinkyTask_onRedTimeout(app_blk_BlinkyTask * const self);
 static void app_blk_BlinkyTask_onBlueTimeout(app_blk_BlinkyTask * const self);
 static void app_blk_BlinkyTask_onGreenTimeout(app_blk_BlinkyTask * const self);
-static void app_blk_BlinkyTask_onLButtonPress(app_blk_BlinkyTask * const self);
-static void app_blk_BlinkyTask_onLButtonRelease(app_blk_BlinkyTask * const self);
-static void app_blk_BlinkyTask_onRButtonPress(app_blk_BlinkyTask * const self);
-static void app_blk_BlinkyTask_onRButtonRelease(app_blk_BlinkyTask * const self);
+static void app_blk_BlinkyTask_onLeftButtonPress(app_blk_BlinkyTask * const self);
+static void app_blk_BlinkyTask_onLeftButtonRelease(app_blk_BlinkyTask * const self);
+static void app_blk_BlinkyTask_onRightButtonPress(app_blk_BlinkyTask * const self);
+static void app_blk_BlinkyTask_onRightButtonRelease(app_blk_BlinkyTask * const self);
 
 app_blk_BlinkyTask * app_blk_BlinkyTask_(void) {
     static app_blk_BlinkyTask self;
@@ -57,25 +58,25 @@ static void app_blk_BlinkyTask_setupEventSubscribers(app_blk_BlinkyTask * const 
     vsk_EventSubscriber_init(
         &self->eventSubscribers.leftButtonPressEventSubscriber,
         (vsk_Task *)self,
-        (vsk_TaskMessage){ (vsk_TaskHandler)app_blk_BlinkyTask_onLButtonPress }
+        (vsk_TaskMessage){ (vsk_TaskHandler)app_blk_BlinkyTask_onLeftButtonPress }
     );
     vsk_Event_subscribe((vsk_Event *)app_ev_LeftButtonPressEvent_(), &self->eventSubscribers.leftButtonPressEventSubscriber);
     vsk_EventSubscriber_init(
         &self->eventSubscribers.leftButtonReleaseEventSubscriber,
         (vsk_Task *)self,
-        (vsk_TaskMessage){ (vsk_TaskHandler)app_blk_BlinkyTask_onLButtonRelease }
+        (vsk_TaskMessage){ (vsk_TaskHandler)app_blk_BlinkyTask_onLeftButtonRelease }
     );
     vsk_Event_subscribe((vsk_Event *)app_ev_LeftButtonReleaseEvent_(), &self->eventSubscribers.leftButtonReleaseEventSubscriber);
     vsk_EventSubscriber_init(
         &self->eventSubscribers.rightButtonPressEventSubscriber,
         (vsk_Task *)self,
-        (vsk_TaskMessage){ (vsk_TaskHandler)app_blk_BlinkyTask_onRButtonPress }
+        (vsk_TaskMessage){ (vsk_TaskHandler)app_blk_BlinkyTask_onRightButtonPress }
     );
     vsk_Event_subscribe((vsk_Event *)app_ev_RightButtonPressEvent_(), &self->eventSubscribers.rightButtonPressEventSubscriber);
     vsk_EventSubscriber_init(
         &self->eventSubscribers.rightButtonReleaseEventSubscriber,
         (vsk_Task *)self,
-        (vsk_TaskMessage){ (vsk_TaskHandler)app_blk_BlinkyTask_onRButtonRelease }
+        (vsk_TaskMessage){ (vsk_TaskHandler)app_blk_BlinkyTask_onRightButtonRelease }
     );
     vsk_Event_subscribe((vsk_Event *)app_ev_RightButtonReleaseEvent_(), &self->eventSubscribers.rightButtonReleaseEventSubscriber);
 }
@@ -104,18 +105,18 @@ static void app_blk_BlinkyTask_onGreenTimeout(app_blk_BlinkyTask * const self) {
     ha_Led_setGreenOn();
 }
 
-static void app_blk_BlinkyTask_onLButtonPress(app_blk_BlinkyTask * const self) {
+static void app_blk_BlinkyTask_onLeftButtonPress(app_blk_BlinkyTask * const self) {
     ha_Led_setGreenOn();
 }
 
-static void app_blk_BlinkyTask_onLButtonRelease(app_blk_BlinkyTask * const self) {
+static void app_blk_BlinkyTask_onLeftButtonRelease(app_blk_BlinkyTask * const self) {
     ha_Led_setGreenOff();
 }
 
-static void app_blk_BlinkyTask_onRButtonPress(app_blk_BlinkyTask * const self) {
+static void app_blk_BlinkyTask_onRightButtonPress(app_blk_BlinkyTask * const self) {
     ha_Led_setRedOn();
 }
 
-static void app_blk_BlinkyTask_onRButtonRelease(app_blk_BlinkyTask * const self) {
+static void app_blk_BlinkyTask_onRightButtonRelease(app_blk_BlinkyTask * const self) {
     ha_Led_setRedOff();
 }

@@ -16,6 +16,9 @@ struct ha_per_PortF {
     ha_InterruptHandler rightButtonIntHandler;
 };
 
+static void portFIntHandler(void);
+static void ha_per_PortF_registerInternalInt(ha_per_PortF * const self);
+
 static void portFIntHandler(void) {
     ha_per_PortF * self = ha_per_PortF_();
     uint32_t intStatus = GPIOIntStatus(GPIO_PORTF_BASE, true);

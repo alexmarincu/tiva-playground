@@ -24,6 +24,20 @@
 
 #include <stdint.h>
 
+static void setupClockFrequency(void);
+static void sysTickIntHandler(void);
+static void leftButtonIntHandler(void);
+static void rightButtonIntHandler(void);
+static void setupSysTick(void);
+static void setupLeftButton(void);
+static void setupLed(void);
+static void setupRightButton(void);
+static void setupEvents(void);
+static void onIdle(void);
+static void onStart(void);
+static void enterCriticalSection(void);
+static void exitCriticalSection(void);
+
 static void setupClockFrequency(void) {
     ha_SysClock_setMaxFrequency();
 }
