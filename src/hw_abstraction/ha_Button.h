@@ -13,7 +13,7 @@ typedef void (*ha_ButtonDisableInt)(ha_Button * const self);
 typedef void (*ha_ButtonClearIntFlag)(ha_Button * const self);
 typedef bool (*ha_ButtonIsPressed)(ha_Button * const self);
 struct ha_Button {
-    void * impl;
+    void * owner;
     ha_ButtonSetIntTypeBothEdges setIntTypeBothEdges;
     ha_ButtonRegisterInt registerInt;
     ha_ButtonUnregisterInt unregisterInt;
@@ -25,7 +25,7 @@ struct ha_Button {
 
 ha_Button * ha_Button_init(
     ha_Button * const self,
-    void * const impl,
+    void * const owner,
     ha_ButtonSetIntTypeBothEdges const setIntTypeBothEdges,
     ha_ButtonRegisterInt const registerInt,
     ha_ButtonUnregisterInt const unregisterInt,
