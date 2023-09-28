@@ -3,13 +3,11 @@
 #include "peripherals/ha_per_PortF.h"
 
 #include "../../lib/TivaWare/inc/hw_memmap.h"
-#include "../../lib/TivaWare/inc/tm4c123gh6pm.h"
 
 #include <stdbool.h>
 #include <stdint.h>
 
 #include "../../lib/TivaWare/driverlib/gpio.h"
-#include "../../lib/TivaWare/driverlib/sysctl.h"
 
 #define ha_RightButton_port GPIO_PORTF_BASE
 

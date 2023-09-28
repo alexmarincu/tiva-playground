@@ -126,6 +126,14 @@ static void onStart(void) {
     );
 }
 
+static void enterCriticalSection(void) {
+    ha_Interrupt_disableAll();
+}
+
+static void exitCriticalSection(void) {
+    ha_Interrupt_enableAll();
+}
+
 int app_main(void) {
     setupEvents();
     ut_Array * taskArray = ut_Array_init(
@@ -151,9 +159,11 @@ int app_main(void) {
     vsk_Kernel_start(
         vsk_Kernel_init(
             vsk_Kernel_(),
+            taskArray,
             onStart,
             onIdle,
-            taskArray
+            enterCriticalSection,
+            exitCriticalSection
         )
     );
     return 0;

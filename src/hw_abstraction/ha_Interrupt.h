@@ -3,4 +3,7 @@
 
 typedef void (*ha_InterruptHandler)(void);
 
+void ha_Interrupt_enableAll(void);
+void ha_Interrupt_disableAll(void);
+
 #endif // HA_INTERRUPT_H
