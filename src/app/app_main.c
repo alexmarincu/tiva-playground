@@ -1,4 +1,4 @@
-#include "../blinky/blk_BlinkyTask.h"
+#include "../app/blinky/app_blk_BlinkyTask.h"
 #include "../events/ev_BlueTimeoutEvent.h"
 #include "../events/ev_GreenTimeoutEvent.h"
 #include "../events/ev_LeftButtonPressEvent.h"
@@ -126,7 +126,7 @@ static void onStart(void) {
     );
 }
 
-int bs_main(void) {
+int app_main(void) {
     setupEvents();
     ut_Array * taskArray = ut_Array_init(
         ut_stkObj(ut_Array),
@@ -135,8 +135,8 @@ int bs_main(void) {
     );
     ut_Array_insert(
         taskArray,
-        blk_BlinkyTask_init(
-            blk_BlinkyTask_(),
+        app_blk_BlinkyTask_init(
+            app_blk_BlinkyTask_(),
             ut_Queue_init(
                 ut_stkObj(ut_Queue),
                 ut_Array_init(
