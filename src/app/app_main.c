@@ -1,11 +1,12 @@
 #include "../app/blinky/app_blk_BlinkyTask.h"
-#include "../events/ev_BlueTimeoutEvent.h"
-#include "../events/ev_GreenTimeoutEvent.h"
-#include "../events/ev_LeftButtonPressEvent.h"
-#include "../events/ev_LeftButtonReleaseEvent.h"
-#include "../events/ev_RedTimeoutEvent.h"
-#include "../events/ev_RightButtonPressEvent.h"
-#include "../events/ev_RightButtonReleaseEvent.h"
+
+#include "events/app_ev_BlueTimeoutEvent.h"
+#include "events/app_ev_GreenTimeoutEvent.h"
+#include "events/app_ev_LeftButtonPressEvent.h"
+#include "events/app_ev_LeftButtonReleaseEvent.h"
+#include "events/app_ev_RedTimeoutEvent.h"
+#include "events/app_ev_RightButtonPressEvent.h"
+#include "events/app_ev_RightButtonReleaseEvent.h"
 
 #include "../hw_abstraction/ha_Led.h"
 #include "../hw_abstraction/ha_LeftButton.h"
@@ -35,9 +36,9 @@ static void leftButtonIntHandler(void) {
     ha_LeftButton * button = ha_LeftButton_();
     ha_LeftButton_clearIntFlag(button);
     if (ha_LeftButton_isPressed(button)) {
-        vsk_Event_raise((vsk_Event *)ev_LeftButtonPressEvent_());
+        vsk_Event_raise((vsk_Event *)app_ev_LeftButtonPressEvent_());
     } else {
-        vsk_Event_raise((vsk_Event *)ev_LeftButtonReleaseEvent_());
+        vsk_Event_raise((vsk_Event *)app_ev_LeftButtonReleaseEvent_());
     }
 }
 
@@ -45,9 +46,9 @@ static void rightButtonIntHandler(void) {
     ha_RightButton * button = ha_RightButton_();
     ha_RightButton_clearIntFlag(button);
     if (ha_RightButton_isPressed(button)) {
-        vsk_Event_raise((vsk_Event *)ev_RightButtonPressEvent_());
+        vsk_Event_raise((vsk_Event *)app_ev_RightButtonPressEvent_());
     } else {
-        vsk_Event_raise((vsk_Event *)ev_RightButtonReleaseEvent_());
+        vsk_Event_raise((vsk_Event *)app_ev_RightButtonReleaseEvent_());
     }
 }
 
@@ -80,11 +81,11 @@ static void setupRightButton(void) {
 }
 
 static void setupEvents(void) {
-    ev_RedTimeoutEvent_init(ev_RedTimeoutEvent_());
-    ev_BlueTimeoutEvent_init(ev_BlueTimeoutEvent_());
-    ev_GreenTimeoutEvent_init(ev_GreenTimeoutEvent_());
-    ev_LeftButtonPressEvent_init(ev_LeftButtonPressEvent_());
-    ev_LeftButtonReleaseEvent_init(ev_LeftButtonReleaseEvent_());
+    app_ev_RedTimeoutEvent_init(app_ev_RedTimeoutEvent_());
+    app_ev_BlueTimeoutEvent_init(app_ev_BlueTimeoutEvent_());
+    app_ev_GreenTimeoutEvent_init(app_ev_GreenTimeoutEvent_());
+    app_ev_LeftButtonPressEvent_init(app_ev_LeftButtonPressEvent_());
+    app_ev_LeftButtonReleaseEvent_init(app_ev_LeftButtonReleaseEvent_());
 }
 
 static void onIdle(void) {
@@ -103,7 +104,7 @@ static void onStart(void) {
     vsk_EventTimer_arm(
         vsk_EventTimer_init(
             &redEventTimer,
-            (vsk_Event *)ev_RedTimeoutEvent_()
+            (vsk_Event *)app_ev_RedTimeoutEvent_()
         ),
         1,
         3000
@@ -111,7 +112,7 @@ static void onStart(void) {
     vsk_EventTimer_arm(
         vsk_EventTimer_init(
             &blueEventTimer,
-            (vsk_Event *)ev_BlueTimeoutEvent_()
+            (vsk_Event *)app_ev_BlueTimeoutEvent_()
         ),
         1000,
         3000
@@ -119,7 +120,7 @@ static void onStart(void) {
     vsk_EventTimer_arm(
         vsk_EventTimer_init(
             &greenEventTimer,
-            (vsk_Event *)ev_GreenTimeoutEvent_()
+            (vsk_Event *)app_ev_GreenTimeoutEvent_()
         ),
         2000,
         3000
