@@ -19,12 +19,12 @@ bool vsk_Task_isReady(vsk_Task * const self) {
 
 void vsk_Task_run(vsk_Task * const self) {
     vsk_CriticalSection_enter(vsk_CriticalSection_());
-    vsk_TaskMessage * message = ut_Queue_dequeue(self->messageQueue);
+    vsk_Message * message = ut_Queue_dequeue(self->messageQueue);
     vsk_CriticalSection_exit(vsk_CriticalSection_());
-    message->handler(self);
+    vsk_Message_dispatch(message);
 }
 
-void vsk_Task_postMessage(vsk_Task * const self, vsk_TaskMessage * const message) {
+void vsk_Task_postMessage(vsk_Task * const self, vsk_Message * const message) {
     vsk_CriticalSection_enter(vsk_CriticalSection_());
     ut_Queue_enqueue(self->messageQueue, message);
     vsk_CriticalSection_exit(vsk_CriticalSection_());

@@ -37,48 +37,69 @@ app_blk_BlinkyTask * app_blk_BlinkyTask_(void) {
 }
 
 static void app_blk_BlinkyTask_setupEventSubscribers(app_blk_BlinkyTask * const self) {
-    vsk_EventSubscriber_init(
-        &self->eventSubscribers.redEventSubscriber,
-        (vsk_Task *)self,
-        (vsk_TaskMessage){ (vsk_TaskHandler)app_blk_BlinkyTask_onRedTimeout }
+    vsk_Event_subscribe(
+        (vsk_Event *)app_ev_RedTimeoutEvent_(),
+        vsk_EventSubscriber_init(
+            &self->eventSubscribers.redEventSubscriber,
+            (vsk_Task *)self,
+            (vsk_Task *)self,
+            (vsk_MessageHandler)app_blk_BlinkyTask_onRedTimeout
+        )
     );
-    vsk_Event_subscribe((vsk_Event *)app_ev_RedTimeoutEvent_(), &self->eventSubscribers.redEventSubscriber);
-    vsk_EventSubscriber_init(
-        &self->eventSubscribers.blueEventSubscriber,
-        (vsk_Task *)self,
-        (vsk_TaskMessage){ (vsk_TaskHandler)app_blk_BlinkyTask_onBlueTimeout }
+    vsk_Event_subscribe(
+        (vsk_Event *)app_ev_BlueTimeoutEvent_(),
+        vsk_EventSubscriber_init(
+            &self->eventSubscribers.blueEventSubscriber,
+            (vsk_Task *)self,
+            (vsk_Task *)self,
+            (vsk_MessageHandler)app_blk_BlinkyTask_onBlueTimeout
+        )
     );
-    vsk_Event_subscribe((vsk_Event *)app_ev_BlueTimeoutEvent_(), &self->eventSubscribers.blueEventSubscriber);
-    vsk_EventSubscriber_init(
-        &self->eventSubscribers.greenEventSubscriber,
-        (vsk_Task *)self,
-        (vsk_TaskMessage){ (vsk_TaskHandler)app_blk_BlinkyTask_onGreenTimeout }
+    vsk_Event_subscribe(
+        (vsk_Event *)app_ev_GreenTimeoutEvent_(),
+        vsk_EventSubscriber_init(
+            &self->eventSubscribers.greenEventSubscriber,
+            (vsk_Task *)self,
+            (vsk_Task *)self,
+            (vsk_MessageHandler)app_blk_BlinkyTask_onGreenTimeout
+        )
     );
-    vsk_Event_subscribe((vsk_Event *)app_ev_GreenTimeoutEvent_(), &self->eventSubscribers.greenEventSubscriber);
-    vsk_EventSubscriber_init(
-        &self->eventSubscribers.leftButtonPressEventSubscriber,
-        (vsk_Task *)self,
-        (vsk_TaskMessage){ (vsk_TaskHandler)app_blk_BlinkyTask_onLeftButtonPress }
+    vsk_Event_subscribe(
+        (vsk_Event *)app_ev_LeftButtonPressEvent_(),
+        vsk_EventSubscriber_init(
+            &self->eventSubscribers.leftButtonPressEventSubscriber,
+            (vsk_Task *)self,
+            (vsk_Task *)self,
+            (vsk_MessageHandler)app_blk_BlinkyTask_onLeftButtonPress
+        )
     );
-    vsk_Event_subscribe((vsk_Event *)app_ev_LeftButtonPressEvent_(), &self->eventSubscribers.leftButtonPressEventSubscriber);
-    vsk_EventSubscriber_init(
-        &self->eventSubscribers.leftButtonReleaseEventSubscriber,
-        (vsk_Task *)self,
-        (vsk_TaskMessage){ (vsk_TaskHandler)app_blk_BlinkyTask_onLeftButtonRelease }
+    vsk_Event_subscribe(
+        (vsk_Event *)app_ev_LeftButtonReleaseEvent_(),
+        vsk_EventSubscriber_init(
+            &self->eventSubscribers.leftButtonReleaseEventSubscriber,
+            (vsk_Task *)self,
+            (vsk_Task *)self,
+            (vsk_MessageHandler)app_blk_BlinkyTask_onLeftButtonRelease
+        )
     );
-    vsk_Event_subscribe((vsk_Event *)app_ev_LeftButtonReleaseEvent_(), &self->eventSubscribers.leftButtonReleaseEventSubscriber);
-    vsk_EventSubscriber_init(
-        &self->eventSubscribers.rightButtonPressEventSubscriber,
-        (vsk_Task *)self,
-        (vsk_TaskMessage){ (vsk_TaskHandler)app_blk_BlinkyTask_onRightButtonPress }
+    vsk_Event_subscribe(
+        (vsk_Event *)app_ev_RightButtonPressEvent_(),
+        vsk_EventSubscriber_init(
+            &self->eventSubscribers.rightButtonPressEventSubscriber,
+            (vsk_Task *)self,
+            (vsk_Task *)self,
+            (vsk_MessageHandler)app_blk_BlinkyTask_onRightButtonPress
+        )
     );
-    vsk_Event_subscribe((vsk_Event *)app_ev_RightButtonPressEvent_(), &self->eventSubscribers.rightButtonPressEventSubscriber);
-    vsk_EventSubscriber_init(
-        &self->eventSubscribers.rightButtonReleaseEventSubscriber,
-        (vsk_Task *)self,
-        (vsk_TaskMessage){ (vsk_TaskHandler)app_blk_BlinkyTask_onRightButtonRelease }
+    vsk_Event_subscribe(
+        (vsk_Event *)app_ev_RightButtonReleaseEvent_(),
+        vsk_EventSubscriber_init(
+            &self->eventSubscribers.rightButtonReleaseEventSubscriber,
+            (vsk_Task *)self,
+            (vsk_Task *)self,
+            (vsk_MessageHandler)app_blk_BlinkyTask_onRightButtonRelease
+        )
     );
-    vsk_Event_subscribe((vsk_Event *)app_ev_RightButtonReleaseEvent_(), &self->eventSubscribers.rightButtonReleaseEventSubscriber);
 }
 
 app_blk_BlinkyTask * app_blk_BlinkyTask_init(

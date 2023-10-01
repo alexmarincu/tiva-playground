@@ -4,7 +4,7 @@
 
 typedef struct vsk_Event vsk_Event;
 struct vsk_Event {
-    vsk_EventSubscriber * eventClientHead;
+    vsk_EventSubscriber * _eventSubscriberHead;
 };
 
 vsk_Event * vsk_Event_init(vsk_Event * const self);

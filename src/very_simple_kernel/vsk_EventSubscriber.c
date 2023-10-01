@@ -3,10 +3,11 @@
 vsk_EventSubscriber * vsk_EventSubscriber_init(
     vsk_EventSubscriber * const self,
     vsk_Task * const task,
-    vsk_TaskMessage const message
+    void * const recipient,
+    vsk_MessageHandler const handler
 ) {
     self->task = task;
-    self->message = message;
+    vsk_Message_init(&self->message, recipient, handler);
     self->next = 0;
     return self;
 }
