@@ -16,14 +16,13 @@ vsk_Kernel * vsk_Kernel_(void) {
 
 vsk_Kernel * vsk_Kernel_init(
     vsk_Kernel * const self,
-    ut_Array * const taskArray,
     vsk_KernelOnStart const onStart,
     vsk_TaskSchedulerOnIdle const onIdle,
     vsk_CriticalSectionEnter const enterCriticalSection,
     vsk_CriticalSectionExit const exitCriticalSection
 ) {
     self->sysTime = vsk_Time_init(vsk_Time_());
-    self->taskScheduler = vsk_TaskScheduler_init(vsk_TaskScheduler_(), onIdle, taskArray);
+    self->taskScheduler = vsk_TaskScheduler_init(vsk_TaskScheduler_(), onIdle);
     self->eventTimerManager = vsk_EventTimerClass_init(vsk_EventTimerClass_(), self->sysTime);
     vsk_CriticalSection_init(vsk_CriticalSection_(), enterCriticalSection, exitCriticalSection);
     self->onStart = onStart;
@@ -39,7 +38,10 @@ void vsk_Kernel_onSysTick(vsk_Kernel * const self) {
     vsk_EventTimerClass_onSysTick(self->eventTimerManager);
 }
 
-void vsk_Kernel_start(vsk_Kernel * const self) {
+void vsk_Kernel_start(
+    vsk_Kernel * const self,
+    ut_Array * const taskArray
+) {
     self->onStart();
-    vsk_TaskScheduler_start(self->taskScheduler);
+    vsk_TaskScheduler_start(self->taskScheduler, taskArray);
 }

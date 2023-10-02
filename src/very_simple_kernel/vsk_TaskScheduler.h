@@ -9,9 +9,11 @@ typedef void (*vsk_TaskSchedulerOnIdle)(void);
 vsk_TaskScheduler * vsk_TaskScheduler_(void);
 vsk_TaskScheduler * vsk_TaskScheduler_init(
     vsk_TaskScheduler * const self,
-    vsk_TaskSchedulerOnIdle const onIdle,
+    vsk_TaskSchedulerOnIdle const onIdle
+);
+void vsk_TaskScheduler_start(
+    vsk_TaskScheduler * const self,
     ut_Array * const taskArray
 );
-void vsk_TaskScheduler_start(vsk_TaskScheduler * const self);
 
 #endif // VSK_TASKSCHEDULER_H

@@ -12,15 +12,18 @@ vsk_TaskScheduler * vsk_TaskScheduler_(void) {
 
 vsk_TaskScheduler * vsk_TaskScheduler_init(
     vsk_TaskScheduler * const self,
-    vsk_TaskSchedulerOnIdle const onIdle,
-    ut_Array * const taskArray
+    vsk_TaskSchedulerOnIdle const onIdle
 ) {
-    self->taskArray = taskArray;
+    self->taskArray = 0;
     self->onIdle = onIdle;
     return self;
 }
 
-void vsk_TaskScheduler_start(vsk_TaskScheduler * const self) {
+void vsk_TaskScheduler_start(
+    vsk_TaskScheduler * const self,
+    ut_Array * const taskArray
+) {
+    self->taskArray = taskArray;
     while (1) {
         for (uint8_t i = 0; i < ut_Array_length(self->taskArray); i++) {
             vsk_Task * task = ut_Array_get(self->taskArray, i);
