@@ -1,7 +1,7 @@
 #ifndef APP_TMB_BOOMSTATE_H
 #define APP_TMB_BOOMSTATE_H
-typedef struct app_tmb_BoomState app_tmb_BoomState;
 /*............................................................................*/
+typedef struct app_tmb_BoomState app_tmb_BoomState;
 #include "../../very_simple_kernel/vsk_State.h"
 /*............................................................................*/
 struct app_tmb_BoomState {

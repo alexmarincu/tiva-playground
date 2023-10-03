@@ -1,9 +1,13 @@
 #ifndef HA_RIGHTBUTTON_H
 #define HA_RIGHTBUTTON_H
-#include "ha_Button.h"
-
+/*............................................................................*/
 typedef struct ha_RightButton ha_RightButton;
-
+#include "ha_Button.h"
+/*............................................................................*/
+struct ha_RightButton {
+    ha_Button _button;
+};
+/*............................................................................*/
 ha_RightButton * ha_RightButton_(void);
 ha_RightButton * ha_RightButton_init(ha_RightButton * const self);
 void ha_RightButton_setIntTypeBothEdges(ha_RightButton * const self);

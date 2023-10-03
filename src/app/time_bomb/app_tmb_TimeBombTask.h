@@ -1,7 +1,7 @@
 #ifndef APP_TMB_TIMEBOMBTASK_H
 #define APP_TMB_TIMEBOMBTASK_H
-typedef struct app_tmb_TimeBombTask app_tmb_TimeBombTask;
 /*............................................................................*/
+typedef struct app_tmb_TimeBombTask app_tmb_TimeBombTask;
 #include "../../very_simple_kernel/vsk_EventSubscriber.h"
 #include "../../very_simple_kernel/vsk_StateMachine.h"
 #include "../../very_simple_kernel/vsk_Task.h"

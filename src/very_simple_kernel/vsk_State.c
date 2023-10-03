@@ -1,5 +1,6 @@
+/*............................................................................*/
 #include "vsk_State.h"
-
+/*............................................................................*/
 vsk_State * vsk_State_init(
     vsk_State * const self,
     vsk_StateMachine * const stateMachine,
@@ -11,11 +12,15 @@ vsk_State * vsk_State_init(
     self->_onExit = onExit;
     return self;
 }
-
-void vsk_State_onEntry(vsk_State * const self) {
+/*............................................................................*/
+void vsk_State_onEntry(
+    vsk_State * const self
+) {
     self->_onEntry(self);
 }
-
-void vsk_State_onExit(vsk_State * const self) {
+/*............................................................................*/
+void vsk_State_onExit(
+    vsk_State * const self
+) {
     self->_onExit(self);
 }

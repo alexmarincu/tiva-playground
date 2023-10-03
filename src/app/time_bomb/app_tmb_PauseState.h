@@ -1,7 +1,7 @@
 #ifndef APP_TMB_PAUSESTATE_H
 #define APP_TMB_PAUSESTATE_H
-typedef struct app_tmb_PauseState app_tmb_PauseState;
 /*............................................................................*/
+typedef struct app_tmb_PauseState app_tmb_PauseState;
 #include "../../very_simple_kernel/vsk_EventSubscriber.h"
 #include "../../very_simple_kernel/vsk_EventTimer.h"
 #include "../../very_simple_kernel/vsk_State.h"
