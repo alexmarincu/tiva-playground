@@ -9,6 +9,7 @@ typedef void (*vsk_StateOnExit)(
     vsk_State * const self
 );
 #include "vsk_StateMachine.h"
+#include <stdbool.h>
 /*............................................................................*/
 struct vsk_State {
     vsk_StateMachine * _stateMachine;
@@ -26,6 +27,9 @@ void vsk_State_onEntry(
     vsk_State * const self
 );
 void vsk_State_onExit(
+    vsk_State * const self
+);
+bool vsk_State_isActive(
     vsk_State * const self
 );
 #endif // VSK_STATE_H

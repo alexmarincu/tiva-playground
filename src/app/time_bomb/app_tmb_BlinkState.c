@@ -56,10 +56,12 @@ app_tmb_BlinkState * app_tmb_BlinkState_init(
 static void app_tmb_BlinkState_onBlinkTimeout(
     app_tmb_BlinkState * const self
 ) {
-    vsk_StateMachine_transition(
-        self->_state._stateMachine,
-        (vsk_State *)app_tmb_PauseState_()
-    );
+    if (vsk_State_isActive((vsk_State *)self)) {
+        vsk_StateMachine_transition(
+            self->_state._stateMachine,
+            (vsk_State *)app_tmb_PauseState_()
+        );
+    }
 }
 /*............................................................................*/
 static void app_tmb_BlinkState_onEntry(

@@ -24,3 +24,9 @@ void vsk_State_onExit(
 ) {
     self->_onExit(self);
 }
+/*............................................................................*/
+bool vsk_State_isActive(
+    vsk_State * const self
+) {
+    return (vsk_StateMachine_getState(self->_stateMachine) == self);
+}

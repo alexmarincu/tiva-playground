@@ -59,23 +59,25 @@ app_tmb_PauseState * app_tmb_PauseState_init(
 static void app_tmb_PauseState_onPauseTimeout(
     app_tmb_PauseState * const self
 ) {
-    app_tmb_TimeBombTask_decrementBlinkCounter(
-        (app_tmb_TimeBombTask *)self->_state._stateMachine->_task
-    );
-    if (
-        app_tmb_TimeBombTask_getBlinkCounter(
+    if (vsk_State_isActive((vsk_State *)self)) {
+        app_tmb_TimeBombTask_decrementBlinkCounter(
             (app_tmb_TimeBombTask *)self->_state._stateMachine->_task
-        ) > 0
-    ) {
-        vsk_StateMachine_transition(
-            self->_state._stateMachine,
-            (vsk_State *)app_tmb_BlinkState_()
         );
-    } else {
-        vsk_StateMachine_transition(
-            self->_state._stateMachine,
-            (vsk_State *)app_tmb_BoomState_()
-        );
+        if (
+            app_tmb_TimeBombTask_getBlinkCounter(
+                (app_tmb_TimeBombTask *)self->_state._stateMachine->_task
+            ) > 0
+        ) {
+            vsk_StateMachine_transition(
+                self->_state._stateMachine,
+                (vsk_State *)app_tmb_BlinkState_()
+            );
+        } else {
+            vsk_StateMachine_transition(
+                self->_state._stateMachine,
+                (vsk_State *)app_tmb_BoomState_()
+            );
+        }
     }
 }
 /*............................................................................*/

@@ -54,14 +54,16 @@ app_tmb_WaitForButtonState * app_tmb_WaitForButtonState_init(
 static void app_tmb_WaitForButtonState_onLeftButtonPress(
     app_tmb_WaitForButtonState * const self
 ) {
-    app_tmb_TimeBombTask_setBlinkCounter(
-        (app_tmb_TimeBombTask *)self->_state._stateMachine->_task,
-        5
-    );
-    vsk_StateMachine_transition(
-        self->_state._stateMachine,
-        (vsk_State *)app_tmb_BlinkState_()
-    );
+    if (vsk_State_isActive((vsk_State *)self)) {
+        app_tmb_TimeBombTask_setBlinkCounter(
+            (app_tmb_TimeBombTask *)self->_state._stateMachine->_task,
+            5
+        );
+        vsk_StateMachine_transition(
+            self->_state._stateMachine,
+            (vsk_State *)app_tmb_BlinkState_()
+        );
+    }
 }
 /*............................................................................*/
 static void app_tmb_WaitForButtonState_onEntry(

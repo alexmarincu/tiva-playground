@@ -26,3 +26,9 @@ vsk_Task * vsk_StateMachine_getTask(
 ) {
     return self->_task;
 }
+/*............................................................................*/
+vsk_State * vsk_StateMachine_getState(
+    vsk_StateMachine * const self
+) {
+    return self->_state;
+}
