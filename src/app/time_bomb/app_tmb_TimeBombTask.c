@@ -3,6 +3,7 @@
 #include "../../app/events/app_ev_OnStartEvent.h"
 #include "app_tmb_BlinkState.h"
 #include "app_tmb_BoomState.h"
+#include "app_tmb_DefusedState.h"
 #include "app_tmb_PauseState.h"
 #include "app_tmb_WaitForButtonState.h"
 /*............................................................................*/
@@ -45,6 +46,7 @@ app_tmb_TimeBombTask * app_tmb_TimeBombTask_init(
     app_tmb_BlinkState_init(app_tmb_BlinkState_(), &self->_stateMachine);
     app_tmb_PauseState_init(app_tmb_PauseState_(), &self->_stateMachine);
     app_tmb_BoomState_init(app_tmb_BoomState_(), &self->_stateMachine);
+    app_tmb_DefusedState_init(app_tmb_DefusedState_(), &self->_stateMachine);
     app_tmb_TimeBombTask_setupEventSubscribers(self);
     return self;
 }
