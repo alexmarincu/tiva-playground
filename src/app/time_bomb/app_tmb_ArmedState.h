@@ -6,7 +6,9 @@ typedef struct app_tmb_ArmedState app_tmb_ArmedState;
 #include "../../very_simple_kernel/vsk_State.h"
 /*............................................................................*/
 struct app_tmb_ArmedState {
-    vsk_State _state;
+    struct {
+        vsk_State state;
+    } _super;
     struct {
         vsk_EventSubscriber rightButtonPress;
     } _eventSubscribers;

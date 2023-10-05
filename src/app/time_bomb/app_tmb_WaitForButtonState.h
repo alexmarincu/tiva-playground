@@ -6,7 +6,9 @@ typedef struct app_tmb_WaitForButtonState app_tmb_WaitForButtonState;
 #include "../../very_simple_kernel/vsk_State.h"
 /*............................................................................*/
 struct app_tmb_WaitForButtonState {
-    vsk_State _state;
+    struct {
+        vsk_State state;
+    } _super;
     struct {
         vsk_EventSubscriber leftButtonPress;
     } _eventSubscribers;

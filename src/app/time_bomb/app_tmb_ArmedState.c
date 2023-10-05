@@ -28,7 +28,7 @@ static void app_tmb_ArmedState_setupEventSubscribers(
         (vsk_Event *)app_ev_RightButtonPressEvent_(),
         vsk_EventSubscriber_init(
             &self->_eventSubscribers.rightButtonPress,
-            vsk_StateMachine_getTask(self->_state._stateMachine),
+            vsk_StateMachine_getTask(self->_super.state._stateMachine),
             self,
             (vsk_MessageHandler)app_tmb_ArmedState_onRightButtonPress
         )
@@ -40,7 +40,7 @@ app_tmb_ArmedState * app_tmb_ArmedState_init(
     vsk_StateMachine * const stateMachine
 ) {
     vsk_State_init(
-        &self->_state,
+        &self->_super.state,
         stateMachine,
         (vsk_StateOnEntry)app_tmb_ArmedState_onEntry,
         (vsk_StateOnExit)app_tmb_ArmedState_onExit
@@ -54,7 +54,7 @@ static void app_tmb_ArmedState_onRightButtonPress(
 ) {
     if (vsk_State_isActive((vsk_State *)self)) {
         vsk_StateMachine_transition(
-            self->_state._stateMachine,
+            self->_super.state._stateMachine,
             (vsk_State *)app_tmb_DefusedState_()
         );
     }

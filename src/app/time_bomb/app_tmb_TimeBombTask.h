@@ -7,7 +7,9 @@ typedef struct app_tmb_TimeBombTask app_tmb_TimeBombTask;
 #include "../../very_simple_kernel/vsk_Task.h"
 /*............................................................................*/
 struct app_tmb_TimeBombTask {
-    vsk_Task _task;
+    struct {
+        vsk_Task task;
+    } _super;
     vsk_StateMachine _stateMachine;
     struct {
         vsk_EventSubscriber onStart;

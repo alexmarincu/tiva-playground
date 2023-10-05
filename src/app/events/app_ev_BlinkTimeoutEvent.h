@@ -5,7 +5,9 @@ typedef struct app_ev_BlinkTimeoutEvent app_ev_BlinkTimeoutEvent;
 #include "../../very_simple_kernel/vsk_Event.h"
 /*............................................................................*/
 struct app_ev_BlinkTimeoutEvent {
-    vsk_Event _event;
+    struct {
+        vsk_Event event;
+    } _super;
 };
 /*............................................................................*/
 app_ev_BlinkTimeoutEvent * app_ev_BlinkTimeoutEvent_(void);

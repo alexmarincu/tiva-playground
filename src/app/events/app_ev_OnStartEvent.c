@@ -9,6 +9,6 @@ app_ev_OnStartEvent * app_ev_OnStartEvent_(void) {
 app_ev_OnStartEvent * app_ev_OnStartEvent_init(
     app_ev_OnStartEvent * const self
 ) {
-    vsk_Event_init(&self->_event);
+    vsk_Event_init(&self->_super.event);
     return self;
 }

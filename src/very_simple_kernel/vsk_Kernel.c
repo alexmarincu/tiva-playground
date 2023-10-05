@@ -10,16 +10,16 @@ vsk_Kernel * vsk_Kernel_init(
     vsk_Kernel * const self,
     vsk_KernelOnStart const onStart,
     vsk_TaskSchedulerOnIdle const onIdle,
-    vsk_CriticalSectionEnter const enterCriticalSection,
-    vsk_CriticalSectionExit const exitCriticalSection
+    vsk_CriticalSectionOnEnter const criticalSectionOnEnter,
+    vsk_CriticalSectionOnExit const criticalSectionOnExit
 ) {
     self->_time = vsk_Time_init(vsk_Time_());
     self->_taskScheduler = vsk_TaskScheduler_init(vsk_TaskScheduler_(), onIdle);
     self->_eventTimerClass = vsk_EventTimerClass_init(vsk_EventTimerClass_());
     vsk_CriticalSection_init(
         vsk_CriticalSection_(),
-        enterCriticalSection,
-        exitCriticalSection
+        criticalSectionOnEnter,
+        criticalSectionOnExit
     );
     self->_onStart = onStart;
     return self;

@@ -19,7 +19,7 @@ app_tmb_BoomState * app_tmb_BoomState_init(
     vsk_StateMachine * const stateMachine
 ) {
     vsk_State_init(
-        &self->_state,
+        &self->_super.state,
         stateMachine,
         (vsk_StateOnEntry)app_tmb_BoomState_onEntry,
         (vsk_StateOnExit)app_tmb_BoomState_onExit

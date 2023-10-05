@@ -28,7 +28,7 @@ static void app_tmb_BlinkState_setupEventSubscribers(
         (vsk_Event *)app_ev_BlinkTimeoutEvent_(),
         vsk_EventSubscriber_init(
             &self->_eventSubscribers.blinkTimeout,
-            vsk_StateMachine_getTask(self->_state._stateMachine),
+            vsk_StateMachine_getTask(self->_super.state._stateMachine),
             self,
             (vsk_MessageHandler)app_tmb_BlinkState_onBlinkTimeout
         )
@@ -40,7 +40,7 @@ app_tmb_BlinkState * app_tmb_BlinkState_init(
     vsk_StateMachine * const stateMachine
 ) {
     vsk_State_init(
-        &self->_state,
+        &self->_super.state,
         stateMachine,
         (vsk_StateOnEntry)app_tmb_BlinkState_onEntry,
         (vsk_StateOnExit)app_tmb_BlinkState_onExit
@@ -58,7 +58,7 @@ static void app_tmb_BlinkState_onBlinkTimeout(
 ) {
     if (vsk_State_isActive((vsk_State *)self)) {
         vsk_StateMachine_transition(
-            self->_state._stateMachine,
+            self->_super.state._stateMachine,
             (vsk_State *)app_tmb_PauseState_()
         );
     }

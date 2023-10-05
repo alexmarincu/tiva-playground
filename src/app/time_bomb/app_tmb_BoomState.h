@@ -5,7 +5,9 @@ typedef struct app_tmb_BoomState app_tmb_BoomState;
 #include "../../very_simple_kernel/vsk_State.h"
 /*............................................................................*/
 struct app_tmb_BoomState {
-    vsk_State _state;
+    struct {
+        vsk_State state;
+    } _super;
 };
 /*............................................................................*/
 app_tmb_BoomState * app_tmb_BoomState_(void);

@@ -19,7 +19,7 @@ app_tmb_DefusedState * app_tmb_DefusedState_init(
     vsk_StateMachine * const stateMachine
 ) {
     vsk_State_init(
-        &self->_state,
+        &self->_super.state,
         stateMachine,
         (vsk_StateOnEntry)app_tmb_DefusedState_onEntry,
         (vsk_StateOnExit)app_tmb_DefusedState_onExit

@@ -18,7 +18,7 @@ ha_RightButton * ha_RightButton_init(
     ha_RightButton * const self
 ) {
     ha_Button_init(
-        &self->_button,
+        &self->_super.button,
         self,
         (ha_ButtonSetIntTypeBothEdges)ha_RightButton_setIntTypeBothEdges,
         (ha_ButtonRegisterInt)ha_RightButton_registerInt,

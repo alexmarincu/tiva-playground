@@ -2,19 +2,19 @@
 #define VSK_CRITICALSECTION_H
 /*............................................................................*/
 typedef struct vsk_CriticalSection vsk_CriticalSection;
-typedef void (*vsk_CriticalSectionEnter)(void);
-typedef void (*vsk_CriticalSectionExit)(void);
+typedef void (*vsk_CriticalSectionOnEnter)(void);
+typedef void (*vsk_CriticalSectionOnExit)(void);
 /*............................................................................*/
 struct vsk_CriticalSection {
-    vsk_CriticalSectionEnter _enter;
-    vsk_CriticalSectionExit _exit;
+    vsk_CriticalSectionOnEnter _onEnter;
+    vsk_CriticalSectionOnExit _onExit;
 };
 /*............................................................................*/
 vsk_CriticalSection * vsk_CriticalSection_(void);
 vsk_CriticalSection * vsk_CriticalSection_init(
     vsk_CriticalSection * const self,
-    vsk_CriticalSectionEnter const enter,
-    vsk_CriticalSectionExit const exit
+    vsk_CriticalSectionOnEnter const onEnter,
+    vsk_CriticalSectionOnExit const onExit
 );
 void vsk_CriticalSection_enter(
     vsk_CriticalSection * const self

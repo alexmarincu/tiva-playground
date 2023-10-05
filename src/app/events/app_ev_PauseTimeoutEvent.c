@@ -9,6 +9,6 @@ app_ev_PauseTimeoutEvent * app_ev_PauseTimeoutEvent_(void) {
 app_ev_PauseTimeoutEvent * app_ev_PauseTimeoutEvent_init(
     app_ev_PauseTimeoutEvent * const self
 ) {
-    vsk_Event_init(&self->_event);
+    vsk_Event_init(&self->_super.event);
     return self;
 }

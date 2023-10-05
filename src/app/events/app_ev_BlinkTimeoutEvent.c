@@ -9,6 +9,6 @@ app_ev_BlinkTimeoutEvent * app_ev_BlinkTimeoutEvent_(void) {
 app_ev_BlinkTimeoutEvent * app_ev_BlinkTimeoutEvent_init(
     app_ev_BlinkTimeoutEvent * const self
 ) {
-    vsk_Event_init(&self->_event);
+    vsk_Event_init(&self->_super.event);
     return self;
 }

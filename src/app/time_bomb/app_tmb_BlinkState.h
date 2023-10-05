@@ -7,7 +7,9 @@ typedef struct app_tmb_BlinkState app_tmb_BlinkState;
 #include "../../very_simple_kernel/vsk_State.h"
 /*............................................................................*/
 struct app_tmb_BlinkState {
-    vsk_State _state;
+    struct {
+        vsk_State state;
+    } _super;
     struct {
         vsk_EventSubscriber blinkTimeout;
     } _eventSubscribers;

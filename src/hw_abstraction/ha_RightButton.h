@@ -5,7 +5,9 @@ typedef struct ha_RightButton ha_RightButton;
 #include "ha_Button.h"
 /*............................................................................*/
 struct ha_RightButton {
-    ha_Button _button;
+    struct {
+        ha_Button button;
+    } _super;
 };
 /*............................................................................*/
 ha_RightButton * ha_RightButton_(void);

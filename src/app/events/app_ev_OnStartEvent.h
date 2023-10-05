@@ -5,7 +5,9 @@ typedef struct app_ev_OnStartEvent app_ev_OnStartEvent;
 #include "../../very_simple_kernel/vsk_Event.h"
 /*............................................................................*/
 struct app_ev_OnStartEvent {
-    vsk_Event _event;
+    struct {
+        vsk_Event event;
+    } _super;
 };
 /*............................................................................*/
 app_ev_OnStartEvent * app_ev_OnStartEvent_(void);
