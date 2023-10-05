@@ -28,7 +28,7 @@ typedef bool (*ha_ButtonIsPressed)(
 );
 /*............................................................................*/
 struct ha_Button {
-    void * _owner;
+    void * _child;
     ha_ButtonSetIntTypeBothEdges _setIntTypeBothEdges;
     ha_ButtonRegisterInt _registerInt;
     ha_ButtonUnregisterInt _unregisterInt;
@@ -40,7 +40,7 @@ struct ha_Button {
 /*............................................................................*/
 ha_Button * ha_Button_init(
     ha_Button * const self,
-    void * const owner,
+    void * const child,
     ha_ButtonSetIntTypeBothEdges const setIntTypeBothEdges,
     ha_ButtonRegisterInt const registerInt,
     ha_ButtonUnregisterInt const unregisterInt,
