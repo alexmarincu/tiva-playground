@@ -98,7 +98,7 @@ static void setupEvents(void) {
 }
 /*............................................................................*/
 static void onIdle(void) {
-    ha_SysCtrl_waitForInt();
+    ha_SysCtrl_sleep();
 }
 /*............................................................................*/
 static void onStart(void) {
@@ -111,11 +111,11 @@ static void onStart(void) {
 }
 /*............................................................................*/
 static void criticalSectionOnEnter(void) {
-    ha_Interrupt_disableAll();
+    ha_Interrupt_masterDisable();
 }
 /*............................................................................*/
 static void criticalSectionOnExit(void) {
-    ha_Interrupt_enableAll();
+    ha_Interrupt_masterEnable();
 }
 /*............................................................................*/
 int app_main(void) {

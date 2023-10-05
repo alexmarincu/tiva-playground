@@ -5,10 +5,10 @@
 //
 #include "../../lib/TivaWare/driverlib/interrupt.h"
 /*............................................................................*/
-void ha_Interrupt_enableAll(void) {
+void ha_Interrupt_masterEnable(void) {
     IntMasterEnable();
 }
 /*............................................................................*/
-void ha_Interrupt_disableAll(void) {
+void ha_Interrupt_masterDisable(void) {
     IntMasterDisable();
 }
