@@ -4,10 +4,12 @@
 typedef struct vsk_CriticalSection vsk_CriticalSection;
 typedef void (*vsk_CriticalSectionOnEnter)(void);
 typedef void (*vsk_CriticalSectionOnExit)(void);
+#include <stdint.h>
 /*............................................................................*/
 struct vsk_CriticalSection {
     vsk_CriticalSectionOnEnter _onEnter;
     vsk_CriticalSectionOnExit _onExit;
+    uint8_t volatile _nestingLevels;
 };
 /*............................................................................*/
 vsk_CriticalSection * vsk_CriticalSection_(void);

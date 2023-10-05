@@ -42,11 +42,10 @@ void vsk_EventTimer_onSysTick(
     if (self->_delayMillis != 0) {
         if (self->_delayMillis <= vsk_Time_getTickPeriodMillis(vsk_Time_())) {
             self->_delayMillis = self->_periodMillis;
-            vsk_CriticalSection_exit(vsk_CriticalSection_());
             vsk_Event_raise(self->_event);
         } else {
             self->_delayMillis -= vsk_Time_getTickPeriodMillis(vsk_Time_());
-            vsk_CriticalSection_exit(vsk_CriticalSection_());
         }
     }
+    vsk_CriticalSection_exit(vsk_CriticalSection_());
 }
