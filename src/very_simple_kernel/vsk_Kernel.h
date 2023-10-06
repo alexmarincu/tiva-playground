@@ -20,8 +20,8 @@ vsk_Kernel * vsk_Kernel_init(
     vsk_Kernel * const self,
     vsk_KernelOnStart const onStart,
     vsk_TaskSchedulerOnIdle const onIdle,
-    vsk_CriticalSectionOnEnter const enterCriticalSection,
-    vsk_CriticalSectionOnExit const exitCriticalSection
+    vsk_CriticalSectionDisableInt const disableInt,
+    vsk_CriticalSectionEnableInt const enableInt
 );
 void vsk_Kernel_informTickPeriodMillis(
     vsk_Kernel * const self,

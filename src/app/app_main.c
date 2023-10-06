@@ -29,8 +29,8 @@ static void setupRightButton(void);
 static void setupEvents(void);
 static void onIdle(void);
 static void onStart(void);
-static void criticalSectionOnEnter(void);
-static void criticalSectionOnExit(void);
+static void disableInt(void);
+static void enableInt(void);
 /*............................................................................*/
 static void setupClockFrequency(void) {
     ha_SysClock_setMaxFrequency();
@@ -110,11 +110,11 @@ static void onStart(void) {
     vsk_Event_raise((vsk_Event *)app_ev_OnStartEvent_());
 }
 /*............................................................................*/
-static void criticalSectionOnEnter(void) {
+static void disableInt(void) {
     ha_Interrupt_masterDisable();
 }
 /*............................................................................*/
-static void criticalSectionOnExit(void) {
+static void enableInt(void) {
     ha_Interrupt_masterEnable();
 }
 /*............................................................................*/
@@ -123,8 +123,8 @@ int app_main(void) {
         vsk_Kernel_(),
         onStart,
         onIdle,
-        criticalSectionOnEnter,
-        criticalSectionOnExit
+        disableInt,
+        enableInt
     );
     setupEvents();
     ut_Array * taskArray = ut_Array_init(

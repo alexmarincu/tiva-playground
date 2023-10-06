@@ -8,11 +8,11 @@ vsk_CriticalSection * vsk_CriticalSection_(void) {
 /*............................................................................*/
 vsk_CriticalSection * vsk_CriticalSection_init(
     vsk_CriticalSection * const self,
-    vsk_CriticalSectionOnEnter const onEnter,
-    vsk_CriticalSectionOnExit const onExit
+    vsk_CriticalSectionDisableInt const disableInt,
+    vsk_CriticalSectionEnableInt const enableInt
 ) {
-    self->_onEnter = onEnter;
-    self->_onExit = onExit;
+    self->_disableInt = disableInt;
+    self->_enableInt = enableInt;
     self->_nestingLevels = 0;
     return self;
 }
@@ -20,7 +20,7 @@ vsk_CriticalSection * vsk_CriticalSection_init(
 void vsk_CriticalSection_enter(
     vsk_CriticalSection * const self
 ) {
-    self->_onEnter();
+    self->_disableInt();
     self->_nestingLevels++;
 }
 /*............................................................................*/
@@ -30,7 +30,7 @@ void vsk_CriticalSection_exit(
     if (self->_nestingLevels > 0) {
         self->_nestingLevels--;
         if (self->_nestingLevels == 0) {
-            self->_onExit();
+            self->_enableInt();
         }
     }
 }
