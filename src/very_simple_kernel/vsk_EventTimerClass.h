@@ -5,7 +5,7 @@ typedef struct vsk_EventTimerClass vsk_EventTimerClass;
 #include "vsk_EventTimer.h"
 /*............................................................................*/
 struct vsk_EventTimerClass {
-    vsk_EventTimer * _eventTimerHead;
+    vsk_LinkedList _eventTimers;
 };
 /*............................................................................*/
 vsk_EventTimerClass * vsk_EventTimerClass_(void);

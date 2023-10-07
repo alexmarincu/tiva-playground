@@ -7,6 +7,7 @@
 #include "../../lib/TivaWare/inc/hw_memmap.h"
 #include "../../lib/TivaWare/inc/tm4c123gh6pm.h"
 #include <stdbool.h>
+#include <stddef.h>
 /*............................................................................*/
 static void portFIntHandler(void);
 static void ha_per_PortF_registerInternalInt(
@@ -33,8 +34,8 @@ ha_per_PortF * ha_per_PortF_init(
     ha_per_PortF * const self
 ) {
     if (self->_isInitialized == false) {
-        self->_intHandlers.leftButton = 0;
-        self->_intHandlers.rightButton = 0;
+        self->_intHandlers.leftButton = NULL;
+        self->_intHandlers.rightButton = NULL;
         SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOF);
         self->_isInitialized = true;
     }

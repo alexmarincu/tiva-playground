@@ -3,8 +3,10 @@
 /*............................................................................*/
 typedef struct vsk_Kernel vsk_Kernel;
 typedef void (*vsk_KernelOnStart)(void);
+#include "vsk_Assert.h"
 #include "vsk_CriticalSection.h"
 #include "vsk_EventTimerClass.h"
+#include "vsk_Node.h"
 #include "vsk_TaskScheduler.h"
 #include "vsk_Time.h"
 /*............................................................................*/
@@ -21,7 +23,10 @@ vsk_Kernel * vsk_Kernel_init(
     vsk_KernelOnStart const onStart,
     vsk_TaskSchedulerOnIdle const onIdle,
     vsk_CriticalSectionDisableInt const disableInt,
-    vsk_CriticalSectionEnableInt const enableInt
+    vsk_CriticalSectionEnableInt const enableInt,
+    vsk_AssertOnAssert const onAssert,
+    vsk_Node * const nodes,
+    size_t const capacity
 );
 void vsk_Kernel_informTickPeriodMillis(
     vsk_Kernel * const self,

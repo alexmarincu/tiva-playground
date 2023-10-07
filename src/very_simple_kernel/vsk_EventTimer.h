@@ -7,7 +7,7 @@ typedef struct vsk_EventTimer vsk_EventTimer;
 #include <stdint.h>
 /*............................................................................*/
 struct vsk_EventTimer {
-    vsk_EventTimerClass const * _klass;
+    vsk_EventTimerClass * _klass;
     vsk_Event * _event;
     uint32_t _delayMillis;
     uint32_t _periodMillis;

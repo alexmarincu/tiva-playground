@@ -9,7 +9,7 @@ vsk_EventSubscriber * vsk_EventSubscriber_init(
 ) {
     self->_task = task;
     vsk_Message_init(&self->_message, recipient, handler);
-    self->_next = 0;
+    self->_next = NULL;
     return self;
 }
 /*............................................................................*/

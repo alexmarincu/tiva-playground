@@ -3,9 +3,10 @@
 /*............................................................................*/
 typedef struct vsk_Event vsk_Event;
 #include "vsk_EventSubscriber.h"
+#include "vsk_LinkedList.h"
 /*............................................................................*/
 struct vsk_Event {
-    vsk_EventSubscriber * _eventSubscriberHead;
+    vsk_LinkedList _eventSubscribers;
 };
 /*............................................................................*/
 vsk_Event * vsk_Event_init(

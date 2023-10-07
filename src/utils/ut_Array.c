@@ -32,7 +32,7 @@ void * ut_Array_remove(
     uint8_t const index
 ) {
     void * item = self->_items[index];
-    self->_items[index] = 0;
+    self->_items[index] = NULL;
     return item;
 }
 /*............................................................................*/
@@ -40,7 +40,7 @@ void ut_Array_clear(
     ut_Array * const self
 ) {
     for (size_t i = 0; i < self->_length; i++) {
-        self->_items[i] = 0;
+        self->_items[i] = NULL;
     }
 }
 /*............................................................................*/

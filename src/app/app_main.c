@@ -24,7 +24,7 @@ static void leftButtonIntHandler(void);
 static void rightButtonIntHandler(void);
 static void setupSysTick(void);
 static void setupLeftButton(void);
-static void setupLed(void);
+static void setupLeds(void);
 static void setupRightButton(void);
 static void setupEvents(void);
 static void onIdle(void);
@@ -77,7 +77,7 @@ static void setupLeftButton(void) {
     ha_LeftButton_enableInt(button);
 }
 /*............................................................................*/
-static void setupLed(void) {
+static void setupLeds(void) {
     ha_Led_init();
 }
 /*............................................................................*/
@@ -104,7 +104,6 @@ static void onIdle(void) {
 static void onStart(void) {
     setupClockFrequency();
     setupSysTick();
-    setupLed();
     setupLeftButton();
     setupRightButton();
     vsk_Event_raise((vsk_Event *)app_ev_OnStartEvent_());
@@ -118,14 +117,27 @@ static void enableInt(void) {
     ha_Interrupt_masterEnable();
 }
 /*............................................................................*/
+static void onAssert(void) {
+    disableInt();
+    ha_Led_setAllOff();
+    ha_Led_setRedOn();
+    while (1) {
+    }
+}
+/*............................................................................*/
 int app_main(void) {
+    static vsk_Node nodes[6];
     vsk_Kernel_init(
         vsk_Kernel_(),
         onStart,
         onIdle,
         disableInt,
-        enableInt
+        enableInt,
+        onAssert,
+        nodes,
+        ut_lengthOf(nodes)
     );
+    setupLeds();
     setupEvents();
     ut_Array * taskArray = ut_Array_init(
         ut_stkObj(ut_Array),

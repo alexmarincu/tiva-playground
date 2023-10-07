@@ -10,7 +10,7 @@ vsk_TaskScheduler * vsk_TaskScheduler_init(
     vsk_TaskScheduler * const self,
     vsk_TaskSchedulerOnIdle const onIdle
 ) {
-    self->_taskArray = 0;
+    self->_taskArray = NULL;
     self->_onIdle = onIdle;
     return self;
 }

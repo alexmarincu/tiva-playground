@@ -39,7 +39,7 @@ void ut_Queue_enqueue(
 void * ut_Queue_dequeue(
     ut_Queue * const self
 ) {
-    void * item = 0;
+    void * item = NULL;
     if (ut_Queue_isEmpty(self) == false) {
         item = ut_Array_remove(self->_array, self->_front);
         if (self->_front == self->_rear) {
