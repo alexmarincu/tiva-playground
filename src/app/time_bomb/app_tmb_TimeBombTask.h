@@ -19,8 +19,7 @@ struct app_tmb_TimeBombTask {
 /*............................................................................*/
 app_tmb_TimeBombTask * app_tmb_TimeBombTask_(void);
 app_tmb_TimeBombTask * app_tmb_TimeBombTask_init(
-    app_tmb_TimeBombTask * const self,
-    ut_Queue * const messageQueue
+    app_tmb_TimeBombTask * const self
 );
 void app_tmb_TimeBombTask_setBlinkCounter(
     app_tmb_TimeBombTask * const self,

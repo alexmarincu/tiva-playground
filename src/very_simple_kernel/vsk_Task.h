@@ -2,17 +2,15 @@
 #define VSK_TASK_H
 /*............................................................................*/
 typedef struct vsk_Task vsk_Task;
-#include "../utils/ut_Queue.h"
 #include "vsk_Message.h"
-#include <stdint.h>
+#include "vsk_Queue.h"
 /*............................................................................*/
 struct vsk_Task {
-    ut_Queue * messageQueue;
+    vsk_Queue messageQueue;
 };
 /*............................................................................*/
 vsk_Task * vsk_Task_init(
-    vsk_Task * const self,
-    ut_Queue * const messageQueue
+    vsk_Task * const self
 );
 bool vsk_Task_isReady(
     vsk_Task * const self

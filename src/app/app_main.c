@@ -7,16 +7,12 @@
 #include "../hw_abstraction/ha_SysCtrl.h"
 #include "../hw_abstraction/ha_SysTick.h"
 #include "../utils/ut.h"
-#include "../very_simple_kernel/vsk_EventTimer.h"
 #include "../very_simple_kernel/vsk_Kernel.h"
-#include "../very_simple_kernel/vsk_Task.h"
-#include "../very_simple_kernel/vsk_TaskScheduler.h"
 #include "events/app_ev_BlinkTimeoutEvent.h"
 #include "events/app_ev_LeftButtonPressEvent.h"
 #include "events/app_ev_OnStartEvent.h"
 #include "events/app_ev_PauseTimeoutEvent.h"
 #include "events/app_ev_RightButtonPressEvent.h"
-#include <stdint.h>
 /*............................................................................*/
 static void setupClockFrequency(void);
 static void sysTickIntHandler(void);
@@ -121,13 +117,13 @@ static void onAssert(void) {
     disableInt();
     ha_Led_setAllOff();
     ha_Led_setRedOn();
-    ha_Led_setGreenOn();
+    ha_Led_setBlueOn();
     while (1) {
     }
 }
 /*............................................................................*/
 int app_main(void) {
-    static vsk_Node nodes[6];
+    static vsk_Node nodes[7];
     vsk_Kernel_init(
         vsk_Kernel_(),
         onStart,
@@ -147,17 +143,7 @@ int app_main(void) {
     );
     ut_Array_insert(
         taskArray,
-        app_tmb_TimeBombTask_init(
-            app_tmb_TimeBombTask_(),
-            ut_Queue_init(
-                ut_stkObj(ut_Queue),
-                ut_Array_init(
-                    ut_stkObj(ut_Array),
-                    ut_stkArr(void *, 3),
-                    3
-                )
-            )
-        ),
+        app_tmb_TimeBombTask_init(app_tmb_TimeBombTask_()),
         0
     );
     vsk_Kernel_start(

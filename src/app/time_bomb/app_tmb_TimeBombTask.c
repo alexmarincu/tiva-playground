@@ -34,10 +34,9 @@ static void app_tmb_TimeBombTask_setupEventSubscribers(
 }
 /*............................................................................*/
 app_tmb_TimeBombTask * app_tmb_TimeBombTask_init(
-    app_tmb_TimeBombTask * const self,
-    ut_Queue * const messageQueue
+    app_tmb_TimeBombTask * const self
 ) {
-    vsk_Task_init(&self->_super.task, messageQueue);
+    vsk_Task_init(&self->_super.task);
     vsk_StateMachine_init(&self->_stateMachine, &self->_super.task);
     app_tmb_WaitForButtonState_init(
         app_tmb_WaitForButtonState_(),
