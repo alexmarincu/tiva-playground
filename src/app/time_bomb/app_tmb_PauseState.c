@@ -4,7 +4,7 @@
 #include "../../hw_abstraction/ha_Led.h"
 #include "app_tmb_BlinkState.h"
 #include "app_tmb_BoomState.h"
-#include "app_tmb_TimeBombTask.h"
+#include "app_tmb_TimeBombActObj.h"
 /*............................................................................*/
 static void app_tmb_PauseState_setupEventSubscribers(
     app_tmb_PauseState * const self
@@ -60,14 +60,14 @@ static void app_tmb_PauseState_onPauseTimeout(
     app_tmb_PauseState * const self
 ) {
     if (vsk_State_isActive((vsk_State *)self)) {
-        app_tmb_TimeBombTask_decrementBlinkCounter(
-            (app_tmb_TimeBombTask *)vsk_StateMachine_getTask(
+        app_tmb_TimeBombActObj_decrementBlinkCounter(
+            (app_tmb_TimeBombActObj *)vsk_StateMachine_getTask(
                 self->_super.state._stateMachine
             )
         );
         if (
-            app_tmb_TimeBombTask_getBlinkCounter(
-                (app_tmb_TimeBombTask *)vsk_StateMachine_getTask(
+            app_tmb_TimeBombActObj_getBlinkCounter(
+                (app_tmb_TimeBombActObj *)vsk_StateMachine_getTask(
                     self->_super.state._stateMachine
                 )
             ) > 0

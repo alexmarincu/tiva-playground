@@ -126,7 +126,7 @@ void * vsk_LinkedList_remove(
     self->_size--;
     return item;
 } /*............................................................................*/
-bool static checkItem(
+static bool checkItem(
     void * const item,
     void * const data
 ) {
@@ -227,4 +227,36 @@ void vsk_LinkedList_forEach(
     ) {
         breakCondition = action(node->item, data);
     }
+}
+/*............................................................................*/
+static bool checkFindCriteria(
+    void * const item,
+    void * const data
+) {
+    struct {
+        vsk_LinkedListFindCriteria criteria;
+        void * item;
+    } * _data = data;
+    bool breakCondition = false;
+    if (_data->criteria(item)) {
+        _data->item = item;
+        breakCondition = true;
+    }
+    return breakCondition;
+}
+/*............................................................................*/
+void * vsk_LinkedList_find(
+    vsk_LinkedList * const self,
+    vsk_LinkedListFindCriteria const criteria
+) {
+    vsk_Assert_check(vsk_Assert_(), criteria);
+    struct {
+        vsk_LinkedListFindCriteria criteria;
+        void * item;
+    } data = {
+        .criteria = criteria,
+        .item = NULL,
+    };
+    vsk_LinkedList_forEach(self, checkFindCriteria, &data);
+    return data.item;
 }

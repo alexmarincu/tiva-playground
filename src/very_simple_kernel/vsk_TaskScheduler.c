@@ -10,24 +10,34 @@ vsk_TaskScheduler * vsk_TaskScheduler_init(
     vsk_TaskScheduler * const self,
     vsk_TaskSchedulerOnIdle const onIdle
 ) {
-    self->_taskArray = NULL;
+    vsk_LinkedList_init(&self->_tasks);
     self->_onIdle = onIdle;
     return self;
 }
 /*............................................................................*/
-void vsk_TaskScheduler_start(
-    vsk_TaskScheduler * const self,
-    ut_Array * const taskArray
+static bool checkForReadyTask(
+    void * const item
 ) {
-    self->_taskArray = taskArray;
+    vsk_Task * const task = item;
+    return vsk_Task_isReady(task);
+}
+/*............................................................................*/
+void vsk_TaskScheduler_start(
+    vsk_TaskScheduler * const self
+) {
     while (1) {
-        for (uint8_t i = 0; i < ut_Array_length(self->_taskArray); i++) {
-            vsk_Task * task = ut_Array_get(self->_taskArray, i);
-            if (vsk_Task_isReady(task)) {
-                vsk_Task_run(task);
-            } else {
-                self->_onIdle();
-            }
+        vsk_Task * readyTask = vsk_LinkedList_find(&self->_tasks, checkForReadyTask);
+        if (readyTask != NULL) {
+            vsk_Task_run(readyTask);
+        } else {
+            self->_onIdle();
         }
     }
+}
+/*............................................................................*/
+void vsk_TaskScheduler_register(
+    vsk_TaskScheduler * const self,
+    vsk_Task * const task
+) {
+    vsk_LinkedList_addFirst(&self->_tasks, task);
 }

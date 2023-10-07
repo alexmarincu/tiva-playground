@@ -1,5 +1,5 @@
 /*............................................................................*/
-#include "../app/time_bomb/app_tmb_TimeBombTask.h"
+#include "../app/time_bomb/app_tmb_TimeBombActObj.h"
 #include "../hw_abstraction/ha_Led.h"
 #include "../hw_abstraction/ha_LeftButton.h"
 #include "../hw_abstraction/ha_RightButton.h"
@@ -123,7 +123,7 @@ static void onAssert(void) {
 }
 /*............................................................................*/
 int app_main(void) {
-    static vsk_Node nodes[7];
+    static vsk_Node nodes[8];
     vsk_Kernel_init(
         vsk_Kernel_(),
         onStart,
@@ -136,19 +136,7 @@ int app_main(void) {
     );
     setupLeds();
     setupEvents();
-    ut_Array * taskArray = ut_Array_init(
-        ut_stkObj(ut_Array),
-        ut_stkArr(void *, 1),
-        1
-    );
-    ut_Array_insert(
-        taskArray,
-        app_tmb_TimeBombTask_init(app_tmb_TimeBombTask_()),
-        0
-    );
-    vsk_Kernel_start(
-        vsk_Kernel_(),
-        taskArray
-    );
+    app_tmb_TimeBombActObj_init(app_tmb_TimeBombActObj_());
+    vsk_Kernel_start(vsk_Kernel_());
     return 0;
 }

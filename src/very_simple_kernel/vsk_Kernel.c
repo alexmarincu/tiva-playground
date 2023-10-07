@@ -46,9 +46,8 @@ void vsk_Kernel_onSysTick(
 }
 /*............................................................................*/
 void vsk_Kernel_start(
-    vsk_Kernel * const self,
-    ut_Array * const taskArray
+    vsk_Kernel * const self
 ) {
     self->_onStart();
-    vsk_TaskScheduler_start(self->_taskScheduler, taskArray);
+    vsk_TaskScheduler_start(self->_taskScheduler);
 }

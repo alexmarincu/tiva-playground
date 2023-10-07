@@ -3,7 +3,7 @@
 #include "../../app/events/app_ev_LeftButtonPressEvent.h"
 #include "../../hw_abstraction/ha_Led.h"
 #include "app_tmb_BlinkState.h"
-#include "app_tmb_TimeBombTask.h"
+#include "app_tmb_TimeBombActObj.h"
 /*............................................................................*/
 static void app_tmb_WaitForButtonState_setupEventSubscribers(
     app_tmb_WaitForButtonState * const self
@@ -55,8 +55,8 @@ static void app_tmb_WaitForButtonState_onLeftButtonPress(
     app_tmb_WaitForButtonState * const self
 ) {
     if (vsk_State_isActive((vsk_State *)self)) {
-        app_tmb_TimeBombTask_setBlinkCounter(
-            (app_tmb_TimeBombTask *)vsk_StateMachine_getTask(
+        app_tmb_TimeBombActObj_setBlinkCounter(
+            (app_tmb_TimeBombActObj *)vsk_StateMachine_getTask(
                 self->_super.state._stateMachine
             ),
             5

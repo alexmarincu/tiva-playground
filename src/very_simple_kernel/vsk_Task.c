@@ -1,11 +1,13 @@
 /*............................................................................*/
 #include "vsk_Task.h"
 #include "vsk_CriticalSection.h"
+#include "vsk_TaskScheduler.h"
 /*............................................................................*/
 vsk_Task * vsk_Task_init(
     vsk_Task * const self
 ) {
     vsk_Queue_init(&self->messageQueue);
+    vsk_TaskScheduler_register(vsk_TaskScheduler_(), self);
     return self;
 }
 /*............................................................................*/

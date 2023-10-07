@@ -7,6 +7,9 @@ typedef bool (*vsk_LinkedListForEachAction)(
     void * const item,
     void * const data
 );
+typedef bool (*vsk_LinkedListFindCriteria)(
+    void * const item
+);
 #include "vsk_Node.h"
 #include <stdbool.h>
 #include <stddef.h>
@@ -70,5 +73,9 @@ void vsk_LinkedList_forEach(
     vsk_LinkedList * const self,
     vsk_LinkedListForEachAction const action,
     void * const data
+);
+void * vsk_LinkedList_find(
+    vsk_LinkedList * const self,
+    vsk_LinkedListFindCriteria const criteria
 );
 #endif // VSK_LINKEDLIST_H

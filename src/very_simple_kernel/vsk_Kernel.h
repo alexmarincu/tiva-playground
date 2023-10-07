@@ -36,7 +36,6 @@ void vsk_Kernel_onSysTick(
     vsk_Kernel * const self
 );
 void vsk_Kernel_start(
-    vsk_Kernel * const self,
-    ut_Array * const taskArray
+    vsk_Kernel * const self
 );
 #endif // VSK_KERNEL_H
