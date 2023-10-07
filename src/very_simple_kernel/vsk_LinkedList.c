@@ -95,12 +95,13 @@ void vsk_LinkedList_addLast(
     vsk_LinkedList_add(self, self->_size, item);
 }
 /*............................................................................*/
-void vsk_LinkedList_remove(
+void * vsk_LinkedList_remove(
     vsk_LinkedList * const self,
     size_t const index
 ) {
     vsk_Assert_check(vsk_Assert_(), index < self->_size);
     vsk_Node * node;
+    void * item;
     if (self->_size == 1) {
         node = self->_first;
         self->_first = NULL;
@@ -120,8 +121,10 @@ void vsk_LinkedList_remove(
             node->next->prev = node->prev;
         }
     }
+    item = node->item;
     vsk_Node_release(node);
     self->_size--;
+    return item;
 } /*............................................................................*/
 bool static checkItem(
     void * const item,
@@ -157,24 +160,24 @@ size_t vsk_LinkedList_getIndex(
     return data.index;
 }
 /*............................................................................*/
-void vsk_LinkedList_removeItem(
+void * vsk_LinkedList_removeItem(
     vsk_LinkedList * const self,
     void * const item
 ) {
     // todo: improve removal to not parse the list twice
-    vsk_LinkedList_remove(self, vsk_LinkedList_getIndex(self, item));
+    return vsk_LinkedList_remove(self, vsk_LinkedList_getIndex(self, item));
 }
 /*............................................................................*/
-void vsk_LinkedList_removeFirst(
+void * vsk_LinkedList_removeFirst(
     vsk_LinkedList * const self
 ) {
-    vsk_LinkedList_remove(self, 0);
+    return vsk_LinkedList_remove(self, 0);
 }
 /*............................................................................*/
-void vsk_LinkedList_removeLast(
+void * vsk_LinkedList_removeLast(
     vsk_LinkedList * const self
 ) {
-    vsk_LinkedList_remove(self, self->_size - 1);
+    return vsk_LinkedList_remove(self, self->_size - 1);
 }
 /*............................................................................*/
 void vsk_LinkedList_clear(

@@ -121,6 +121,7 @@ static void onAssert(void) {
     disableInt();
     ha_Led_setAllOff();
     ha_Led_setRedOn();
+    ha_Led_setGreenOn();
     while (1) {
     }
 }

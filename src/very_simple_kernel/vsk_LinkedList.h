@@ -36,18 +36,18 @@ void vsk_LinkedList_addFirst(
     vsk_LinkedList * const self,
     void * const item
 );
-void vsk_LinkedList_remove(
+void * vsk_LinkedList_remove(
     vsk_LinkedList * const self,
     size_t const index
 );
-void vsk_LinkedList_removeItem(
+void * vsk_LinkedList_removeItem(
     vsk_LinkedList * const self,
     void * const item
 );
-void vsk_LinkedList_removeFirst(
+void * vsk_LinkedList_removeFirst(
     vsk_LinkedList * const self
 );
-void vsk_LinkedList_removeLast(
+void * vsk_LinkedList_removeLast(
     vsk_LinkedList * const self
 );
 void vsk_LinkedList_clear(
