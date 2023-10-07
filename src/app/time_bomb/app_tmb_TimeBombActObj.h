@@ -10,7 +10,6 @@ struct app_tmb_TimeBombActObj {
     struct {
         vsk_ActiveObject actObj;
     } _super;
-    vsk_StateMachine _stateMachine;
     struct {
         vsk_EventSubscriber onStart;
     } _eventSubscribers;

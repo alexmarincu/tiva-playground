@@ -37,15 +37,26 @@ app_tmb_TimeBombActObj * app_tmb_TimeBombActObj_init(
     app_tmb_TimeBombActObj * const self
 ) {
     vsk_ActiveObject_init(&self->_super.actObj);
-    vsk_StateMachine_init(&self->_stateMachine, vsk_ActiveObject_getTask(&self->_super.actObj));
     app_tmb_WaitForButtonState_init(
         app_tmb_WaitForButtonState_(),
-        &self->_stateMachine
+        &self->_super.actObj._stateMachine
     );
-    app_tmb_BlinkState_init(app_tmb_BlinkState_(), &self->_stateMachine);
-    app_tmb_PauseState_init(app_tmb_PauseState_(), &self->_stateMachine);
-    app_tmb_BoomState_init(app_tmb_BoomState_(), &self->_stateMachine);
-    app_tmb_DefusedState_init(app_tmb_DefusedState_(), &self->_stateMachine);
+    app_tmb_BlinkState_init(
+        app_tmb_BlinkState_(),
+        &self->_super.actObj._stateMachine
+    );
+    app_tmb_PauseState_init(
+        app_tmb_PauseState_(),
+        &self->_super.actObj._stateMachine
+    );
+    app_tmb_BoomState_init(
+        app_tmb_BoomState_(),
+        &self->_super.actObj._stateMachine
+    );
+    app_tmb_DefusedState_init(
+        app_tmb_DefusedState_(),
+        &self->_super.actObj._stateMachine
+    );
     app_tmb_TimeBombActObj_setupEventSubscribers(self);
     return self;
 }
@@ -54,7 +65,7 @@ static void app_tmb_TimeBombActObj_onStart(
     app_tmb_TimeBombActObj * const self
 ) {
     vsk_StateMachine_transition(
-        &self->_stateMachine,
+        &self->_super.actObj._stateMachine,
         (vsk_State *)app_tmb_WaitForButtonState_()
     );
 }
