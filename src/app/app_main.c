@@ -1,4 +1,5 @@
 /*............................................................................*/
+#include "../app/blinky/app_blk_BlinkyActObj.h"
 #include "../app/time_bomb/app_tmb_TimeBombActObj.h"
 #include "../hw_abstraction/ha_Led.h"
 #include "../hw_abstraction/ha_LeftButton.h"
@@ -10,7 +11,9 @@
 #include "../very_simple_kernel/vsk_Kernel.h"
 #include "events/app_ev_BlinkTimeoutEvent.h"
 #include "events/app_ev_LeftButtonPressEvent.h"
+#include "events/app_ev_OffTimeoutEvent.h"
 #include "events/app_ev_OnStartEvent.h"
+#include "events/app_ev_OnTimeoutEvent.h"
 #include "events/app_ev_PauseTimeoutEvent.h"
 #include "events/app_ev_RightButtonPressEvent.h"
 /*............................................................................*/
@@ -57,7 +60,7 @@ static void setupSysTick(void) {
     ha_SysTick_init(sysTick);
     ha_SysTick_registerInt(sysTick, sysTickIntHandler);
     ha_SysTick_enableInt(sysTick);
-    ha_SysTick_setPeriodMillis(sysTick, 100);
+    ha_SysTick_setPeriodMillis(sysTick, 10);
     vsk_Kernel_informTickPeriodMillis(
         vsk_Kernel_(),
         ha_SysTick_getPeriodMillis(sysTick)
@@ -91,6 +94,8 @@ static void setupEvents(void) {
     app_ev_PauseTimeoutEvent_init(app_ev_PauseTimeoutEvent_());
     app_ev_OnStartEvent_init(app_ev_OnStartEvent_());
     app_ev_RightButtonPressEvent_init(app_ev_RightButtonPressEvent_());
+    app_ev_OnTimeoutEvent_init(app_ev_OnTimeoutEvent_());
+    app_ev_OffTimeoutEvent_init(app_ev_OffTimeoutEvent_());
 }
 /*............................................................................*/
 static void onIdle(void) {
@@ -123,7 +128,7 @@ static void onAssert(void) {
 }
 /*............................................................................*/
 int app_main(void) {
-    static vsk_Node nodes[8];
+    static vsk_Node nodes[15];
     vsk_Kernel_init(
         vsk_Kernel_(),
         onStart,
@@ -137,6 +142,7 @@ int app_main(void) {
     setupLeds();
     setupEvents();
     app_tmb_TimeBombActObj_init(app_tmb_TimeBombActObj_());
+    app_blk_BlinkyActObj_init(app_blk_BlinkyActObj_());
     vsk_Kernel_start(vsk_Kernel_());
     return 0;
 }
