@@ -5,7 +5,7 @@
 #include "app_tmb_BlinkState.h"
 #include "app_tmb_TimeBombActObj.h"
 /*............................................................................*/
-static void app_tmb_WaitForButtonState_setupEventSubscribers(
+static void app_tmb_WaitForButtonState_setupEventSubscriptions(
     app_tmb_WaitForButtonState * const self
 );
 static void app_tmb_WaitForButtonState_onLeftButtonPress(
@@ -23,13 +23,13 @@ app_tmb_WaitForButtonState * app_tmb_WaitForButtonState_(void) {
     return &self;
 }
 /*............................................................................*/
-static void app_tmb_WaitForButtonState_setupEventSubscribers(
+static void app_tmb_WaitForButtonState_setupEventSubscriptions(
     app_tmb_WaitForButtonState * const self
 ) {
     vsk_Event_subscribe(
         (vsk_Event *)app_ev_LeftButtonPressEvent_(),
-        vsk_EventSubscriber_init(
-            &self->_eventSubscribers.leftButtonPress,
+        vsk_EventSubscription_init(
+            &self->_eventSubscriptions.leftButtonPress,
             vsk_StateMachine_getTask(self->_super.state._stateMachine),
             self,
             (vsk_MessageHandler)app_tmb_WaitForButtonState_onLeftButtonPress
@@ -47,7 +47,7 @@ app_tmb_WaitForButtonState * app_tmb_WaitForButtonState_init(
         (vsk_StateOnEntry)app_tmb_WaitForButtonState_onEntry,
         (vsk_StateOnExit)app_tmb_WaitForButtonState_onExit
     );
-    app_tmb_WaitForButtonState_setupEventSubscribers(self);
+    app_tmb_WaitForButtonState_setupEventSubscriptions(self);
     return self;
 }
 /*............................................................................*/

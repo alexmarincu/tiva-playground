@@ -4,7 +4,7 @@
 #include "../../hw_abstraction/ha_Led.h"
 #include "app_tmb_PauseState.h"
 /*............................................................................*/
-static void app_tmb_BlinkState_setupEventSubscribers(
+static void app_tmb_BlinkState_setupEventSubscriptions(
     app_tmb_BlinkState * const self
 );
 static void app_tmb_BlinkState_onBlinkTimeout(
@@ -21,13 +21,13 @@ app_tmb_BlinkState * app_tmb_BlinkState_(void) {
     return &self;
 }
 /*............................................................................*/
-static void app_tmb_BlinkState_setupEventSubscribers(
+static void app_tmb_BlinkState_setupEventSubscriptions(
     app_tmb_BlinkState * const self
 ) {
     vsk_Event_subscribe(
         (vsk_Event *)app_ev_BlinkTimeoutEvent_(),
-        vsk_EventSubscriber_init(
-            &self->_eventSubscribers.blinkTimeout,
+        vsk_EventSubscription_init(
+            &self->_eventSubscriptions.blinkTimeout,
             vsk_StateMachine_getTask(self->_super.state._stateMachine),
             self,
             (vsk_MessageHandler)app_tmb_BlinkState_onBlinkTimeout
@@ -45,7 +45,7 @@ app_tmb_BlinkState * app_tmb_BlinkState_init(
         (vsk_StateOnEntry)app_tmb_BlinkState_onEntry,
         (vsk_StateOnExit)app_tmb_BlinkState_onExit
     );
-    app_tmb_BlinkState_setupEventSubscribers(self);
+    app_tmb_BlinkState_setupEventSubscriptions(self);
     vsk_EventTimer_init(
         &self->_blinkTimeoutEventTimer,
         (vsk_Event *)app_ev_BlinkTimeoutEvent_()

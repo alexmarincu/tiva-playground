@@ -4,16 +4,16 @@
 vsk_Event * vsk_Event_init(
     vsk_Event * const self
 ) {
-    vsk_LinkedList_init(&self->_eventSubscribers);
+    vsk_LinkedList_init(&self->_eventSubscriptions);
     return self;
 }
 /*............................................................................*/
 static bool postMessage(void * const item, void * const data) {
-    vsk_EventSubscriber * const subscriber = item;
+    vsk_EventSubscription * const subscription = item;
     (void)data;
     vsk_Task_postMessage(
-        vsk_EventSubscriber_getTask(subscriber),
-        vsk_EventSubscriber_getMessage(subscriber)
+        vsk_EventSubscription_getTask(subscription),
+        vsk_EventSubscription_getMessage(subscription)
     );
     return false;
 }
@@ -21,12 +21,12 @@ static bool postMessage(void * const item, void * const data) {
 void vsk_Event_raise(
     vsk_Event * const self
 ) {
-    vsk_LinkedList_forEach(&self->_eventSubscribers, postMessage, NULL);
+    vsk_LinkedList_forEach(&self->_eventSubscriptions, postMessage, NULL);
 }
 /*............................................................................*/
 void vsk_Event_subscribe(
     vsk_Event * const self,
-    vsk_EventSubscriber * const subscriber
+    vsk_EventSubscription * const subscription
 ) {
-    vsk_LinkedList_addFirst(&self->_eventSubscribers, subscriber);
+    vsk_LinkedList_addFirst(&self->_eventSubscriptions, subscription);
 }

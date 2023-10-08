@@ -3,7 +3,7 @@
 #include "../../app/events/app_ev_RightButtonPressEvent.h"
 #include "app_tmb_DefusedState.h"
 /*............................................................................*/
-static void app_tmb_ArmedState_setupEventSubscribers(
+static void app_tmb_ArmedState_setupEventSubscriptions(
     app_tmb_ArmedState * const self
 );
 static void app_tmb_ArmedState_onRightButtonPress(
@@ -21,13 +21,13 @@ app_tmb_ArmedState * app_tmb_ArmedState_(void) {
     return &self;
 }
 /*............................................................................*/
-static void app_tmb_ArmedState_setupEventSubscribers(
+static void app_tmb_ArmedState_setupEventSubscriptions(
     app_tmb_ArmedState * const self
 ) {
     vsk_Event_subscribe(
         (vsk_Event *)app_ev_RightButtonPressEvent_(),
-        vsk_EventSubscriber_init(
-            &self->_eventSubscribers.rightButtonPress,
+        vsk_EventSubscription_init(
+            &self->_eventSubscriptions.rightButtonPress,
             vsk_StateMachine_getTask(self->_super.state._stateMachine),
             self,
             (vsk_MessageHandler)app_tmb_ArmedState_onRightButtonPress
@@ -45,7 +45,7 @@ app_tmb_ArmedState * app_tmb_ArmedState_init(
         (vsk_StateOnEntry)app_tmb_ArmedState_onEntry,
         (vsk_StateOnExit)app_tmb_ArmedState_onExit
     );
-    app_tmb_ArmedState_setupEventSubscribers(self);
+    app_tmb_ArmedState_setupEventSubscriptions(self);
     return self;
 }
 /*............................................................................*/

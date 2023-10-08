@@ -7,7 +7,7 @@
 #include "app_tmb_PauseState.h"
 #include "app_tmb_WaitForButtonState.h"
 /*............................................................................*/
-static void app_tmb_TimeBombActObj_setupEventSubscribers(
+static void app_tmb_TimeBombActObj_setupEventSubscriptions(
     app_tmb_TimeBombActObj * const self
 );
 static void app_tmb_TimeBombActObj_onStart(
@@ -19,13 +19,13 @@ app_tmb_TimeBombActObj * app_tmb_TimeBombActObj_(void) {
     return &self;
 }
 /*............................................................................*/
-static void app_tmb_TimeBombActObj_setupEventSubscribers(
+static void app_tmb_TimeBombActObj_setupEventSubscriptions(
     app_tmb_TimeBombActObj * const self
 ) {
     vsk_Event_subscribe(
         (vsk_Event *)app_ev_OnStartEvent_(),
-        vsk_EventSubscriber_init(
-            &self->_eventSubscribers.onStart,
+        vsk_EventSubscription_init(
+            &self->_eventSubscriptions.onStart,
             (vsk_Task *)self,
             self,
             (vsk_MessageHandler)app_tmb_TimeBombActObj_onStart
@@ -57,7 +57,7 @@ app_tmb_TimeBombActObj * app_tmb_TimeBombActObj_init(
         app_tmb_DefusedState_(),
         &self->_super.actObj._stateMachine
     );
-    app_tmb_TimeBombActObj_setupEventSubscribers(self);
+    app_tmb_TimeBombActObj_setupEventSubscriptions(self);
     return self;
 }
 /*............................................................................*/

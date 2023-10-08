@@ -6,7 +6,7 @@
 #include "app_tmb_BoomState.h"
 #include "app_tmb_TimeBombActObj.h"
 /*............................................................................*/
-static void app_tmb_PauseState_setupEventSubscribers(
+static void app_tmb_PauseState_setupEventSubscriptions(
     app_tmb_PauseState * const self
 );
 static void app_tmb_PauseState_onPauseTimeout(
@@ -24,13 +24,13 @@ app_tmb_PauseState * app_tmb_PauseState_(void) {
     return &self;
 }
 /*............................................................................*/
-static void app_tmb_PauseState_setupEventSubscribers(
+static void app_tmb_PauseState_setupEventSubscriptions(
     app_tmb_PauseState * const self
 ) {
     vsk_Event_subscribe(
         (vsk_Event *)app_ev_PauseTimeoutEvent_(),
-        vsk_EventSubscriber_init(
-            &self->_eventSubscribers.pauseTimeout,
+        vsk_EventSubscription_init(
+            &self->_eventSubscriptions.pauseTimeout,
             vsk_StateMachine_getTask(self->_super.state._stateMachine),
             self,
             (vsk_MessageHandler)app_tmb_PauseState_onPauseTimeout
@@ -48,7 +48,7 @@ app_tmb_PauseState * app_tmb_PauseState_init(
         (vsk_StateOnEntry)app_tmb_PauseState_onEntry,
         (vsk_StateOnExit)app_tmb_PauseState_onExit
     );
-    app_tmb_PauseState_setupEventSubscribers(self);
+    app_tmb_PauseState_setupEventSubscriptions(self);
     vsk_EventTimer_init(
         &self->_pauseTimeoutEventTimer,
         (vsk_Event *)app_ev_PauseTimeoutEvent_()

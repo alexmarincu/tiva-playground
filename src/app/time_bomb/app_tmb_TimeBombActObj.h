@@ -3,16 +3,15 @@
 /*............................................................................*/
 typedef struct app_tmb_TimeBombActObj app_tmb_TimeBombActObj;
 #include "../../very_simple_kernel/vsk_ActiveObject.h"
-#include "../../very_simple_kernel/vsk_EventSubscriber.h"
-#include "../../very_simple_kernel/vsk_StateMachine.h"
+#include "../../very_simple_kernel/vsk_EventSubscription.h"
 /*............................................................................*/
 struct app_tmb_TimeBombActObj {
     struct {
         vsk_ActiveObject actObj;
     } _super;
     struct {
-        vsk_EventSubscriber onStart;
-    } _eventSubscribers;
+        vsk_EventSubscription onStart;
+    } _eventSubscriptions;
     uint32_t _blinkCounter;
 };
 /*............................................................................*/
@@ -30,5 +29,4 @@ uint32_t app_tmb_TimeBombActObj_getBlinkCounter(
 void app_tmb_TimeBombActObj_decrementBlinkCounter(
     app_tmb_TimeBombActObj * const self
 );
-/*............................................................................*/
 #endif // APP_TMB_TIMEBOMBACTOBJ_H

@@ -2,7 +2,7 @@
 #define APP_TMB_ARMEDSTATE_H
 /*............................................................................*/
 typedef struct app_tmb_ArmedState app_tmb_ArmedState;
-#include "../../very_simple_kernel/vsk_EventSubscriber.h"
+#include "../../very_simple_kernel/vsk_EventSubscription.h"
 #include "../../very_simple_kernel/vsk_State.h"
 /*............................................................................*/
 struct app_tmb_ArmedState {
@@ -10,8 +10,8 @@ struct app_tmb_ArmedState {
         vsk_State state;
     } _super;
     struct {
-        vsk_EventSubscriber rightButtonPress;
-    } _eventSubscribers;
+        vsk_EventSubscription rightButtonPress;
+    } _eventSubscriptions;
 };
 /*............................................................................*/
 app_tmb_ArmedState * app_tmb_ArmedState_(void);
