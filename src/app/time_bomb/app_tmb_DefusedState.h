@@ -2,11 +2,11 @@
 #define APP_TMB_DEFUSEDSTATE_H
 /*............................................................................*/
 typedef struct app_tmb_DefusedState app_tmb_DefusedState;
-#include "../../very_simple_kernel/vsk_State.h"
+#include "app_tmb_BaseState.h"
 /*............................................................................*/
 struct app_tmb_DefusedState {
     struct {
-        vsk_State state;
+        app_tmb_BaseState baseState;
     } _super;
 };
 /*............................................................................*/

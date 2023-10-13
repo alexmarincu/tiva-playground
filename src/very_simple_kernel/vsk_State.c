@@ -1,32 +1,41 @@
 /*............................................................................*/
 #include "vsk_State.h"
 /*............................................................................*/
+static void vsk_State_onEnter_default(
+    vsk_State * const self
+);
+static void vsk_State_onExit_default(
+    vsk_State * const self
+);
+/*............................................................................*/
 vsk_State * vsk_State_init(
     vsk_State * const self,
-    vsk_StateMachine * const stateMachine,
-    vsk_StateOnEntry const onEntry,
-    vsk_StateOnExit const onExit
+    vsk_StateMachine * const stateMachine
 ) {
     self->_stateMachine = stateMachine;
-    self->_onEntry = onEntry;
-    self->_onExit = onExit;
+    self->_onEnter = vsk_State_onEnter_default;
+    self->_onExit = vsk_State_onExit_default;
     return self;
 }
 /*............................................................................*/
-void vsk_State_onEntry(
+static void vsk_State_onEnter_default(
     vsk_State * const self
 ) {
-    self->_onEntry(self);
+}
+/*............................................................................*/
+void vsk_State_onEnter(
+    vsk_State * const self
+) {
+    self->_onEnter(self);
+}
+/*............................................................................*/
+static void vsk_State_onExit_default(
+    vsk_State * const self
+) {
 }
 /*............................................................................*/
 void vsk_State_onExit(
     vsk_State * const self
 ) {
     self->_onExit(self);
-}
-/*............................................................................*/
-bool vsk_State_isActive(
-    vsk_State * const self
-) {
-    return (vsk_StateMachine_getState(self->_stateMachine) == self);
 }

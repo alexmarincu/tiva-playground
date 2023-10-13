@@ -2,18 +2,12 @@
 #define APP_TMB_PAUSESTATE_H
 /*............................................................................*/
 typedef struct app_tmb_PauseState app_tmb_PauseState;
-#include "../../very_simple_kernel/vsk_EventSubscription.h"
-#include "../../very_simple_kernel/vsk_EventTimer.h"
-#include "../../very_simple_kernel/vsk_State.h"
+#include "app_tmb_ArmedState.h"
 /*............................................................................*/
 struct app_tmb_PauseState {
     struct {
-        vsk_State state;
+        app_tmb_ArmedState armedState;
     } _super;
-    struct {
-        vsk_EventSubscription pauseTimeout;
-    } _eventSubscriptions;
-    vsk_EventTimer _pauseTimeoutEventTimer;
 };
 /*............................................................................*/
 app_tmb_PauseState * app_tmb_PauseState_(void);

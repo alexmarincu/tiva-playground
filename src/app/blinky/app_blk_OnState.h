@@ -2,18 +2,12 @@
 #define APP_BLK_ONSTATE_H
 /*............................................................................*/
 typedef struct app_blk_OnState app_blk_OnState;
-#include "../../very_simple_kernel/vsk_EventSubscription.h"
-#include "../../very_simple_kernel/vsk_EventTimer.h"
-#include "../../very_simple_kernel/vsk_State.h"
+#include "app_blk_BaseState.h"
 /*............................................................................*/
 struct app_blk_OnState {
     struct {
-        vsk_State state;
+        app_blk_BaseState baseState;
     } _super;
-    struct {
-        vsk_EventSubscription onTimeout;
-    } _eventSubscriptions;
-    vsk_EventTimer _onTimeoutEventTimer;
 };
 /*............................................................................*/
 app_blk_OnState * app_blk_OnState_(void);

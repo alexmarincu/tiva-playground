@@ -2,18 +2,12 @@
 #define APP_TMB_BLINKSTATE_H
 /*............................................................................*/
 typedef struct app_tmb_BlinkState app_tmb_BlinkState;
-#include "../../very_simple_kernel/vsk_EventSubscription.h"
-#include "../../very_simple_kernel/vsk_EventTimer.h"
-#include "../../very_simple_kernel/vsk_State.h"
+#include "app_tmb_ArmedState.h"
 /*............................................................................*/
 struct app_tmb_BlinkState {
     struct {
-        vsk_State state;
+        app_tmb_ArmedState armedState;
     } _super;
-    struct {
-        vsk_EventSubscription blinkTimeout;
-    } _eventSubscriptions;
-    vsk_EventTimer _blinkTimeoutEventTimer;
 };
 /*............................................................................*/
 app_tmb_BlinkState * app_tmb_BlinkState_(void);

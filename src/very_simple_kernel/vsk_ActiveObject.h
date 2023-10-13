@@ -6,8 +6,10 @@ typedef struct vsk_ActiveObject vsk_ActiveObject;
 #include "vsk_Task.h"
 /*............................................................................*/
 struct vsk_ActiveObject {
+    struct {
+        vsk_StateMachine stateMachine;
+    } _super;
     vsk_Task _task;
-    vsk_StateMachine _stateMachine;
 };
 /*............................................................................*/
 vsk_ActiveObject * vsk_ActiveObject_init(

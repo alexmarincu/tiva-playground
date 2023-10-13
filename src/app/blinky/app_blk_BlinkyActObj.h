@@ -4,6 +4,7 @@
 typedef struct app_blk_BlinkyActObj app_blk_BlinkyActObj;
 #include "../../very_simple_kernel/vsk_ActiveObject.h"
 #include "../../very_simple_kernel/vsk_EventSubscription.h"
+#include "../../very_simple_kernel/vsk_EventTimer.h"
 /*............................................................................*/
 struct app_blk_BlinkyActObj {
     struct {
@@ -11,11 +12,23 @@ struct app_blk_BlinkyActObj {
     } _super;
     struct {
         vsk_EventSubscription onStart;
+        vsk_EventSubscription onTimeout;
+        vsk_EventSubscription offTimeout;
     } _eventSubscriptions;
+    struct {
+        vsk_EventTimer onTimeout;
+        vsk_EventTimer offTimeout;
+    } _eventTimers;
 };
 /*............................................................................*/
 app_blk_BlinkyActObj * app_blk_BlinkyActObj_(void);
 app_blk_BlinkyActObj * app_blk_BlinkyActObj_init(
+    app_blk_BlinkyActObj * const self
+);
+vsk_EventTimer * app_blk_BlinkyActObj_getOnTimeoutEventTimer(
+    app_blk_BlinkyActObj * const self
+);
+vsk_EventTimer * app_blk_BlinkyActObj_getOffTimeoutEventTimer(
     app_blk_BlinkyActObj * const self
 );
 #endif // APP_TMB_TIMEBOMBACTOBJ_H

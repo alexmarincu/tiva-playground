@@ -2,16 +2,12 @@
 #define APP_TMB_WAITFORBUTTONSTATE_H
 /*............................................................................*/
 typedef struct app_tmb_WaitForButtonState app_tmb_WaitForButtonState;
-#include "../../very_simple_kernel/vsk_EventSubscription.h"
-#include "../../very_simple_kernel/vsk_State.h"
+#include "app_tmb_ArmedState.h"
 /*............................................................................*/
 struct app_tmb_WaitForButtonState {
     struct {
-        vsk_State state;
+        app_tmb_ArmedState armedState;
     } _super;
-    struct {
-        vsk_EventSubscription leftButtonPress;
-    } _eventSubscriptions;
 };
 /*............................................................................*/
 app_tmb_WaitForButtonState * app_tmb_WaitForButtonState_(void);

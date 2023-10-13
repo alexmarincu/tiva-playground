@@ -17,14 +17,14 @@ vsk_CriticalSection * vsk_CriticalSection_init(
     return self;
 }
 /*............................................................................*/
-void vsk_CriticalSection_enter(
+void vsk_CriticalSection_onEnter(
     vsk_CriticalSection * const self
 ) {
     self->_disableInt();
     self->_nestingLevels++;
 }
 /*............................................................................*/
-void vsk_CriticalSection_exit(
+void vsk_CriticalSection_onExit(
     vsk_CriticalSection * const self
 ) {
     if (self->_nestingLevels > 0) {

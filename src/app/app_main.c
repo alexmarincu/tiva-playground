@@ -142,7 +142,7 @@ int app_main(void) {
     setupLeds();
     setupEvents();
     app_tmb_TimeBombActObj_init(app_tmb_TimeBombActObj_());
-    app_blk_BlinkyActObj_init(app_blk_BlinkyActObj_());
+    // app_blk_BlinkyActObj_init(app_blk_BlinkyActObj_());
     vsk_Kernel_start(vsk_Kernel_());
     return 0;
 }

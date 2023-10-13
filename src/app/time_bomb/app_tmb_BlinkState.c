@@ -1,75 +1,50 @@
 /*............................................................................*/
 #include "app_tmb_BlinkState.h"
-#include "../../app/events/app_ev_BlinkTimeoutEvent.h"
 #include "../../hw_abstraction/ha_Led.h"
 #include "app_tmb_PauseState.h"
+#include "app_tmb_TimeBombActObj.h"
 /*............................................................................*/
-static void app_tmb_BlinkState_setupEventSubscriptions(
-    app_tmb_BlinkState * const self
-);
-static void app_tmb_BlinkState_onBlinkTimeout(
-    app_tmb_BlinkState * const self
-);
-static void app_tmb_BlinkState_onEntry(
+static void app_tmb_BlinkState_onEnter(
     app_tmb_BlinkState * const self
 );
 static void app_tmb_BlinkState_onExit(
     app_tmb_BlinkState * const self
 );
+static void app_tmb_BlinkState_onBlinkTimeout(
+    app_tmb_BlinkState * const self
+);
+/*............................................................................*/
 app_tmb_BlinkState * app_tmb_BlinkState_(void) {
     static app_tmb_BlinkState self;
     return &self;
-}
-/*............................................................................*/
-static void app_tmb_BlinkState_setupEventSubscriptions(
-    app_tmb_BlinkState * const self
-) {
-    vsk_Event_subscribe(
-        (vsk_Event *)app_ev_BlinkTimeoutEvent_(),
-        vsk_EventSubscription_init(
-            &self->_eventSubscriptions.blinkTimeout,
-            vsk_StateMachine_getTask(self->_super.state._stateMachine),
-            self,
-            (vsk_MessageHandler)app_tmb_BlinkState_onBlinkTimeout
-        )
-    );
 }
 /*............................................................................*/
 app_tmb_BlinkState * app_tmb_BlinkState_init(
     app_tmb_BlinkState * const self,
     vsk_StateMachine * const stateMachine
 ) {
-    vsk_State_init(
-        &self->_super.state,
-        stateMachine,
-        (vsk_StateOnEntry)app_tmb_BlinkState_onEntry,
-        (vsk_StateOnExit)app_tmb_BlinkState_onExit
+    app_tmb_ArmedState_init(
+        &self->_super.armedState,
+        stateMachine
     );
-    app_tmb_BlinkState_setupEventSubscriptions(self);
-    vsk_EventTimer_init(
-        &self->_blinkTimeoutEventTimer,
-        (vsk_Event *)app_ev_BlinkTimeoutEvent_()
-    );
+    self->_super.armedState._super.baseState._super.state._onEnter =
+        (vsk_StateOnEnter)app_tmb_BlinkState_onEnter;
+    self->_super.armedState._super.baseState._super.state._onExit =
+        (vsk_StateExit)app_tmb_BlinkState_onExit;
+    self->_super.armedState._super.baseState._onBlinkTimeout =
+        (app_tmb_BaseStateHandler)app_tmb_BlinkState_onBlinkTimeout;
     return self;
 }
 /*............................................................................*/
-static void app_tmb_BlinkState_onBlinkTimeout(
-    app_tmb_BlinkState * const self
-) {
-    if (vsk_State_isActive((vsk_State *)self)) {
-        vsk_StateMachine_transition(
-            self->_super.state._stateMachine,
-            (vsk_State *)app_tmb_PauseState_()
-        );
-    }
-}
-/*............................................................................*/
-static void app_tmb_BlinkState_onEntry(
+static void app_tmb_BlinkState_onEnter(
     app_tmb_BlinkState * const self
 ) {
     ha_Led_setRedOn();
     vsk_EventTimer_arm(
-        &self->_blinkTimeoutEventTimer,
+        app_tmb_TimeBombActObj_getBlinkTimeoutEventTimer(
+            (app_tmb_TimeBombActObj *)
+                self->_super.armedState._super.baseState._super.state._stateMachine
+        ),
         500,
         0
     );
@@ -79,4 +54,13 @@ static void app_tmb_BlinkState_onExit(
     app_tmb_BlinkState * const self
 ) {
     ha_Led_setRedOff();
+}
+/*............................................................................*/
+static void app_tmb_BlinkState_onBlinkTimeout(
+    app_tmb_BlinkState * const self
+) {
+    vsk_StateMachine_transition(
+        self->_super.armedState._super.baseState._super.state._stateMachine,
+        (vsk_State *)app_tmb_PauseState_()
+    );
 }
