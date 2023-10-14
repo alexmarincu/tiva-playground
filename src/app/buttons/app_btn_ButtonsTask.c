@@ -35,7 +35,7 @@ app_btn_ButtonsTask * app_btn_ButtonsTask_init(
         (vsk_Event *)app_ev_LeftButtonIntEvent_(),
         vsk_EventSubscription_init(
             &self->_eventSubscriptions.onLeftButtonInt,
-            &self->_super.task,
+            &self->_super.task.inbox,
             self,
             (vsk_MessageHandler)app_btn_ButtonsTask_onLeftButtonInt
         )
@@ -44,7 +44,7 @@ app_btn_ButtonsTask * app_btn_ButtonsTask_init(
         (vsk_Event *)app_ev_RightButtonIntEvent_(),
         vsk_EventSubscription_init(
             &self->_eventSubscriptions.onRightButtonInt,
-            &self->_super.task,
+            &self->_super.task.inbox,
             self,
             (vsk_MessageHandler)app_btn_ButtonsTask_onRightButtonInt
         )
@@ -53,7 +53,7 @@ app_btn_ButtonsTask * app_btn_ButtonsTask_init(
         (vsk_Event *)app_ev_LeftButtonDebounceTimeoutEvent_(),
         vsk_EventSubscription_init(
             &self->_eventSubscriptions.onLeftButtonDebounce,
-            &self->_super.task,
+            &self->_super.task.inbox,
             self,
             (vsk_MessageHandler)
                 app_btn_ButtonsTask_onLeftButtonDebounceTimeout
@@ -63,7 +63,7 @@ app_btn_ButtonsTask * app_btn_ButtonsTask_init(
         (vsk_Event *)app_ev_RightButtonDebounceTimeoutEvent_(),
         vsk_EventSubscription_init(
             &self->_eventSubscriptions.onRightButtonDebounce,
-            &self->_super.task,
+            &self->_super.task.inbox,
             self,
             (vsk_MessageHandler)
                 app_btn_ButtonsTask_onRightButtonDebounceTimeout

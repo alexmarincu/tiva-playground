@@ -37,7 +37,7 @@ app_blk_BlinkyActObj * app_blk_BlinkyActObj_init(
         (vsk_Event *)app_ev_OnStartEvent_(),
         vsk_EventSubscription_init(
             &self->_eventSubscriptions.onStart,
-            &self->_super.actObj._task,
+            &self->_super.actObj._task.inbox,
             self,
             (vsk_MessageHandler)app_blk_BlinkyActObj_onStart
         )
@@ -46,7 +46,7 @@ app_blk_BlinkyActObj * app_blk_BlinkyActObj_init(
         (vsk_Event *)app_ev_OnTimeoutEvent_(),
         vsk_EventSubscription_init(
             &self->_eventSubscriptions.onTimeout,
-            &self->_super.actObj._task,
+            &self->_super.actObj._task.inbox,
             self,
             (vsk_MessageHandler)app_blk_BlinkyActObj_onOnTimeout
         )
@@ -55,7 +55,7 @@ app_blk_BlinkyActObj * app_blk_BlinkyActObj_init(
         (vsk_Event *)app_ev_OffTimeoutEvent_(),
         vsk_EventSubscription_init(
             &self->_eventSubscriptions.offTimeout,
-            &self->_super.actObj._task,
+            &self->_super.actObj._task.inbox,
             self,
             (vsk_MessageHandler)app_blk_BlinkyActObj_onOffTimeout
         )

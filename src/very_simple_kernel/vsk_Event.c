@@ -11,9 +11,9 @@ vsk_Event * vsk_Event_init(
 static bool postMessage(void * const item, void * const data) {
     vsk_EventSubscription * const subscription = item;
     (void)data;
-    vsk_Task_postMessage(
-        vsk_EventSubscription_getTask(subscription),
-        vsk_EventSubscription_getMessage(subscription)
+    vsk_Inbox_postMessage(
+        subscription->inbox,
+        &subscription->message
     );
     return false;
 }
