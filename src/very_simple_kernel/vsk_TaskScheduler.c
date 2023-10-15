@@ -15,10 +15,9 @@ vsk_TaskScheduler * vsk_TaskScheduler_init(
     return self;
 }
 /*............................................................................*/
-static bool checkForReadyTask(
-    void * const item
+static bool isTaskReady(
+    vsk_Task * const task
 ) {
-    vsk_Task * const task = item;
     return vsk_Task_isReady(task);
 }
 /*............................................................................*/
@@ -26,8 +25,12 @@ void vsk_TaskScheduler_start(
     vsk_TaskScheduler * const self
 ) {
     while (1) {
-        vsk_Task * readyTask = vsk_LinkedList_find(&self->_tasks, checkForReadyTask);
-        if (readyTask != NULL) {
+        vsk_Task * readyTask =
+            vsk_LinkedList_find(
+                &self->_tasks,
+                (vsk_LinkedListFindPredicate)isTaskReady
+            );
+        if (readyTask) {
             vsk_Task_run(readyTask);
         } else {
             self->_onIdle();

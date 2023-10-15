@@ -8,20 +8,20 @@ vsk_Event * vsk_Event_init(
     return self;
 }
 /*............................................................................*/
-static bool postMessage(void * const item, void * const data) {
-    vsk_EventSubscription * const subscription = item;
-    (void)data;
+static void postMessage(vsk_EventSubscription * const subscription) {
     vsk_Inbox_postMessage(
         subscription->inbox,
         &subscription->message
     );
-    return false;
 }
 /*............................................................................*/
 void vsk_Event_raise(
     vsk_Event * const self
 ) {
-    vsk_LinkedList_forEach(&self->_eventSubscriptions, postMessage, NULL);
+    vsk_LinkedList_forEach(
+        &self->_eventSubscriptions,
+        (vsk_LinkedListForEachOperation)postMessage
+    );
 }
 /*............................................................................*/
 void vsk_Event_subscribe(

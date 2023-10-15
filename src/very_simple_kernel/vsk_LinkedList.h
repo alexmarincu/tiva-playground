@@ -3,11 +3,10 @@
 /*............................................................................*/
 typedef struct vsk_LinkedList vsk_LinkedList;
 #include <stdbool.h>
-typedef bool (*vsk_LinkedListForEachAction)(
-    void * const item,
-    void * const data
+typedef void (*vsk_LinkedListForEachOperation)(
+    void * const item
 );
-typedef bool (*vsk_LinkedListFindCriteria)(
+typedef bool (*vsk_LinkedListFindPredicate)(
     void * const item
 );
 #include "vsk_Node.h"
@@ -71,11 +70,10 @@ size_t vsk_LinkedList_getSize(
 );
 void vsk_LinkedList_forEach(
     vsk_LinkedList * const self,
-    vsk_LinkedListForEachAction const action,
-    void * const data
+    vsk_LinkedListForEachOperation const operation
 );
 void * vsk_LinkedList_find(
     vsk_LinkedList * const self,
-    vsk_LinkedListFindCriteria const criteria
+    vsk_LinkedListFindPredicate const predicate
 );
 #endif // VSK_LINKEDLIST_H

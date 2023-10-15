@@ -1,6 +1,8 @@
 /*............................................................................*/
 #include "vsk_LinkedList.h"
+#include "../utils/ut.h"
 #include "vsk_Assert.h"
+#include "vsk_LinkedListIterator.h"
 /*............................................................................*/
 static vsk_Node * createNode(
     vsk_LinkedList * const self,
@@ -125,39 +127,30 @@ void * vsk_LinkedList_remove(
     vsk_Node_release(node);
     self->_size--;
     return item;
-} /*............................................................................*/
-static bool checkItem(
-    void * const item,
-    void * const data
-) {
-    struct {
-        void * item;
-        size_t index;
-    } * _data = data;
-    bool breakCondition = false;
-    _data->index++;
-    if (item == _data->item) {
-        breakCondition = true;
-    }
-    return breakCondition;
 }
 /*............................................................................*/
 size_t vsk_LinkedList_getIndex(
     vsk_LinkedList * const self,
     void * const item
 ) {
-    struct {
-        void * item;
-        size_t index;
-    } data = {
-        .item = item,
-        .index = -1,
-    };
-    vsk_LinkedList_forEach(self, checkItem, &data);
-    if (data.index == self->_size) {
-        data.index = -1;
+    size_t index = -1;
+    bool itemFound = false;
+    vsk_LinkedListIterator * iter =
+        vsk_LinkedListIterator_init(
+            ut_stkObj(vsk_LinkedListIterator),
+            self
+        );
+    void * _item;
+    while ((_item = vsk_LinkedListIterator_next(iter)) && !itemFound) {
+        index++;
+        if (item == _item) {
+            itemFound = true;
+        }
     }
-    return data.index;
+    if (!itemFound) {
+        index = -1;
+    }
+    return index;
 }
 /*............................................................................*/
 void * vsk_LinkedList_removeItem(
@@ -215,48 +208,37 @@ size_t vsk_LinkedList_getSize(
 /*............................................................................*/
 void vsk_LinkedList_forEach(
     vsk_LinkedList * const self,
-    vsk_LinkedListForEachAction const action,
-    void * const data
+    vsk_LinkedListForEachOperation const operation
 ) {
-    vsk_Assert_check(vsk_Assert_(), action);
-    bool breakCondition = false;
-    for (
-        vsk_Node * node = self->_first;
-        ((breakCondition == false) && (node != NULL));
-        node = node->next
-    ) {
-        breakCondition = action(node->item, data);
-    }
-}
-/*............................................................................*/
-static bool checkFindCriteria(
-    void * const item,
-    void * const data
-) {
-    struct {
-        vsk_LinkedListFindCriteria criteria;
-        void * item;
-    } * _data = data;
-    bool breakCondition = false;
-    if (_data->criteria(item)) {
-        _data->item = item;
-        breakCondition = true;
-    }
-    return breakCondition;
+    vsk_Assert_check(vsk_Assert_(), operation);
+    vsk_LinkedListIterator * iter =
+        vsk_LinkedListIterator_init(
+            ut_stkObj(vsk_LinkedListIterator),
+            self
+        );
+    vsk_LinkedListIterator_forEach(iter, operation);
 }
 /*............................................................................*/
 void * vsk_LinkedList_find(
     vsk_LinkedList * const self,
-    vsk_LinkedListFindCriteria const criteria
+    vsk_LinkedListFindPredicate const predicate
 ) {
-    vsk_Assert_check(vsk_Assert_(), criteria);
-    struct {
-        vsk_LinkedListFindCriteria criteria;
-        void * item;
-    } data = {
-        .criteria = criteria,
-        .item = NULL,
-    };
-    vsk_LinkedList_forEach(self, checkFindCriteria, &data);
-    return data.item;
+    vsk_Assert_check(vsk_Assert_(), predicate);
+    bool itemFound = false;
+    vsk_LinkedListIterator * iter =
+        vsk_LinkedListIterator_init(
+            ut_stkObj(vsk_LinkedListIterator),
+            self
+        );
+    void * item;
+    while (vsk_LinkedListIterator_hasNext(iter) && !itemFound) {
+        item = vsk_LinkedListIterator_next(iter);
+        if (predicate(item)) {
+            itemFound = true;
+        }
+    }
+    if (!itemFound) {
+        item = NULL;
+    }
+    return item;
 }
