@@ -2,7 +2,6 @@
 #include "app_tmb_TimeBombActObj.h"
 #include "../../app/events/app_ev_BlinkTimeoutEvent.h"
 #include "../../app/events/app_ev_LeftButtonPressEvent.h"
-#include "../../app/events/app_ev_OnStartEvent.h"
 #include "../../app/events/app_ev_PauseTimeoutEvent.h"
 #include "../../app/events/app_ev_RightButtonPressEvent.h"
 #include "app_tmb_BlinkState.h"
@@ -11,9 +10,6 @@
 #include "app_tmb_PauseState.h"
 #include "app_tmb_WaitForButtonState.h"
 /*............................................................................*/
-static void app_tmb_TimeBombActObj_onStart(
-    app_tmb_TimeBombActObj * const self
-);
 static void app_tmb_TimeBombActObj_onRightButtonPress(
     app_tmb_TimeBombActObj * const self
 );
@@ -35,7 +31,10 @@ app_tmb_TimeBombActObj * app_tmb_TimeBombActObj_(void) {
 app_tmb_TimeBombActObj * app_tmb_TimeBombActObj_init(
     app_tmb_TimeBombActObj * const self
 ) {
-    vsk_ActiveObject_init(&self->_super.actObj);
+    vsk_ActiveObject_init(
+        &self->_super.actObj,
+        (vsk_State *)app_tmb_WaitForButtonState_()
+    );
     app_tmb_WaitForButtonState_init(
         app_tmb_WaitForButtonState_(),
         &self->_super.actObj._super.stateMachine
@@ -55,15 +54,6 @@ app_tmb_TimeBombActObj * app_tmb_TimeBombActObj_init(
     app_tmb_DefusedState_init(
         app_tmb_DefusedState_(),
         &self->_super.actObj._super.stateMachine
-    );
-    vsk_Event_subscribe(
-        (vsk_Event *)app_ev_OnStartEvent_(),
-        vsk_EventSubscription_init(
-            &self->_eventSubscriptions.onStart,
-            &self->_super.actObj._task.inbox,
-            self,
-            (vsk_MessageHandler)app_tmb_TimeBombActObj_onStart
-        )
     );
     vsk_Event_subscribe(
         (vsk_Event *)app_ev_RightButtonPressEvent_(),
@@ -110,15 +100,6 @@ app_tmb_TimeBombActObj * app_tmb_TimeBombActObj_init(
         (vsk_Event *)app_ev_PauseTimeoutEvent_()
     );
     return self;
-}
-/*............................................................................*/
-static void app_tmb_TimeBombActObj_onStart(
-    app_tmb_TimeBombActObj * const self
-) {
-    vsk_StateMachine_transition(
-        &self->_super.actObj._super.stateMachine,
-        (vsk_State *)app_tmb_WaitForButtonState_()
-    );
 }
 /*............................................................................*/
 void app_tmb_TimeBombActObj_setBlinkCounter(

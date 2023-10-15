@@ -15,7 +15,6 @@
 #include "events/app_ev_LeftButtonIntEvent.h"
 #include "events/app_ev_LeftButtonPressEvent.h"
 #include "events/app_ev_OffTimeoutEvent.h"
-#include "events/app_ev_OnStartEvent.h"
 #include "events/app_ev_OnTimeoutEvent.h"
 #include "events/app_ev_PauseTimeoutEvent.h"
 #include "events/app_ev_RightButtonDebounceTimeoutEvent.h"
@@ -119,7 +118,6 @@ static void setupEvents(void) {
     app_ev_LeftButtonIntEvent_init(app_ev_LeftButtonIntEvent_());
     app_ev_LeftButtonDebounceTimeoutEvent_init(app_ev_LeftButtonDebounceTimeoutEvent_());
     app_ev_PauseTimeoutEvent_init(app_ev_PauseTimeoutEvent_());
-    app_ev_OnStartEvent_init(app_ev_OnStartEvent_());
     app_ev_RightButtonPressEvent_init(app_ev_RightButtonPressEvent_());
     app_ev_RightButtonIntEvent_init(app_ev_RightButtonIntEvent_());
     app_ev_RightButtonDebounceTimeoutEvent_init(app_ev_RightButtonDebounceTimeoutEvent_());
@@ -136,7 +134,6 @@ static void onStart(void) {
     setupSysTick();
     setupLeftButton();
     setupRightButton();
-    vsk_Event_raise((vsk_Event *)app_ev_OnStartEvent_());
 }
 /*............................................................................*/
 static void disableInt(void) {

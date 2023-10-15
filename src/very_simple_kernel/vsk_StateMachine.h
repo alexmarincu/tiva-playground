@@ -6,10 +6,12 @@ typedef struct vsk_StateMachine vsk_StateMachine;
 /*............................................................................*/
 struct vsk_StateMachine {
     vsk_State * _state;
+    vsk_State * _initialState;
 };
 /*............................................................................*/
 vsk_StateMachine * vsk_StateMachine_init(
-    vsk_StateMachine * const self
+    vsk_StateMachine * const self,
+    vsk_State * const initialState
 );
 void vsk_StateMachine_transition(
     vsk_StateMachine * const self,

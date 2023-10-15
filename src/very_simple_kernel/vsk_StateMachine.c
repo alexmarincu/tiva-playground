@@ -3,9 +3,11 @@
 #include <stddef.h>
 /*............................................................................*/
 vsk_StateMachine * vsk_StateMachine_init(
-    vsk_StateMachine * const self
+    vsk_StateMachine * const self,
+    vsk_State * const initialState
 ) {
     self->_state = NULL;
+    self->_initialState = initialState;
     return self;
 }
 /*............................................................................*/

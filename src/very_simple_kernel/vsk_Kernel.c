@@ -1,6 +1,7 @@
 /*............................................................................*/
 #include "vsk_Kernel.h"
 #include "vsk_NodeClass.h"
+#include "vsk_OnStartEvent.h"
 /*............................................................................*/
 vsk_Kernel * vsk_Kernel_(void) {
     static vsk_Kernel self;
@@ -27,6 +28,7 @@ vsk_Kernel * vsk_Kernel_init(
     );
     vsk_NodeClass_init(vsk_NodeClass_(), nodes, capacity);
     vsk_Assert_init(vsk_Assert_(), onAssert);
+    vsk_OnStartEvent_init(vsk_OnStartEvent_());
     self->_onStart = onStart;
     return self;
 }
@@ -49,5 +51,6 @@ void vsk_Kernel_start(
     vsk_Kernel * const self
 ) {
     self->_onStart();
+    vsk_Event_raise((vsk_Event *)vsk_OnStartEvent_());
     vsk_TaskScheduler_start(self->_taskScheduler);
 }

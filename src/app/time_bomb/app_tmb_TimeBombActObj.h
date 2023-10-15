@@ -11,7 +11,6 @@ struct app_tmb_TimeBombActObj {
         vsk_ActiveObject actObj;
     } _super;
     struct {
-        vsk_EventSubscription onStart;
         vsk_EventSubscription rightButtonPress;
         vsk_EventSubscription leftButtonPress;
         vsk_EventSubscription blinkTimeout;
