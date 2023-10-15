@@ -1,79 +1,98 @@
-#include "../app/blinky/app_blk_BlinkyTask.h"
-
-#include "events/app_ev_BlueTimeoutEvent.h"
-#include "events/app_ev_GreenTimeoutEvent.h"
-#include "events/app_ev_LeftButtonPressEvent.h"
-#include "events/app_ev_LeftButtonReleaseEvent.h"
-#include "events/app_ev_RedTimeoutEvent.h"
-#include "events/app_ev_RightButtonPressEvent.h"
-#include "events/app_ev_RightButtonReleaseEvent.h"
-
+/*............................................................................*/
+#include "../app/blinky/app_blk_BlinkyActObj.h"
+#include "../app/buttons/app_btn_ButtonsTask.h"
+#include "../app/time_bomb/app_tmb_TimeBombActObj.h"
 #include "../hw_abstraction/ha_Led.h"
 #include "../hw_abstraction/ha_LeftButton.h"
 #include "../hw_abstraction/ha_RightButton.h"
 #include "../hw_abstraction/ha_SysClock.h"
 #include "../hw_abstraction/ha_SysCtrl.h"
 #include "../hw_abstraction/ha_SysTick.h"
-
 #include "../utils/ut.h"
-
-#include "../very_simple_kernel/vsk_EventTimer.h"
 #include "../very_simple_kernel/vsk_Kernel.h"
-#include "../very_simple_kernel/vsk_Task.h"
-#include "../very_simple_kernel/vsk_TaskScheduler.h"
-
-#include <stdint.h>
-
+#include "events/app_ev_BlinkTimeoutEvent.h"
+#include "events/app_ev_LeftButtonDebounceTimeoutEvent.h"
+#include "events/app_ev_LeftButtonIntEvent.h"
+#include "events/app_ev_LeftButtonPressEvent.h"
+#include "events/app_ev_OffTimeoutEvent.h"
+#include "events/app_ev_OnStartEvent.h"
+#include "events/app_ev_OnTimeoutEvent.h"
+#include "events/app_ev_PauseTimeoutEvent.h"
+#include "events/app_ev_RightButtonDebounceTimeoutEvent.h"
+#include "events/app_ev_RightButtonIntEvent.h"
+#include "events/app_ev_RightButtonPressEvent.h"
+/*............................................................................*/
+static struct {
+    uint8_t debounceDelayMillis;
+} const app_const = {
+    .debounceDelayMillis = 100
+};
+/*............................................................................*/
 static void setupClockFrequency(void);
 static void sysTickIntHandler(void);
 static void leftButtonIntHandler(void);
 static void rightButtonIntHandler(void);
 static void setupSysTick(void);
 static void setupLeftButton(void);
-static void setupLed(void);
+static void setupLeds(void);
 static void setupRightButton(void);
 static void setupEvents(void);
 static void onIdle(void);
 static void onStart(void);
-static void enterCriticalSection(void);
-static void exitCriticalSection(void);
-
+static void disableInt(void);
+static void enableInt(void);
+/*............................................................................*/
 static void setupClockFrequency(void) {
     ha_SysClock_setMaxFrequency();
 }
-
+/*............................................................................*/
 static void sysTickIntHandler(void) {
     vsk_Kernel_onSysTick(vsk_Kernel_());
 }
-
+/*............................................................................*/
 static void leftButtonIntHandler(void) {
     ha_LeftButton * button = ha_LeftButton_();
-    ha_LeftButton_clearIntFlag(button);
-    if (ha_LeftButton_isPressed(button)) {
-        vsk_Event_raise((vsk_Event *)app_ev_LeftButtonPressEvent_());
-    } else {
-        vsk_Event_raise((vsk_Event *)app_ev_LeftButtonReleaseEvent_());
+    static uint32_t lastMillisCount = 0;
+    uint32_t millisCount = vsk_Time_getMillisCount(vsk_Time_());
+    uint32_t timeElapsed = millisCount - lastMillisCount;
+    if (millisCount < lastMillisCount) {
+        timeElapsed = (UINT32_MAX - lastMillisCount + 1) + millisCount;
     }
+    if (timeElapsed > app_const.debounceDelayMillis) {
+        vsk_Event_raise((vsk_Event *)app_ev_LeftButtonIntEvent_());
+        lastMillisCount = millisCount;
+    }
+    ha_LeftButton_clearIntFlag(button);
 }
-
+/*............................................................................*/
 static void rightButtonIntHandler(void) {
     ha_RightButton * button = ha_RightButton_();
-    ha_RightButton_clearIntFlag(button);
-    if (ha_RightButton_isPressed(button)) {
-        vsk_Event_raise((vsk_Event *)app_ev_RightButtonPressEvent_());
-    } else {
-        vsk_Event_raise((vsk_Event *)app_ev_RightButtonReleaseEvent_());
+    static uint32_t lastMillisCount = 0;
+    uint32_t millisCount = vsk_Time_getMillisCount(vsk_Time_());
+    uint32_t timeElapsed = millisCount - lastMillisCount;
+    if (millisCount < lastMillisCount) {
+        timeElapsed = (UINT32_MAX - lastMillisCount + 1) + millisCount;
     }
+    if (timeElapsed > app_const.debounceDelayMillis) {
+        vsk_Event_raise((vsk_Event *)app_ev_RightButtonIntEvent_());
+        lastMillisCount = millisCount;
+    }
+    ha_RightButton_clearIntFlag(button);
 }
-
+/*............................................................................*/
 static void setupSysTick(void) {
-    ha_SysTick_registerInt(sysTickIntHandler);
-    ha_SysTick_enableInt();
-    ha_SysTick_setPeriodMillis(10);
-    vsk_Kernel_informTickPeriodMillis(vsk_Kernel_(), ha_SysTick_getPeriodMillis());
-    ha_SysTick_enable();
+    ha_SysTick * sysTick = ha_SysTick_();
+    ha_SysTick_init(sysTick);
+    ha_SysTick_registerInt(sysTick, sysTickIntHandler);
+    ha_SysTick_enableInt(sysTick);
+    ha_SysTick_setPeriodMillis(sysTick, 1);
+    vsk_Kernel_informTickPeriodMillis(
+        vsk_Kernel_(),
+        ha_SysTick_getPeriodMillis(sysTick)
+    );
+    ha_SysTick_enable(sysTick);
 }
-
+/*............................................................................*/
 static void setupLeftButton(void) {
     ha_LeftButton * button = ha_LeftButton_();
     ha_LeftButton_init(button);
@@ -81,11 +100,11 @@ static void setupLeftButton(void) {
     ha_LeftButton_registerInt(button, leftButtonIntHandler);
     ha_LeftButton_enableInt(button);
 }
-
-static void setupLed(void) {
+/*............................................................................*/
+static void setupLeds(void) {
     ha_Led_init();
 }
-
+/*............................................................................*/
 static void setupRightButton(void) {
     ha_RightButton * button = ha_RightButton_();
     ha_RightButton_init(button);
@@ -93,93 +112,67 @@ static void setupRightButton(void) {
     ha_RightButton_registerInt(button, rightButtonIntHandler);
     ha_RightButton_enableInt(button);
 }
-
+/*............................................................................*/
 static void setupEvents(void) {
-    app_ev_RedTimeoutEvent_init(app_ev_RedTimeoutEvent_());
-    app_ev_BlueTimeoutEvent_init(app_ev_BlueTimeoutEvent_());
-    app_ev_GreenTimeoutEvent_init(app_ev_GreenTimeoutEvent_());
+    app_ev_BlinkTimeoutEvent_init(app_ev_BlinkTimeoutEvent_());
     app_ev_LeftButtonPressEvent_init(app_ev_LeftButtonPressEvent_());
-    app_ev_LeftButtonReleaseEvent_init(app_ev_LeftButtonReleaseEvent_());
+    app_ev_LeftButtonIntEvent_init(app_ev_LeftButtonIntEvent_());
+    app_ev_LeftButtonDebounceTimeoutEvent_init(app_ev_LeftButtonDebounceTimeoutEvent_());
+    app_ev_PauseTimeoutEvent_init(app_ev_PauseTimeoutEvent_());
+    app_ev_OnStartEvent_init(app_ev_OnStartEvent_());
+    app_ev_RightButtonPressEvent_init(app_ev_RightButtonPressEvent_());
+    app_ev_RightButtonIntEvent_init(app_ev_RightButtonIntEvent_());
+    app_ev_RightButtonDebounceTimeoutEvent_init(app_ev_RightButtonDebounceTimeoutEvent_());
+    app_ev_OnTimeoutEvent_init(app_ev_OnTimeoutEvent_());
+    app_ev_OffTimeoutEvent_init(app_ev_OffTimeoutEvent_());
 }
-
+/*............................................................................*/
 static void onIdle(void) {
-    ha_SysCtrl_waitForInt();
+    ha_SysCtrl_sleep();
 }
-
+/*............................................................................*/
 static void onStart(void) {
     setupClockFrequency();
     setupSysTick();
-    setupLed();
     setupLeftButton();
     setupRightButton();
-    static vsk_EventTimer redEventTimer;
-    static vsk_EventTimer blueEventTimer;
-    static vsk_EventTimer greenEventTimer;
-    vsk_EventTimer_arm(
-        vsk_EventTimer_init(
-            &redEventTimer,
-            (vsk_Event *)app_ev_RedTimeoutEvent_()
-        ),
-        1,
-        3000
-    );
-    vsk_EventTimer_arm(
-        vsk_EventTimer_init(
-            &blueEventTimer,
-            (vsk_Event *)app_ev_BlueTimeoutEvent_()
-        ),
-        1000,
-        3000
-    );
-    vsk_EventTimer_arm(
-        vsk_EventTimer_init(
-            &greenEventTimer,
-            (vsk_Event *)app_ev_GreenTimeoutEvent_()
-        ),
-        2000,
-        3000
-    );
+    vsk_Event_raise((vsk_Event *)app_ev_OnStartEvent_());
 }
-
-static void enterCriticalSection(void) {
-    ha_Interrupt_disableAll();
+/*............................................................................*/
+static void disableInt(void) {
+    ha_Interrupt_masterDisable();
 }
-
-static void exitCriticalSection(void) {
-    ha_Interrupt_enableAll();
+/*............................................................................*/
+static void enableInt(void) {
+    ha_Interrupt_masterEnable();
 }
-
+/*............................................................................*/
+static void onAssert(void) {
+    disableInt();
+    ha_Led_setAllOff();
+    ha_Led_setRedOn();
+    ha_Led_setBlueOn();
+    while (1) {
+    }
+}
+/*............................................................................*/
 int app_main(void) {
+    static vsk_Node nodes[16];
+    vsk_Kernel_init(
+        vsk_Kernel_(),
+        onStart,
+        onIdle,
+        disableInt,
+        enableInt,
+        onAssert,
+        nodes,
+        ut_lengthOf(nodes)
+    );
+    setupLeds();
     setupEvents();
-    ut_Array * taskArray = ut_Array_init(
-        ut_stkObj(ut_Array),
-        ut_stkArr(void *, 1),
-        1
-    );
-    ut_Array_insert(
-        taskArray,
-        app_blk_BlinkyTask_init(
-            app_blk_BlinkyTask_(),
-            ut_Queue_init(
-                ut_stkObj(ut_Queue),
-                ut_Array_init(
-                    ut_stkObj(ut_Array),
-                    ut_stkArr(void *, 3),
-                    3
-                )
-            )
-        ),
-        0
-    );
-    vsk_Kernel_start(
-        vsk_Kernel_init(
-            vsk_Kernel_(),
-            taskArray,
-            onStart,
-            onIdle,
-            enterCriticalSection,
-            exitCriticalSection
-        )
-    );
+    // app_blk_BlinkyActObj_init(app_blk_BlinkyActObj_());
+    app_btn_ButtonsTask_init(app_btn_ButtonsTask_());
+    app_tmb_TimeBombActObj_init(app_tmb_TimeBombActObj_());
+    vsk_Kernel_start(vsk_Kernel_());
     return 0;
 }

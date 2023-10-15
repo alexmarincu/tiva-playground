@@ -1,5 +1,10 @@
+/*............................................................................*/
 #include "ha_SysCtrl.h"
-
-void ha_SysCtrl_waitForInt(void) {
-    __asm("wfi");
+#include <stdbool.h>
+#include <stdint.h>
+//
+#include "../../lib/TivaWare/driverlib/sysctl.h"
+/*............................................................................*/
+void ha_SysCtrl_sleep(void) {
+    SysCtlSleep();
 }

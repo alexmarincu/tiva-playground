@@ -1,29 +1,36 @@
+/*............................................................................*/
 #include "vsk_CriticalSection.h"
-
-struct vsk_CriticalSection {
-    vsk_CriticalSectionEnter enter;
-    vsk_CriticalSectionExit exit;
-};
-
+/*............................................................................*/
 vsk_CriticalSection * vsk_CriticalSection_(void) {
     static vsk_CriticalSection self;
     return &self;
 }
-
+/*............................................................................*/
 vsk_CriticalSection * vsk_CriticalSection_init(
     vsk_CriticalSection * const self,
-    vsk_CriticalSectionEnter const enter,
-    vsk_CriticalSectionExit const exit
+    vsk_CriticalSectionDisableInt const disableInt,
+    vsk_CriticalSectionEnableInt const enableInt
 ) {
-    self->enter = enter;
-    self->exit = exit;
+    self->_disableInt = disableInt;
+    self->_enableInt = enableInt;
+    self->_nestingLevels = 0;
     return self;
 }
-
-void vsk_CriticalSection_enter(vsk_CriticalSection * const self) {
-    self->enter();
+/*............................................................................*/
+void vsk_CriticalSection_onEnter(
+    vsk_CriticalSection * const self
+) {
+    self->_disableInt();
+    self->_nestingLevels++;
 }
-
-void vsk_CriticalSection_exit(vsk_CriticalSection * const self) {
-    self->exit();
+/*............................................................................*/
+void vsk_CriticalSection_onExit(
+    vsk_CriticalSection * const self
+) {
+    if (self->_nestingLevels > 0) {
+        self->_nestingLevels--;
+        if (self->_nestingLevels == 0) {
+            self->_enableInt();
+        }
+    }
 }

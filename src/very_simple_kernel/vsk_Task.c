@@ -1,31 +1,24 @@
+/*............................................................................*/
 #include "vsk_Task.h"
 #include "vsk_CriticalSection.h"
-#include "vsk_Time.h"
-
+#include "vsk_TaskScheduler.h"
+/*............................................................................*/
 vsk_Task * vsk_Task_init(
-    vsk_Task * const self,
-    ut_Queue * const messageQueue
+    vsk_Task * const self
 ) {
-    self->messageQueue = messageQueue;
+    vsk_Inbox_init(&self->inbox);
+    vsk_TaskScheduler_register(vsk_TaskScheduler_(), self);
     return self;
 }
-
-bool vsk_Task_isReady(vsk_Task * const self) {
-    vsk_CriticalSection_enter(vsk_CriticalSection_());
-    bool isReady = (ut_Queue_isEmpty(self->messageQueue) == false);
-    vsk_CriticalSection_exit(vsk_CriticalSection_());
-    return isReady;
+/*............................................................................*/
+bool vsk_Task_isReady(
+    vsk_Task * const self
+) {
+    return (vsk_Inbox_isEmpty(&self->inbox) == false);
 }
-
-void vsk_Task_run(vsk_Task * const self) {
-    vsk_CriticalSection_enter(vsk_CriticalSection_());
-    vsk_TaskMessage * message = ut_Queue_dequeue(self->messageQueue);
-    vsk_CriticalSection_exit(vsk_CriticalSection_());
-    message->handler(self);
-}
-
-void vsk_Task_postMessage(vsk_Task * const self, vsk_TaskMessage * const message) {
-    vsk_CriticalSection_enter(vsk_CriticalSection_());
-    ut_Queue_enqueue(self->messageQueue, message);
-    vsk_CriticalSection_exit(vsk_CriticalSection_());
+/*............................................................................*/
+void vsk_Task_run(
+    vsk_Task * const self
+) {
+    vsk_Message_dispatch(vsk_Inbox_readMessage(&self->inbox));
 }

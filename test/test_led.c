@@ -1,13 +1,10 @@
 #include "../src/hw_abstraction/ha_Led.h"
-#include "unity.h"
-
 #include "driverlib/pin_map.h"
-
 #include "inc/hw_memmap.h"
 #include "inc/tm4c123gh6pm.h"
-
 #include "mock_gpio.h"
 #include "mock_sysctl.h"
+#include "unity.h"
 
 void setUp(void) {
 }
