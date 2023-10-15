@@ -83,13 +83,13 @@ app_btn_ButtonsTask * app_btn_ButtonsTask_init(
 static void app_btn_ButtonsTask_onLeftButtonInt(
     app_btn_ButtonsTask * const self
 ) {
-    vsk_EventTimer_arm(&self->_eventTimers.leftButtonDebounceTimeout, 50, 0);
+    vsk_EventTimer_arm(&self->_eventTimers.leftButtonDebounceTimeout, 20, 0);
 }
 /*............................................................................*/
 static void app_btn_ButtonsTask_onRightButtonInt(
     app_btn_ButtonsTask * const self
 ) {
-    vsk_EventTimer_arm(&self->_eventTimers.rightButtonDebounceTimeout, 50, 0);
+    vsk_EventTimer_arm(&self->_eventTimers.rightButtonDebounceTimeout, 20, 0);
 }
 /*............................................................................*/
 static void app_btn_ButtonsTask_onLeftButtonDebounceTimeout(

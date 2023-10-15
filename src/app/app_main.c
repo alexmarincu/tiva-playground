@@ -21,11 +21,7 @@
 #include "events/app_ev_RightButtonIntEvent.h"
 #include "events/app_ev_RightButtonPressEvent.h"
 /*............................................................................*/
-static struct {
-    uint8_t debounceDelayMillis;
-} const app_const = {
-    .debounceDelayMillis = 100
-};
+#define app_buttonIntFilterMillis 20
 /*............................................................................*/
 static void setupClockFrequency(void);
 static void sysTickIntHandler(void);
@@ -57,7 +53,7 @@ static void leftButtonIntHandler(void) {
     if (millisCount < lastMillisCount) {
         timeElapsed = (UINT32_MAX - lastMillisCount + 1) + millisCount;
     }
-    if (timeElapsed > app_const.debounceDelayMillis) {
+    if (timeElapsed > app_buttonIntFilterMillis) {
         vsk_Event_raise((vsk_Event *)app_ev_LeftButtonIntEvent_());
         lastMillisCount = millisCount;
     }
@@ -72,7 +68,7 @@ static void rightButtonIntHandler(void) {
     if (millisCount < lastMillisCount) {
         timeElapsed = (UINT32_MAX - lastMillisCount + 1) + millisCount;
     }
-    if (timeElapsed > app_const.debounceDelayMillis) {
+    if (timeElapsed > app_buttonIntFilterMillis) {
         vsk_Event_raise((vsk_Event *)app_ev_RightButtonIntEvent_());
         lastMillisCount = millisCount;
     }
@@ -116,11 +112,15 @@ static void setupEvents(void) {
     app_ev_BlinkTimeoutEvent_init(app_ev_BlinkTimeoutEvent_());
     app_ev_LeftButtonPressEvent_init(app_ev_LeftButtonPressEvent_());
     app_ev_LeftButtonIntEvent_init(app_ev_LeftButtonIntEvent_());
-    app_ev_LeftButtonDebounceTimeoutEvent_init(app_ev_LeftButtonDebounceTimeoutEvent_());
+    app_ev_LeftButtonDebounceTimeoutEvent_init(
+        app_ev_LeftButtonDebounceTimeoutEvent_()
+    );
     app_ev_PauseTimeoutEvent_init(app_ev_PauseTimeoutEvent_());
     app_ev_RightButtonPressEvent_init(app_ev_RightButtonPressEvent_());
     app_ev_RightButtonIntEvent_init(app_ev_RightButtonIntEvent_());
-    app_ev_RightButtonDebounceTimeoutEvent_init(app_ev_RightButtonDebounceTimeoutEvent_());
+    app_ev_RightButtonDebounceTimeoutEvent_init(
+        app_ev_RightButtonDebounceTimeoutEvent_()
+    );
     app_ev_OnTimeoutEvent_init(app_ev_OnTimeoutEvent_());
     app_ev_OffTimeoutEvent_init(app_ev_OffTimeoutEvent_());
 }
