@@ -42,6 +42,6 @@ vsk_Node * vsk_NodeClass_acquireNode(
         );
     }
     vsk_CriticalSection_onExit(vsk_CriticalSection_());
-    vsk_Assert_check(vsk_Assert_(), node);
+    vsk_Assert_true(vsk_Assert_(), node);
     return node;
 }

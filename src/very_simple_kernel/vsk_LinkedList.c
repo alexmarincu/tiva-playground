@@ -35,7 +35,7 @@ static vsk_Node * getNode(
     vsk_LinkedList * const self,
     size_t index
 ) {
-    vsk_Assert_check(vsk_Assert_(), index < self->_size);
+    vsk_Assert_true(vsk_Assert_(), index < self->_size);
     vsk_Node * node;
     if (index <= self->_size / 2) {
         node = self->_first;
@@ -56,7 +56,7 @@ void vsk_LinkedList_add(
     size_t const index,
     void * const item
 ) {
-    vsk_Assert_check(vsk_Assert_(), index <= self->_size);
+    vsk_Assert_true(vsk_Assert_(), index <= self->_size);
     vsk_Node * newNode = createNode(self, item);
     if (self->_size == 0) {
         self->_first = newNode;
@@ -101,7 +101,7 @@ void * vsk_LinkedList_remove(
     vsk_LinkedList * const self,
     size_t const index
 ) {
-    vsk_Assert_check(vsk_Assert_(), index < self->_size);
+    vsk_Assert_true(vsk_Assert_(), index < self->_size);
     vsk_Node * node;
     void * item;
     if (self->_size == 1) {
@@ -210,7 +210,7 @@ void vsk_LinkedList_forEach(
     vsk_LinkedList * const self,
     vsk_LinkedListForEachOperation const operation
 ) {
-    vsk_Assert_check(vsk_Assert_(), operation);
+    vsk_Assert_true(vsk_Assert_(), operation);
     vsk_LinkedListIterator * iter =
         vsk_LinkedListIterator_init(
             ut_stkObj(vsk_LinkedListIterator),
@@ -223,7 +223,7 @@ void * vsk_LinkedList_find(
     vsk_LinkedList * const self,
     vsk_LinkedListFindPredicate const predicate
 ) {
-    vsk_Assert_check(vsk_Assert_(), predicate);
+    vsk_Assert_true(vsk_Assert_(), predicate);
     bool itemFound = false;
     vsk_LinkedListIterator * iter =
         vsk_LinkedListIterator_init(

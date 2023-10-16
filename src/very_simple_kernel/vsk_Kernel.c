@@ -10,11 +10,11 @@ vsk_Kernel * vsk_Kernel_(void) {
 /*............................................................................*/
 vsk_Kernel * vsk_Kernel_init(
     vsk_Kernel * const self,
-    vsk_KernelOnStart const onStart,
+    vsk_KernelOnStart const onKernelStart,
     vsk_TaskSchedulerOnIdle const onIdle,
     vsk_CriticalSectionDisableInt const disableInt,
     vsk_CriticalSectionEnableInt const enableInt,
-    vsk_AssertOnAssert const onAssert,
+    vsk_AssertOnFail const onAssertFail,
     vsk_Node * const nodes,
     size_t const capacity
 ) {
@@ -27,9 +27,9 @@ vsk_Kernel * vsk_Kernel_init(
         enableInt
     );
     vsk_NodeClass_init(vsk_NodeClass_(), nodes, capacity);
-    vsk_Assert_init(vsk_Assert_(), onAssert);
+    vsk_Assert_init(vsk_Assert_(), onAssertFail);
     vsk_OnStartEvent_init(vsk_OnStartEvent_());
-    self->_onStart = onStart;
+    self->_onStart = onKernelStart;
     return self;
 }
 /*............................................................................*/

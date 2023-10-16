@@ -33,7 +33,7 @@ static void setupLeds(void);
 static void setupRightButton(void);
 static void setupEvents(void);
 static void onIdle(void);
-static void onStart(void);
+static void onKernelStart(void);
 static void disableInt(void);
 static void enableInt(void);
 /*............................................................................*/
@@ -126,10 +126,11 @@ static void setupEvents(void) {
 }
 /*............................................................................*/
 static void onIdle(void) {
+    // maybe put also peripherals in sleep / low power mode
     ha_SysCtrl_sleep();
 }
 /*............................................................................*/
-static void onStart(void) {
+static void onKernelStart(void) {
     setupClockFrequency();
     setupSysTick();
     setupLeftButton();
@@ -144,7 +145,7 @@ static void enableInt(void) {
     ha_Interrupt_masterEnable();
 }
 /*............................................................................*/
-static void onAssert(void) {
+static void onAssertFail(void) {
     disableInt();
     ha_Led_setAllOff();
     ha_Led_setRedOn();
@@ -157,11 +158,11 @@ int app_main(void) {
     static vsk_Node nodes[16];
     vsk_Kernel_init(
         vsk_Kernel_(),
-        onStart,
+        onKernelStart,
         onIdle,
         disableInt,
         enableInt,
-        onAssert,
+        onAssertFail,
         nodes,
         ut_lengthOf(nodes)
     );

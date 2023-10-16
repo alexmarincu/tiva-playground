@@ -21,7 +21,7 @@ void vsk_EventTimer_arm(
     uint32_t const delayMillis,
     uint32_t const periodMillis
 ) {
-    vsk_Assert_check(vsk_Assert_(), delayMillis > 0);
+    vsk_Assert_true(vsk_Assert_(), delayMillis > 0);
     vsk_CriticalSection_onEnter(vsk_CriticalSection_());
     self->_delayMillis = delayMillis;
     self->_periodMillis = periodMillis;
