@@ -1,0 +1,33 @@
+@startuml time bomb
+[*] --> Armed
+state Armed {
+    [*] --> WaitForButton
+    Armed : exit / set all LEDs off
+    Armed --> Defused : right button press
+    state WaitForButton {
+        WaitForButton : entry / set greed LED on
+        WaitForButton : exit / set greed LED off
+        WaitForButton --> Blink : left button press / set blink counter to 5
+    }
+    state Blink {
+        Blink : entry / set red LED on, arm blink timer 500ms
+        Blink : exit / set red LED off
+        Blink --> Pause : blink timeout
+    }
+    state c <<choice>>
+    state Pause {
+        Pause : entry / arm pause timer 500ms
+        Pause --> c : pause timeout / decrement blink counter
+    }
+    c --> Blink : [blinkCounter > 0]
+    c --> Boom : [blinkCounter == 0]
+    state Boom {
+        Boom : entry / set all LEDs on
+    }
+}
+state Defused {
+    Defused : entry / set blue LED on
+    Defused : exit / set blue LED off
+    Defused --> WaitForButton : right button press
+}
+@enduml
