@@ -4,13 +4,6 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "openocd: Launch",
-            "type": "shell",
-            "command": "openocd -f /usr/share/openocd/scripts/board/ti_ek-tm4c123gxl.cfg",
-            "problemMatcher": [],
-            "isBackground": true
-        },
-        {
             "label": "Project: Build",
             "type": "shell",
             "command": "ceedling release",

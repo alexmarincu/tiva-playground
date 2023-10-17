@@ -5,7 +5,6 @@
             "name": "Debug with OpenOCD",
             "type": "cppdbg",
             "request": "launch",
-            "preLaunchTask": "openocd: Launch",
             "program": "${workspaceFolder}/build/release/project.axf",
             "args": [],
             "stopAtEntry": true,
@@ -14,6 +13,11 @@
             "externalConsole": false,
             "MIMode": "gdb",
             "targetArchitecture": "arm",
+            "debugServerPath": "openocd",
+            "debugServerArgs": "-f /usr/share/openocd/scripts/board/ti_ek-tm4c123gxl.cfg",
+            "filterStderr": true,
+            "filterStdout": false,
+            "miDebuggerPath": "arm-none-eabi-gdb",
             "setupCommands": [
                 {
                     "description": "Enable pretty-printing for gdb",
@@ -32,8 +36,7 @@
                     "description": "Initialize the target",
                     "text": "monitor reset init"
                 }
-            ],
-            "miDebuggerPath": "arm-none-eabi-gdb"
+            ]
         }
     ]
 }
