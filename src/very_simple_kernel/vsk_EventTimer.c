@@ -8,11 +8,10 @@ vsk_EventTimer * vsk_EventTimer_init(
     vsk_EventTimer * const self,
     vsk_Event * const event
 ) {
-    self->_klass = vsk_EventTimerClass_();
     self->_event = event;
     self->_delayMillis = 0;
     self->_periodMillis = 0;
-    vsk_EventTimerClass_register(vsk_EventTimerClass_(), self);
+    vsk_EventTimerSupervisor_register(vsk_EventTimerSupervisor_(), self);
     return self;
 }
 /*............................................................................*/

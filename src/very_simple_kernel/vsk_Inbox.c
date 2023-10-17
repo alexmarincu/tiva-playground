@@ -1,11 +1,15 @@
 /*............................................................................*/
 #include "vsk_Inbox.h"
 #include "vsk_CriticalSection.h"
+#include "vsk_InboxSupervisor.h"
 /*............................................................................*/
 vsk_Inbox * vsk_Inbox_init(
-    vsk_Inbox * const self
+    vsk_Inbox * const self,
+    vsk_Task * const task
 ) {
+    self->task = task;
     vsk_Queue_init(&self->_messageQueue);
+    vsk_InboxSupervisor_register(vsk_InboxSupervisor_(), self);
     return self;
 }
 /*............................................................................*/

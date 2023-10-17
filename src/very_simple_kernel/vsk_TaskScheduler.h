@@ -3,6 +3,7 @@
 /*............................................................................*/
 typedef struct vsk_TaskScheduler vsk_TaskScheduler;
 typedef void (*vsk_TaskSchedulerOnIdle)(void);
+#include "vsk_LinkedList.h"
 #include "vsk_Task.h"
 /*............................................................................*/
 struct vsk_TaskScheduler {

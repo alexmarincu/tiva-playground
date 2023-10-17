@@ -1,12 +1,15 @@
 /*............................................................................*/
 #include "vsk_Task.h"
-#include "vsk_CriticalSection.h"
 #include "vsk_TaskScheduler.h"
 /*............................................................................*/
 vsk_Task * vsk_Task_init(
-    vsk_Task * const self
+    vsk_Task * const self,
+    vsk_TaskOperation const operation,
+    void * const param
 ) {
-    vsk_Inbox_init(&self->inbox);
+    self->_operation = operation;
+    self->_param = param;
+    self->_isReady = false;
     vsk_TaskScheduler_register(vsk_TaskScheduler_(), self);
     return self;
 }
@@ -14,11 +17,18 @@ vsk_Task * vsk_Task_init(
 bool vsk_Task_isReady(
     vsk_Task * const self
 ) {
-    return (vsk_Inbox_isEmpty(&self->inbox) == false);
+    return self->_isReady;
 }
 /*............................................................................*/
 void vsk_Task_run(
     vsk_Task * const self
 ) {
-    vsk_Message_dispatch(vsk_Inbox_readMessage(&self->inbox));
+    self->_operation(self->_param);
+    self->_isReady = false;
+}
+/*............................................................................*/
+void vsk_Task_activate(
+    vsk_Task * const self
+) {
+    self->_isReady = true;
 }

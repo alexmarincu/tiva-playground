@@ -11,7 +11,6 @@ struct app_blk_BlinkyActObj {
         vsk_ActiveObject actObj;
     } _super;
     struct {
-        vsk_EventSubscription onStart;
         vsk_EventSubscription onTimeout;
         vsk_EventSubscription offTimeout;
     } _eventSubscriptions;

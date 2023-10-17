@@ -10,6 +10,7 @@ struct app_btn_ButtonsTask {
     struct {
         vsk_Task task;
     } _super;
+    vsk_Inbox _inbox;
     struct {
         vsk_EventSubscription onLeftButtonInt;
         vsk_EventSubscription onRightButtonInt;

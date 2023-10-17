@@ -155,7 +155,7 @@ static void onAssertFail(void) {
 }
 /*............................................................................*/
 int app_main(void) {
-    static vsk_Node nodes[16];
+    static vsk_Node nodes[18];
     vsk_Kernel_init(
         vsk_Kernel_(),
         onKernelStart,

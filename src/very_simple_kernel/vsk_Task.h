@@ -2,20 +2,27 @@
 #define VSK_TASK_H
 /*............................................................................*/
 typedef struct vsk_Task vsk_Task;
-#include "vsk_Inbox.h"
-#include "vsk_Message.h"
+typedef void (*vsk_TaskOperation)(void * const param);
+#include <stdbool.h>
 /*............................................................................*/
 struct vsk_Task {
-    vsk_Inbox inbox;
+    vsk_TaskOperation _operation;
+    void * _param;
+    bool _isReady;
 };
 /*............................................................................*/
 vsk_Task * vsk_Task_init(
-    vsk_Task * const self
+    vsk_Task * const self,
+    vsk_TaskOperation const operation,
+    void * const param
 );
 bool vsk_Task_isReady(
     vsk_Task * const self
 );
 void vsk_Task_run(
+    vsk_Task * const self
+);
+void vsk_Task_activate(
     vsk_Task * const self
 );
 #endif // VSK_TASK_H

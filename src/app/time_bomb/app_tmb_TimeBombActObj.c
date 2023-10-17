@@ -59,7 +59,7 @@ app_tmb_TimeBombActObj * app_tmb_TimeBombActObj_init(
         (vsk_Event *)app_ev_RightButtonPressEvent_(),
         vsk_EventSubscription_init(
             &self->_eventSubscriptions.rightButtonPress,
-            &self->_super.actObj._task.inbox,
+            &self->_super.actObj._inbox,
             self,
             (vsk_MessageHandler)app_tmb_TimeBombActObj_onRightButtonPress
         )
@@ -68,7 +68,7 @@ app_tmb_TimeBombActObj * app_tmb_TimeBombActObj_init(
         (vsk_Event *)app_ev_LeftButtonPressEvent_(),
         vsk_EventSubscription_init(
             &self->_eventSubscriptions.leftButtonPress,
-            &self->_super.actObj._task.inbox,
+            &self->_super.actObj._inbox,
             self,
             (vsk_MessageHandler)app_tmb_TimeBombActObj_onLeftButtonPress
         )
@@ -77,7 +77,7 @@ app_tmb_TimeBombActObj * app_tmb_TimeBombActObj_init(
         (vsk_Event *)app_ev_BlinkTimeoutEvent_(),
         vsk_EventSubscription_init(
             &self->_eventSubscriptions.blinkTimeout,
-            &self->_super.actObj._task.inbox,
+            &self->_super.actObj._inbox,
             self,
             (vsk_MessageHandler)app_tmb_TimeBombActObj_onBlinkTimeout
         )
@@ -86,7 +86,7 @@ app_tmb_TimeBombActObj * app_tmb_TimeBombActObj_init(
         (vsk_Event *)app_ev_PauseTimeoutEvent_(),
         vsk_EventSubscription_init(
             &self->_eventSubscriptions.pauseTimeout,
-            &self->_super.actObj._task.inbox,
+            &self->_super.actObj._inbox,
             self,
             (vsk_MessageHandler)app_tmb_TimeBombActObj_onPauseTimeout
         )

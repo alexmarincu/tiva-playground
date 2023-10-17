@@ -10,10 +10,11 @@ struct vsk_ActiveObject {
     struct {
         vsk_StateMachine stateMachine;
     } _super;
+    vsk_Task _task;
+    vsk_Inbox _inbox;
     struct {
         vsk_EventSubscription onStart;
     } _eventSubscriptions;
-    vsk_Task _task;
 };
 /*............................................................................*/
 vsk_ActiveObject * vsk_ActiveObject_init(
