@@ -33,8 +33,8 @@ app_blk_OffState * app_blk_OffState_init(
 static void app_blk_OffState_onEnter(
     app_blk_OffState * const self
 ) {
-    vsk_EventTimer_arm(
-        app_blk_BlinkyActObj_getOffTimeoutEventTimer(
+    vsk_Timer_arm(
+        (vsk_Timer *)app_blk_BlinkyActObj_getOffTimeoutEventTimer(
             (app_blk_BlinkyActObj *)
                 self->_super.baseState._super.state._stateMachine
         ),

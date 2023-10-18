@@ -40,8 +40,8 @@ static void app_blk_OnState_onEnter(
     app_blk_OnState * const self
 ) {
     ha_Led_setBlueOn();
-    vsk_EventTimer_arm(
-        app_blk_BlinkyActObj_getOnTimeoutEventTimer(
+    vsk_Timer_arm(
+        (vsk_Timer *)app_blk_BlinkyActObj_getOnTimeoutEventTimer(
             (app_blk_BlinkyActObj *)
                 self->_super.baseState._super.state._stateMachine
         ),

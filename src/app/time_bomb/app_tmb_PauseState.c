@@ -34,8 +34,8 @@ app_tmb_PauseState * app_tmb_PauseState_init(
 static void app_tmb_PauseState_onEnter(
     app_tmb_PauseState * const self
 ) {
-    vsk_EventTimer_arm(
-        app_tmb_TimeBombActObj_getPauseTimeoutEventTimer(
+    vsk_Timer_arm(
+        (vsk_Timer *)app_tmb_TimeBombActObj_getPauseTimeoutEventTimer(
             (app_tmb_TimeBombActObj *)
                 self->_super.armedState._super.baseState._super.state._stateMachine
         ),

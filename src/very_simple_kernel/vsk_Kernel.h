@@ -5,16 +5,16 @@ typedef struct vsk_Kernel vsk_Kernel;
 typedef void (*vsk_KernelOnStart)(void);
 #include "vsk_Assert.h"
 #include "vsk_CriticalSection.h"
-#include "vsk_EventTimerSupervisor.h"
 #include "vsk_InboxSupervisor.h"
 #include "vsk_Node.h"
 #include "vsk_TaskScheduler.h"
 #include "vsk_Time.h"
+#include "vsk_TimerSupervisor.h"
 /*............................................................................*/
 struct vsk_Kernel {
     vsk_Time * _time;
     vsk_TaskScheduler * _taskScheduler;
-    vsk_EventTimerSupervisor * _eventTimerSupervisor;
+    vsk_TimerSupervisor * _eventTimerSupervisor;
     vsk_InboxSupervisor * _inboxSupervisor;
     vsk_KernelOnStart _onStart;
 };

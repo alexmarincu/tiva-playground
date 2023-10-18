@@ -40,8 +40,8 @@ static void app_tmb_BlinkState_onEnter(
     app_tmb_BlinkState * const self
 ) {
     ha_Led_setRedOn();
-    vsk_EventTimer_arm(
-        app_tmb_TimeBombActObj_getBlinkTimeoutEventTimer(
+    vsk_Timer_arm(
+        (vsk_Timer *)app_tmb_TimeBombActObj_getBlinkTimeoutEventTimer(
             (app_tmb_TimeBombActObj *)
                 self->_super.armedState._super.baseState._super.state._stateMachine
         ),
