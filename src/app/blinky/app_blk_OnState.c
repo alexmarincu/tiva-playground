@@ -30,7 +30,7 @@ app_blk_OnState * app_blk_OnState_init(
     self->_super.baseState._super.state._onEnter =
         (vsk_StateOnEnter)app_blk_OnState_onEnter;
     self->_super.baseState._super.state._onExit =
-        (vsk_StateExit)app_blk_OnState_onExit;
+        (vsk_StateOnExit)app_blk_OnState_onExit;
     self->_super.baseState._onOnTimeout =
         (app_blk_BaseStateHandler)app_blk_OnState_onOnTimeout;
     return self;

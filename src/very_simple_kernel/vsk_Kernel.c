@@ -12,8 +12,8 @@ vsk_Kernel * vsk_Kernel_init(
     vsk_Kernel * const self,
     vsk_KernelOnStart const onKernelStart,
     vsk_TaskSchedulerOnIdle const onIdle,
-    vsk_CriticalSectionDisableInt const disableInt,
-    vsk_CriticalSectionEnableInt const enableInt,
+    vsk_CriticalSectionOnEnter const onCriticalSectionEnter,
+    vsk_CriticalSectionOnExit const onCriticalSectionExit,
     vsk_AssertOnFail const onAssertFail,
     vsk_Node * const nodes,
     size_t const capacity
@@ -24,8 +24,8 @@ vsk_Kernel * vsk_Kernel_init(
     self->_inboxSupervisor = vsk_InboxSupervisor_init(vsk_InboxSupervisor_());
     vsk_CriticalSection_init(
         vsk_CriticalSection_(),
-        disableInt,
-        enableInt
+        onCriticalSectionEnter,
+        onCriticalSectionExit
     );
     vsk_NodeClass_init(vsk_NodeClass_(), nodes, capacity);
     vsk_Assert_init(vsk_Assert_(), onAssertFail);

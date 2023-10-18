@@ -23,7 +23,7 @@ vsk_NodeClass * vsk_NodeClass_init(
 vsk_Node * vsk_NodeClass_acquireNode(
     vsk_NodeClass * const self
 ) {
-    vsk_CriticalSection_onEnter(vsk_CriticalSection_());
+    vsk_CriticalSection_enter(vsk_CriticalSection_());
     vsk_Node * node = NULL;
     vsk_Node * endOfPool =
         (vsk_Node *)((uint8_t *)self->_pool.nodes //
@@ -41,7 +41,7 @@ vsk_Node * vsk_NodeClass_acquireNode(
             && (self->_pool.firstFree < endOfPool)
         );
     }
-    vsk_CriticalSection_onExit(vsk_CriticalSection_());
+    vsk_CriticalSection_exit(vsk_CriticalSection_());
     vsk_Assert_true(vsk_Assert_(), node);
     return node;
 }

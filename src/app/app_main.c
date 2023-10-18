@@ -34,8 +34,8 @@ static void setupRightButton(void);
 static void setupEvents(void);
 static void onIdle(void);
 static void onKernelStart(void);
-static void disableInt(void);
-static void enableInt(void);
+static void onCriticalSectionEnter(void);
+static void onCriticalSectionExit(void);
 /*............................................................................*/
 static void setupClockFrequency(void) {
     ha_SysClock_setMaxFrequency();
@@ -137,16 +137,16 @@ static void onKernelStart(void) {
     setupRightButton();
 }
 /*............................................................................*/
-static void disableInt(void) {
+static void onCriticalSectionEnter(void) {
     ha_Interrupt_masterDisable();
 }
 /*............................................................................*/
-static void enableInt(void) {
+static void onCriticalSectionExit(void) {
     ha_Interrupt_masterEnable();
 }
 /*............................................................................*/
 static void onAssertFail(void) {
-    disableInt();
+    ha_Interrupt_masterDisable();
     ha_Led_setAllOff();
     ha_Led_setRedOn();
     ha_Led_setBlueOn();
@@ -160,8 +160,8 @@ int app_main(void) {
         vsk_Kernel_(),
         onKernelStart,
         onIdle,
-        disableInt,
-        enableInt,
+        onCriticalSectionEnter,
+        onCriticalSectionExit,
         onAssertFail,
         nodes,
         ut_lengthOf(nodes)

@@ -30,7 +30,7 @@ app_tmb_BlinkState * app_tmb_BlinkState_init(
     self->_super.armedState._super.baseState._super.state._onEnter =
         (vsk_StateOnEnter)app_tmb_BlinkState_onEnter;
     self->_super.armedState._super.baseState._super.state._onExit =
-        (vsk_StateExit)app_tmb_BlinkState_onExit;
+        (vsk_StateOnExit)app_tmb_BlinkState_onExit;
     self->_super.armedState._super.baseState._onBlinkTimeout =
         (app_tmb_BaseStateHandler)app_tmb_BlinkState_onBlinkTimeout;
     return self;

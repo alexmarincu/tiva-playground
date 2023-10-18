@@ -5,7 +5,7 @@ typedef struct vsk_State vsk_State;
 typedef void (*vsk_StateOnEnter)(
     vsk_State * const self
 );
-typedef void (*vsk_StateExit)(
+typedef void (*vsk_StateOnExit)(
     vsk_State * const self
 );
 #include "vsk_StateMachine.h"
@@ -14,7 +14,7 @@ typedef void (*vsk_StateExit)(
 struct vsk_State {
     vsk_StateMachine * _stateMachine;
     vsk_StateOnEnter _onEnter;
-    vsk_StateExit _onExit;
+    vsk_StateOnExit _onExit;
 };
 /*............................................................................*/
 vsk_State * vsk_State_init(

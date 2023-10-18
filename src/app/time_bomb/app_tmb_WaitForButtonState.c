@@ -30,7 +30,7 @@ app_tmb_WaitForButtonState * app_tmb_WaitForButtonState_init(
     self->_super.armedState._super.baseState._super.state._onEnter =
         (vsk_StateOnEnter)app_tmb_WaitForButtonState_onEnter;
     self->_super.armedState._super.baseState._super.state._onExit =
-        (vsk_StateExit)app_tmb_WaitForButtonState_onExit;
+        (vsk_StateOnExit)app_tmb_WaitForButtonState_onExit;
     self->_super.armedState._super.baseState._onLeftButtonPress =
         (app_tmb_BaseStateHandler)app_tmb_WaitForButtonState_onLeftButtonPress;
     return self;
