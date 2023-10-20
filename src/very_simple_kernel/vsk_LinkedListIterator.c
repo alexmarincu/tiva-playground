@@ -1,6 +1,5 @@
 /*............................................................................*/
 #include "vsk_LinkedListIterator.h"
-#include "vsk_Assert.h"
 /*............................................................................*/
 vsk_LinkedListIterator * vsk_LinkedListIterator_init(
     vsk_LinkedListIterator * const self, vsk_LinkedList * const linkedList
@@ -37,7 +36,6 @@ void vsk_LinkedListIterator_forEach(
     vsk_LinkedListIterator * const self,
     vsk_LinkedListIteratorForEachOperation const operation
 ) {
-    vsk_Assert_true(vsk_Assert_(), operation);
     void * item;
     while ((item = vsk_LinkedListIterator_next(self))) {
         operation(item);

@@ -163,7 +163,6 @@ size_t vsk_LinkedList_getSize(vsk_LinkedList * const self) {
 void vsk_LinkedList_forEach(
     vsk_LinkedList * const self, vsk_LinkedListForEachOperation const operation
 ) {
-    vsk_Assert_true(vsk_Assert_(), operation);
     vsk_LinkedListIterator * iter =
         vsk_LinkedListIterator_init(ut_stkObj(vsk_LinkedListIterator), self);
     vsk_LinkedListIterator_forEach(iter, operation);
@@ -172,7 +171,6 @@ void vsk_LinkedList_forEach(
 void * vsk_LinkedList_find(
     vsk_LinkedList * const self, vsk_LinkedListFindPredicate const predicate
 ) {
-    vsk_Assert_true(vsk_Assert_(), predicate);
     bool itemFound = false;
     vsk_LinkedListIterator * iter =
         vsk_LinkedListIterator_init(ut_stkObj(vsk_LinkedListIterator), self);

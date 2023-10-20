@@ -6,7 +6,6 @@
 vsk_Timer * vsk_Timer_init(
     vsk_Timer * const self, vsk_TimerCallback const callback
 ) {
-    vsk_Assert_true(vsk_Assert_(), callback != NULL);
     self->_callback = callback;
     self->_delayMillis = 0;
     self->_periodMillis = 0;
