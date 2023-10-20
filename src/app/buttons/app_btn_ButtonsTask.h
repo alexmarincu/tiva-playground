@@ -12,10 +12,10 @@ struct app_btn_ButtonsTask {
     } _super;
     vsk_Inbox _inbox;
     struct {
-        vsk_EventSubscription onLeftButtonInt;
-        vsk_EventSubscription onRightButtonInt;
-        vsk_EventSubscription onLeftButtonDebounce;
-        vsk_EventSubscription onRightButtonDebounce;
+        vsk_EventSubscription leftButtonInt;
+        vsk_EventSubscription rightButtonInt;
+        vsk_EventSubscription leftButtonDebounceTimeout;
+        vsk_EventSubscription rightButtonDebounceTimeout;
     } _eventSubscriptions;
     struct {
         vsk_EventTimer leftButtonDebounceTimeout;

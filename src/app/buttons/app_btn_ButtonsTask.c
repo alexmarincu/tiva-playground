@@ -39,7 +39,7 @@ app_btn_ButtonsTask * app_btn_ButtonsTask_init(
     vsk_Event_subscribe(
         (vsk_Event *)app_ev_LeftButtonIntEvent_(),
         vsk_EventSubscription_init(
-            &self->_eventSubscriptions.onLeftButtonInt,
+            &self->_eventSubscriptions.leftButtonInt,
             &self->_inbox,
             self,
             (vsk_MessageHandler)app_btn_ButtonsTask_onLeftButtonInt
@@ -48,7 +48,7 @@ app_btn_ButtonsTask * app_btn_ButtonsTask_init(
     vsk_Event_subscribe(
         (vsk_Event *)app_ev_RightButtonIntEvent_(),
         vsk_EventSubscription_init(
-            &self->_eventSubscriptions.onRightButtonInt,
+            &self->_eventSubscriptions.rightButtonInt,
             &self->_inbox,
             self,
             (vsk_MessageHandler)app_btn_ButtonsTask_onRightButtonInt
@@ -57,7 +57,7 @@ app_btn_ButtonsTask * app_btn_ButtonsTask_init(
     vsk_Event_subscribe(
         (vsk_Event *)app_ev_LeftButtonDebounceTimeoutEvent_(),
         vsk_EventSubscription_init(
-            &self->_eventSubscriptions.onLeftButtonDebounce,
+            &self->_eventSubscriptions.leftButtonDebounceTimeout,
             &self->_inbox,
             self,
             (vsk_MessageHandler)
@@ -67,7 +67,7 @@ app_btn_ButtonsTask * app_btn_ButtonsTask_init(
     vsk_Event_subscribe(
         (vsk_Event *)app_ev_RightButtonDebounceTimeoutEvent_(),
         vsk_EventSubscription_init(
-            &self->_eventSubscriptions.onRightButtonDebounce,
+            &self->_eventSubscriptions.rightButtonDebounceTimeout,
             &self->_inbox,
             self,
             (vsk_MessageHandler)
