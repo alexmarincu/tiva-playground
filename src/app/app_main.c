@@ -23,27 +23,21 @@
 /*............................................................................*/
 #define app_buttonIntFilterMillis 20
 /*............................................................................*/
+static void leftButtonIntHandler(void);
+static void setupLeftButton(void);
+static void rightButtonIntHandler(void);
+static void setupRightButton(void);
+static void setupLeds(void);
+static void setupEvents(void);
+static void setupApps(void);
 static void setupClockFrequency(void);
 static void sysTickIntHandler(void);
-static void leftButtonIntHandler(void);
-static void rightButtonIntHandler(void);
 static void setupSysTick(void);
-static void setupLeftButton(void);
-static void setupLeds(void);
-static void setupRightButton(void);
-static void setupEvents(void);
-static void onIdle(void);
 static void onKernelStart(void);
+static void onIdle(void);
 static void onCriticalSectionEnter(void);
 static void onCriticalSectionExit(void);
-/*............................................................................*/
-static void setupClockFrequency(void) {
-    ha_SysClock_setMaxFrequency();
-}
-/*............................................................................*/
-static void sysTickIntHandler(void) {
-    vsk_Kernel_onSysTick(vsk_Kernel_());
-}
+static void onAssertFail(void);
 /*............................................................................*/
 static void leftButtonIntHandler(void) {
     ha_LeftButton * button = ha_LeftButton_();
@@ -58,6 +52,14 @@ static void leftButtonIntHandler(void) {
         lastMillisCount = millisCount;
     }
     ha_LeftButton_clearIntFlag(button);
+}
+/*............................................................................*/
+static void setupLeftButton(void) {
+    ha_LeftButton * button = ha_LeftButton_();
+    ha_LeftButton_init(button);
+    ha_LeftButton_setIntTypeBothEdges(button);
+    ha_LeftButton_registerInt(button, leftButtonIntHandler);
+    ha_LeftButton_enableInt(button);
 }
 /*............................................................................*/
 static void rightButtonIntHandler(void) {
@@ -75,36 +77,16 @@ static void rightButtonIntHandler(void) {
     ha_RightButton_clearIntFlag(button);
 }
 /*............................................................................*/
-static void setupSysTick(void) {
-    ha_SysTick * sysTick = ha_SysTick_();
-    ha_SysTick_init(sysTick);
-    ha_SysTick_registerInt(sysTick, sysTickIntHandler);
-    ha_SysTick_enableInt(sysTick);
-    ha_SysTick_setPeriodMillis(sysTick, 1);
-    vsk_Kernel_informTickPeriodMillis(
-        vsk_Kernel_(), ha_SysTick_getPeriodMillis(sysTick)
-    );
-    ha_SysTick_enable(sysTick);
-}
-/*............................................................................*/
-static void setupLeftButton(void) {
-    ha_LeftButton * button = ha_LeftButton_();
-    ha_LeftButton_init(button);
-    ha_LeftButton_setIntTypeBothEdges(button);
-    ha_LeftButton_registerInt(button, leftButtonIntHandler);
-    ha_LeftButton_enableInt(button);
-}
-/*............................................................................*/
-static void setupLeds(void) {
-    ha_Led_init();
-}
-/*............................................................................*/
 static void setupRightButton(void) {
     ha_RightButton * button = ha_RightButton_();
     ha_RightButton_init(button);
     ha_RightButton_setIntTypeBothEdges(button);
     ha_RightButton_registerInt(button, rightButtonIntHandler);
     ha_RightButton_enableInt(button);
+}
+/*............................................................................*/
+static void setupLeds(void) {
+    ha_Led_init();
 }
 /*............................................................................*/
 static void setupEvents(void) {
@@ -124,16 +106,45 @@ static void setupEvents(void) {
     app_ev_OffTimeoutEvent_init(app_ev_OffTimeoutEvent_());
 }
 /*............................................................................*/
-static void onIdle(void) {
-    // maybe put also peripherals in sleep / low power mode
-    ha_SysCtrl_sleep();
+static void setupApps(void) {
+    // app_blk_BlinkyActObj_init(app_blk_BlinkyActObj_());
+    app_btn_ButtonsTask_init(app_btn_ButtonsTask_());
+    app_tmb_TimeBombActObj_init(app_tmb_TimeBombActObj_());
+}
+/*............................................................................*/
+static void setupClockFrequency(void) {
+    ha_SysClock_setMaxFrequency();
+}
+/*............................................................................*/
+static void sysTickIntHandler(void) {
+    vsk_Kernel_onSysTick(vsk_Kernel_());
+}
+/*............................................................................*/
+static void setupSysTick(void) {
+    ha_SysTick * sysTick = ha_SysTick_();
+    ha_SysTick_init(sysTick);
+    ha_SysTick_registerInt(sysTick, sysTickIntHandler);
+    ha_SysTick_enableInt(sysTick);
+    ha_SysTick_setPeriodMillis(sysTick, 1);
+    vsk_Kernel_informTickPeriodMillis(
+        vsk_Kernel_(), ha_SysTick_getPeriodMillis(sysTick)
+    );
+    ha_SysTick_enable(sysTick);
 }
 /*............................................................................*/
 static void onKernelStart(void) {
-    setupClockFrequency();
-    setupSysTick();
     setupLeftButton();
     setupRightButton();
+    setupLeds();
+    setupEvents();
+    setupApps();
+    setupClockFrequency();
+    setupSysTick();
+}
+/*............................................................................*/
+static void onIdle(void) {
+    // maybe put also peripherals in sleep / low power mode
+    ha_SysCtrl_sleep();
 }
 /*............................................................................*/
 static void onCriticalSectionEnter(void) {
@@ -155,21 +166,17 @@ static void onAssertFail(void) {
 /*............................................................................*/
 int app_main(void) {
     static vsk_Node nodes[18];
-    vsk_Kernel_init(
-        vsk_Kernel_(),
-        onKernelStart,
-        onIdle,
-        onCriticalSectionEnter,
-        onCriticalSectionExit,
-        onAssertFail,
-        nodes,
-        ut_lengthOf(nodes)
+    vsk_Kernel_start(
+        vsk_Kernel_init(
+            vsk_Kernel_(),
+            onKernelStart,
+            onIdle,
+            onCriticalSectionEnter,
+            onCriticalSectionExit,
+            onAssertFail,
+            nodes,
+            ut_lengthOf(nodes)
+        )
     );
-    setupLeds();
-    setupEvents();
-    // app_blk_BlinkyActObj_init(app_blk_BlinkyActObj_());
-    app_btn_ButtonsTask_init(app_btn_ButtonsTask_());
-    app_tmb_TimeBombActObj_init(app_tmb_TimeBombActObj_());
-    vsk_Kernel_start(vsk_Kernel_());
     return 0;
 }

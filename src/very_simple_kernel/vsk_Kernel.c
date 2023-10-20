@@ -20,7 +20,7 @@ vsk_Kernel * vsk_Kernel_init(
 ) {
     self->_time = vsk_Time_init(vsk_Time_());
     self->_taskScheduler = vsk_TaskScheduler_init(vsk_TaskScheduler_(), onIdle);
-    self->_eventTimerSupervisor = vsk_TimerSupervisor_init(vsk_TimerSupervisor_());
+    self->_timerSupervisor = vsk_TimerSupervisor_init(vsk_TimerSupervisor_());
     self->_inboxSupervisor = vsk_InboxSupervisor_init(vsk_InboxSupervisor_());
     vsk_CriticalSection_init(
         vsk_CriticalSection_(), onCriticalSectionEnter, onCriticalSectionExit
@@ -40,7 +40,7 @@ void vsk_Kernel_informTickPeriodMillis(
 /*............................................................................*/
 void vsk_Kernel_onSysTick(vsk_Kernel * const self) {
     vsk_Time_onSysTick(self->_time);
-    vsk_TimerSupervisor_onSysTick(self->_eventTimerSupervisor);
+    vsk_TimerSupervisor_onSysTick(self->_timerSupervisor);
     vsk_InboxSupervisor_onSysTick(self->_inboxSupervisor);
 }
 /*............................................................................*/

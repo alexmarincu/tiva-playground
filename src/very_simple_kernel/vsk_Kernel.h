@@ -14,7 +14,7 @@ typedef void (*vsk_KernelOnStart)(void);
 struct vsk_Kernel {
     vsk_Time * _time;
     vsk_TaskScheduler * _taskScheduler;
-    vsk_TimerSupervisor * _eventTimerSupervisor;
+    vsk_TimerSupervisor * _timerSupervisor;
     vsk_InboxSupervisor * _inboxSupervisor;
     vsk_KernelOnStart _onStart;
 };
