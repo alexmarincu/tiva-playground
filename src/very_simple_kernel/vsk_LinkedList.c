@@ -4,37 +4,24 @@
 #include "vsk_Assert.h"
 #include "vsk_LinkedListIterator.h"
 /*............................................................................*/
-static vsk_Node * createNode(
-    vsk_LinkedList * const self,
-    void * const item
-);
+static vsk_Node * createNode(vsk_LinkedList * const self, void * const item);
 /*............................................................................*/
-vsk_LinkedList * vsk_LinkedList_init(
-    vsk_LinkedList * const self
-) {
+vsk_LinkedList * vsk_LinkedList_init(vsk_LinkedList * const self) {
     self->_first = NULL;
     self->_last = NULL;
     self->_size = 0;
     return self;
 }
 /*............................................................................*/
-bool vsk_LinkedList_isEmpty(
-    vsk_LinkedList * const self
-) {
+bool vsk_LinkedList_isEmpty(vsk_LinkedList * const self) {
     return (self->_size == 0);
 }
 /*............................................................................*/
-static vsk_Node * createNode(
-    vsk_LinkedList * const self,
-    void * const item
-) {
+static vsk_Node * createNode(vsk_LinkedList * const self, void * const item) {
     return vsk_Node_init(vsk_NodeClass_acquireNode(vsk_NodeClass_()), item);
 }
 /*............................................................................*/
-static vsk_Node * getNode(
-    vsk_LinkedList * const self,
-    size_t index
-) {
+static vsk_Node * getNode(vsk_LinkedList * const self, size_t index) {
     vsk_Assert_true(vsk_Assert_(), index < self->_size);
     vsk_Node * node;
     if (index <= self->_size / 2) {
@@ -52,9 +39,7 @@ static vsk_Node * getNode(
 }
 /*............................................................................*/
 void vsk_LinkedList_add(
-    vsk_LinkedList * const self,
-    size_t const index,
-    void * const item
+    vsk_LinkedList * const self, size_t const index, void * const item
 ) {
     vsk_Assert_true(vsk_Assert_(), index <= self->_size);
     vsk_Node * newNode = createNode(self, item);
@@ -83,24 +68,15 @@ void vsk_LinkedList_add(
     self->_size++;
 }
 /*............................................................................*/
-void vsk_LinkedList_addFirst(
-    vsk_LinkedList * const self,
-    void * const item
-) {
+void vsk_LinkedList_addFirst(vsk_LinkedList * const self, void * const item) {
     vsk_LinkedList_add(self, 0, item);
 }
 /*............................................................................*/
-void vsk_LinkedList_addLast(
-    vsk_LinkedList * const self,
-    void * const item
-) {
+void vsk_LinkedList_addLast(vsk_LinkedList * const self, void * const item) {
     vsk_LinkedList_add(self, self->_size, item);
 }
 /*............................................................................*/
-void * vsk_LinkedList_remove(
-    vsk_LinkedList * const self,
-    size_t const index
-) {
+void * vsk_LinkedList_remove(vsk_LinkedList * const self, size_t const index) {
     vsk_Assert_true(vsk_Assert_(), index < self->_size);
     vsk_Node * node;
     void * item;
@@ -129,10 +105,7 @@ void * vsk_LinkedList_remove(
     return item;
 }
 /*............................................................................*/
-size_t vsk_LinkedList_getIndex(
-    vsk_LinkedList * const self,
-    void * const item
-) {
+size_t vsk_LinkedList_getIndex(vsk_LinkedList * const self, void * const item) {
     size_t index = -1;
     bool itemFound = false;
     vsk_LinkedListIterator * iter =
@@ -151,61 +124,44 @@ size_t vsk_LinkedList_getIndex(
 }
 /*............................................................................*/
 void * vsk_LinkedList_removeItem(
-    vsk_LinkedList * const self,
-    void * const item
+    vsk_LinkedList * const self, void * const item
 ) {
     // todo: improve removal to not parse the list twice
     return vsk_LinkedList_remove(self, vsk_LinkedList_getIndex(self, item));
 }
 /*............................................................................*/
-void * vsk_LinkedList_removeFirst(
-    vsk_LinkedList * const self
-) {
+void * vsk_LinkedList_removeFirst(vsk_LinkedList * const self) {
     return vsk_LinkedList_remove(self, 0);
 }
 /*............................................................................*/
-void * vsk_LinkedList_removeLast(
-    vsk_LinkedList * const self
-) {
+void * vsk_LinkedList_removeLast(vsk_LinkedList * const self) {
     return vsk_LinkedList_remove(self, self->_size - 1);
 }
 /*............................................................................*/
-void vsk_LinkedList_clear(
-    vsk_LinkedList * const self
-) {
+void vsk_LinkedList_clear(vsk_LinkedList * const self) {
     while (self->_size > 0) {
         vsk_LinkedList_removeLast(self);
     }
 }
 /*............................................................................*/
-void * vsk_LinkedList_getFirst(
-    vsk_LinkedList * const self
-) {
+void * vsk_LinkedList_getFirst(vsk_LinkedList * const self) {
     return self->_first->item;
 }
 /*............................................................................*/
-void * vsk_LinkedList_getLast(
-    vsk_LinkedList * const self
-) {
+void * vsk_LinkedList_getLast(vsk_LinkedList * const self) {
     return self->_last->item;
 }
 /*............................................................................*/
-void * vsk_LinkedList_get(
-    vsk_LinkedList * const self,
-    size_t index
-) {
+void * vsk_LinkedList_get(vsk_LinkedList * const self, size_t index) {
     return getNode(self, index)->item;
 }
 /*............................................................................*/
-size_t vsk_LinkedList_getSize(
-    vsk_LinkedList * const self
-) {
+size_t vsk_LinkedList_getSize(vsk_LinkedList * const self) {
     return self->_size;
 }
 /*............................................................................*/
 void vsk_LinkedList_forEach(
-    vsk_LinkedList * const self,
-    vsk_LinkedListForEachOperation const operation
+    vsk_LinkedList * const self, vsk_LinkedListForEachOperation const operation
 ) {
     vsk_Assert_true(vsk_Assert_(), operation);
     vsk_LinkedListIterator * iter =
@@ -214,8 +170,7 @@ void vsk_LinkedList_forEach(
 }
 /*............................................................................*/
 void * vsk_LinkedList_find(
-    vsk_LinkedList * const self,
-    vsk_LinkedListFindPredicate const predicate
+    vsk_LinkedList * const self, vsk_LinkedListFindPredicate const predicate
 ) {
     vsk_Assert_true(vsk_Assert_(), predicate);
     bool itemFound = false;

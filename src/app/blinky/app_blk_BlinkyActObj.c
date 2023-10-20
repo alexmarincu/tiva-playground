@@ -5,9 +5,7 @@
 #include "app_blk_OffState.h"
 #include "app_blk_OnState.h"
 /*............................................................................*/
-static void app_blk_BlinkyActObj_onOnTimeout(
-    app_blk_BlinkyActObj * const self
-);
+static void app_blk_BlinkyActObj_onOnTimeout(app_blk_BlinkyActObj * const self);
 static void app_blk_BlinkyActObj_onOffTimeout(
     app_blk_BlinkyActObj * const self
 );

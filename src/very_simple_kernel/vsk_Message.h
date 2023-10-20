@@ -2,9 +2,7 @@
 #define VSK_MESSAGE_H
 /*............................................................................*/
 typedef struct vsk_Message vsk_Message;
-typedef void (*vsk_MessageHandler)(
-    void * const self
-);
+typedef void (*vsk_MessageHandler)(void * const self);
 /*............................................................................*/
 struct vsk_Message {
     void * _recipient;
@@ -16,7 +14,5 @@ vsk_Message * vsk_Message_init(
     void * const recipient,
     vsk_MessageHandler const handler
 );
-void vsk_Message_dispatch(
-    vsk_Message * const self
-);
+void vsk_Message_dispatch(vsk_Message * const self);
 #endif // VSK_MESSAGE_H

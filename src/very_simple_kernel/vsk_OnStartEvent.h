@@ -11,7 +11,5 @@ struct vsk_OnStartEvent {
 };
 /*............................................................................*/
 vsk_OnStartEvent * vsk_OnStartEvent_(void);
-vsk_OnStartEvent * vsk_OnStartEvent_init(
-    vsk_OnStartEvent * const self
-);
+vsk_OnStartEvent * vsk_OnStartEvent_init(vsk_OnStartEvent * const self);
 #endif // VSK_ONSTARTEVENT_H

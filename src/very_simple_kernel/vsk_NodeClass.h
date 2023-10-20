@@ -15,11 +15,7 @@ struct vsk_NodeClass {
 /*............................................................................*/
 vsk_NodeClass * vsk_NodeClass_(void);
 vsk_NodeClass * vsk_NodeClass_init(
-    vsk_NodeClass * const self,
-    vsk_Node * const nodes,
-    size_t const capacity
+    vsk_NodeClass * const self, vsk_Node * const nodes, size_t const capacity
 );
-vsk_Node * vsk_NodeClass_acquireNode(
-    vsk_NodeClass * const self
-);
+vsk_Node * vsk_NodeClass_acquireNode(vsk_NodeClass * const self);
 #endif // VSK_NODECLASS_H

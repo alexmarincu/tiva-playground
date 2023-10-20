@@ -23,9 +23,7 @@ vsk_Kernel * vsk_Kernel_init(
     self->_eventTimerSupervisor = vsk_TimerSupervisor_init(vsk_TimerSupervisor_());
     self->_inboxSupervisor = vsk_InboxSupervisor_init(vsk_InboxSupervisor_());
     vsk_CriticalSection_init(
-        vsk_CriticalSection_(),
-        onCriticalSectionEnter,
-        onCriticalSectionExit
+        vsk_CriticalSection_(), onCriticalSectionEnter, onCriticalSectionExit
     );
     vsk_NodeClass_init(vsk_NodeClass_(), nodes, capacity);
     vsk_Assert_init(vsk_Assert_(), onAssertFail);
@@ -35,23 +33,18 @@ vsk_Kernel * vsk_Kernel_init(
 }
 /*............................................................................*/
 void vsk_Kernel_informTickPeriodMillis(
-    vsk_Kernel * const self,
-    uint16_t const tickPeriodMillis
+    vsk_Kernel * const self, uint16_t const tickPeriodMillis
 ) {
     vsk_Time_informTickPeriodMillis(self->_time, tickPeriodMillis);
 }
 /*............................................................................*/
-void vsk_Kernel_onSysTick(
-    vsk_Kernel * const self
-) {
+void vsk_Kernel_onSysTick(vsk_Kernel * const self) {
     vsk_Time_onSysTick(self->_time);
     vsk_TimerSupervisor_onSysTick(self->_eventTimerSupervisor);
     vsk_InboxSupervisor_onSysTick(self->_inboxSupervisor);
 }
 /*............................................................................*/
-void vsk_Kernel_start(
-    vsk_Kernel * const self
-) {
+void vsk_Kernel_start(vsk_Kernel * const self) {
     self->_onStart();
     vsk_Event_raise((vsk_Event *)vsk_OnStartEvent_());
     vsk_TaskScheduler_start(self->_taskScheduler);

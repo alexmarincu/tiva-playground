@@ -14,8 +14,7 @@ vsk_InboxSupervisor * vsk_InboxSupervisor_init(
 }
 /*............................................................................*/
 void vsk_InboxSupervisor_register(
-    vsk_InboxSupervisor * const self,
-    vsk_Inbox * const inbox
+    vsk_InboxSupervisor * const self, vsk_Inbox * const inbox
 ) {
     vsk_LinkedList_addFirst(&self->_inboxes, inbox);
 }
@@ -26,11 +25,8 @@ static void updateTasks(vsk_Inbox * const inbox) {
     }
 }
 /*............................................................................*/
-void vsk_InboxSupervisor_onSysTick(
-    vsk_InboxSupervisor * const self
-) {
+void vsk_InboxSupervisor_onSysTick(vsk_InboxSupervisor * const self) {
     vsk_LinkedList_forEach(
-        &self->_inboxes,
-        (vsk_LinkedListForEachOperation)updateTasks
+        &self->_inboxes, (vsk_LinkedListForEachOperation)updateTasks
     );
 }

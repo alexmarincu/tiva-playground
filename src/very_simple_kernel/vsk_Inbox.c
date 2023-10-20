@@ -3,19 +3,14 @@
 #include "vsk_CriticalSection.h"
 #include "vsk_InboxSupervisor.h"
 /*............................................................................*/
-vsk_Inbox * vsk_Inbox_init(
-    vsk_Inbox * const self,
-    vsk_Task * const task
-) {
+vsk_Inbox * vsk_Inbox_init(vsk_Inbox * const self, vsk_Task * const task) {
     self->task = task;
     vsk_Queue_init(&self->_messageQueue);
     vsk_InboxSupervisor_register(vsk_InboxSupervisor_(), self);
     return self;
 }
 /*............................................................................*/
-bool vsk_Inbox_isEmpty(
-    vsk_Inbox * const self
-) {
+bool vsk_Inbox_isEmpty(vsk_Inbox * const self) {
     bool isEmpty;
     vsk_CriticalSection_enter(vsk_CriticalSection_());
     isEmpty = vsk_Queue_isEmpty(&self->_messageQueue);
@@ -24,17 +19,14 @@ bool vsk_Inbox_isEmpty(
 }
 /*............................................................................*/
 void vsk_Inbox_postMessage(
-    vsk_Inbox * const self,
-    vsk_Message * const message
+    vsk_Inbox * const self, vsk_Message * const message
 ) {
     vsk_CriticalSection_enter(vsk_CriticalSection_());
     vsk_Queue_enqueue(&self->_messageQueue, message);
     vsk_CriticalSection_exit(vsk_CriticalSection_());
 }
 /*............................................................................*/
-vsk_Message * vsk_Inbox_readMessage(
-    vsk_Inbox * const self
-) {
+vsk_Message * vsk_Inbox_readMessage(vsk_Inbox * const self) {
     vsk_Message * message;
     vsk_CriticalSection_enter(vsk_CriticalSection_());
     message = vsk_Queue_dequeue(&self->_messageQueue);
@@ -42,9 +34,7 @@ vsk_Message * vsk_Inbox_readMessage(
     return message;
 }
 /*............................................................................*/
-void vsk_Inbox_clear(
-    vsk_Inbox * const self
-) {
+void vsk_Inbox_clear(vsk_Inbox * const self) {
     vsk_CriticalSection_enter(vsk_CriticalSection_());
     vsk_Queue_clear(&self->_messageQueue);
     vsk_CriticalSection_exit(vsk_CriticalSection_());

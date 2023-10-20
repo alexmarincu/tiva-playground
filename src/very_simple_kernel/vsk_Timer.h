@@ -13,18 +13,11 @@ struct vsk_Timer {
 };
 /*............................................................................*/
 vsk_Timer * vsk_Timer_init(
-    vsk_Timer * const self,
-    vsk_TimerCallback const callback
+    vsk_Timer * const self, vsk_TimerCallback const callback
 );
 void vsk_Timer_arm(
-    vsk_Timer * const self,
-    uint32_t const delayMillis,
-    uint32_t const periodMillis
+    vsk_Timer * const self, uint32_t const delayMillis, uint32_t const periodMillis
 );
-void vsk_Timer_disarm(
-    vsk_Timer * const self
-);
-void vsk_Timer_onSysTick(
-    vsk_Timer * const self
-);
+void vsk_Timer_disarm(vsk_Timer * const self);
+void vsk_Timer_onSysTick(vsk_Timer * const self);
 #endif // VSK_TIMER_H

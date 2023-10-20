@@ -31,13 +31,8 @@ vsk_Kernel * vsk_Kernel_init(
     size_t const capacity
 );
 void vsk_Kernel_informTickPeriodMillis(
-    vsk_Kernel * const self,
-    uint16_t const tickPeriodMillis
+    vsk_Kernel * const self, uint16_t const tickPeriodMillis
 );
-void vsk_Kernel_onSysTick(
-    vsk_Kernel * const self
-);
-void vsk_Kernel_start(
-    vsk_Kernel * const self
-);
+void vsk_Kernel_onSysTick(vsk_Kernel * const self);
+void vsk_Kernel_start(vsk_Kernel * const self);
 #endif // VSK_KERNEL_H

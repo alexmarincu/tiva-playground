@@ -14,8 +14,7 @@ vsk_TimerSupervisor * vsk_TimerSupervisor_init(
 }
 /*............................................................................*/
 void vsk_TimerSupervisor_register(
-    vsk_TimerSupervisor * const self,
-    vsk_Timer * const timer
+    vsk_TimerSupervisor * const self, vsk_Timer * const timer
 ) {
     vsk_LinkedList_addFirst(&self->_timers, timer);
 }
@@ -24,11 +23,8 @@ static void onSysTick(vsk_Timer * const timer) {
     vsk_Timer_onSysTick(timer);
 }
 /*............................................................................*/
-void vsk_TimerSupervisor_onSysTick(
-    vsk_TimerSupervisor * const self
-) {
+void vsk_TimerSupervisor_onSysTick(vsk_TimerSupervisor * const self) {
     vsk_LinkedList_forEach(
-        &self->_timers,
-        (vsk_LinkedListForEachOperation)onSysTick
+        &self->_timers, (vsk_LinkedListForEachOperation)onSysTick
     );
 }

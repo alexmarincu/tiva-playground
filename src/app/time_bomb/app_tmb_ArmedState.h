@@ -11,7 +11,6 @@ struct app_tmb_ArmedState {
 };
 /*............................................................................*/
 app_tmb_ArmedState * app_tmb_ArmedState_init(
-    app_tmb_ArmedState * const self,
-    vsk_StateContext * const stateContext
+    app_tmb_ArmedState * const self, vsk_StateContext * const stateContext
 );
 #endif // APP_TMB_ARMEDSTATE_H

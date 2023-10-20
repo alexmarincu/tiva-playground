@@ -12,7 +12,6 @@ struct app_blk_OffState {
 /*............................................................................*/
 app_blk_OffState * app_blk_OffState_(void);
 app_blk_OffState * app_blk_OffState_init(
-    app_blk_OffState * const self,
-    vsk_StateContext * const stateMachine
+    app_blk_OffState * const self, vsk_StateContext * const stateMachine
 );
 #endif // APP_BLK_OFFSTATE_H

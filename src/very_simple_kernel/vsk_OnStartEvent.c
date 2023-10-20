@@ -6,9 +6,7 @@ vsk_OnStartEvent * vsk_OnStartEvent_(void) {
     return &self;
 }
 /*............................................................................*/
-vsk_OnStartEvent * vsk_OnStartEvent_init(
-    vsk_OnStartEvent * const self
-) {
+vsk_OnStartEvent * vsk_OnStartEvent_init(vsk_OnStartEvent * const self) {
     vsk_Event_init((vsk_Event *)self);
     return self;
 }

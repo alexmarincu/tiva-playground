@@ -12,7 +12,6 @@ struct app_blk_OnState {
 /*............................................................................*/
 app_blk_OnState * app_blk_OnState_(void);
 app_blk_OnState * app_blk_OnState_init(
-    app_blk_OnState * const self,
-    vsk_StateContext * const stateContext
+    app_blk_OnState * const self, vsk_StateContext * const stateContext
 );
 #endif // APP_BLK_ONSTATE_H

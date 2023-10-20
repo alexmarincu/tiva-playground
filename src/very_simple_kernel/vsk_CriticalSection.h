@@ -18,10 +18,6 @@ vsk_CriticalSection * vsk_CriticalSection_init(
     vsk_CriticalSectionOnEnter const onEnter,
     vsk_CriticalSectionOnExit const onExit
 );
-void vsk_CriticalSection_enter(
-    vsk_CriticalSection * const self
-);
-void vsk_CriticalSection_exit(
-    vsk_CriticalSection * const self
-);
+void vsk_CriticalSection_enter(vsk_CriticalSection * const self);
+void vsk_CriticalSection_exit(vsk_CriticalSection * const self);
 #endif // VSK_CRITICALSECTION_H

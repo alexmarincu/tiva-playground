@@ -3,12 +3,8 @@
 #include "app_blk_BlinkyActObj.h"
 #include "app_blk_OnState.h"
 /*............................................................................*/
-static void app_blk_OffState_onEnter(
-    app_blk_OffState * const self
-);
-static void app_blk_OnState_onOffTimeout(
-    app_blk_OffState * const self
-);
+static void app_blk_OffState_onEnter(app_blk_OffState * const self);
+static void app_blk_OnState_onOffTimeout(app_blk_OffState * const self);
 /*............................................................................*/
 app_blk_OffState * app_blk_OffState_(void) {
     static app_blk_OffState self;
@@ -16,8 +12,7 @@ app_blk_OffState * app_blk_OffState_(void) {
 }
 /*............................................................................*/
 app_blk_OffState * app_blk_OffState_init(
-    app_blk_OffState * const self,
-    vsk_StateContext * const stateContext
+    app_blk_OffState * const self, vsk_StateContext * const stateContext
 ) {
     app_blk_BlinkyState_init((app_blk_BlinkyState *)self, stateContext);
     ((vsk_State *)self)->_onEnter = (vsk_StateOnEnter)app_blk_OffState_onEnter;
@@ -26,9 +21,7 @@ app_blk_OffState * app_blk_OffState_init(
     return self;
 }
 /*............................................................................*/
-static void app_blk_OffState_onEnter(
-    app_blk_OffState * const self
-) {
+static void app_blk_OffState_onEnter(app_blk_OffState * const self) {
     vsk_Timer_arm(
         (vsk_Timer *)app_blk_BlinkyActObj_getOffTimeoutEventTimer(
             (app_blk_BlinkyActObj *)((vsk_State *)self)->_stateContext
@@ -38,9 +31,7 @@ static void app_blk_OffState_onEnter(
     );
 }
 /*............................................................................*/
-static void app_blk_OnState_onOffTimeout(
-    app_blk_OffState * const self
-) {
+static void app_blk_OnState_onOffTimeout(app_blk_OffState * const self) {
     vsk_StateContext_transition(
         ((vsk_State *)self)->_stateContext, (vsk_State *)app_blk_OnState_()
     );

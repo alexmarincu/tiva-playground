@@ -14,12 +14,9 @@ ha_RightButton * ha_RightButton_(void) {
     return &self;
 }
 /*............................................................................*/
-ha_RightButton * ha_RightButton_init(
-    ha_RightButton * const self
-) {
+ha_RightButton * ha_RightButton_init(ha_RightButton * const self) {
     ha_Button_init(
         (ha_Button *)self,
-        self,
         (ha_ButtonSetIntTypeBothEdges)ha_RightButton_setIntTypeBothEdges,
         (ha_ButtonRegisterInt)ha_RightButton_registerInt,
         (ha_ButtonUnregisterInt)ha_RightButton_unregisterInt,
@@ -40,45 +37,32 @@ ha_RightButton * ha_RightButton_init(
     return self;
 }
 /*............................................................................*/
-void ha_RightButton_setIntTypeBothEdges(
-    ha_RightButton * const self
-) {
+void ha_RightButton_setIntTypeBothEdges(ha_RightButton * const self) {
     GPIOIntTypeSet(ha_RightButton_port, ha_RightButton_pin, GPIO_BOTH_EDGES);
 }
 /*............................................................................*/
 void ha_RightButton_registerInt(
-    ha_RightButton * const self,
-    ha_InterruptHandler const intHandler
+    ha_RightButton * const self, ha_InterruptHandler const intHandler
 ) {
     ha_per_PortF_registerRightButtonInt(ha_per_PortF_(), intHandler);
 }
 /*............................................................................*/
-void ha_RightButton_unregisterInt(
-    ha_RightButton * const self
-) {
+void ha_RightButton_unregisterInt(ha_RightButton * const self) {
     GPIOIntUnregister(ha_RightButton_port);
 }
 /*............................................................................*/
-void ha_RightButton_enableInt(
-    ha_RightButton * const self
-) {
+void ha_RightButton_enableInt(ha_RightButton * const self) {
     GPIOIntEnable(ha_RightButton_port, ha_RightButton_pin);
 }
 /*............................................................................*/
-void ha_RightButton_disableInt(
-    ha_RightButton * const self
-) {
+void ha_RightButton_disableInt(ha_RightButton * const self) {
     GPIOIntDisable(ha_RightButton_port, ha_RightButton_pin);
 }
 /*............................................................................*/
-void ha_RightButton_clearIntFlag(
-    ha_RightButton * const self
-) {
+void ha_RightButton_clearIntFlag(ha_RightButton * const self) {
     GPIOIntClear(ha_RightButton_port, ha_RightButton_pin);
 }
 /*............................................................................*/
-bool ha_RightButton_isPressed(
-    ha_RightButton * const self
-) {
+bool ha_RightButton_isPressed(ha_RightButton * const self) {
     return (GPIOPinRead(ha_RightButton_port, ha_RightButton_pin) == 0);
 }

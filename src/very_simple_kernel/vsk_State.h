@@ -2,12 +2,8 @@
 #define VSK_STATE_H
 /*............................................................................*/
 typedef struct vsk_State vsk_State;
-typedef void (*vsk_StateOnEnter)(
-    vsk_State * const self
-);
-typedef void (*vsk_StateOnExit)(
-    vsk_State * const self
-);
+typedef void (*vsk_StateOnEnter)(vsk_State * const self);
+typedef void (*vsk_StateOnExit)(vsk_State * const self);
 #include "vsk_StateContext.h"
 #include <stdbool.h>
 /*............................................................................*/
@@ -18,13 +14,8 @@ struct vsk_State {
 };
 /*............................................................................*/
 vsk_State * vsk_State_init(
-    vsk_State * const self,
-    vsk_StateContext * const stateContext
+    vsk_State * const self, vsk_StateContext * const stateContext
 );
-void vsk_State_onEnter(
-    vsk_State * const self
-);
-void vsk_State_onExit(
-    vsk_State * const self
-);
+void vsk_State_onEnter(vsk_State * const self);
+void vsk_State_onExit(vsk_State * const self);
 #endif // VSK_STATE_H

@@ -12,7 +12,6 @@ struct app_tmb_DefusedState {
 /*............................................................................*/
 app_tmb_DefusedState * app_tmb_DefusedState_(void);
 app_tmb_DefusedState * app_tmb_DefusedState_init(
-    app_tmb_DefusedState * const self,
-    vsk_StateContext * const stateContext
+    app_tmb_DefusedState * const self, vsk_StateContext * const stateContext
 );
 #endif // APP_TMB_DEFUSEDSTATE_H

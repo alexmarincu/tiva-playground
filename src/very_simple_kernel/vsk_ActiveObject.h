@@ -18,7 +18,6 @@ struct vsk_ActiveObject {
 };
 /*............................................................................*/
 vsk_ActiveObject * vsk_ActiveObject_init(
-    vsk_ActiveObject * const self,
-    vsk_State * const initialState
+    vsk_ActiveObject * const self, vsk_State * const initialState
 );
 #endif // VSK_ACTIVEOBJECT_H

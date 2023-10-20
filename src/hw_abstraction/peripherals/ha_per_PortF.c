@@ -9,12 +9,10 @@
 #include <stdbool.h>
 #include <stddef.h>
 /*............................................................................*/
-static void portFIntHandler(void);
-static void ha_per_PortF_registerInternalInt(
-    ha_per_PortF * const self
-);
+static void intHandler(void);
+static void ha_per_PortF_registerInternalInt(ha_per_PortF * const self);
 /*............................................................................*/
-static void portFIntHandler(void) {
+static void intHandler(void) {
     ha_per_PortF * self = ha_per_PortF_();
     uint32_t intStatus = GPIOIntStatus(GPIO_PORTF_BASE, true);
     if (self->_intHandlers.leftButton && (intStatus & ha_LeftButton_pin)) {
@@ -30,9 +28,7 @@ ha_per_PortF * ha_per_PortF_(void) {
     return &self;
 }
 /*............................................................................*/
-ha_per_PortF * ha_per_PortF_init(
-    ha_per_PortF * const self
-) {
+ha_per_PortF * ha_per_PortF_init(ha_per_PortF * const self) {
     if (self->_isInitialized == false) {
         self->_intHandlers.leftButton = NULL;
         self->_intHandlers.rightButton = NULL;
@@ -42,39 +38,31 @@ ha_per_PortF * ha_per_PortF_init(
     return self;
 }
 /*............................................................................*/
-static void ha_per_PortF_registerInternalInt(
-    ha_per_PortF * const self
-) {
+static void ha_per_PortF_registerInternalInt(ha_per_PortF * const self) {
     if (self->_isIntRegistered == false) {
         self->_isIntRegistered = true;
-        GPIOIntRegister(GPIO_PORTF_BASE, portFIntHandler);
+        GPIOIntRegister(GPIO_PORTF_BASE, intHandler);
     }
 }
 /*............................................................................*/
 void ha_per_PortF_registerLeftButtonInt(
-    ha_per_PortF * const self,
-    ha_InterruptHandler const intHandler
+    ha_per_PortF * const self, ha_InterruptHandler const intHandler
 ) {
     self->_intHandlers.leftButton = intHandler;
     ha_per_PortF_registerInternalInt(self);
 }
 /*............................................................................*/
-void ha_per_PortF_unregisterLeftButtonInt(
-    ha_per_PortF * const self
-) {
+void ha_per_PortF_unregisterLeftButtonInt(ha_per_PortF * const self) {
     // todo
 }
 /*............................................................................*/
 void ha_per_PortF_registerRightButtonInt(
-    ha_per_PortF * const self,
-    ha_InterruptHandler const intHandler
+    ha_per_PortF * const self, ha_InterruptHandler const intHandler
 ) {
     self->_intHandlers.rightButton = intHandler;
     ha_per_PortF_registerInternalInt(self);
 }
 /*............................................................................*/
-void ha_per_PortF_unregisterRightButtonInt(
-    ha_per_PortF * const self
-) {
+void ha_per_PortF_unregisterRightButtonInt(ha_per_PortF * const self) {
     // todo
 }

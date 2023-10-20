@@ -4,15 +4,9 @@
 #include "app_tmb_PauseState.h"
 #include "app_tmb_TimeBombActObj.h"
 /*............................................................................*/
-static void app_tmb_BlinkState_onEnter(
-    app_tmb_BlinkState * const self
-);
-static void app_tmb_BlinkState_onExit(
-    app_tmb_BlinkState * const self
-);
-static void app_tmb_BlinkState_onBlinkTimeout(
-    app_tmb_BlinkState * const self
-);
+static void app_tmb_BlinkState_onEnter(app_tmb_BlinkState * const self);
+static void app_tmb_BlinkState_onExit(app_tmb_BlinkState * const self);
+static void app_tmb_BlinkState_onBlinkTimeout(app_tmb_BlinkState * const self);
 /*............................................................................*/
 app_tmb_BlinkState * app_tmb_BlinkState_(void) {
     static app_tmb_BlinkState self;
@@ -20,8 +14,7 @@ app_tmb_BlinkState * app_tmb_BlinkState_(void) {
 }
 /*............................................................................*/
 app_tmb_BlinkState * app_tmb_BlinkState_init(
-    app_tmb_BlinkState * const self,
-    vsk_StateContext * const stateContext
+    app_tmb_BlinkState * const self, vsk_StateContext * const stateContext
 ) {
     app_tmb_ArmedState_init((app_tmb_ArmedState *)self, stateContext);
     ((vsk_State *)self)->_onEnter =
@@ -32,9 +25,7 @@ app_tmb_BlinkState * app_tmb_BlinkState_init(
     return self;
 }
 /*............................................................................*/
-static void app_tmb_BlinkState_onEnter(
-    app_tmb_BlinkState * const self
-) {
+static void app_tmb_BlinkState_onEnter(app_tmb_BlinkState * const self) {
     ha_Led_setRedOn();
     vsk_Timer_arm(
         (vsk_Timer *)app_tmb_TimeBombActObj_getBlinkTimeoutEventTimer(
@@ -45,15 +36,11 @@ static void app_tmb_BlinkState_onEnter(
     );
 }
 /*............................................................................*/
-static void app_tmb_BlinkState_onExit(
-    app_tmb_BlinkState * const self
-) {
+static void app_tmb_BlinkState_onExit(app_tmb_BlinkState * const self) {
     ha_Led_setRedOff();
 }
 /*............................................................................*/
-static void app_tmb_BlinkState_onBlinkTimeout(
-    app_tmb_BlinkState * const self
-) {
+static void app_tmb_BlinkState_onBlinkTimeout(app_tmb_BlinkState * const self) {
     vsk_StateContext_transition(
         ((vsk_State *)self)->_stateContext, (vsk_State *)app_tmb_PauseState_()
     );

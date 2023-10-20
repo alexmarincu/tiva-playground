@@ -15,7 +15,6 @@ typedef void (*ha_ButtonClearIntFlag)(ha_Button * const self);
 typedef bool (*ha_ButtonIsPressed)(ha_Button * const self);
 /*............................................................................*/
 struct ha_Button {
-    void * _child;
     ha_ButtonSetIntTypeBothEdges _setIntTypeBothEdges;
     ha_ButtonRegisterInt _registerInt;
     ha_ButtonUnregisterInt _unregisterInt;
@@ -27,7 +26,6 @@ struct ha_Button {
 /*............................................................................*/
 ha_Button * ha_Button_init(
     ha_Button * const self,
-    void * const child,
     ha_ButtonSetIntTypeBothEdges const setIntTypeBothEdges,
     ha_ButtonRegisterInt const registerInt,
     ha_ButtonUnregisterInt const unregisterInt,

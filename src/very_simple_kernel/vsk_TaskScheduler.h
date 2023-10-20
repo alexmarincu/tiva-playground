@@ -13,14 +13,10 @@ struct vsk_TaskScheduler {
 /*............................................................................*/
 vsk_TaskScheduler * vsk_TaskScheduler_(void);
 vsk_TaskScheduler * vsk_TaskScheduler_init(
-    vsk_TaskScheduler * const self,
-    vsk_TaskSchedulerOnIdle const onIdle
+    vsk_TaskScheduler * const self, vsk_TaskSchedulerOnIdle const onIdle
 );
-void vsk_TaskScheduler_start(
-    vsk_TaskScheduler * const self
-);
+void vsk_TaskScheduler_start(vsk_TaskScheduler * const self);
 void vsk_TaskScheduler_register(
-    vsk_TaskScheduler * const self,
-    vsk_Task * const task
+    vsk_TaskScheduler * const self, vsk_Task * const task
 );
 #endif // VSK_TASKSCHEDULER_H

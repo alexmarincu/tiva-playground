@@ -13,11 +13,6 @@ struct vsk_Node {
     vsk_Node * prev;
 };
 /*............................................................................*/
-vsk_Node * vsk_Node_init(
-    vsk_Node * const self,
-    void * const item
-);
-vsk_Node * vsk_Node_release(
-    vsk_Node * const self
-);
+vsk_Node * vsk_Node_init(vsk_Node * const self, void * const item);
+vsk_Node * vsk_Node_release(vsk_Node * const self);
 #endif // VSK_NODE_H

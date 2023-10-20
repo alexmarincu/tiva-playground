@@ -28,8 +28,7 @@ app_tmb_TimeBombActObj * app_tmb_TimeBombActObj_init(
     app_tmb_TimeBombActObj * const self
 );
 void app_tmb_TimeBombActObj_setBlinkCounter(
-    app_tmb_TimeBombActObj * const self,
-    uint32_t const blinkCounter
+    app_tmb_TimeBombActObj * const self, uint32_t const blinkCounter
 );
 uint32_t app_tmb_TimeBombActObj_getBlinkCounter(
     app_tmb_TimeBombActObj * const self

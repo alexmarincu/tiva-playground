@@ -10,9 +10,7 @@ vsk_NodeClass * vsk_NodeClass_(void) {
 }
 /*............................................................................*/
 vsk_NodeClass * vsk_NodeClass_init(
-    vsk_NodeClass * const self,
-    vsk_Node * const nodes,
-    size_t const capacity
+    vsk_NodeClass * const self, vsk_Node * const nodes, size_t const capacity
 ) {
     self->_pool.nodes = nodes;
     self->_pool.capacity = capacity;
@@ -20,9 +18,7 @@ vsk_NodeClass * vsk_NodeClass_init(
     return self;
 }
 /*............................................................................*/
-vsk_Node * vsk_NodeClass_acquireNode(
-    vsk_NodeClass * const self
-) {
+vsk_Node * vsk_NodeClass_acquireNode(vsk_NodeClass * const self) {
     vsk_CriticalSection_enter(vsk_CriticalSection_());
     vsk_Node * node = NULL;
     vsk_Node * endOfPool =

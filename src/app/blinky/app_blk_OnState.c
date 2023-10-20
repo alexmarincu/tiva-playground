@@ -4,15 +4,9 @@
 #include "app_blk_BlinkyActObj.h"
 #include "app_blk_OffState.h"
 /*............................................................................*/
-static void app_blk_OnState_onEnter(
-    app_blk_OnState * const self
-);
-static void app_blk_OnState_onExit(
-    app_blk_OnState * const self
-);
-static void app_blk_OnState_onOnTimeout(
-    app_blk_OnState * const self
-);
+static void app_blk_OnState_onEnter(app_blk_OnState * const self);
+static void app_blk_OnState_onExit(app_blk_OnState * const self);
+static void app_blk_OnState_onOnTimeout(app_blk_OnState * const self);
 /*............................................................................*/
 app_blk_OnState * app_blk_OnState_(void) {
     static app_blk_OnState self;
@@ -20,8 +14,7 @@ app_blk_OnState * app_blk_OnState_(void) {
 }
 /*............................................................................*/
 app_blk_OnState * app_blk_OnState_init(
-    app_blk_OnState * const self,
-    vsk_StateContext * const stateContext
+    app_blk_OnState * const self, vsk_StateContext * const stateContext
 ) {
     app_blk_BlinkyState_init((app_blk_BlinkyState *)self, stateContext);
     ((vsk_State *)self)->_onEnter = (vsk_StateOnEnter)app_blk_OnState_onEnter;
@@ -31,9 +24,7 @@ app_blk_OnState * app_blk_OnState_init(
     return self;
 }
 /*............................................................................*/
-static void app_blk_OnState_onEnter(
-    app_blk_OnState * const self
-) {
+static void app_blk_OnState_onEnter(app_blk_OnState * const self) {
     ha_Led_setBlueOn();
     vsk_Timer_arm(
         (vsk_Timer *)app_blk_BlinkyActObj_getOnTimeoutEventTimer(
@@ -44,15 +35,11 @@ static void app_blk_OnState_onEnter(
     );
 }
 /*............................................................................*/
-static void app_blk_OnState_onExit(
-    app_blk_OnState * const self
-) {
+static void app_blk_OnState_onExit(app_blk_OnState * const self) {
     ha_Led_setBlueOff();
 }
 /*............................................................................*/
-static void app_blk_OnState_onOnTimeout(
-    app_blk_OnState * const self
-) {
+static void app_blk_OnState_onOnTimeout(app_blk_OnState * const self) {
     vsk_StateContext_transition(
         ((vsk_State *)self)->_stateContext, (vsk_State *)app_blk_OffState_()
     );

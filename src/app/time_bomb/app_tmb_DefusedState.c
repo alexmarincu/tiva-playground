@@ -3,12 +3,8 @@
 #include "../../hw_abstraction/ha_Led.h"
 #include "app_tmb_WaitForButtonState.h"
 /*............................................................................*/
-static void app_tmb_DefusedState_onEnter(
-    app_tmb_DefusedState * const self
-);
-static void app_tmb_DefusedState_onExit(
-    app_tmb_DefusedState * const self
-);
+static void app_tmb_DefusedState_onEnter(app_tmb_DefusedState * const self);
+static void app_tmb_DefusedState_onExit(app_tmb_DefusedState * const self);
 static void app_tmb_DefusedState_onRightButtonPress(
     app_tmb_DefusedState * const self
 );
@@ -19,8 +15,7 @@ app_tmb_DefusedState * app_tmb_DefusedState_(void) {
 }
 /*............................................................................*/
 app_tmb_DefusedState * app_tmb_DefusedState_init(
-    app_tmb_DefusedState * const self,
-    vsk_StateContext * const stateContext
+    app_tmb_DefusedState * const self, vsk_StateContext * const stateContext
 ) {
     app_tmb_TimeBombState_init((app_tmb_TimeBombState *)self, stateContext);
     ((vsk_State *)self)->_onEnter =
@@ -32,15 +27,11 @@ app_tmb_DefusedState * app_tmb_DefusedState_init(
     return self;
 }
 /*............................................................................*/
-static void app_tmb_DefusedState_onEnter(
-    app_tmb_DefusedState * const self
-) {
+static void app_tmb_DefusedState_onEnter(app_tmb_DefusedState * const self) {
     ha_Led_setBlueOn();
 }
 /*............................................................................*/
-static void app_tmb_DefusedState_onExit(
-    app_tmb_DefusedState * const self
-) {
+static void app_tmb_DefusedState_onExit(app_tmb_DefusedState * const self) {
     ha_Led_setBlueOff();
 }
 /*............................................................................*/

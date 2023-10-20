@@ -9,8 +9,7 @@ static void app_blk_BlinkyState_onOffTimeout_default(
 );
 /*............................................................................*/
 app_blk_BlinkyState * app_blk_BlinkyState_init(
-    app_blk_BlinkyState * const self,
-    vsk_StateContext * const stateContext
+    app_blk_BlinkyState * const self, vsk_StateContext * const stateContext
 ) {
     vsk_State_init((vsk_State *)self, stateContext);
     self->_onOffTimeout = app_blk_BlinkyState_onOffTimeout_default;
@@ -23,9 +22,7 @@ static void app_blk_BlinkyState_onOnTimeout_default(
 ) {
 }
 /*............................................................................*/
-void app_blk_BlinkyState_onOnTimeout(
-    app_blk_BlinkyState * const self
-) {
+void app_blk_BlinkyState_onOnTimeout(app_blk_BlinkyState * const self) {
     self->_onOnTimeout(self);
 }
 /*............................................................................*/
@@ -34,8 +31,6 @@ static void app_blk_BlinkyState_onOffTimeout_default(
 ) {
 }
 /*............................................................................*/
-void app_blk_BlinkyState_onOffTimeout(
-    app_blk_BlinkyState * const self
-) {
+void app_blk_BlinkyState_onOffTimeout(app_blk_BlinkyState * const self) {
     self->_onOffTimeout(self);
 }

@@ -4,8 +4,7 @@
 #include "vsk_Time.h"
 /*............................................................................*/
 vsk_Timer * vsk_Timer_init(
-    vsk_Timer * const self,
-    vsk_TimerCallback const callback
+    vsk_Timer * const self, vsk_TimerCallback const callback
 ) {
     vsk_Assert_true(vsk_Assert_(), callback != NULL);
     self->_callback = callback;
@@ -25,16 +24,12 @@ void vsk_Timer_arm(
     self->_periodMillis = periodMillis;
 }
 /*............................................................................*/
-void vsk_Timer_disarm(
-    vsk_Timer * const self
-) {
+void vsk_Timer_disarm(vsk_Timer * const self) {
     self->_delayMillis = 0;
     self->_periodMillis = 0;
 }
 /*............................................................................*/
-void vsk_Timer_onSysTick(
-    vsk_Timer * const self
-) {
+void vsk_Timer_onSysTick(vsk_Timer * const self) {
     if (self->_delayMillis != 0) {
         if (self->_delayMillis <= vsk_Time_getTickPeriodMillis(vsk_Time_())) {
             self->_delayMillis = self->_periodMillis;

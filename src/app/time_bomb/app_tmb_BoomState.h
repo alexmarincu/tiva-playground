@@ -12,7 +12,6 @@ struct app_tmb_BoomState {
 /*............................................................................*/
 app_tmb_BoomState * app_tmb_BoomState_(void);
 app_tmb_BoomState * app_tmb_BoomState_init(
-    app_tmb_BoomState * const self,
-    vsk_StateContext * const stateContext
+    app_tmb_BoomState * const self, vsk_StateContext * const stateContext
 );
 #endif // APP_TMB_BOOMSTATE_H

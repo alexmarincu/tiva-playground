@@ -2,17 +2,14 @@
 #include "vsk_ActiveObject.h"
 #include "vsk_OnStartEvent.h"
 /*............................................................................*/
-static void vsk_ActiveObject_onStart(
-    vsk_ActiveObject * const self
-);
+static void vsk_ActiveObject_onStart(vsk_ActiveObject * const self);
 /*............................................................................*/
 static void task(vsk_ActiveObject * const self) {
     vsk_Message_dispatch(vsk_Inbox_readMessage(&self->_inbox));
 }
 /*............................................................................*/
 vsk_ActiveObject * vsk_ActiveObject_init(
-    vsk_ActiveObject * const self,
-    vsk_State * const initialState
+    vsk_ActiveObject * const self, vsk_State * const initialState
 ) {
     vsk_StateContext_init((vsk_StateContext *)self, initialState);
     vsk_Task_init(&self->_task, (vsk_TaskOperation)task, self);
@@ -29,9 +26,7 @@ vsk_ActiveObject * vsk_ActiveObject_init(
     return self;
 }
 /*............................................................................*/
-static void vsk_ActiveObject_onStart(
-    vsk_ActiveObject * const self
-) {
+static void vsk_ActiveObject_onStart(vsk_ActiveObject * const self) {
     vsk_StateContext_transition(
         (vsk_StateContext *)self, ((vsk_StateContext *)self)->_initialState
     );
