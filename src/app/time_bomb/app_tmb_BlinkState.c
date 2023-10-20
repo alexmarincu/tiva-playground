@@ -21,18 +21,14 @@ app_tmb_BlinkState * app_tmb_BlinkState_(void) {
 /*............................................................................*/
 app_tmb_BlinkState * app_tmb_BlinkState_init(
     app_tmb_BlinkState * const self,
-    vsk_StateMachine * const stateMachine
+    vsk_StateContext * const stateContext
 ) {
-    app_tmb_ArmedState_init(
-        &self->_super.armedState,
-        stateMachine
-    );
-    self->_super.armedState._super.baseState._super.state._onEnter =
+    app_tmb_ArmedState_init((app_tmb_ArmedState *)self, stateContext);
+    ((vsk_State *)self)->_onEnter =
         (vsk_StateOnEnter)app_tmb_BlinkState_onEnter;
-    self->_super.armedState._super.baseState._super.state._onExit =
-        (vsk_StateOnExit)app_tmb_BlinkState_onExit;
-    self->_super.armedState._super.baseState._onBlinkTimeout =
-        (app_tmb_BaseStateHandler)app_tmb_BlinkState_onBlinkTimeout;
+    ((vsk_State *)self)->_onExit = (vsk_StateOnExit)app_tmb_BlinkState_onExit;
+    ((app_tmb_TimeBombState *)self)->_onBlinkTimeout =
+        (app_tmb_TimeBombStateHandler)app_tmb_BlinkState_onBlinkTimeout;
     return self;
 }
 /*............................................................................*/
@@ -42,8 +38,7 @@ static void app_tmb_BlinkState_onEnter(
     ha_Led_setRedOn();
     vsk_Timer_arm(
         (vsk_Timer *)app_tmb_TimeBombActObj_getBlinkTimeoutEventTimer(
-            (app_tmb_TimeBombActObj *)
-                self->_super.armedState._super.baseState._super.state._stateMachine
+            (app_tmb_TimeBombActObj *)((vsk_State *)self)->_stateContext
         ),
         500,
         0
@@ -59,8 +54,7 @@ static void app_tmb_BlinkState_onExit(
 static void app_tmb_BlinkState_onBlinkTimeout(
     app_tmb_BlinkState * const self
 ) {
-    vsk_StateMachine_transition(
-        self->_super.armedState._super.baseState._super.state._stateMachine,
-        (vsk_State *)app_tmb_PauseState_()
+    vsk_StateContext_transition(
+        ((vsk_State *)self)->_stateContext, (vsk_State *)app_tmb_PauseState_()
     );
 }

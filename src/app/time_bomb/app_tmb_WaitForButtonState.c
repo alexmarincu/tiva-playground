@@ -21,18 +21,16 @@ app_tmb_WaitForButtonState * app_tmb_WaitForButtonState_(void) {
 /*............................................................................*/
 app_tmb_WaitForButtonState * app_tmb_WaitForButtonState_init(
     app_tmb_WaitForButtonState * const self,
-    vsk_StateMachine * const stateMachine
+    vsk_StateContext * const stateContext
 ) {
-    app_tmb_ArmedState_init(
-        &self->_super.armedState,
-        stateMachine
-    );
-    self->_super.armedState._super.baseState._super.state._onEnter =
+    app_tmb_ArmedState_init((app_tmb_ArmedState *)self, stateContext);
+    ((vsk_State *)self)->_onEnter =
         (vsk_StateOnEnter)app_tmb_WaitForButtonState_onEnter;
-    self->_super.armedState._super.baseState._super.state._onExit =
+    ((vsk_State *)self)->_onExit =
         (vsk_StateOnExit)app_tmb_WaitForButtonState_onExit;
-    self->_super.armedState._super.baseState._onLeftButtonPress =
-        (app_tmb_BaseStateHandler)app_tmb_WaitForButtonState_onLeftButtonPress;
+    ((app_tmb_TimeBombState *)self)->_onLeftButtonPress =
+        (app_tmb_TimeBombStateHandler)
+            app_tmb_WaitForButtonState_onLeftButtonPress;
     return self;
 }
 /*............................................................................*/
@@ -52,12 +50,9 @@ static void app_tmb_WaitForButtonState_onLeftButtonPress(
     app_tmb_WaitForButtonState * const self
 ) {
     app_tmb_TimeBombActObj_setBlinkCounter(
-        (app_tmb_TimeBombActObj *)
-            self->_super.armedState._super.baseState._super.state._stateMachine,
-        5
+        (app_tmb_TimeBombActObj *)((vsk_State *)self)->_stateContext, 5
     );
-    vsk_StateMachine_transition(
-        self->_super.armedState._super.baseState._super.state._stateMachine,
-        (vsk_State *)app_tmb_BlinkState_()
+    vsk_StateContext_transition(
+        ((vsk_State *)self)->_stateContext, (vsk_State *)app_tmb_BlinkState_()
     );
 }

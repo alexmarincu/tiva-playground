@@ -13,14 +13,10 @@ app_tmb_BoomState * app_tmb_BoomState_(void) {
 /*............................................................................*/
 app_tmb_BoomState * app_tmb_BoomState_init(
     app_tmb_BoomState * const self,
-    vsk_StateMachine * const stateMachine
+    vsk_StateContext * const stateContext
 ) {
-    app_tmb_BaseState_init(
-        &self->_super.baseState,
-        stateMachine
-    );
-    self->_super.baseState._super.state._onEnter =
-        (vsk_StateOnEnter)app_tmb_BoomState_onEnter;
+    app_tmb_TimeBombState_init((app_tmb_TimeBombState *)self, stateContext);
+    ((vsk_State *)self)->_onEnter = (vsk_StateOnEnter)app_tmb_BoomState_onEnter;
     return self;
 }
 /*............................................................................*/

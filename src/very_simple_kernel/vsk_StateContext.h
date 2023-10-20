@@ -1,20 +1,20 @@
-#ifndef VSK_STATEMACHINE_H
-#define VSK_STATEMACHINE_H
+#ifndef VSK_STATECONTEXT_H
+#define VSK_STATECONTEXT_H
 /*............................................................................*/
-typedef struct vsk_StateMachine vsk_StateMachine;
+typedef struct vsk_StateContext vsk_StateContext;
 #include "vsk_State.h"
 /*............................................................................*/
-struct vsk_StateMachine {
+struct vsk_StateContext {
     vsk_State * _state;
     vsk_State * _initialState;
 };
 /*............................................................................*/
-vsk_StateMachine * vsk_StateMachine_init(
-    vsk_StateMachine * const self,
+vsk_StateContext * vsk_StateContext_init(
+    vsk_StateContext * const self,
     vsk_State * const initialState
 );
-void vsk_StateMachine_transition(
-    vsk_StateMachine * const self,
+void vsk_StateContext_transition(
+    vsk_StateContext * const self,
     vsk_State * const state
 );
-#endif // VSK_STATEMACHINE_H
+#endif // VSK_STATECONTEXT_H

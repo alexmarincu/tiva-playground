@@ -3,12 +3,12 @@
 /*............................................................................*/
 typedef struct vsk_ActiveObject vsk_ActiveObject;
 #include "vsk_EventSubscription.h"
-#include "vsk_StateMachine.h"
+#include "vsk_StateContext.h"
 #include "vsk_Task.h"
 /*............................................................................*/
 struct vsk_ActiveObject {
     struct {
-        vsk_StateMachine stateMachine;
+        vsk_StateContext stateContext;
     } _super;
     vsk_Task _task;
     vsk_Inbox _inbox;

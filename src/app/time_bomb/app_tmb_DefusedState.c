@@ -20,16 +20,15 @@ app_tmb_DefusedState * app_tmb_DefusedState_(void) {
 /*............................................................................*/
 app_tmb_DefusedState * app_tmb_DefusedState_init(
     app_tmb_DefusedState * const self,
-    vsk_StateMachine * const stateMachine
+    vsk_StateContext * const stateContext
 ) {
-    app_tmb_BaseState_init(
-        &self->_super.baseState,
-        stateMachine
-    );
-    ((vsk_State *)self)->_onEnter = (vsk_StateOnEnter)app_tmb_DefusedState_onEnter;
-    ((vsk_State *)self)->_onExit = (vsk_StateOnEnter)app_tmb_DefusedState_onExit;
-    ((app_tmb_BaseState *)self)->_onRightButtonPress =
-        (app_tmb_BaseStateHandler)app_tmb_DefusedState_onRightButtonPress;
+    app_tmb_TimeBombState_init((app_tmb_TimeBombState *)self, stateContext);
+    ((vsk_State *)self)->_onEnter =
+        (vsk_StateOnEnter)app_tmb_DefusedState_onEnter;
+    ((vsk_State *)self)->_onExit =
+        (vsk_StateOnEnter)app_tmb_DefusedState_onExit;
+    ((app_tmb_TimeBombState *)self)->_onRightButtonPress =
+        (app_tmb_TimeBombStateHandler)app_tmb_DefusedState_onRightButtonPress;
     return self;
 }
 /*............................................................................*/
@@ -48,8 +47,8 @@ static void app_tmb_DefusedState_onExit(
 static void app_tmb_DefusedState_onRightButtonPress(
     app_tmb_DefusedState * const self
 ) {
-    vsk_StateMachine_transition(
-        ((vsk_State *)self)->_stateMachine,
+    vsk_StateContext_transition(
+        ((vsk_State *)self)->_stateContext,
         (vsk_State *)app_tmb_WaitForButtonState_()
     );
 }

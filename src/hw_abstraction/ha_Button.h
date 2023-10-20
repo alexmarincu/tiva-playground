@@ -2,30 +2,17 @@
 #define HA_BUTTON_H
 /*............................................................................*/
 typedef struct ha_Button ha_Button;
-typedef void (*ha_ButtonSetIntTypeBothEdges)(
-    ha_Button * const self
-);
+typedef void (*ha_ButtonSetIntTypeBothEdges)(ha_Button * const self);
 #include "ha_Interrupt.h"
 typedef void (*ha_ButtonRegisterInt)(
-    ha_Button * const self,
-    ha_InterruptHandler const intHandler
+    ha_Button * const self, ha_InterruptHandler const intHandler
 );
-typedef void (*ha_ButtonUnregisterInt)(
-    ha_Button * const self
-);
-typedef void (*ha_ButtonEnableInt)(
-    ha_Button * const self
-);
-typedef void (*ha_ButtonDisableInt)(
-    ha_Button * const self
-);
-typedef void (*ha_ButtonClearIntFlag)(
-    ha_Button * const self
-);
+typedef void (*ha_ButtonUnregisterInt)(ha_Button * const self);
+typedef void (*ha_ButtonEnableInt)(ha_Button * const self);
+typedef void (*ha_ButtonDisableInt)(ha_Button * const self);
+typedef void (*ha_ButtonClearIntFlag)(ha_Button * const self);
 #include <stdbool.h>
-typedef bool (*ha_ButtonIsPressed)(
-    ha_Button * const self
-);
+typedef bool (*ha_ButtonIsPressed)(ha_Button * const self);
 /*............................................................................*/
 struct ha_Button {
     void * _child;
@@ -50,7 +37,9 @@ ha_Button * ha_Button_init(
     ha_ButtonIsPressed const isPressed
 );
 void ha_Button_setIntTypeBothEdges(ha_Button * const self);
-void ha_Button_registerInt(ha_Button * const self, ha_InterruptHandler const intHandler);
+void ha_Button_registerInt(
+    ha_Button * const self, ha_InterruptHandler const intHandler
+);
 void ha_Button_unregisterInt(ha_Button * const self);
 void ha_Button_enableInt(ha_Button * const self);
 void ha_Button_disableInt(ha_Button * const self);

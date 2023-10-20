@@ -9,6 +9,6 @@ app_ev_RightButtonPressEvent * app_ev_RightButtonPressEvent_(void) {
 app_ev_RightButtonPressEvent * app_ev_RightButtonPressEvent_init(
     app_ev_RightButtonPressEvent * const self
 ) {
-    vsk_Event_init(&self->_super.event);
+    vsk_Event_init((vsk_Event *)self);
     return self;
 }

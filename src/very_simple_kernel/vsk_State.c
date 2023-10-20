@@ -10,9 +10,9 @@ static void vsk_State_onExit_default(
 /*............................................................................*/
 vsk_State * vsk_State_init(
     vsk_State * const self,
-    vsk_StateMachine * const stateMachine
+    vsk_StateContext * const stateContext
 ) {
-    self->_stateMachine = stateMachine;
+    self->_stateContext = stateContext;
     self->_onEnter = vsk_State_onEnter_default;
     self->_onExit = vsk_State_onExit_default;
     return self;

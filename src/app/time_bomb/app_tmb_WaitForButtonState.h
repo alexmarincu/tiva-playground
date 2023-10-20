@@ -13,6 +13,6 @@ struct app_tmb_WaitForButtonState {
 app_tmb_WaitForButtonState * app_tmb_WaitForButtonState_(void);
 app_tmb_WaitForButtonState * app_tmb_WaitForButtonState_init(
     app_tmb_WaitForButtonState * const self,
-    vsk_StateMachine * const stateMachine
+    vsk_StateContext * const stateContext
 );
 #endif // APP_TMB_WAITFORBUTTONSTATE_H

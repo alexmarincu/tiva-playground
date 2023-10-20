@@ -14,20 +14,20 @@ state Armed {
         Blink : exit / set red LED off
         Blink --> Pause : blink timeout
     }
-    state c <<choice>>
+    state PauseChoice <<choice>>
     state Pause {
         Pause : entry / arm pause timer 500ms
-        Pause --> c : pause timeout / decrement blink counter
-    }
-    c --> Blink : [blinkCounter > 0]
-    c --> Boom : [blinkCounter == 0]
-    state Boom {
-        Boom : entry / set all LEDs on
+        Pause --> PauseChoice : pause timeout / decrement blink counter
+        PauseChoice --> Blink : [blinkCounter > 0]
+        PauseChoice --> Boom : [blinkCounter == 0]
     }
 }
 state Defused {
     Defused : entry / set blue LED on
     Defused : exit / set blue LED off
     Defused --> WaitForButton : right button press
+}
+state Boom {
+    Boom : entry / set all LEDs on
 }
 @enduml

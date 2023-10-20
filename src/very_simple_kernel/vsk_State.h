@@ -8,18 +8,18 @@ typedef void (*vsk_StateOnEnter)(
 typedef void (*vsk_StateOnExit)(
     vsk_State * const self
 );
-#include "vsk_StateMachine.h"
+#include "vsk_StateContext.h"
 #include <stdbool.h>
 /*............................................................................*/
 struct vsk_State {
-    vsk_StateMachine * _stateMachine;
+    vsk_StateContext * _stateContext;
     vsk_StateOnEnter _onEnter;
     vsk_StateOnExit _onExit;
 };
 /*............................................................................*/
 vsk_State * vsk_State_init(
     vsk_State * const self,
-    vsk_StateMachine * const stateMachine
+    vsk_StateContext * const stateContext
 );
 void vsk_State_onEnter(
     vsk_State * const self

@@ -1,7 +1,6 @@
 /*............................................................................*/
 #include "vsk_Timer.h"
 #include "vsk_Assert.h"
-#include "vsk_CriticalSection.h"
 #include "vsk_Time.h"
 /*............................................................................*/
 vsk_Timer * vsk_Timer_init(

@@ -13,6 +13,6 @@ struct app_tmb_BlinkState {
 app_tmb_BlinkState * app_tmb_BlinkState_(void);
 app_tmb_BlinkState * app_tmb_BlinkState_init(
     app_tmb_BlinkState * const self,
-    vsk_StateMachine * const stateMachine
+    vsk_StateContext * const stateContext
 );
 #endif // APP_TMB_BLINKSTATE_H

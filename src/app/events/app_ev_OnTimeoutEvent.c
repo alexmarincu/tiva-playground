@@ -9,6 +9,6 @@ app_ev_OnTimeoutEvent * app_ev_OnTimeoutEvent_(void) {
 app_ev_OnTimeoutEvent * app_ev_OnTimeoutEvent_init(
     app_ev_OnTimeoutEvent * const self
 ) {
-    vsk_Event_init(&self->_super.event);
+    vsk_Event_init((vsk_Event *)self);
     return self;
 }

@@ -82,8 +82,7 @@ static void setupSysTick(void) {
     ha_SysTick_enableInt(sysTick);
     ha_SysTick_setPeriodMillis(sysTick, 1);
     vsk_Kernel_informTickPeriodMillis(
-        vsk_Kernel_(),
-        ha_SysTick_getPeriodMillis(sysTick)
+        vsk_Kernel_(), ha_SysTick_getPeriodMillis(sysTick)
     );
     ha_SysTick_enable(sysTick);
 }

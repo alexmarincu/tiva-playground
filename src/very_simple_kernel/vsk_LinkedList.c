@@ -136,10 +136,7 @@ size_t vsk_LinkedList_getIndex(
     size_t index = -1;
     bool itemFound = false;
     vsk_LinkedListIterator * iter =
-        vsk_LinkedListIterator_init(
-            ut_stkObj(vsk_LinkedListIterator),
-            self
-        );
+        vsk_LinkedListIterator_init(ut_stkObj(vsk_LinkedListIterator), self);
     void * _item;
     while ((_item = vsk_LinkedListIterator_next(iter)) && !itemFound) {
         index++;
@@ -212,10 +209,7 @@ void vsk_LinkedList_forEach(
 ) {
     vsk_Assert_true(vsk_Assert_(), operation);
     vsk_LinkedListIterator * iter =
-        vsk_LinkedListIterator_init(
-            ut_stkObj(vsk_LinkedListIterator),
-            self
-        );
+        vsk_LinkedListIterator_init(ut_stkObj(vsk_LinkedListIterator), self);
     vsk_LinkedListIterator_forEach(iter, operation);
 }
 /*............................................................................*/
@@ -226,10 +220,7 @@ void * vsk_LinkedList_find(
     vsk_Assert_true(vsk_Assert_(), predicate);
     bool itemFound = false;
     vsk_LinkedListIterator * iter =
-        vsk_LinkedListIterator_init(
-            ut_stkObj(vsk_LinkedListIterator),
-            self
-        );
+        vsk_LinkedListIterator_init(ut_stkObj(vsk_LinkedListIterator), self);
     void * item;
     while (vsk_LinkedListIterator_hasNext(iter) && !itemFound) {
         item = vsk_LinkedListIterator_next(iter);

@@ -14,7 +14,7 @@ vsk_ActiveObject * vsk_ActiveObject_init(
     vsk_ActiveObject * const self,
     vsk_State * const initialState
 ) {
-    vsk_StateMachine_init(&self->_super.stateMachine, initialState);
+    vsk_StateContext_init((vsk_StateContext *)self, initialState);
     vsk_Task_init(&self->_task, (vsk_TaskOperation)task, self);
     vsk_Inbox_init(&self->_inbox, &self->_task);
     vsk_Event_subscribe(
@@ -32,8 +32,7 @@ vsk_ActiveObject * vsk_ActiveObject_init(
 static void vsk_ActiveObject_onStart(
     vsk_ActiveObject * const self
 ) {
-    vsk_StateMachine_transition(
-        &self->_super.stateMachine,
-        self->_super.stateMachine._initialState
+    vsk_StateContext_transition(
+        (vsk_StateContext *)self, ((vsk_StateContext *)self)->_initialState
     );
 }

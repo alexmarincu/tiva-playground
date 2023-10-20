@@ -1,9 +1,9 @@
 /*............................................................................*/
-#include "vsk_StateMachine.h"
+#include "vsk_StateContext.h"
 #include <stddef.h>
 /*............................................................................*/
-vsk_StateMachine * vsk_StateMachine_init(
-    vsk_StateMachine * const self,
+vsk_StateContext * vsk_StateContext_init(
+    vsk_StateContext * const self,
     vsk_State * const initialState
 ) {
     self->_state = NULL;
@@ -11,8 +11,8 @@ vsk_StateMachine * vsk_StateMachine_init(
     return self;
 }
 /*............................................................................*/
-void vsk_StateMachine_transition(
-    vsk_StateMachine * const self,
+void vsk_StateContext_transition(
+    vsk_StateContext * const self,
     vsk_State * const state
 ) {
     if (self->_state != NULL) {

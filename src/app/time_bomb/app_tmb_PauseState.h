@@ -13,6 +13,6 @@ struct app_tmb_PauseState {
 app_tmb_PauseState * app_tmb_PauseState_(void);
 app_tmb_PauseState * app_tmb_PauseState_init(
     app_tmb_PauseState * const self,
-    vsk_StateMachine * const stateMachine
+    vsk_StateContext * const stateContext
 );
 #endif // APP_TMB_PAUSESTATE_H

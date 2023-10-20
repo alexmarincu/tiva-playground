@@ -9,18 +9,14 @@ vsk_Event * vsk_Event_init(
 }
 /*............................................................................*/
 static void postMessage(vsk_EventSubscription * const subscription) {
-    vsk_Inbox_postMessage(
-        subscription->inbox,
-        &subscription->message
-    );
+    vsk_Inbox_postMessage(subscription->inbox, &subscription->message);
 }
 /*............................................................................*/
 void vsk_Event_raise(
     vsk_Event * const self
 ) {
     vsk_LinkedList_forEach(
-        &self->_eventSubscriptions,
-        (vsk_LinkedListForEachOperation)postMessage
+        &self->_eventSubscriptions, (vsk_LinkedListForEachOperation)postMessage
     );
 }
 /*............................................................................*/
