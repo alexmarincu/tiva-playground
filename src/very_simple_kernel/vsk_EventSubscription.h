@@ -13,7 +13,7 @@ struct vsk_EventSubscription {
 vsk_EventSubscription * vsk_EventSubscription_init(
     vsk_EventSubscription * const self,
     vsk_Inbox * const inbox,
-    void * const recipient,
-    vsk_MessageHandler const handler
+    vsk_MessageHandler const handler,
+    void * const obj
 );
 #endif // VSK_EVENTSUBSCRIPTION_H

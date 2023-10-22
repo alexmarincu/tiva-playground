@@ -48,8 +48,8 @@ app_tmb_TimeBombActObj * app_tmb_TimeBombActObj_init(
         vsk_EventSubscription_init(
             &self->_eventSubscriptions.rightButtonPress,
             &((vsk_ActiveObject *)self)->_inbox,
-            self,
-            (vsk_MessageHandler)app_tmb_TimeBombActObj_onRightButtonPress
+            (vsk_MessageHandler)app_tmb_TimeBombActObj_onRightButtonPress,
+            self
         )
     );
     vsk_Event_subscribe(
@@ -57,8 +57,8 @@ app_tmb_TimeBombActObj * app_tmb_TimeBombActObj_init(
         vsk_EventSubscription_init(
             &self->_eventSubscriptions.leftButtonPress,
             &((vsk_ActiveObject *)self)->_inbox,
-            self,
-            (vsk_MessageHandler)app_tmb_TimeBombActObj_onLeftButtonPress
+            (vsk_MessageHandler)app_tmb_TimeBombActObj_onLeftButtonPress,
+            self
         )
     );
     vsk_Event_subscribe(
@@ -66,8 +66,8 @@ app_tmb_TimeBombActObj * app_tmb_TimeBombActObj_init(
         vsk_EventSubscription_init(
             &self->_eventSubscriptions.blinkTimeout,
             &((vsk_ActiveObject *)self)->_inbox,
-            self,
-            (vsk_MessageHandler)app_tmb_TimeBombActObj_onBlinkTimeout
+            (vsk_MessageHandler)app_tmb_TimeBombActObj_onBlinkTimeout,
+            self
         )
     );
     vsk_Event_subscribe(
@@ -75,8 +75,8 @@ app_tmb_TimeBombActObj * app_tmb_TimeBombActObj_init(
         vsk_EventSubscription_init(
             &self->_eventSubscriptions.pauseTimeout,
             &((vsk_ActiveObject *)self)->_inbox,
-            self,
-            (vsk_MessageHandler)app_tmb_TimeBombActObj_onPauseTimeout
+            (vsk_MessageHandler)app_tmb_TimeBombActObj_onPauseTimeout,
+            self
         )
     );
     vsk_EventTimer_init(

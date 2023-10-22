@@ -53,7 +53,7 @@ void ha_per_PortF_registerLeftButtonInt(
 }
 /*............................................................................*/
 void ha_per_PortF_unregisterLeftButtonInt(ha_per_PortF * const self) {
-    // todo
+    // TODO
 }
 /*............................................................................*/
 void ha_per_PortF_registerRightButtonInt(
@@ -64,5 +64,5 @@ void ha_per_PortF_registerRightButtonInt(
 }
 /*............................................................................*/
 void ha_per_PortF_unregisterRightButtonInt(ha_per_PortF * const self) {
-    // todo
+    // TODO
 }

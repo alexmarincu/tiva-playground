@@ -41,8 +41,8 @@ app_btn_ButtonsTask * app_btn_ButtonsTask_init(
         vsk_EventSubscription_init(
             &self->_eventSubscriptions.leftButtonInt,
             &self->_inbox,
-            self,
-            (vsk_MessageHandler)app_btn_ButtonsTask_onLeftButtonInt
+            (vsk_MessageHandler)app_btn_ButtonsTask_onLeftButtonInt,
+            self
         )
     );
     vsk_Event_subscribe(
@@ -50,8 +50,8 @@ app_btn_ButtonsTask * app_btn_ButtonsTask_init(
         vsk_EventSubscription_init(
             &self->_eventSubscriptions.rightButtonInt,
             &self->_inbox,
-            self,
-            (vsk_MessageHandler)app_btn_ButtonsTask_onRightButtonInt
+            (vsk_MessageHandler)app_btn_ButtonsTask_onRightButtonInt,
+            self
         )
     );
     vsk_Event_subscribe(
@@ -59,9 +59,9 @@ app_btn_ButtonsTask * app_btn_ButtonsTask_init(
         vsk_EventSubscription_init(
             &self->_eventSubscriptions.leftButtonDebounceTimeout,
             &self->_inbox,
-            self,
             (vsk_MessageHandler)
-                app_btn_ButtonsTask_onLeftButtonDebounceTimeout
+                app_btn_ButtonsTask_onLeftButtonDebounceTimeout,
+            self
         )
     );
     vsk_Event_subscribe(
@@ -69,9 +69,9 @@ app_btn_ButtonsTask * app_btn_ButtonsTask_init(
         vsk_EventSubscription_init(
             &self->_eventSubscriptions.rightButtonDebounceTimeout,
             &self->_inbox,
-            self,
             (vsk_MessageHandler)
-                app_btn_ButtonsTask_onRightButtonDebounceTimeout
+                app_btn_ButtonsTask_onRightButtonDebounceTimeout,
+            self
         )
     );
     uint32_t const debounceDelayMillis = 20;

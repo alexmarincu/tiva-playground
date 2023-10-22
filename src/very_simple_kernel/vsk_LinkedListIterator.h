@@ -2,10 +2,10 @@
 #define VSK_LINKEDLISTITERATOR_H
 /*............................................................................*/
 typedef struct vsk_LinkedListIterator vsk_LinkedListIterator;
-#include <stdbool.h>
-typedef void (*vsk_LinkedListIteratorForEachOperation)(void * const item);
+typedef void (*vsk_LinkedListIteratorForEachOperation)(void * const obj);
 #include "vsk_LinkedList.h"
 #include "vsk_Node.h"
+#include <stdbool.h>
 /*............................................................................*/
 struct vsk_LinkedListIterator {
     vsk_LinkedList * _linkedList;

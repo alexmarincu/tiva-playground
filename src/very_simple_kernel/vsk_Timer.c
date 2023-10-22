@@ -8,14 +8,14 @@ vsk_Timer * vsk_Timer_init(
     uint32_t const delayMillis,
     uint32_t const periodMillis,
     vsk_TimerCallback const callback,
-    void * const data
+    void * const obj
 ) {
     vsk_Assert_true(vsk_Assert_(), delayMillis > 0);
     self->_delayMillis = delayMillis;
     self->_periodMillis = periodMillis;
     self->_millisCount = 0;
     self->_callback = callback;
-    self->_data = data;
+    self->_obj = obj;
     vsk_TimerSupervisor_register(vsk_TimerSupervisor_(), self);
     return self;
 }

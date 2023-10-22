@@ -19,8 +19,8 @@ vsk_ActiveObject * vsk_ActiveObject_init(
         vsk_EventSubscription_init(
             &self->_eventSubscriptions.onStart,
             &self->_inbox,
-            self,
-            (vsk_MessageHandler)vsk_ActiveObject_onStart
+            (vsk_MessageHandler)vsk_ActiveObject_onStart,
+            self
         )
     );
     return self;

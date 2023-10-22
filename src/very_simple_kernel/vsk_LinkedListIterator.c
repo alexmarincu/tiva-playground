@@ -19,12 +19,12 @@ bool vsk_LinkedListIterator_hasPrevious(vsk_LinkedListIterator * const self) {
 }
 /*............................................................................*/
 void * vsk_LinkedListIterator_next(vsk_LinkedListIterator * const self) {
-    void * item = NULL;
+    void * obj = NULL;
     if (vsk_LinkedListIterator_hasNext(self)) {
-        item = self->_current->item;
+        obj = self->_current->obj;
         self->_current = self->_current->next;
     }
-    return item;
+    return obj;
 }
 /*............................................................................*/
 void * vsk_LinkedListIterator_previous(vsk_LinkedListIterator * const self) {
@@ -36,8 +36,8 @@ void vsk_LinkedListIterator_forEach(
     vsk_LinkedListIterator * const self,
     vsk_LinkedListIteratorForEachOperation const operation
 ) {
-    void * item;
-    while ((item = vsk_LinkedListIterator_next(self))) {
-        operation(item);
+    void * obj;
+    while ((obj = vsk_LinkedListIterator_next(self))) {
+        operation(obj);
     }
 }

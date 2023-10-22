@@ -8,11 +8,11 @@ typedef struct vsk_Node vsk_Node;
 struct vsk_Node {
     vsk_NodeClass * _klass;
     bool _isUsed;
-    void * item;
+    void * obj;
     vsk_Node * next;
     vsk_Node * prev;
 };
 /*............................................................................*/
-vsk_Node * vsk_Node_init(vsk_Node * const self, void * const item);
+vsk_Node * vsk_Node_init(vsk_Node * const self, void * const obj);
 vsk_Node * vsk_Node_release(vsk_Node * const self);
 #endif // VSK_NODE_H

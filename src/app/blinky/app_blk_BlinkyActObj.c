@@ -28,8 +28,8 @@ app_blk_BlinkyActObj * app_blk_BlinkyActObj_init(
         vsk_EventSubscription_init(
             &self->_eventSubscriptions.onTimeout,
             &((vsk_ActiveObject *)self)->_inbox,
-            self,
-            (vsk_MessageHandler)app_blk_BlinkyActObj_onOnTimeout
+            (vsk_MessageHandler)app_blk_BlinkyActObj_onOnTimeout,
+            self
         )
     );
     vsk_Event_subscribe(
@@ -37,8 +37,8 @@ app_blk_BlinkyActObj * app_blk_BlinkyActObj_init(
         vsk_EventSubscription_init(
             &self->_eventSubscriptions.offTimeout,
             &((vsk_ActiveObject *)self)->_inbox,
-            self,
-            (vsk_MessageHandler)app_blk_BlinkyActObj_onOffTimeout
+            (vsk_MessageHandler)app_blk_BlinkyActObj_onOffTimeout,
+            self
         )
     );
     vsk_EventTimer_init(

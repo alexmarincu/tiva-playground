@@ -2,8 +2,8 @@
 #include "vsk_Node.h"
 #include "vsk_CriticalSection.h"
 /*............................................................................*/
-vsk_Node * vsk_Node_init(vsk_Node * const self, void * const item) {
-    self->item = item;
+vsk_Node * vsk_Node_init(vsk_Node * const self, void * const obj) {
+    self->obj = obj;
     self->next = NULL;
     self->prev = NULL;
     return self;
