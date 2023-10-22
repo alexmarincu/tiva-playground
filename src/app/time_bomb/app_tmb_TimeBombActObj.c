@@ -81,10 +81,14 @@ app_tmb_TimeBombActObj * app_tmb_TimeBombActObj_init(
     );
     vsk_EventTimer_init(
         &self->_eventTimers.blinkTimeout,
+        500,
+        0,
         (vsk_Event *)app_ev_BlinkTimeoutEvent_()
     );
     vsk_EventTimer_init(
         &self->_eventTimers.pauseTimeout,
+        500,
+        0,
         (vsk_Event *)app_ev_PauseTimeoutEvent_()
     );
     return self;

@@ -24,12 +24,10 @@ app_tmb_PauseState * app_tmb_PauseState_init(
 }
 /*............................................................................*/
 static void app_tmb_PauseState_onEnter(app_tmb_PauseState * const self) {
-    vsk_Timer_arm(
+    vsk_Timer_start(
         (vsk_Timer *)app_tmb_TimeBombActObj_getPauseTimeoutEventTimer(
             (app_tmb_TimeBombActObj *)((vsk_State *)self)->_stateContext
-        ),
-        500,
-        0
+        )
     );
 }
 /*............................................................................*/

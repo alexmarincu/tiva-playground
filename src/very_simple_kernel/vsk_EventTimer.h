@@ -13,6 +13,9 @@ struct vsk_EventTimer {
 };
 /*............................................................................*/
 vsk_EventTimer * vsk_EventTimer_init(
-    vsk_EventTimer * const self, vsk_Event * const event
+    vsk_EventTimer * const self,
+    uint32_t const delayMillis,
+    uint32_t const periodMillis,
+    vsk_Event * const event
 );
 #endif // VSK_EVENTTIMER_H

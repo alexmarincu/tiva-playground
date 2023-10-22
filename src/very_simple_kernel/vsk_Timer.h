@@ -2,22 +2,26 @@
 #define VSK_TIMER_H
 /*............................................................................*/
 typedef struct vsk_Timer vsk_Timer;
-typedef void (*vsk_TimerCallback)(vsk_Timer * const self);
+typedef void (*vsk_TimerCallback)(void * const data);
 #include "vsk_TimerSupervisor.h"
 #include <stdint.h>
 /*............................................................................*/
 struct vsk_Timer {
-    vsk_TimerCallback _callback;
     uint32_t _delayMillis;
     uint32_t _periodMillis;
+    vsk_TimerCallback _callback;
+    void * _data;
+    uint32_t _millisCount;
 };
 /*............................................................................*/
 vsk_Timer * vsk_Timer_init(
-    vsk_Timer * const self, vsk_TimerCallback const callback
+    vsk_Timer * const self,
+    uint32_t const delayMillis,
+    uint32_t const periodMillis,
+    vsk_TimerCallback const callback,
+    void * const data
 );
-void vsk_Timer_arm(
-    vsk_Timer * const self, uint32_t const delayMillis, uint32_t const periodMillis
-);
-void vsk_Timer_disarm(vsk_Timer * const self);
+void vsk_Timer_start(vsk_Timer * const self);
+void vsk_Timer_stop(vsk_Timer * const self);
 void vsk_Timer_onSysTick(vsk_Timer * const self);
 #endif // VSK_TIMER_H

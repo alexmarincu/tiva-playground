@@ -42,10 +42,16 @@ app_blk_BlinkyActObj * app_blk_BlinkyActObj_init(
         )
     );
     vsk_EventTimer_init(
-        &self->_eventTimers.onTimeout, (vsk_Event *)app_ev_OnTimeoutEvent_()
+        &self->_eventTimers.onTimeout,
+        200,
+        0,
+        (vsk_Event *)app_ev_OnTimeoutEvent_()
     );
     vsk_EventTimer_init(
-        &self->_eventTimers.offTimeout, (vsk_Event *)app_ev_OffTimeoutEvent_()
+        &self->_eventTimers.offTimeout,
+        200,
+        0,
+        (vsk_Event *)app_ev_OffTimeoutEvent_()
     );
     return self;
 }
