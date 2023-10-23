@@ -10,29 +10,19 @@
 #include "../hw_abstraction/ha_SysTick.h"
 #include "../utils/ut.h"
 #include "../very_simple_kernel/vsk_Kernel.h"
-#include "events/app_ev_BlinkTimeoutEvent.h"
-#include "events/app_ev_LeftButtonDebounceTimeoutEvent.h"
+#include "events/app_ev.h"
 #include "events/app_ev_LeftButtonIntEvent.h"
-#include "events/app_ev_LeftButtonPressEvent.h"
-#include "events/app_ev_OffTimeoutEvent.h"
-#include "events/app_ev_OnTimeoutEvent.h"
-#include "events/app_ev_PauseTimeoutEvent.h"
-#include "events/app_ev_RightButtonDebounceTimeoutEvent.h"
 #include "events/app_ev_RightButtonIntEvent.h"
-#include "events/app_ev_RightButtonPressEvent.h"
 /*............................................................................*/
 #define app_buttonIntFilterMillis 20
 /*............................................................................*/
 static void leftButtonIntHandler(void);
-static void setupLeftButton(void);
+static void app_setupLeftButton(void);
 static void rightButtonIntHandler(void);
-static void setupRightButton(void);
-static void setupLeds(void);
-static void setupEvents(void);
-static void setupApps(void);
-static void setupClockFrequency(void);
+static void app_setupRightButton(void);
+static void app_setupApps(void);
 static void sysTickIntHandler(void);
-static void setupSysTick(void);
+static void app_setupSysTick(void);
 static void onKernelStart(void);
 static void onIdle(void);
 static void onCriticalSectionEnter(void);
@@ -54,7 +44,7 @@ static void leftButtonIntHandler(void) {
     ha_LeftButton_clearIntFlag(button);
 }
 /*............................................................................*/
-static void setupLeftButton(void) {
+static void app_setupLeftButton(void) {
     ha_LeftButton * button = ha_LeftButton_();
     ha_LeftButton_init(button);
     ha_LeftButton_setIntTypeBothEdges(button);
@@ -77,7 +67,7 @@ static void rightButtonIntHandler(void) {
     ha_RightButton_clearIntFlag(button);
 }
 /*............................................................................*/
-static void setupRightButton(void) {
+static void app_setupRightButton(void) {
     ha_RightButton * button = ha_RightButton_();
     ha_RightButton_init(button);
     ha_RightButton_setIntTypeBothEdges(button);
@@ -85,42 +75,17 @@ static void setupRightButton(void) {
     ha_RightButton_enableInt(button);
 }
 /*............................................................................*/
-static void setupLeds(void) {
-    ha_Led_init();
-}
-/*............................................................................*/
-static void setupEvents(void) {
-    app_ev_BlinkTimeoutEvent_init(app_ev_BlinkTimeoutEvent_());
-    app_ev_LeftButtonPressEvent_init(app_ev_LeftButtonPressEvent_());
-    app_ev_LeftButtonIntEvent_init(app_ev_LeftButtonIntEvent_());
-    app_ev_LeftButtonDebounceTimeoutEvent_init(
-        app_ev_LeftButtonDebounceTimeoutEvent_()
-    );
-    app_ev_PauseTimeoutEvent_init(app_ev_PauseTimeoutEvent_());
-    app_ev_RightButtonPressEvent_init(app_ev_RightButtonPressEvent_());
-    app_ev_RightButtonIntEvent_init(app_ev_RightButtonIntEvent_());
-    app_ev_RightButtonDebounceTimeoutEvent_init(
-        app_ev_RightButtonDebounceTimeoutEvent_()
-    );
-    app_ev_OnTimeoutEvent_init(app_ev_OnTimeoutEvent_());
-    app_ev_OffTimeoutEvent_init(app_ev_OffTimeoutEvent_());
-}
-/*............................................................................*/
-static void setupApps(void) {
+static void app_setupApps(void) {
     // app_blk_BlinkyActObj_init(app_blk_BlinkyActObj_());
     app_btn_ButtonsTask_init(app_btn_ButtonsTask_());
     app_tmb_TimeBombActObj_init(app_tmb_TimeBombActObj_());
-}
-/*............................................................................*/
-static void setupClockFrequency(void) {
-    ha_SysClock_setMaxFrequency();
 }
 /*............................................................................*/
 static void sysTickIntHandler(void) {
     vsk_Kernel_onSysTick(vsk_Kernel_());
 }
 /*............................................................................*/
-static void setupSysTick(void) {
+static void app_setupSysTick(void) {
     ha_SysTick * sysTick = ha_SysTick_();
     ha_SysTick_init(sysTick);
     ha_SysTick_registerInt(sysTick, sysTickIntHandler);
@@ -133,13 +98,13 @@ static void setupSysTick(void) {
 }
 /*............................................................................*/
 static void onKernelStart(void) {
-    setupLeftButton();
-    setupRightButton();
-    setupLeds();
-    setupEvents();
-    setupApps();
-    setupClockFrequency();
-    setupSysTick();
+    app_setupLeftButton();
+    app_setupRightButton();
+    ha_Led_init();
+    app_ev_initEvents();
+    app_setupApps();
+    ha_SysClock_setMaxFrequency();
+    app_setupSysTick();
 }
 /*............................................................................*/
 static void onIdle(void) {

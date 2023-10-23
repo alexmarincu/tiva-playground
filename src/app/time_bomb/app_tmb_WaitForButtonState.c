@@ -49,10 +49,10 @@ static void app_tmb_WaitForButtonState_onExit(
 static void app_tmb_WaitForButtonState_onLeftButtonPress(
     app_tmb_WaitForButtonState * const self
 ) {
-    app_tmb_TimeBombActObj_setBlinkCounter(
-        (app_tmb_TimeBombActObj *)((vsk_State *)self)->_stateContext, 5
-    );
+    app_tmb_TimeBombActObj * timeBomb =
+        (app_tmb_TimeBombActObj *)((vsk_State *)self)->_stateContext;
+    timeBomb->blinkCounter = 5;
     vsk_StateContext_transition(
-        ((vsk_State *)self)->_stateContext, (vsk_State *)app_tmb_BlinkState_()
+        (vsk_StateContext *)timeBomb, (vsk_State *)app_tmb_BlinkState_()
     );
 }

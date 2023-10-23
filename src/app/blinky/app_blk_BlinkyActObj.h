@@ -17,17 +17,11 @@ struct app_blk_BlinkyActObj {
     struct {
         vsk_EventTimer onTimeout;
         vsk_EventTimer offTimeout;
-    } _eventTimers;
+    } eventTimers;
 };
 /*............................................................................*/
 app_blk_BlinkyActObj * app_blk_BlinkyActObj_(void);
 app_blk_BlinkyActObj * app_blk_BlinkyActObj_init(
-    app_blk_BlinkyActObj * const self
-);
-vsk_EventTimer * app_blk_BlinkyActObj_getOnTimeoutEventTimer(
-    app_blk_BlinkyActObj * const self
-);
-vsk_EventTimer * app_blk_BlinkyActObj_getOffTimeoutEventTimer(
     app_blk_BlinkyActObj * const self
 );
 #endif // APP_TMB_TIMEBOMBACTOBJ_H

@@ -2,13 +2,13 @@
 #define VSK_INBOX_H
 /*............................................................................*/
 typedef struct vsk_Inbox vsk_Inbox;
+#include "vsk_LinkedQueue.h"
 #include "vsk_Message.h"
-#include "vsk_Queue.h"
 #include "vsk_Task.h"
 /*............................................................................*/
 struct vsk_Inbox {
     vsk_Task * task;
-    vsk_Queue _messageQueue;
+    vsk_LinkedQueue _messageQueue;
 };
 /*............................................................................*/
 vsk_Inbox * vsk_Inbox_init(vsk_Inbox * const self, vsk_Task * const task);

@@ -42,13 +42,13 @@ app_blk_BlinkyActObj * app_blk_BlinkyActObj_init(
         )
     );
     vsk_EventTimer_init(
-        &self->_eventTimers.onTimeout,
+        &self->eventTimers.onTimeout,
         200,
         0,
         (vsk_Event *)app_ev_OnTimeoutEvent_()
     );
     vsk_EventTimer_init(
-        &self->_eventTimers.offTimeout,
+        &self->eventTimers.offTimeout,
         200,
         0,
         (vsk_Event *)app_ev_OffTimeoutEvent_()
@@ -70,16 +70,4 @@ static void app_blk_BlinkyActObj_onOffTimeout(
     app_blk_BlinkyState_onOffTimeout(
         (app_blk_BlinkyState *)((vsk_StateContext *)self)->_state
     );
-}
-/*............................................................................*/
-vsk_EventTimer * app_blk_BlinkyActObj_getOnTimeoutEventTimer(
-    app_blk_BlinkyActObj * const self
-) {
-    return &self->_eventTimers.onTimeout;
-}
-/*............................................................................*/
-vsk_EventTimer * app_blk_BlinkyActObj_getOffTimeoutEventTimer(
-    app_blk_BlinkyActObj * const self
-) {
-    return &self->_eventTimers.offTimeout;
 }

@@ -80,48 +80,18 @@ app_tmb_TimeBombActObj * app_tmb_TimeBombActObj_init(
         )
     );
     vsk_EventTimer_init(
-        &self->_eventTimers.blinkTimeout,
+        &self->eventTimers.blinkTimeout,
         500,
         0,
         (vsk_Event *)app_ev_BlinkTimeoutEvent_()
     );
     vsk_EventTimer_init(
-        &self->_eventTimers.pauseTimeout,
+        &self->eventTimers.pauseTimeout,
         500,
         0,
         (vsk_Event *)app_ev_PauseTimeoutEvent_()
     );
     return self;
-}
-/*............................................................................*/
-void app_tmb_TimeBombActObj_setBlinkCounter(
-    app_tmb_TimeBombActObj * const self, uint32_t const blinkCounter
-) {
-    self->_blinkCounter = blinkCounter;
-}
-/*............................................................................*/
-uint32_t app_tmb_TimeBombActObj_getBlinkCounter(
-    app_tmb_TimeBombActObj * const self
-) {
-    return self->_blinkCounter;
-}
-/*............................................................................*/
-void app_tmb_TimeBombActObj_decrementBlinkCounter(
-    app_tmb_TimeBombActObj * const self
-) {
-    self->_blinkCounter--;
-}
-/*............................................................................*/
-vsk_EventTimer * app_tmb_TimeBombActObj_getBlinkTimeoutEventTimer(
-    app_tmb_TimeBombActObj * const self
-) {
-    return &self->_eventTimers.blinkTimeout;
-}
-/*............................................................................*/
-vsk_EventTimer * app_tmb_TimeBombActObj_getPauseTimeoutEventTimer(
-    app_tmb_TimeBombActObj * const self
-) {
-    return &self->_eventTimers.pauseTimeout;
 }
 /*............................................................................*/
 static void app_tmb_TimeBombActObj_onRightButtonPress(

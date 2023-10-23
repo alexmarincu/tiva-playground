@@ -26,11 +26,9 @@ app_blk_OnState * app_blk_OnState_init(
 /*............................................................................*/
 static void app_blk_OnState_onEnter(app_blk_OnState * const self) {
     ha_Led_setBlueOn();
-    vsk_Timer_start(
-        (vsk_Timer *)app_blk_BlinkyActObj_getOnTimeoutEventTimer(
-            (app_blk_BlinkyActObj *)((vsk_State *)self)->_stateContext
-        )
-    );
+    app_blk_BlinkyActObj * blinky =
+        (app_blk_BlinkyActObj *)((vsk_State *)self)->_stateContext;
+    vsk_Timer_start((vsk_Timer *)&blinky->eventTimers.onTimeout);
 }
 /*............................................................................*/
 static void app_blk_OnState_onExit(app_blk_OnState * const self) {

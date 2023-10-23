@@ -16,7 +16,7 @@ vsk_InboxSupervisor * vsk_InboxSupervisor_init(
 void vsk_InboxSupervisor_register(
     vsk_InboxSupervisor * const self, vsk_Inbox * const inbox
 ) {
-    vsk_LinkedList_addFirst(&self->_inboxes, inbox);
+    vsk_LinkedList_addLast(&self->_inboxes, inbox);
 }
 /*............................................................................*/
 static void activateTask(vsk_Inbox * const inbox) {

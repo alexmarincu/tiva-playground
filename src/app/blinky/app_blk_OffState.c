@@ -22,11 +22,9 @@ app_blk_OffState * app_blk_OffState_init(
 }
 /*............................................................................*/
 static void app_blk_OffState_onEnter(app_blk_OffState * const self) {
-    vsk_Timer_start(
-        (vsk_Timer *)app_blk_BlinkyActObj_getOffTimeoutEventTimer(
-            (app_blk_BlinkyActObj *)((vsk_State *)self)->_stateContext
-        )
-    );
+    app_blk_BlinkyActObj * blinky =
+        (app_blk_BlinkyActObj *)((vsk_State *)self)->_stateContext;
+    vsk_Timer_start((vsk_Timer *)&blinky->eventTimers.offTimeout);
 }
 /*............................................................................*/
 static void app_blk_OnState_onOffTimeout(app_blk_OffState * const self) {

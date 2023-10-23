@@ -35,5 +35,5 @@ void vsk_TaskScheduler_start(vsk_TaskScheduler * const self) {
 void vsk_TaskScheduler_register(
     vsk_TaskScheduler * const self, vsk_Task * const task
 ) {
-    vsk_LinkedList_addFirst(&self->_tasks, task);
+    vsk_LinkedList_addLast(&self->_tasks, task);
 }
