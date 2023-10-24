@@ -32,7 +32,7 @@ void vsk_Timer_onSysTick(vsk_Timer * const self) {
     if (self->_millisCount != 0) {
         if (self->_millisCount <= vsk_Time_getTickPeriodMillis(vsk_Time_())) {
             self->_millisCount = self->_periodMillis;
-            self->_callback(self);
+            self->_callback(self->_obj);
         } else {
             self->_millisCount -= vsk_Time_getTickPeriodMillis(vsk_Time_());
         }
