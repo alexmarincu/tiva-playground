@@ -17,8 +17,8 @@ bool vsk_Task_isReady(vsk_Task * const self) {
 }
 /*............................................................................*/
 void vsk_Task_run(vsk_Task * const self) {
-    self->_operation(self->_obj);
     self->_isReady = false;
+    self->_operation(self->_obj);
 }
 /*............................................................................*/
 void vsk_Task_activate(vsk_Task * const self) {
