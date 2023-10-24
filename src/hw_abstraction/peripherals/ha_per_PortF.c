@@ -9,10 +9,10 @@
 #include <stdbool.h>
 #include <stddef.h>
 /*............................................................................*/
-static void intHandler(void);
+static void ha_intHandler(void);
 static void ha_per_PortF_registerInternalInt(ha_per_PortF * const self);
 /*............................................................................*/
-static void intHandler(void) {
+static void ha_intHandler(void) {
     ha_per_PortF * self = ha_per_PortF_();
     uint32_t intStatus = GPIOIntStatus(GPIO_PORTF_BASE, true);
     if (self->_intHandlers.leftButton && (intStatus & ha_LeftButton_pin)) {
@@ -41,7 +41,7 @@ ha_per_PortF * ha_per_PortF_init(ha_per_PortF * const self) {
 static void ha_per_PortF_registerInternalInt(ha_per_PortF * const self) {
     if (self->_isIntRegistered == false) {
         self->_isIntRegistered = true;
-        GPIOIntRegister(GPIO_PORTF_BASE, intHandler);
+        GPIOIntRegister(GPIO_PORTF_BASE, ha_intHandler);
     }
 }
 /*............................................................................*/

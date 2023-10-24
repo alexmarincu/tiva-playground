@@ -19,7 +19,7 @@ void vsk_InboxSupervisor_register(
     vsk_LinkedList_addLast(&self->_inboxes, inbox);
 }
 /*............................................................................*/
-static void activateTask(vsk_Inbox * const inbox) {
+static void vsk_activateTask(vsk_Inbox * const inbox) {
     if (!vsk_Inbox_isEmpty(inbox)) {
         vsk_Task_activate(inbox->task);
     }
@@ -27,6 +27,6 @@ static void activateTask(vsk_Inbox * const inbox) {
 /*............................................................................*/
 void vsk_InboxSupervisor_onSysTick(vsk_InboxSupervisor * const self) {
     vsk_LinkedList_forEach(
-        &self->_inboxes, (vsk_LinkedListForEachOperation)activateTask
+        &self->_inboxes, (vsk_LinkedListForEachOperation)vsk_activateTask
     );
 }

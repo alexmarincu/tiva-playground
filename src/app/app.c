@@ -18,20 +18,20 @@
 /*............................................................................*/
 #define app_buttonIntFilterMillis 20
 /*............................................................................*/
-static void leftButtonIntHandler(void);
+static void app_leftButtonIntHandler(void);
 static void app_setupLeftButton(void);
-static void rightButtonIntHandler(void);
+static void app_rightButtonIntHandler(void);
 static void app_setupRightButton(void);
 static void app_setupApps(void);
-static void sysTickIntHandler(void);
+static void app_sysTickIntHandler(void);
 static void app_setupSysTick(void);
-static void onKernelStart(void);
-static void onIdle(void);
-static void onCriticalSectionEnter(void);
-static void onCriticalSectionExit(void);
-static void onAssertFail(void);
+static void app_onKernelStart(void);
+static void app_onIdle(void);
+static void app_onCriticalSectionEnter(void);
+static void app_onCriticalSectionExit(void);
+static void app_onAssertFail(void);
 /*............................................................................*/
-static void leftButtonIntHandler(void) {
+static void app_leftButtonIntHandler(void) {
     ha_LeftButton * button = ha_LeftButton_();
     static uint32_t lastMillisCount = 0;
     uint32_t millisCount = vsk_Time_getMillisCount(vsk_Time_());
@@ -50,11 +50,11 @@ static void app_setupLeftButton(void) {
     ha_LeftButton * button = ha_LeftButton_();
     ha_LeftButton_init(button);
     ha_LeftButton_setIntTypeBothEdges(button);
-    ha_LeftButton_registerInt(button, leftButtonIntHandler);
+    ha_LeftButton_registerInt(button, app_leftButtonIntHandler);
     ha_LeftButton_enableInt(button);
 }
 /*............................................................................*/
-static void rightButtonIntHandler(void) {
+static void app_rightButtonIntHandler(void) {
     ha_RightButton * button = ha_RightButton_();
     static uint32_t lastMillisCount = 0;
     uint32_t millisCount = vsk_Time_getMillisCount(vsk_Time_());
@@ -73,11 +73,11 @@ static void app_setupRightButton(void) {
     ha_RightButton * button = ha_RightButton_();
     ha_RightButton_init(button);
     ha_RightButton_setIntTypeBothEdges(button);
-    ha_RightButton_registerInt(button, rightButtonIntHandler);
+    ha_RightButton_registerInt(button, app_rightButtonIntHandler);
     ha_RightButton_enableInt(button);
 }
 /*............................................................................*/
-// static void buttonsTaskOperation(void * const obj) {
+// static void app_buttonsTaskOperation(void * const obj) {
 //     static bool isLeftButtonPressed = false;
 //     static bool isRightButtonPressed = false;
 //     if (ha_LeftButton_isPressed(ha_LeftButton_())) {
@@ -102,7 +102,7 @@ static void app_setupRightButton(void) {
 //     }
 // }
 /*............................................................................*/
-// static void activateButtonsTask(vsk_Task * const buttonsTask) {
+// static void app_activateButtonsTask(vsk_Task * const buttonsTask) {
 //     vsk_Task_activate(buttonsTask);
 // }
 /*............................................................................*/
@@ -110,7 +110,7 @@ static void app_setupApps(void) {
     // app_blk_BlinkyActObj_init(app_blk_BlinkyActObj_());
     // static vsk_Task buttonsTask;
     // vsk_Task_init(
-    //     &buttonsTask, (vsk_TaskOperation)buttonsTaskOperation, NULL
+    //     &buttonsTask, (vsk_TaskOperation)app_buttonsTaskOperation, NULL
     // );
     // static vsk_Timer buttonsTaskTimer;
     // vsk_Timer_start(
@@ -118,7 +118,7 @@ static void app_setupApps(void) {
     //         &buttonsTaskTimer,
     //         1,
     //         20,
-    //         (vsk_TimerCallback)activateButtonsTask,
+    //         (vsk_TimerCallback)app_activateButtonsTask,
     //         &buttonsTask
     //     )
     // );
@@ -126,14 +126,14 @@ static void app_setupApps(void) {
     app_tmb_TimeBombActObj_init(app_tmb_TimeBombActObj_());
 }
 /*............................................................................*/
-static void sysTickIntHandler(void) {
+static void app_sysTickIntHandler(void) {
     vsk_Kernel_onSysTick(vsk_Kernel_());
 }
 /*............................................................................*/
 static void app_setupSysTick(void) {
     ha_SysTick * sysTick = ha_SysTick_();
     ha_SysTick_init(sysTick);
-    ha_SysTick_registerInt(sysTick, sysTickIntHandler);
+    ha_SysTick_registerInt(sysTick, app_sysTickIntHandler);
     ha_SysTick_enableInt(sysTick);
     ha_SysTick_setPeriodMillis(sysTick, 1);
     vsk_Kernel_informTickPeriodMillis(
@@ -142,7 +142,7 @@ static void app_setupSysTick(void) {
     ha_SysTick_enable(sysTick);
 }
 /*............................................................................*/
-static void onKernelStart(void) {
+static void app_onKernelStart(void) {
     app_setupLeftButton();
     app_setupRightButton();
     ha_Led_init();
@@ -152,20 +152,20 @@ static void onKernelStart(void) {
     app_setupSysTick();
 }
 /*............................................................................*/
-static void onIdle(void) {
+static void app_onIdle(void) {
     // maybe put also peripherals in sleep / low power mode
     ha_SysCtrl_sleep();
 }
 /*............................................................................*/
-static void onCriticalSectionEnter(void) {
+static void app_onCriticalSectionEnter(void) {
     ha_Interrupt_masterDisable();
 }
 /*............................................................................*/
-static void onCriticalSectionExit(void) {
+static void app_onCriticalSectionExit(void) {
     ha_Interrupt_masterEnable();
 }
 /*............................................................................*/
-static void onAssertFail(void) {
+static void app_onAssertFail(void) {
     ha_Interrupt_masterDisable();
     ha_Led_setAllOff();
     ha_Led_setRedOn();
@@ -179,11 +179,11 @@ int app_main(void) {
     vsk_Kernel_start(
         vsk_Kernel_init(
             vsk_Kernel_(),
-            onKernelStart,
-            onIdle,
-            onCriticalSectionEnter,
-            onCriticalSectionExit,
-            onAssertFail,
+            app_onKernelStart,
+            app_onIdle,
+            app_onCriticalSectionEnter,
+            app_onCriticalSectionExit,
+            app_onAssertFail,
             nodes,
             ut_lengthOf(nodes)
         )

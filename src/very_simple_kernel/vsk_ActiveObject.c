@@ -4,7 +4,7 @@
 /*............................................................................*/
 static void vsk_ActiveObject_onStart(vsk_ActiveObject * const self);
 /*............................................................................*/
-static void dispatchMessage(vsk_ActiveObject * const self) {
+static void vsk_dispatchMessage(vsk_ActiveObject * const self) {
     vsk_Message_dispatch(vsk_Inbox_readMessage(&self->_inbox));
 }
 /*............................................................................*/
@@ -12,7 +12,7 @@ vsk_ActiveObject * vsk_ActiveObject_init(
     vsk_ActiveObject * const self, vsk_State * const initialState
 ) {
     vsk_StateContext_init((vsk_StateContext *)self, initialState);
-    vsk_Task_init(&self->_task, (vsk_TaskOperation)dispatchMessage, self);
+    vsk_Task_init(&self->_task, (vsk_TaskOperation)vsk_dispatchMessage, self);
     vsk_Inbox_init(&self->_inbox, &self->_task);
     vsk_Event_subscribe(
         (vsk_Event *)vsk_OnStartEvent_(),
