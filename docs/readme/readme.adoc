@@ -1,0 +1,43 @@
+= Tiva playground
+:sectnums:
+:imagesdir: media
+:source-highlighter: rouge
+:rouge-style: monokai
+
+[%breakable]
+== Objectives
+
+* Apply OOP in a real project
+* Examples of design patters (observer/publish-subscribe, state etc.)
+* Learn about inner workings of a kernel
+* Learn about active object pattern
+* Compare standard polling tasks with event based architecture
+* Improve low level code knowledge
+* Learn how to use a logic analyzer
+
+== HW Setup
+
+* Board: http://www.ti.com/ww/en/launchpad/launchpads-connected-ek-tm4c123gxl.html[Tiva C Series Launchpad (EK-TM4C123GXL)]
+
+image::tiva-board.png[Tiva board, width=600, align="center"]
+
+[%breakable]
+* Logic analyzer: https://www.emag.ro/analizor-logic-saleae-cu-8-canale-elektroweb-24-mhz-1-w-005/pd/D3QC35MBM/?ref=history-shopping_323810473_116388_1[Cheap Saleae logic analyzer]
+
+image::logic-analyzer.png[Logic analyzer, width=300, align="center"]
+
+== Project structure
+----
+├── lib/tivaware: firmware provided by board manufacturer
+└── src:
+    ├── app: package containing apps
+    │   ├── blinky
+    │   ├── buttons
+    │   └── time_bomb
+    ├── board_support: startup code
+    ├── hw_abstraction: abstraction layer over firmware
+    ├── system_infrastructure: kernel configuration, interrupt impl and app init
+    │   └── events: events setup
+    ├── utils: general useful stuff
+    └── very_simple_kernel: a simple non-preemptive kernel
+----

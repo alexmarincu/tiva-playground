@@ -3,3 +3,5 @@ build/
 # clangd
 .cache/
 compile_commands.json
+# Doc diagram cache
+**/.asciidoctor/
