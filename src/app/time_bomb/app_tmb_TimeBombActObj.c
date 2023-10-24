@@ -1,9 +1,9 @@
 /*............................................................................*/
 #include "app_tmb_TimeBombActObj.h"
-#include "../../app/events/app_ev_BlinkTimeoutEvent.h"
-#include "../../app/events/app_ev_LeftButtonPressEvent.h"
-#include "../../app/events/app_ev_PauseTimeoutEvent.h"
-#include "../../app/events/app_ev_RightButtonPressEvent.h"
+#include "../../system_infrastructure/events/si_ev_BlinkTimeoutEvent.h"
+#include "../../system_infrastructure/events/si_ev_LeftButtonPressEvent.h"
+#include "../../system_infrastructure/events/si_ev_PauseTimeoutEvent.h"
+#include "../../system_infrastructure/events/si_ev_RightButtonPressEvent.h"
 #include "app_tmb_BlinkState.h"
 #include "app_tmb_BoomState.h"
 #include "app_tmb_DefusedState.h"
@@ -44,7 +44,7 @@ app_tmb_TimeBombActObj * app_tmb_TimeBombActObj_init(
         app_tmb_DefusedState_(), (vsk_StateContext *)self
     );
     vsk_Event_subscribe(
-        (vsk_Event *)app_ev_RightButtonPressEvent_(),
+        (vsk_Event *)si_ev_RightButtonPressEvent_(),
         vsk_EventSubscription_init(
             &self->_eventSubscriptions.rightButtonPress,
             &((vsk_ActiveObject *)self)->_inbox,
@@ -53,7 +53,7 @@ app_tmb_TimeBombActObj * app_tmb_TimeBombActObj_init(
         )
     );
     vsk_Event_subscribe(
-        (vsk_Event *)app_ev_LeftButtonPressEvent_(),
+        (vsk_Event *)si_ev_LeftButtonPressEvent_(),
         vsk_EventSubscription_init(
             &self->_eventSubscriptions.leftButtonPress,
             &((vsk_ActiveObject *)self)->_inbox,
@@ -62,7 +62,7 @@ app_tmb_TimeBombActObj * app_tmb_TimeBombActObj_init(
         )
     );
     vsk_Event_subscribe(
-        (vsk_Event *)app_ev_BlinkTimeoutEvent_(),
+        (vsk_Event *)si_ev_BlinkTimeoutEvent_(),
         vsk_EventSubscription_init(
             &self->_eventSubscriptions.blinkTimeout,
             &((vsk_ActiveObject *)self)->_inbox,
@@ -71,7 +71,7 @@ app_tmb_TimeBombActObj * app_tmb_TimeBombActObj_init(
         )
     );
     vsk_Event_subscribe(
-        (vsk_Event *)app_ev_PauseTimeoutEvent_(),
+        (vsk_Event *)si_ev_PauseTimeoutEvent_(),
         vsk_EventSubscription_init(
             &self->_eventSubscriptions.pauseTimeout,
             &((vsk_ActiveObject *)self)->_inbox,
@@ -83,13 +83,13 @@ app_tmb_TimeBombActObj * app_tmb_TimeBombActObj_init(
         &self->eventTimers.blinkTimeout,
         500,
         0,
-        (vsk_Event *)app_ev_BlinkTimeoutEvent_()
+        (vsk_Event *)si_ev_BlinkTimeoutEvent_()
     );
     vsk_EventTimer_init(
         &self->eventTimers.pauseTimeout,
         500,
         0,
-        (vsk_Event *)app_ev_PauseTimeoutEvent_()
+        (vsk_Event *)si_ev_PauseTimeoutEvent_()
     );
     return self;
 }

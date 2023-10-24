@@ -1,17 +1,17 @@
-#ifndef APP_EV_OFFTIMEOUTEVENT_H
-#define APP_EV_OFFTIMEOUTEVENT_H
+#ifndef SI_EV_ONTIMEOUTEVENT_H
+#define SI_EV_ONTIMEOUTEVENT_H
 /*............................................................................*/
-typedef struct app_ev_OffTimeoutEvent app_ev_OffTimeoutEvent;
+typedef struct si_ev_OnTimeoutEvent si_ev_OnTimeoutEvent;
 #include "../../very_simple_kernel/vsk_Event.h"
 /*............................................................................*/
-struct app_ev_OffTimeoutEvent {
+struct si_ev_OnTimeoutEvent {
     struct {
         vsk_Event event;
     } _super;
 };
 /*............................................................................*/
-app_ev_OffTimeoutEvent * app_ev_OffTimeoutEvent_(void);
-app_ev_OffTimeoutEvent * app_ev_OffTimeoutEvent_init(
-    app_ev_OffTimeoutEvent * const self
+si_ev_OnTimeoutEvent * si_ev_OnTimeoutEvent_(void);
+si_ev_OnTimeoutEvent * si_ev_OnTimeoutEvent_init(
+    si_ev_OnTimeoutEvent * const self
 );
-#endif // APP_EV_OFFTIMEOUTEVENT_H
+#endif // SI_EV_ONTIMEOUTEVENT_H

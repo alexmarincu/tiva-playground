@@ -1,7 +1,7 @@
 /*............................................................................*/
 #include "app_blk_BlinkyActObj.h"
-#include "../../app/events/app_ev_OffTimeoutEvent.h"
-#include "../../app/events/app_ev_OnTimeoutEvent.h"
+#include "../../system_infrastructure/events/si_ev_OffTimeoutEvent.h"
+#include "../../system_infrastructure/events/si_ev_OnTimeoutEvent.h"
 #include "app_blk_OffState.h"
 #include "app_blk_OnState.h"
 /*............................................................................*/
@@ -24,7 +24,7 @@ app_blk_BlinkyActObj * app_blk_BlinkyActObj_init(
     app_blk_OnState_init(app_blk_OnState_(), (vsk_StateContext *)self);
     app_blk_OffState_init(app_blk_OffState_(), (vsk_StateContext *)self);
     vsk_Event_subscribe(
-        (vsk_Event *)app_ev_OnTimeoutEvent_(),
+        (vsk_Event *)si_ev_OnTimeoutEvent_(),
         vsk_EventSubscription_init(
             &self->_eventSubscriptions.onTimeout,
             &((vsk_ActiveObject *)self)->_inbox,
@@ -33,7 +33,7 @@ app_blk_BlinkyActObj * app_blk_BlinkyActObj_init(
         )
     );
     vsk_Event_subscribe(
-        (vsk_Event *)app_ev_OffTimeoutEvent_(),
+        (vsk_Event *)si_ev_OffTimeoutEvent_(),
         vsk_EventSubscription_init(
             &self->_eventSubscriptions.offTimeout,
             &((vsk_ActiveObject *)self)->_inbox,
@@ -45,13 +45,13 @@ app_blk_BlinkyActObj * app_blk_BlinkyActObj_init(
         &self->eventTimers.onTimeout,
         200,
         0,
-        (vsk_Event *)app_ev_OnTimeoutEvent_()
+        (vsk_Event *)si_ev_OnTimeoutEvent_()
     );
     vsk_EventTimer_init(
         &self->eventTimers.offTimeout,
         200,
         0,
-        (vsk_Event *)app_ev_OffTimeoutEvent_()
+        (vsk_Event *)si_ev_OffTimeoutEvent_()
     );
     return self;
 }

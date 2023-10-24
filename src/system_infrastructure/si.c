@@ -1,37 +1,37 @@
 /*............................................................................*/
+#include "../app/blinky/app_blk_BlinkyActObj.h"
+#include "../app/buttons/app_btn_ButtonsActObj.h"
+#include "../app/time_bomb/app_tmb_TimeBombActObj.h"
 #include "../hw_abstraction/ha_Led.h"
 #include "../hw_abstraction/ha_LeftButton.h"
 #include "../hw_abstraction/ha_RightButton.h"
 #include "../hw_abstraction/ha_SysClock.h"
 #include "../hw_abstraction/ha_SysCtrl.h"
 #include "../hw_abstraction/ha_SysTick.h"
+#include "../system_infrastructure/events/si_ev.h"
+#include "../system_infrastructure/events/si_ev_LeftButtonIntEvent.h"
+#include "../system_infrastructure/events/si_ev_LeftButtonPressEvent.h"
+#include "../system_infrastructure/events/si_ev_RightButtonIntEvent.h"
+#include "../system_infrastructure/events/si_ev_RightButtonPressEvent.h"
 #include "../utils/ut.h"
 #include "../very_simple_kernel/vsk_Kernel.h"
-#include "blinky/app_blk_BlinkyActObj.h"
-#include "buttons/app_btn_ButtonsActObj.h"
-#include "events/app_ev.h"
-#include "events/app_ev_LeftButtonIntEvent.h"
-#include "events/app_ev_LeftButtonPressEvent.h"
-#include "events/app_ev_RightButtonIntEvent.h"
-#include "events/app_ev_RightButtonPressEvent.h"
-#include "time_bomb/app_tmb_TimeBombActObj.h"
 /*............................................................................*/
-#define app_buttonIntFilterMillis 20
+#define si_buttonIntFilterMillis 20
 /*............................................................................*/
-static void app_leftButtonIntHandler(void);
-static void app_setupLeftButton(void);
-static void app_rightButtonIntHandler(void);
-static void app_setupRightButton(void);
-static void app_setupApps(void);
-static void app_sysTickIntHandler(void);
-static void app_setupSysTick(void);
-static void app_onKernelStart(void);
-static void app_onIdle(void);
-static void app_onCriticalSectionEnter(void);
-static void app_onCriticalSectionExit(void);
-static void app_onAssertFail(void);
+static void si_leftButtonIntHandler(void);
+static void si_setupLeftButton(void);
+static void si_rightButtonIntHandler(void);
+static void si_setupRightButton(void);
+static void si_setupApps(void);
+static void si_sysTickIntHandler(void);
+static void si_setupSysTick(void);
+static void si_onKernelStart(void);
+static void si_onIdle(void);
+static void si_onCriticalSectionEnter(void);
+static void si_onCriticalSectionExit(void);
+static void si_onAssertFail(void);
 /*............................................................................*/
-static void app_leftButtonIntHandler(void) {
+static void si_leftButtonIntHandler(void) {
     ha_LeftButton * button = ha_LeftButton_();
     static uint32_t lastMillisCount = 0;
     uint32_t millisCount = vsk_Time_getMillisCount(vsk_Time_());
@@ -39,22 +39,22 @@ static void app_leftButtonIntHandler(void) {
     if (millisCount < lastMillisCount) {
         timeElapsed = (UINT32_MAX - lastMillisCount + 1) + millisCount;
     }
-    if (timeElapsed > app_buttonIntFilterMillis) {
-        vsk_Event_raise((vsk_Event *)app_ev_LeftButtonIntEvent_());
+    if (timeElapsed > si_buttonIntFilterMillis) {
+        vsk_Event_raise((vsk_Event *)si_ev_LeftButtonIntEvent_());
         lastMillisCount = millisCount;
     }
     ha_LeftButton_clearIntFlag(button);
 }
 /*............................................................................*/
-static void app_setupLeftButton(void) {
+static void si_setupLeftButton(void) {
     ha_LeftButton * button = ha_LeftButton_();
     ha_LeftButton_init(button);
     ha_LeftButton_setIntTypeBothEdges(button);
-    ha_LeftButton_registerInt(button, app_leftButtonIntHandler);
+    ha_LeftButton_registerInt(button, si_leftButtonIntHandler);
     ha_LeftButton_enableInt(button);
 }
 /*............................................................................*/
-static void app_rightButtonIntHandler(void) {
+static void si_rightButtonIntHandler(void) {
     ha_RightButton * button = ha_RightButton_();
     static uint32_t lastMillisCount = 0;
     uint32_t millisCount = vsk_Time_getMillisCount(vsk_Time_());
@@ -62,22 +62,22 @@ static void app_rightButtonIntHandler(void) {
     if (millisCount < lastMillisCount) {
         timeElapsed = (UINT32_MAX - lastMillisCount + 1) + millisCount;
     }
-    if (timeElapsed > app_buttonIntFilterMillis) {
-        vsk_Event_raise((vsk_Event *)app_ev_RightButtonIntEvent_());
+    if (timeElapsed > si_buttonIntFilterMillis) {
+        vsk_Event_raise((vsk_Event *)si_ev_RightButtonIntEvent_());
         lastMillisCount = millisCount;
     }
     ha_RightButton_clearIntFlag(button);
 }
 /*............................................................................*/
-static void app_setupRightButton(void) {
+static void si_setupRightButton(void) {
     ha_RightButton * button = ha_RightButton_();
     ha_RightButton_init(button);
     ha_RightButton_setIntTypeBothEdges(button);
-    ha_RightButton_registerInt(button, app_rightButtonIntHandler);
+    ha_RightButton_registerInt(button, si_rightButtonIntHandler);
     ha_RightButton_enableInt(button);
 }
 /*............................................................................*/
-// static void app_buttonsTaskOperation(void * const obj) {
+// static void si_buttonsTaskOperation(void * const obj) {
 //     static bool isLeftButtonPressed = false;
 //     static bool isRightButtonPressed = false;
 //     if (ha_LeftButton_isPressed(ha_LeftButton_())) {
@@ -86,7 +86,7 @@ static void app_setupRightButton(void) {
 //         }
 //     } else {
 //         if (isLeftButtonPressed) {
-//             vsk_Event_raise((vsk_Event *)app_ev_LeftButtonPressEvent_());
+//             vsk_Event_raise((vsk_Event *)si_ev_LeftButtonPressEvent_());
 //         }
 //         isLeftButtonPressed = false;
 //     }
@@ -96,21 +96,21 @@ static void app_setupRightButton(void) {
 //         }
 //     } else {
 //         if (isRightButtonPressed) {
-//             vsk_Event_raise((vsk_Event *)app_ev_RightButtonPressEvent_());
+//             vsk_Event_raise((vsk_Event *)si_ev_RightButtonPressEvent_());
 //         }
 //         isRightButtonPressed = false;
 //     }
 // }
 /*............................................................................*/
-// static void app_activateButtonsTask(vsk_Task * const buttonsTask) {
+// static void si_activateButtonsTask(vsk_Task * const buttonsTask) {
 //     vsk_Task_activate(buttonsTask);
 // }
 /*............................................................................*/
-static void app_setupApps(void) {
+static void si_setupApps(void) {
     // app_blk_BlinkyActObj_init(app_blk_BlinkyActObj_());
     // static vsk_Task buttonsTask;
     // vsk_Task_init(
-    //     &buttonsTask, (vsk_TaskOperation)app_buttonsTaskOperation, NULL
+    //     &buttonsTask, (vsk_TaskOperation)si_buttonsTaskOperation, NULL
     // );
     // static vsk_Timer buttonsTaskTimer;
     // vsk_Timer_start(
@@ -118,7 +118,7 @@ static void app_setupApps(void) {
     //         &buttonsTaskTimer,
     //         1,
     //         20,
-    //         (vsk_TimerCallback)app_activateButtonsTask,
+    //         (vsk_TimerCallback)si_activateButtonsTask,
     //         &buttonsTask
     //     )
     // );
@@ -126,14 +126,14 @@ static void app_setupApps(void) {
     app_tmb_TimeBombActObj_init(app_tmb_TimeBombActObj_());
 }
 /*............................................................................*/
-static void app_sysTickIntHandler(void) {
+static void si_sysTickIntHandler(void) {
     vsk_Kernel_onSysTick(vsk_Kernel_());
 }
 /*............................................................................*/
-static void app_setupSysTick(void) {
+static void si_setupSysTick(void) {
     ha_SysTick * sysTick = ha_SysTick_();
     ha_SysTick_init(sysTick);
-    ha_SysTick_registerInt(sysTick, app_sysTickIntHandler);
+    ha_SysTick_registerInt(sysTick, si_sysTickIntHandler);
     ha_SysTick_enableInt(sysTick);
     ha_SysTick_setPeriodMillis(sysTick, 1);
     vsk_Kernel_informTickPeriodMillis(
@@ -142,30 +142,30 @@ static void app_setupSysTick(void) {
     ha_SysTick_enable(sysTick);
 }
 /*............................................................................*/
-static void app_onKernelStart(void) {
-    app_setupLeftButton();
-    app_setupRightButton();
+static void si_onKernelStart(void) {
+    si_setupLeftButton();
+    si_setupRightButton();
     ha_Led_init();
-    app_ev_initEvents();
-    app_setupApps();
+    si_ev_initEvents();
+    si_setupApps();
     ha_SysClock_setMaxFrequency();
-    app_setupSysTick();
+    si_setupSysTick();
 }
 /*............................................................................*/
-static void app_onIdle(void) {
+static void si_onIdle(void) {
     // maybe put also peripherals in sleep / low power mode
     ha_SysCtrl_sleep();
 }
 /*............................................................................*/
-static void app_onCriticalSectionEnter(void) {
+static void si_onCriticalSectionEnter(void) {
     ha_Interrupt_masterDisable();
 }
 /*............................................................................*/
-static void app_onCriticalSectionExit(void) {
+static void si_onCriticalSectionExit(void) {
     ha_Interrupt_masterEnable();
 }
 /*............................................................................*/
-static void app_onAssertFail(void) {
+static void si_onAssertFail(void) {
     ha_Interrupt_masterDisable();
     ha_Led_setAllOff();
     ha_Led_setRedOn();
@@ -174,16 +174,16 @@ static void app_onAssertFail(void) {
     }
 }
 /*............................................................................*/
-int app_main(void) {
+int si_main(void) {
     static vsk_Node nodes[20];
     vsk_Kernel_start(
         vsk_Kernel_init(
             vsk_Kernel_(),
-            app_onKernelStart,
-            app_onIdle,
-            app_onCriticalSectionEnter,
-            app_onCriticalSectionExit,
-            app_onAssertFail,
+            si_onKernelStart,
+            si_onIdle,
+            si_onCriticalSectionEnter,
+            si_onCriticalSectionExit,
+            si_onAssertFail,
             nodes,
             ut_lengthOf(nodes)
         )
