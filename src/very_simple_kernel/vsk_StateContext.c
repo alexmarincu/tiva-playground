@@ -17,5 +17,7 @@ void vsk_StateContext_transition(
         vsk_State_onExit(self->_state);
     }
     self->_state = state;
-    vsk_State_onEnter(self->_state);
+    if (self->_state != NULL) {
+        vsk_State_onEnter(self->_state);
+    }
 }
