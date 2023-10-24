@@ -1,16 +1,15 @@
-#ifndef APP_BTN_BUTTONSTASK_H
-#define APP_BTN_BUTTONSTASK_H
+#ifndef APP_BTN_BUTTONSACTOBJ_H
+#define APP_BTN_BUTTONSACTOBJ_H
 /*............................................................................*/
-typedef struct app_btn_ButtonsTask app_btn_ButtonsTask;
+typedef struct app_btn_ButtonsActObj app_btn_ButtonsActObj;
+#include "../../very_simple_kernel/vsk_ActiveObject.h"
 #include "../../very_simple_kernel/vsk_EventSubscription.h"
 #include "../../very_simple_kernel/vsk_EventTimer.h"
-#include "../../very_simple_kernel/vsk_Task.h"
 /*............................................................................*/
-struct app_btn_ButtonsTask {
+struct app_btn_ButtonsActObj {
     struct {
-        vsk_Task task;
+        vsk_ActiveObject activeObject;
     } _super;
-    vsk_Inbox _inbox;
     struct {
         vsk_EventSubscription leftButtonInt;
         vsk_EventSubscription rightButtonInt;
@@ -23,8 +22,8 @@ struct app_btn_ButtonsTask {
     } _eventTimers;
 };
 /*............................................................................*/
-app_btn_ButtonsTask * app_btn_ButtonsTask_(void);
-app_btn_ButtonsTask * app_btn_ButtonsTask_init(
-    app_btn_ButtonsTask * const self
+app_btn_ButtonsActObj * app_btn_ButtonsActObj_(void);
+app_btn_ButtonsActObj * app_btn_ButtonsActObj_init(
+    app_btn_ButtonsActObj * const self
 );
-#endif // APP_BTN_BUTTONSTASK_H
+#endif // APP_BTN_BUTTONSACTOBJ_H

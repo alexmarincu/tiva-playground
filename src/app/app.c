@@ -1,7 +1,4 @@
 /*............................................................................*/
-#include "../app/blinky/app_blk_BlinkyActObj.h"
-#include "../app/buttons/app_btn_ButtonsTask.h"
-#include "../app/time_bomb/app_tmb_TimeBombActObj.h"
 #include "../hw_abstraction/ha_Led.h"
 #include "../hw_abstraction/ha_LeftButton.h"
 #include "../hw_abstraction/ha_RightButton.h"
@@ -10,9 +7,14 @@
 #include "../hw_abstraction/ha_SysTick.h"
 #include "../utils/ut.h"
 #include "../very_simple_kernel/vsk_Kernel.h"
+#include "blinky/app_blk_BlinkyActObj.h"
+#include "buttons/app_btn_ButtonsActObj.h"
 #include "events/app_ev.h"
 #include "events/app_ev_LeftButtonIntEvent.h"
+#include "events/app_ev_LeftButtonPressEvent.h"
 #include "events/app_ev_RightButtonIntEvent.h"
+#include "events/app_ev_RightButtonPressEvent.h"
+#include "time_bomb/app_tmb_TimeBombActObj.h"
 /*............................................................................*/
 #define app_buttonIntFilterMillis 20
 /*............................................................................*/
@@ -75,9 +77,52 @@ static void app_setupRightButton(void) {
     ha_RightButton_enableInt(button);
 }
 /*............................................................................*/
+// static void buttonsTaskOperation(void * const obj) {
+//     static bool isLeftButtonPressed = false;
+//     static bool isRightButtonPressed = false;
+//     if (ha_LeftButton_isPressed(ha_LeftButton_())) {
+//         if (!isLeftButtonPressed) {
+//             isLeftButtonPressed = true;
+//         }
+//     } else {
+//         if (isLeftButtonPressed) {
+//             vsk_Event_raise((vsk_Event *)app_ev_LeftButtonPressEvent_());
+//         }
+//         isLeftButtonPressed = false;
+//     }
+//     if (ha_RightButton_isPressed(ha_RightButton_())) {
+//         if (!isRightButtonPressed) {
+//             isRightButtonPressed = true;
+//         }
+//     } else {
+//         if (isRightButtonPressed) {
+//             vsk_Event_raise((vsk_Event *)app_ev_RightButtonPressEvent_());
+//         }
+//         isRightButtonPressed = false;
+//     }
+// }
+/*............................................................................*/
+// static void activateButtonsTask(vsk_Task * const buttonsTask) {
+//     vsk_Task_activate(buttonsTask);
+// }
+/*............................................................................*/
 static void app_setupApps(void) {
     // app_blk_BlinkyActObj_init(app_blk_BlinkyActObj_());
-    app_btn_ButtonsTask_init(app_btn_ButtonsTask_());
+    // static vsk_Task buttonsTask;
+    // vsk_Task_init(
+    //     &buttonsTask, (vsk_TaskOperation)buttonsTaskOperation, NULL
+    // );
+    // static vsk_Timer buttonsTaskTimer;
+    // vsk_Timer_start(
+    //     vsk_Timer_init(
+    //         &buttonsTaskTimer,
+    //         1,
+    //         20,
+    //         (vsk_TimerCallback)activateButtonsTask,
+    //         &buttonsTask
+    //     )
+    // );
+    app_btn_ButtonsActObj_init(app_btn_ButtonsActObj_());
     app_tmb_TimeBombActObj_init(app_tmb_TimeBombActObj_());
 }
 /*............................................................................*/
@@ -130,7 +175,7 @@ static void onAssertFail(void) {
 }
 /*............................................................................*/
 int app_main(void) {
-    static vsk_Node nodes[18];
+    static vsk_Node nodes[20];
     vsk_Kernel_start(
         vsk_Kernel_init(
             vsk_Kernel_(),

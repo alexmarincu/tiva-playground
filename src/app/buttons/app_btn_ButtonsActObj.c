@@ -1,5 +1,5 @@
 /*............................................................................*/
-#include "app_btn_ButtonsTask.h"
+#include "app_btn_ButtonsActObj.h"
 #include "../../app/events/app_ev_LeftButtonDebounceTimeoutEvent.h"
 #include "../../app/events/app_ev_LeftButtonIntEvent.h"
 #include "../../app/events/app_ev_LeftButtonPressEvent.h"
@@ -9,39 +9,34 @@
 #include "../../hw_abstraction/ha_LeftButton.h"
 #include "../../hw_abstraction/ha_RightButton.h"
 /*............................................................................*/
-static void app_btn_ButtonsTask_onLeftButtonInt(
-    app_btn_ButtonsTask * const self
+static void app_btn_ButtonsActObj_onLeftButtonInt(
+    app_btn_ButtonsActObj * const self
 );
-static void app_btn_ButtonsTask_onRightButtonInt(
-    app_btn_ButtonsTask * const self
+static void app_btn_ButtonsActObj_onRightButtonInt(
+    app_btn_ButtonsActObj * const self
 );
-static void app_btn_ButtonsTask_onLeftButtonDebounceTimeout(
-    app_btn_ButtonsTask * const self
+static void app_btn_ButtonsActObj_onLeftButtonDebounceTimeout(
+    app_btn_ButtonsActObj * const self
 );
-static void app_btn_ButtonsTask_onRightButtonDebounceTimeout(
-    app_btn_ButtonsTask * const self
+static void app_btn_ButtonsActObj_onRightButtonDebounceTimeout(
+    app_btn_ButtonsActObj * const self
 );
 /*............................................................................*/
-app_btn_ButtonsTask * app_btn_ButtonsTask_(void) {
-    static app_btn_ButtonsTask self;
+app_btn_ButtonsActObj * app_btn_ButtonsActObj_(void) {
+    static app_btn_ButtonsActObj self;
     return &self;
 }
 /*............................................................................*/
-static void task(app_btn_ButtonsTask * const self) {
-    vsk_Message_dispatch(vsk_Inbox_readMessage(&self->_inbox));
-}
-/*............................................................................*/
-app_btn_ButtonsTask * app_btn_ButtonsTask_init(
-    app_btn_ButtonsTask * const self
+app_btn_ButtonsActObj * app_btn_ButtonsActObj_init(
+    app_btn_ButtonsActObj * const self
 ) {
-    vsk_Task_init((vsk_Task *)self, (vsk_TaskOperation)task, self);
-    vsk_Inbox_init(&self->_inbox, (vsk_Task *)self);
+    vsk_ActiveObject_init((vsk_ActiveObject *)self, NULL);
     vsk_Event_subscribe(
         (vsk_Event *)app_ev_LeftButtonIntEvent_(),
         vsk_EventSubscription_init(
             &self->_eventSubscriptions.leftButtonInt,
-            &self->_inbox,
-            (vsk_MessageHandler)app_btn_ButtonsTask_onLeftButtonInt,
+            &((vsk_ActiveObject *)self)->_inbox,
+            (vsk_MessageHandler)app_btn_ButtonsActObj_onLeftButtonInt,
             self
         )
     );
@@ -49,8 +44,8 @@ app_btn_ButtonsTask * app_btn_ButtonsTask_init(
         (vsk_Event *)app_ev_RightButtonIntEvent_(),
         vsk_EventSubscription_init(
             &self->_eventSubscriptions.rightButtonInt,
-            &self->_inbox,
-            (vsk_MessageHandler)app_btn_ButtonsTask_onRightButtonInt,
+            &((vsk_ActiveObject *)self)->_inbox,
+            (vsk_MessageHandler)app_btn_ButtonsActObj_onRightButtonInt,
             self
         )
     );
@@ -58,9 +53,9 @@ app_btn_ButtonsTask * app_btn_ButtonsTask_init(
         (vsk_Event *)app_ev_LeftButtonDebounceTimeoutEvent_(),
         vsk_EventSubscription_init(
             &self->_eventSubscriptions.leftButtonDebounceTimeout,
-            &self->_inbox,
+            &((vsk_ActiveObject *)self)->_inbox,
             (vsk_MessageHandler)
-                app_btn_ButtonsTask_onLeftButtonDebounceTimeout,
+                app_btn_ButtonsActObj_onLeftButtonDebounceTimeout,
             self
         )
     );
@@ -68,9 +63,9 @@ app_btn_ButtonsTask * app_btn_ButtonsTask_init(
         (vsk_Event *)app_ev_RightButtonDebounceTimeoutEvent_(),
         vsk_EventSubscription_init(
             &self->_eventSubscriptions.rightButtonDebounceTimeout,
-            &self->_inbox,
+            &((vsk_ActiveObject *)self)->_inbox,
             (vsk_MessageHandler)
-                app_btn_ButtonsTask_onRightButtonDebounceTimeout,
+                app_btn_ButtonsActObj_onRightButtonDebounceTimeout,
             self
         )
     );
@@ -90,30 +85,30 @@ app_btn_ButtonsTask * app_btn_ButtonsTask_init(
     return self;
 }
 /*............................................................................*/
-static void app_btn_ButtonsTask_onLeftButtonInt(
-    app_btn_ButtonsTask * const self
+static void app_btn_ButtonsActObj_onLeftButtonInt(
+    app_btn_ButtonsActObj * const self
 ) {
     vsk_Timer_start((vsk_Timer *)&self->_eventTimers.leftButtonDebounceTimeout);
 }
 /*............................................................................*/
-static void app_btn_ButtonsTask_onRightButtonInt(
-    app_btn_ButtonsTask * const self
+static void app_btn_ButtonsActObj_onRightButtonInt(
+    app_btn_ButtonsActObj * const self
 ) {
     vsk_Timer_start(
         (vsk_Timer *)&self->_eventTimers.rightButtonDebounceTimeout
     );
 }
 /*............................................................................*/
-static void app_btn_ButtonsTask_onLeftButtonDebounceTimeout(
-    app_btn_ButtonsTask * const self
+static void app_btn_ButtonsActObj_onLeftButtonDebounceTimeout(
+    app_btn_ButtonsActObj * const self
 ) {
     if (ha_LeftButton_isPressed(ha_LeftButton_())) {
         vsk_Event_raise((vsk_Event *)app_ev_LeftButtonPressEvent_());
     }
 }
 /*............................................................................*/
-static void app_btn_ButtonsTask_onRightButtonDebounceTimeout(
-    app_btn_ButtonsTask * const self
+static void app_btn_ButtonsActObj_onRightButtonDebounceTimeout(
+    app_btn_ButtonsActObj * const self
 ) {
     if (ha_RightButton_isPressed(ha_RightButton_())) {
         vsk_Event_raise((vsk_Event *)app_ev_RightButtonPressEvent_());
