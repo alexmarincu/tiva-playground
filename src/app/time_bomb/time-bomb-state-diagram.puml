@@ -1,4 +1,4 @@
-@startuml time bomb
+@startuml time-bomb-state-diagram
 [*] --> Armed
 state Armed {
     [*] --> WaitForButton
@@ -10,13 +10,13 @@ state Armed {
         WaitForButton --> Blink : left button press / set blink counter to 5
     }
     state Blink {
-        Blink : entry / set red LED on, arm blink timer 500ms
+        Blink : entry / set red LED on; start blink timer (500ms)
         Blink : exit / set red LED off
         Blink --> Pause : blink timeout
     }
     state PauseChoice <<choice>>
     state Pause {
-        Pause : entry / arm pause timer 500ms
+        Pause : entry / start pause timer (500ms)
         Pause --> PauseChoice : pause timeout / decrement blink counter
         PauseChoice --> Blink : [blinkCounter > 0]
         PauseChoice --> Boom : [blinkCounter == 0]

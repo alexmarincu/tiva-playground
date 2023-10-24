@@ -1,0 +1,12 @@
+@startuml blinky-state-diagram
+[*] --> On
+state On {
+    On : entry / set blue LED on; start ON timer (200ms)
+    On : exit / set blue LED off
+    On --> Off : ON timeout
+}
+state Off {
+    Off : entry / start OFF timer (200ms)
+    Off --> On : OFF timeout
+}
+@enduml
