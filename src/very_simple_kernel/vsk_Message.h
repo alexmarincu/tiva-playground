@@ -2,7 +2,7 @@
 #define VSK_MESSAGE_H
 /*............................................................................*/
 typedef struct vsk_Message vsk_Message;
-typedef void (*vsk_MessageHandler)(void * const self);
+typedef void (*vsk_MessageHandler)(void * const obj);
 /*............................................................................*/
 struct vsk_Message {
     vsk_MessageHandler _handler;
