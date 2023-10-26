@@ -35,6 +35,10 @@ void vsk_Timer_stop(vsk_Timer * const self) {
     self->_millisCountDown = 0;
 }
 /*............................................................................*/
+bool vsk_Timer_isRunning(vsk_Timer * const self) {
+    return self->_isRunning;
+}
+/*............................................................................*/
 void vsk_Timer_onSysTick(vsk_Timer * const self) {
     if (self->_isRunning) {
         uint16_t const tickPeriodMillis =
@@ -48,7 +52,9 @@ void vsk_Timer_onSysTick(vsk_Timer * const self) {
             } else {
                 self->_isRunning = false;
             }
-            self->_callback(self->_obj);
+            if (self->_callback != NULL) {
+                self->_callback(self->_obj);
+            }
         }
     }
 }

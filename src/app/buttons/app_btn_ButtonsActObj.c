@@ -70,7 +70,7 @@ app_btn_ButtonsActObj * app_btn_ButtonsActObj_init(
             self
         )
     );
-    uint32_t const debounceDelayMillis = 10;
+    uint32_t const debounceDelayMillis = 30;
     vsk_EventTimer_init(
         &self->_eventTimers.leftButtonDebounceTimeout,
         debounceDelayMillis,

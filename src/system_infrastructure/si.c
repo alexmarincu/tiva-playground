@@ -20,7 +20,7 @@
 #include "../very_simple_kernel/vsk.h"
 #include "../very_simple_kernel/vsk_Time.h"
 /*............................................................................*/
-#define si_buttonIntFilterMillis 20
+#define si_buttonIntFilterMillis 30
 #define si_tickPeriodMillis 10
 /*............................................................................*/
 static void si_leftButtonIntHandler(void);
@@ -40,18 +40,17 @@ static void si_onCriticalSectionExit(void);
 static void si_onAssertFail(void);
 /*............................................................................*/
 static void si_leftButtonIntHandler(void) {
-    ha_LeftButton * button = ha_LeftButton_();
-    static uint32_t lastMillisCount = 0;
-    uint32_t millisCount = vsk_Time_getMillisCount(vsk_Time_());
-    uint32_t timeElapsed = millisCount - lastMillisCount;
-    if (millisCount < lastMillisCount) {
-        timeElapsed = (UINT32_MAX - lastMillisCount + 1) + millisCount;
+    static vsk_Timer timer;
+    static bool isTimerInitialized = false;
+    if (!isTimerInitialized) {
+        isTimerInitialized = true;
+        vsk_Timer_init(&timer, si_buttonIntFilterMillis, 0, NULL, NULL);
     }
-    if (timeElapsed > si_buttonIntFilterMillis) {
+    if (!vsk_Timer_isRunning(&timer)) {
         vsk_Event_raise((vsk_Event *)si_ev_LeftButtonIntEvent_());
-        lastMillisCount = millisCount;
+        vsk_Timer_start(&timer);
     }
-    ha_LeftButton_clearIntFlag(button);
+    ha_LeftButton_clearIntFlag(ha_LeftButton_());
 }
 /*............................................................................*/
 static void si_setupLeftButton(void) {
@@ -62,18 +61,17 @@ static void si_setupLeftButton(void) {
 }
 /*............................................................................*/
 static void si_rightButtonIntHandler(void) {
-    ha_RightButton * button = ha_RightButton_();
-    static uint32_t lastMillisCount = 0;
-    uint32_t millisCount = vsk_Time_getMillisCount(vsk_Time_());
-    uint32_t timeElapsed = millisCount - lastMillisCount;
-    if (millisCount < lastMillisCount) {
-        timeElapsed = (UINT32_MAX - lastMillisCount + 1) + millisCount;
+    static vsk_Timer timer;
+    static bool isTimerInitialized = false;
+    if (!isTimerInitialized) {
+        isTimerInitialized = true;
+        vsk_Timer_init(&timer, si_buttonIntFilterMillis, 0, NULL, NULL);
     }
-    if (timeElapsed > si_buttonIntFilterMillis) {
+    if (!vsk_Timer_isRunning(&timer)) {
         vsk_Event_raise((vsk_Event *)si_ev_RightButtonIntEvent_());
-        lastMillisCount = millisCount;
+        vsk_Timer_start(&timer);
     }
-    ha_RightButton_clearIntFlag(button);
+    ha_RightButton_clearIntFlag(ha_RightButton_());
 }
 /*............................................................................*/
 static void si_setupRightButton(void) {
@@ -118,7 +116,7 @@ static void si_setupRightButton(void) {
 //         vsk_Timer_init(
 //             &buttonsTaskTimer,
 //             0,
-//             10,
+//             20,
 //             (vsk_TimerCallback)si_activateButtonsTask,
 //             &buttonsTask
 //         )
