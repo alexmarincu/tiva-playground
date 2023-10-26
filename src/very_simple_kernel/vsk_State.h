@@ -1,11 +1,15 @@
+/*............................................................................*/
 #ifndef VSK_STATE_H
 #define VSK_STATE_H
 /*............................................................................*/
 typedef struct vsk_State vsk_State;
+/*............................................................................*/
+#include <stdbool.h>
+/*............................................................................*/
+#include "vsk_StateContext.h"
+/*............................................................................*/
 typedef void (*vsk_StateOnEnter)(vsk_State * const self);
 typedef void (*vsk_StateOnExit)(vsk_State * const self);
-#include "vsk_StateContext.h"
-#include <stdbool.h>
 /*............................................................................*/
 struct vsk_State {
     vsk_StateContext * _stateContext;

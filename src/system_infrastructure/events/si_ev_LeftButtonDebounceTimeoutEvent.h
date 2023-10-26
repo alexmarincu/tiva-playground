@@ -1,8 +1,10 @@
+/*............................................................................*/
 #ifndef SI_EV_LEFTBUTTONDEBOUNCETIMEOUTEVENT_H
 #define SI_EV_LEFTBUTTONDEBOUNCETIMEOUTEVENT_H
 /*............................................................................*/
 typedef struct si_ev_LeftButtonDebounceTimeoutEvent
     si_ev_LeftButtonDebounceTimeoutEvent;
+/*............................................................................*/
 #include "../../very_simple_kernel/vsk_Event.h"
 /*............................................................................*/
 struct si_ev_LeftButtonDebounceTimeoutEvent {

@@ -1,12 +1,11 @@
 /*............................................................................*/
 #include "vsk_Inbox.h"
+/*............................................................................*/
 #include "vsk_CriticalSection.h"
-#include "vsk_InboxSupervisor.h"
 /*............................................................................*/
 vsk_Inbox * vsk_Inbox_init(vsk_Inbox * const self, vsk_Task * const task) {
     self->task = task;
     vsk_LinkedQueue_init(&self->_messageQueue);
-    vsk_InboxSupervisor_register(vsk_InboxSupervisor_(), self);
     return self;
 }
 /*............................................................................*/
@@ -23,6 +22,7 @@ void vsk_Inbox_postMessage(
 ) {
     vsk_CriticalSection_enter(vsk_CriticalSection_());
     vsk_LinkedQueue_enqueue(&self->_messageQueue, message);
+    vsk_Task_activate(self->task);
     vsk_CriticalSection_exit(vsk_CriticalSection_());
 }
 /*............................................................................*/

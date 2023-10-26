@@ -1,7 +1,9 @@
+/*............................................................................*/
 #ifndef SI_EV_OFFTIMEOUTEVENT_H
 #define SI_EV_OFFTIMEOUTEVENT_H
 /*............................................................................*/
 typedef struct si_ev_OffTimeoutEvent si_ev_OffTimeoutEvent;
+/*............................................................................*/
 #include "../../very_simple_kernel/vsk_Event.h"
 /*............................................................................*/
 struct si_ev_OffTimeoutEvent {

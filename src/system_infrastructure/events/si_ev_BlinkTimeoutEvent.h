@@ -1,7 +1,9 @@
+/*............................................................................*/
 #ifndef SI_EV_BLINKTIMEOUTEVENT_H
 #define SI_EV_BLINKTIMEOUTEVENT_H
 /*............................................................................*/
 typedef struct si_ev_BlinkTimeoutEvent si_ev_BlinkTimeoutEvent;
+/*............................................................................*/
 #include "../../very_simple_kernel/vsk_Event.h"
 /*............................................................................*/
 struct si_ev_BlinkTimeoutEvent {

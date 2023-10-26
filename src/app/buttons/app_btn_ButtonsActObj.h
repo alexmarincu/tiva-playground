@@ -1,7 +1,9 @@
+/*............................................................................*/
 #ifndef APP_BTN_BUTTONSACTOBJ_H
 #define APP_BTN_BUTTONSACTOBJ_H
 /*............................................................................*/
 typedef struct app_btn_ButtonsActObj app_btn_ButtonsActObj;
+/*............................................................................*/
 #include "../../very_simple_kernel/vsk_ActiveObject.h"
 #include "../../very_simple_kernel/vsk_EventSubscription.h"
 #include "../../very_simple_kernel/vsk_EventTimer.h"

@@ -1,7 +1,9 @@
+/*............................................................................*/
 #ifndef VSK_ACTIVEOBJECT_H
 #define VSK_ACTIVEOBJECT_H
 /*............................................................................*/
 typedef struct vsk_ActiveObject vsk_ActiveObject;
+/*............................................................................*/
 #include "vsk_EventSubscription.h"
 #include "vsk_StateContext.h"
 #include "vsk_Task.h"

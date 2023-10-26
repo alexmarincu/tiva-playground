@@ -1,21 +1,26 @@
+/*............................................................................*/
 #ifndef HA_PER_PORTF_H
 #define HA_PER_PORTF_H
 /*............................................................................*/
 typedef struct ha_per_PortF ha_per_PortF;
-#include "../ha_Interrupt.h"
+/*............................................................................*/
 #include <stdbool.h>
 /*............................................................................*/
+#include "../ha_Interrupt.h"
+/*............................................................................*/
+#define ha_per_PortF_rightButtonPin GPIO_PIN_0
+#define ha_per_PortF_redLedPin GPIO_PIN_1
+#define ha_per_PortF_blueLedPin GPIO_PIN_2
+#define ha_per_PortF_greenLedPin GPIO_PIN_3
+#define ha_per_PortF_leftButtonPin GPIO_PIN_4
+/*............................................................................*/
 struct ha_per_PortF {
-    bool _isInitialized;
     bool _isIntRegistered;
     struct {
         ha_InterruptHandler leftButton;
         ha_InterruptHandler rightButton;
     } _intHandlers;
 };
-/*............................................................................*/
-#define ha_RightButton_pin GPIO_PIN_0
-#define ha_LeftButton_pin GPIO_PIN_4
 /*............................................................................*/
 ha_per_PortF * ha_per_PortF_(void);
 ha_per_PortF * ha_per_PortF_init(ha_per_PortF * const self);

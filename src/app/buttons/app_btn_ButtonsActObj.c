@@ -1,5 +1,6 @@
 /*............................................................................*/
 #include "app_btn_ButtonsActObj.h"
+/*............................................................................*/
 #include "../../hw_abstraction/ha_LeftButton.h"
 #include "../../hw_abstraction/ha_RightButton.h"
 #include "../../system_infrastructure/events/si_ev_LeftButtonDebounceTimeoutEvent.h"
@@ -69,7 +70,7 @@ app_btn_ButtonsActObj * app_btn_ButtonsActObj_init(
             self
         )
     );
-    uint32_t const debounceDelayMillis = 20;
+    uint32_t const debounceDelayMillis = 10;
     vsk_EventTimer_init(
         &self->_eventTimers.leftButtonDebounceTimeout,
         debounceDelayMillis,

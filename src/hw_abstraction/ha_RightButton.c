@@ -1,13 +1,14 @@
 /*............................................................................*/
 #include "ha_RightButton.h"
+/*............................................................................*/
 #include <stdbool.h>
 #include <stdint.h>
-//
+/*............................................................................*/
 #include "../../lib/TivaWare/driverlib/gpio.h"
 #include "../../lib/TivaWare/inc/hw_memmap.h"
 #include "peripherals/ha_per_PortF.h"
 /*............................................................................*/
-#define ha_RightButton_port GPIO_PORTF_BASE
+#define ha_per_PortF_rightButtonPin GPIO_PIN_0
 /*............................................................................*/
 ha_RightButton * ha_RightButton_(void) {
     static ha_RightButton self;
@@ -26,11 +27,11 @@ ha_RightButton * ha_RightButton_init(ha_RightButton * const self) {
         (ha_ButtonIsPressed)ha_RightButton_isPressed
     );
     ha_per_PortF_init(ha_per_PortF_());
-    GPIOUnlockPin(ha_RightButton_port, ha_RightButton_pin);
-    GPIOPinTypeGPIOInput(ha_RightButton_port, ha_RightButton_pin);
+    GPIOUnlockPin(GPIO_PORTF_BASE, ha_per_PortF_rightButtonPin);
+    GPIOPinTypeGPIOInput(GPIO_PORTF_BASE, ha_per_PortF_rightButtonPin);
     GPIOPadConfigSet(
-        ha_RightButton_port,
-        ha_RightButton_pin,
+        GPIO_PORTF_BASE,
+        ha_per_PortF_rightButtonPin,
         GPIO_STRENGTH_2MA,
         GPIO_PIN_TYPE_STD_WPU
     );
@@ -38,7 +39,9 @@ ha_RightButton * ha_RightButton_init(ha_RightButton * const self) {
 }
 /*............................................................................*/
 void ha_RightButton_setIntTypeBothEdges(ha_RightButton * const self) {
-    GPIOIntTypeSet(ha_RightButton_port, ha_RightButton_pin, GPIO_BOTH_EDGES);
+    GPIOIntTypeSet(
+        GPIO_PORTF_BASE, ha_per_PortF_rightButtonPin, GPIO_BOTH_EDGES
+    );
 }
 /*............................................................................*/
 void ha_RightButton_registerInt(
@@ -48,21 +51,21 @@ void ha_RightButton_registerInt(
 }
 /*............................................................................*/
 void ha_RightButton_unregisterInt(ha_RightButton * const self) {
-    GPIOIntUnregister(ha_RightButton_port);
+    GPIOIntUnregister(GPIO_PORTF_BASE);
 }
 /*............................................................................*/
 void ha_RightButton_enableInt(ha_RightButton * const self) {
-    GPIOIntEnable(ha_RightButton_port, ha_RightButton_pin);
+    GPIOIntEnable(GPIO_PORTF_BASE, ha_per_PortF_rightButtonPin);
 }
 /*............................................................................*/
 void ha_RightButton_disableInt(ha_RightButton * const self) {
-    GPIOIntDisable(ha_RightButton_port, ha_RightButton_pin);
+    GPIOIntDisable(GPIO_PORTF_BASE, ha_per_PortF_rightButtonPin);
 }
 /*............................................................................*/
 void ha_RightButton_clearIntFlag(ha_RightButton * const self) {
-    GPIOIntClear(ha_RightButton_port, ha_RightButton_pin);
+    GPIOIntClear(GPIO_PORTF_BASE, ha_per_PortF_rightButtonPin);
 }
 /*............................................................................*/
 bool ha_RightButton_isPressed(ha_RightButton * const self) {
-    return (GPIOPinRead(ha_RightButton_port, ha_RightButton_pin) == 0);
+    return (GPIOPinRead(GPIO_PORTF_BASE, ha_per_PortF_rightButtonPin) == 0);
 }

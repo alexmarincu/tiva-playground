@@ -1,7 +1,9 @@
+/*............................................................................*/
 #ifndef APP_BLK_BLINKYACTOBJ_H
 #define APP_BLK_BLINKYACTOBJ_H
 /*............................................................................*/
 typedef struct app_blk_BlinkyActObj app_blk_BlinkyActObj;
+/*............................................................................*/
 #include "../../very_simple_kernel/vsk_ActiveObject.h"
 #include "../../very_simple_kernel/vsk_EventSubscription.h"
 #include "../../very_simple_kernel/vsk_EventTimer.h"

@@ -8,7 +8,7 @@
 == Objectives
 
 * Apply OOP in a real project
-* Examples of design patters (observer/publish-subscribe, state etc.)
+* Examples of design patters (observer/publish-subscribe, iterator, state etc.)
 * Learn about inner workings of a kernel
 * Learn about active object pattern
 * Compare standard polling tasks with event based architecture

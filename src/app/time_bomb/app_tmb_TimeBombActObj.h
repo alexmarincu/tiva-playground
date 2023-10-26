@@ -1,7 +1,9 @@
+/*............................................................................*/
 #ifndef APP_TMB_TIMEBOMBACTOBJ_H
 #define APP_TMB_TIMEBOMBACTOBJ_H
 /*............................................................................*/
 typedef struct app_tmb_TimeBombActObj app_tmb_TimeBombActObj;
+/*............................................................................*/
 #include "../../very_simple_kernel/vsk_ActiveObject.h"
 #include "../../very_simple_kernel/vsk_EventSubscription.h"
 #include "../../very_simple_kernel/vsk_EventTimer.h"

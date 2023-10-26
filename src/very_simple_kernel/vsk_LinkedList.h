@@ -1,13 +1,16 @@
+/*............................................................................*/
 #ifndef VSK_LINKEDLIST_H
 #define VSK_LINKEDLIST_H
 /*............................................................................*/
 typedef struct vsk_LinkedList vsk_LinkedList;
-typedef void (*vsk_LinkedListForEachOperation)(void * const obj);
-#include <stdbool.h>
-typedef bool (*vsk_LinkedListFindPredicate)(void * const obj);
-#include "vsk_Node.h"
+/*............................................................................*/
 #include <stdbool.h>
 #include <stddef.h>
+/*............................................................................*/
+#include "vsk_Node.h"
+/*............................................................................*/
+typedef void (*vsk_LinkedListForEachOperation)(void * const obj);
+typedef bool (*vsk_LinkedListFindPredicate)(void * const obj);
 /*............................................................................*/
 struct vsk_LinkedList {
     vsk_Node * _first;

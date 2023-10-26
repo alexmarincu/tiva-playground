@@ -1,11 +1,11 @@
 /*............................................................................*/
-#include "ha_SysCtrl.h"
+#include "ha_per_PortB.h"
 /*............................................................................*/
 #include <stdbool.h>
 #include <stdint.h>
 /*............................................................................*/
 #include "../../lib/TivaWare/driverlib/sysctl.h"
 /*............................................................................*/
-void ha_SysCtrl_sleep(void) {
-    SysCtlSleep();
+void ha_per_PortB_init(void) {
+    SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOB);
 }

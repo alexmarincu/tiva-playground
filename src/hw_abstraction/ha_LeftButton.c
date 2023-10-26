@@ -1,13 +1,12 @@
 /*............................................................................*/
 #include "ha_LeftButton.h"
+/*............................................................................*/
 #include <stdbool.h>
 #include <stdint.h>
-//
+/*............................................................................*/
 #include "../../lib/TivaWare/driverlib/gpio.h"
 #include "../../lib/TivaWare/inc/hw_memmap.h"
 #include "peripherals/ha_per_PortF.h"
-/*............................................................................*/
-#define ha_LeftButton_port GPIO_PORTF_BASE
 /*............................................................................*/
 ha_LeftButton * ha_LeftButton_(void) {
     static ha_LeftButton self;
@@ -26,10 +25,10 @@ ha_LeftButton * ha_LeftButton_init(ha_LeftButton * const self) {
         (ha_ButtonIsPressed)ha_LeftButton_isPressed
     );
     ha_per_PortF_init(ha_per_PortF_());
-    GPIOPinTypeGPIOInput(ha_LeftButton_port, ha_LeftButton_pin);
+    GPIOPinTypeGPIOInput(GPIO_PORTF_BASE, ha_per_PortF_leftButtonPin);
     GPIOPadConfigSet(
-        ha_LeftButton_port,
-        ha_LeftButton_pin,
+        GPIO_PORTF_BASE,
+        ha_per_PortF_leftButtonPin,
         GPIO_STRENGTH_2MA,
         GPIO_PIN_TYPE_STD_WPU
     );
@@ -37,7 +36,9 @@ ha_LeftButton * ha_LeftButton_init(ha_LeftButton * const self) {
 }
 /*............................................................................*/
 void ha_LeftButton_setIntTypeBothEdges(ha_LeftButton * const self) {
-    GPIOIntTypeSet(ha_LeftButton_port, ha_LeftButton_pin, GPIO_BOTH_EDGES);
+    GPIOIntTypeSet(
+        GPIO_PORTF_BASE, ha_per_PortF_leftButtonPin, GPIO_BOTH_EDGES
+    );
 }
 /*............................................................................*/
 void ha_LeftButton_registerInt(
@@ -47,21 +48,21 @@ void ha_LeftButton_registerInt(
 }
 /*............................................................................*/
 void ha_LeftButton_unregisterInt(ha_LeftButton * const self) {
-    GPIOIntUnregister(ha_LeftButton_pin);
+    GPIOIntUnregister(ha_per_PortF_leftButtonPin);
 }
 /*............................................................................*/
 void ha_LeftButton_enableInt(ha_LeftButton * const self) {
-    GPIOIntEnable(ha_LeftButton_port, ha_LeftButton_pin);
+    GPIOIntEnable(GPIO_PORTF_BASE, ha_per_PortF_leftButtonPin);
 }
 /*............................................................................*/
 void ha_LeftButton_disableInt(ha_LeftButton * const self) {
-    GPIOIntDisable(ha_LeftButton_port, ha_LeftButton_pin);
+    GPIOIntDisable(GPIO_PORTF_BASE, ha_per_PortF_leftButtonPin);
 }
 /*............................................................................*/
 void ha_LeftButton_clearIntFlag(ha_LeftButton * const self) {
-    GPIOIntClear(ha_LeftButton_port, ha_LeftButton_pin);
+    GPIOIntClear(GPIO_PORTF_BASE, ha_per_PortF_leftButtonPin);
 }
 /*............................................................................*/
 bool ha_LeftButton_isPressed(ha_LeftButton * const self) {
-    return (GPIOPinRead(ha_LeftButton_port, ha_LeftButton_pin) == 0);
+    return (GPIOPinRead(GPIO_PORTF_BASE, ha_per_PortF_leftButtonPin) == 0);
 }

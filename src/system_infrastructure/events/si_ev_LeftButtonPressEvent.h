@@ -1,7 +1,9 @@
+/*............................................................................*/
 #ifndef SI_EV_LEFTBUTTONPRESSEVENT_H
 #define SI_EV_LEFTBUTTONPRESSEVENT_H
 /*............................................................................*/
 typedef struct si_ev_LeftButtonPressEvent si_ev_LeftButtonPressEvent;
+/*............................................................................*/
 #include "../../very_simple_kernel/vsk_Event.h"
 /*............................................................................*/
 struct si_ev_LeftButtonPressEvent {

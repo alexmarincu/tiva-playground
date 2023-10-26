@@ -1,9 +1,9 @@
 /*............................................................................*/
-#ifndef HA_SYSCLOCK_H
-#define HA_SYSCLOCK_H
+#ifndef HA_PER_PORTB_H
+#define HA_PER_PORTB_H
 /*............................................................................*/
-#include <stdint.h>
+#define ha_per_PortB_taskProcessingSignalPin GPIO_PIN_2
+#define ha_per_PortB_sysTickSignalPin GPIO_PIN_3
 /*............................................................................*/
-void ha_SysClock_setMaxFrequency(void);
-uint32_t ha_SysClock_getFrequency(void);
-#endif // HA_SYSCLOCK_H
+void ha_per_PortB_init(void);
+#endif // HA_PER_PORTB_H

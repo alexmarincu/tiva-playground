@@ -1,6 +1,6 @@
 /*............................................................................*/
-#ifndef HA_SYSCTRL_H
-#define HA_SYSCTRL_H
+#ifndef HA_H
+#define HA_H
 /*............................................................................*/
-void ha_SysCtrl_sleep(void);
-#endif // HA_SYSCTRL_H
+void ha_init(void);
+#endif // HA_H

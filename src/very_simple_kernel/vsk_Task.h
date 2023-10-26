@@ -1,14 +1,27 @@
+/*............................................................................*/
 #ifndef VSK_TASK_H
 #define VSK_TASK_H
 /*............................................................................*/
 typedef struct vsk_Task vsk_Task;
-typedef void (*vsk_TaskOperation)(void * const obj);
+/*............................................................................*/
 #include <stdbool.h>
+#include <stdint.h>
+/*............................................................................*/
+typedef void (*vsk_TaskOperation)(void * const obj);
+typedef enum {
+    vsk_TaskState_suspended,
+    vsk_TaskState_ready,
+    vsk_TaskState_running
+} vsk_TaskState;
 /*............................................................................*/
 struct vsk_Task {
     vsk_TaskOperation _operation;
     void * _obj;
-    bool _isReady;
+    vsk_TaskState _state;
+    uint32_t _timeAtLastRun;
+    uint32_t _maxRunTime;
+    uint32_t _minPeriod;
+    uint32_t _cpuLoad;
 };
 /*............................................................................*/
 vsk_Task * vsk_Task_init(
@@ -17,4 +30,5 @@ vsk_Task * vsk_Task_init(
 bool vsk_Task_isReady(vsk_Task * const self);
 void vsk_Task_run(vsk_Task * const self);
 void vsk_Task_activate(vsk_Task * const self);
+void vsk_Task_suspend(vsk_Task * const self);
 #endif // VSK_TASK_H

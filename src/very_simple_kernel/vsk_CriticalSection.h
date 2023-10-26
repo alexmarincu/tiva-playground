@@ -1,10 +1,13 @@
+/*............................................................................*/
 #ifndef VSK_CRITICALSECTION_H
 #define VSK_CRITICALSECTION_H
 /*............................................................................*/
 typedef struct vsk_CriticalSection vsk_CriticalSection;
+/*............................................................................*/
+#include <stdint.h>
+/*............................................................................*/
 typedef void (*vsk_CriticalSectionOnEnter)(void);
 typedef void (*vsk_CriticalSectionOnExit)(void);
-#include <stdint.h>
 /*............................................................................*/
 struct vsk_CriticalSection {
     vsk_CriticalSectionOnEnter _onEnter;

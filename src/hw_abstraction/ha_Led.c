@@ -1,69 +1,80 @@
 /*............................................................................*/
 #include "ha_Led.h"
+/*............................................................................*/
 #include <stdbool.h>
 #include <stdint.h>
-//
+/*............................................................................*/
 #include "../../lib/TivaWare/driverlib/gpio.h"
 #include "../../lib/TivaWare/inc/hw_memmap.h"
 #include "peripherals/ha_per_PortF.h"
 /*............................................................................*/
-#define ha_Led_port GPIO_PORTF_BASE
-#define ha_Led_redPin GPIO_PIN_1
-#define ha_Led_bluePin GPIO_PIN_2
-#define ha_Led_greenPin GPIO_PIN_3
-/*............................................................................*/
 void ha_Led_init(void) {
     ha_per_PortF_init(ha_per_PortF_());
     GPIOPinTypeGPIOOutput(
-        ha_Led_port,
-        ha_Led_redPin | ha_Led_bluePin | ha_Led_greenPin
+        GPIO_PORTF_BASE,
+        ha_per_PortF_redLedPin        //
+            | ha_per_PortF_blueLedPin //
+            | ha_per_PortF_greenLedPin
     );
 }
 /*............................................................................*/
 void ha_Led_setGreenOn(void) {
-    GPIOPinWrite(ha_Led_port, ha_Led_greenPin, ha_Led_greenPin);
+    GPIOPinWrite(
+        GPIO_PORTF_BASE, ha_per_PortF_greenLedPin, ha_per_PortF_greenLedPin
+    );
 }
 /*............................................................................*/
 void ha_Led_setGreenOff(void) {
-    GPIOPinWrite(ha_Led_port, ha_Led_greenPin, 0);
+    GPIOPinWrite(GPIO_PORTF_BASE, ha_per_PortF_greenLedPin, 0);
 }
 /*............................................................................*/
 void ha_Led_setBlueOn(void) {
-    GPIOPinWrite(ha_Led_port, ha_Led_bluePin, ha_Led_bluePin);
+    GPIOPinWrite(
+        GPIO_PORTF_BASE, ha_per_PortF_blueLedPin, ha_per_PortF_blueLedPin
+    );
 }
 /*............................................................................*/
 void ha_Led_setBlueOff(void) {
-    GPIOPinWrite(ha_Led_port, ha_Led_bluePin, 0);
+    GPIOPinWrite(GPIO_PORTF_BASE, ha_per_PortF_blueLedPin, 0);
 }
 /*............................................................................*/
 void ha_Led_setRedOn(void) {
-    GPIOPinWrite(ha_Led_port, ha_Led_redPin, ha_Led_redPin);
+    GPIOPinWrite(
+        GPIO_PORTF_BASE, ha_per_PortF_redLedPin, ha_per_PortF_redLedPin
+    );
 }
 /*............................................................................*/
 void ha_Led_setRedOff(void) {
-    GPIOPinWrite(ha_Led_port, ha_Led_redPin, 0);
+    GPIOPinWrite(GPIO_PORTF_BASE, ha_per_PortF_redLedPin, 0);
 }
 /*............................................................................*/
 void ha_Led_setAllOn(void) {
     GPIOPinWrite(
-        ha_Led_port,
-        ha_Led_redPin | ha_Led_bluePin | ha_Led_greenPin,
-        ha_Led_redPin | ha_Led_bluePin | ha_Led_greenPin
+        GPIO_PORTF_BASE,
+        ha_per_PortF_redLedPin        //
+            | ha_per_PortF_blueLedPin //
+            | ha_per_PortF_greenLedPin,
+        ha_per_PortF_redLedPin        //
+            | ha_per_PortF_blueLedPin //
+            | ha_per_PortF_greenLedPin
     );
 }
 /*............................................................................*/
 void ha_Led_setAllOff(void) {
     GPIOPinWrite(
-        ha_Led_port,
-        ha_Led_redPin | ha_Led_bluePin | ha_Led_greenPin,
+        GPIO_PORTF_BASE,
+        ha_per_PortF_redLedPin        //
+            | ha_per_PortF_blueLedPin //
+            | ha_per_PortF_greenLedPin,
         0
     );
 }
 /*............................................................................*/
 void ha_Led_toggleRed(void) {
     GPIOPinWrite(
-        ha_Led_port,
-        ha_Led_redPin,
-        GPIOPinRead(ha_Led_port, ha_Led_redPin) ^ ha_Led_redPin
+        GPIO_PORTF_BASE,
+        ha_per_PortF_redLedPin,
+        GPIOPinRead(GPIO_PORTF_BASE, ha_per_PortF_redLedPin) //
+            ^ ha_per_PortF_redLedPin
     );
 }

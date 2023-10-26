@@ -1,17 +1,22 @@
+/*............................................................................*/
 #ifndef VSK_TIMER_H
 #define VSK_TIMER_H
 /*............................................................................*/
 typedef struct vsk_Timer vsk_Timer;
-typedef void (*vsk_TimerCallback)(void * const obj);
-#include "vsk_TimerSupervisor.h"
+/*............................................................................*/
 #include <stdint.h>
+/*............................................................................*/
+#include "vsk_TimerSupervisor.h"
+/*............................................................................*/
+typedef void (*vsk_TimerCallback)(void * const obj);
 /*............................................................................*/
 struct vsk_Timer {
     uint32_t _delayMillis;
     uint32_t _periodMillis;
     vsk_TimerCallback _callback;
     void * _obj;
-    uint32_t _millisCount;
+    uint32_t volatile _millisCount;
+    bool volatile _isRunning;
 };
 /*............................................................................*/
 vsk_Timer * vsk_Timer_init(
