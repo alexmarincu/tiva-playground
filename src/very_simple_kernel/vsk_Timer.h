@@ -15,7 +15,7 @@ struct vsk_Timer {
     uint32_t _periodMillis;
     vsk_TimerCallback _callback;
     void * _obj;
-    uint32_t volatile _millisCount;
+    uint32_t volatile _millisCountDown;
     bool volatile _isRunning;
 };
 /*............................................................................*/

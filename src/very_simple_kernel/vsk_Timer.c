@@ -19,32 +19,32 @@ vsk_Timer * vsk_Timer_init(
     self->_periodMillis = periodMillis;
     self->_callback = callback;
     self->_obj = obj;
-    self->_millisCount = 0;
+    self->_millisCountDown = 0;
     self->_isRunning = false;
     vsk_TimerSupervisor_register(vsk_TimerSupervisor_(), self);
     return self;
 }
 /*............................................................................*/
 void vsk_Timer_start(vsk_Timer * const self) {
-    self->_millisCount = self->_delayMillis;
+    self->_millisCountDown = self->_delayMillis;
     self->_isRunning = true;
 }
 /*............................................................................*/
 void vsk_Timer_stop(vsk_Timer * const self) {
     self->_isRunning = false;
-    self->_millisCount = 0;
+    self->_millisCountDown = 0;
 }
 /*............................................................................*/
 void vsk_Timer_onSysTick(vsk_Timer * const self) {
     if (self->_isRunning) {
         uint16_t const tickPeriodMillis =
             vsk_Time_getTickPeriodMillis(vsk_Time_());
-        if (self->_millisCount >= tickPeriodMillis) {
-            self->_millisCount -= tickPeriodMillis;
+        if (self->_millisCountDown >= tickPeriodMillis) {
+            self->_millisCountDown -= tickPeriodMillis;
         }
-        if (self->_millisCount == 0) {
+        if (self->_millisCountDown == 0) {
             if (self->_periodMillis > 0) {
-                self->_millisCount = self->_periodMillis;
+                self->_millisCountDown = self->_periodMillis;
             } else {
                 self->_isRunning = false;
             }
