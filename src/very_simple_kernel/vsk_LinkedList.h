@@ -7,10 +7,8 @@ typedef struct vsk_LinkedList vsk_LinkedList;
 #include <stdbool.h>
 #include <stddef.h>
 /*............................................................................*/
+#include "vsk_LinkedListIterator.h"
 #include "vsk_Node.h"
-/*............................................................................*/
-typedef void (*vsk_LinkedListForEachOperation)(void * const obj);
-typedef bool (*vsk_LinkedListFindPredicate)(void * const obj);
 /*............................................................................*/
 struct vsk_LinkedList {
     vsk_Node * _first;
@@ -42,9 +40,11 @@ bool vsk_LinkedList_isEmpty(vsk_LinkedList * const self);
 size_t vsk_LinkedList_getSize(vsk_LinkedList * const self);
 void vsk_LinkedList_clear(vsk_LinkedList * const self);
 void vsk_LinkedList_forEach(
-    vsk_LinkedList * const self, vsk_LinkedListForEachOperation const operation
+    vsk_LinkedList * const self,
+    vsk_LinkedListIteratorForEachOperation const operation
 );
 void * vsk_LinkedList_find(
-    vsk_LinkedList * const self, vsk_LinkedListFindPredicate const predicate
+    vsk_LinkedList * const self,
+    vsk_LinkedListIteratorFindPredicate const predicate
 );
 #endif // VSK_LINKEDLIST_H

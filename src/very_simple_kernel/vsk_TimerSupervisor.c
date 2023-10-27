@@ -25,6 +25,6 @@ static void vsk_onSysTick(vsk_Timer * const timer) {
 /*............................................................................*/
 void vsk_TimerSupervisor_onSysTick(vsk_TimerSupervisor * const self) {
     vsk_LinkedList_forEach(
-        &self->_timers, (vsk_LinkedListForEachOperation)vsk_onSysTick
+        &self->_timers, (vsk_LinkedListIteratorForEachOperation)vsk_onSysTick
     );
 }

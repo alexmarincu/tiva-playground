@@ -167,7 +167,8 @@ void vsk_LinkedList_clear(vsk_LinkedList * const self) {
 }
 /*............................................................................*/
 void vsk_LinkedList_forEach(
-    vsk_LinkedList * const self, vsk_LinkedListForEachOperation const operation
+    vsk_LinkedList * const self,
+    vsk_LinkedListIteratorForEachOperation const operation
 ) {
     vsk_LinkedListIterator * iter =
         vsk_LinkedListIterator_init(ut_stkObj(vsk_LinkedListIterator), self);
@@ -175,20 +176,10 @@ void vsk_LinkedList_forEach(
 }
 /*............................................................................*/
 void * vsk_LinkedList_find(
-    vsk_LinkedList * const self, vsk_LinkedListFindPredicate const predicate
+    vsk_LinkedList * const self,
+    vsk_LinkedListIteratorFindPredicate const predicate
 ) {
-    bool objFound = false;
     vsk_LinkedListIterator * iter =
         vsk_LinkedListIterator_init(ut_stkObj(vsk_LinkedListIterator), self);
-    void * obj;
-    while (vsk_LinkedListIterator_hasNext(iter) && !objFound) {
-        obj = vsk_LinkedListIterator_next(iter);
-        if (predicate(obj)) {
-            objFound = true;
-        }
-    }
-    if (!objFound) {
-        obj = NULL;
-    }
-    return obj;
+    return vsk_LinkedListIterator_find(iter, predicate);
 }

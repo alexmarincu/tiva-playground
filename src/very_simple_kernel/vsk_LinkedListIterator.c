@@ -41,3 +41,21 @@ void vsk_LinkedListIterator_forEach(
         operation(obj);
     }
 }
+/*............................................................................*/
+void * vsk_LinkedListIterator_find(
+    vsk_LinkedListIterator * const self,
+    vsk_LinkedListIteratorFindPredicate const predicate
+) {
+    bool objFound = false;
+    void * obj;
+    while (vsk_LinkedListIterator_hasNext(self) && !objFound) {
+        obj = vsk_LinkedListIterator_next(self);
+        if (predicate(obj)) {
+            objFound = true;
+        }
+    }
+    if (!objFound) {
+        obj = NULL;
+    }
+    return obj;
+}

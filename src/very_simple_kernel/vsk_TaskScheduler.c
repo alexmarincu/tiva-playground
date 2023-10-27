@@ -29,7 +29,8 @@ void vsk_TaskScheduler_start(vsk_TaskScheduler * const self) {
     while (1) {
         vsk_Task * readyTask =
             vsk_LinkedList_find(
-                &self->_tasks, (vsk_LinkedListFindPredicate)vsk_isTaskReady
+                &self->_tasks,
+                (vsk_LinkedListIteratorFindPredicate)vsk_isTaskReady
             );
         if (readyTask) {
             vsk_Task_run(readyTask);
