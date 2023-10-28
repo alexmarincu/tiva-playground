@@ -2,7 +2,6 @@
 [*] --> Armed
 state Armed {
     [*] --> WaitForButton
-    Armed : exit / set LED off
     Armed --> Defused : right button press
     state WaitForButton {
         WaitForButton : entry / set LED green
