@@ -3,8 +3,8 @@
 #include "../app/buttons/app_btn_ButtonsActObj.h"
 #include "../app/time_bomb/app_tmb_TimeBombActObj.h"
 #include "../hw_abstraction/ha.h"
-#include "../hw_abstraction/ha_Led.h"
 #include "../hw_abstraction/ha_LeftButton.h"
+#include "../hw_abstraction/ha_RgbLed.h"
 #include "../hw_abstraction/ha_RightButton.h"
 #include "../hw_abstraction/ha_SysClock.h"
 #include "../hw_abstraction/ha_SysCtrl.h"
@@ -171,9 +171,7 @@ static void si_onCriticalSectionExit(void) {
 /*............................................................................*/
 static void si_onAssertFail(void) {
     ha_Interrupt_masterDisable();
-    ha_Led_setAllOff();
-    ha_Led_setRedOn();
-    ha_Led_setBlueOn();
+    ha_RgbLed_setMagenta();
     while (1) {
     }
 }

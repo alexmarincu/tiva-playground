@@ -1,7 +1,7 @@
 /*............................................................................*/
 #include "app_tmb_BoomState.h"
 /*............................................................................*/
-#include "../../hw_abstraction/ha_Led.h"
+#include "../../hw_abstraction/ha_RgbLed.h"
 /*............................................................................*/
 static void app_tmb_BoomState_onEnter(app_tmb_BoomState * const self);
 /*............................................................................*/
@@ -19,5 +19,5 @@ app_tmb_BoomState * app_tmb_BoomState_init(
 }
 /*............................................................................*/
 static void app_tmb_BoomState_onEnter(app_tmb_BoomState * const self) {
-    ha_Led_setAllOn();
+    ha_RgbLed_setWhite();
 }

@@ -1,8 +1,8 @@
 /*............................................................................*/
 #include "ha.h"
 /*............................................................................*/
-#include "ha_Led.h"
 #include "ha_LeftButton.h"
+#include "ha_RgbLed.h"
 #include "ha_RightButton.h"
 #include "ha_SysTick.h"
 #include "ha_SysTickSignal.h"
@@ -16,7 +16,7 @@ void ha_init(void) {
     ha_SysTick_init(ha_SysTick_());
     ha_LeftButton_init(ha_LeftButton_());
     ha_RightButton_init(ha_RightButton_());
-    ha_Led_init();
+    ha_RgbLed_init();
     ha_SysTickSignal_init();
     ha_TaskProcessingSignal_init();
 }

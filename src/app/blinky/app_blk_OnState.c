@@ -1,7 +1,7 @@
 /*............................................................................*/
 #include "app_blk_OnState.h"
 /*............................................................................*/
-#include "../../hw_abstraction/ha_Led.h"
+#include "../../hw_abstraction/ha_RgbLed.h"
 #include "app_blk_BlinkyActObj.h"
 #include "app_blk_OffState.h"
 /*............................................................................*/
@@ -26,14 +26,14 @@ app_blk_OnState * app_blk_OnState_init(
 }
 /*............................................................................*/
 static void app_blk_OnState_onEnter(app_blk_OnState * const self) {
-    ha_Led_setBlueOn();
+    ha_RgbLed_setBlue();
     app_blk_BlinkyActObj * blinky =
         (app_blk_BlinkyActObj *)((vsk_State *)self)->_stateContext;
     vsk_Timer_start((vsk_Timer *)&blinky->eventTimers.onTimeout);
 }
 /*............................................................................*/
 static void app_blk_OnState_onExit(app_blk_OnState * const self) {
-    ha_Led_setBlueOff();
+    ha_RgbLed_setOff();
 }
 /*............................................................................*/
 static void app_blk_OnState_onOnTimeout(app_blk_OnState * const self) {

@@ -1,7 +1,7 @@
 /*............................................................................*/
 #include "app_tmb_ArmedState.h"
 /*............................................................................*/
-#include "../../hw_abstraction/ha_Led.h"
+#include "../../hw_abstraction/ha_RgbLed.h"
 #include "app_tmb_DefusedState.h"
 /*............................................................................*/
 static void app_tmb_ArmedState_onExit(app_tmb_ArmedState * const self);
@@ -20,7 +20,7 @@ app_tmb_ArmedState * app_tmb_ArmedState_init(
 }
 /*............................................................................*/
 static void app_tmb_ArmedState_onExit(app_tmb_ArmedState * const self) {
-    ha_Led_setAllOff();
+    ha_RgbLed_setOff();
 }
 /*............................................................................*/
 static void app_tmb_ArmedState_onRightButtonPress(

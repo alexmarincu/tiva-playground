@@ -1,7 +1,7 @@
 /*............................................................................*/
 #include "app_tmb_DefusedState.h"
 /*............................................................................*/
-#include "../../hw_abstraction/ha_Led.h"
+#include "../../hw_abstraction/ha_RgbLed.h"
 #include "app_tmb_WaitForButtonState.h"
 /*............................................................................*/
 static void app_tmb_DefusedState_onEnter(app_tmb_DefusedState * const self);
@@ -29,11 +29,11 @@ app_tmb_DefusedState * app_tmb_DefusedState_init(
 }
 /*............................................................................*/
 static void app_tmb_DefusedState_onEnter(app_tmb_DefusedState * const self) {
-    ha_Led_setBlueOn();
+    ha_RgbLed_setBlue();
 }
 /*............................................................................*/
 static void app_tmb_DefusedState_onExit(app_tmb_DefusedState * const self) {
-    ha_Led_setBlueOff();
+    ha_RgbLed_setOff();
 }
 /*............................................................................*/
 static void app_tmb_DefusedState_onRightButtonPress(

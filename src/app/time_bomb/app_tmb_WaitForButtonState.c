@@ -1,7 +1,7 @@
 /*............................................................................*/
 #include "app_tmb_WaitForButtonState.h"
 /*............................................................................*/
-#include "../../hw_abstraction/ha_Led.h"
+#include "../../hw_abstraction/ha_RgbLed.h"
 #include "app_tmb_BlinkState.h"
 #include "app_tmb_TimeBombActObj.h"
 /*............................................................................*/
@@ -38,13 +38,13 @@ app_tmb_WaitForButtonState * app_tmb_WaitForButtonState_init(
 static void app_tmb_WaitForButtonState_onEnter(
     app_tmb_WaitForButtonState * const self
 ) {
-    ha_Led_setGreenOn();
+    ha_RgbLed_setGreen();
 }
 /*............................................................................*/
 static void app_tmb_WaitForButtonState_onExit(
     app_tmb_WaitForButtonState * const self
 ) {
-    ha_Led_setGreenOff();
+    ha_RgbLed_setOff();
 }
 /*............................................................................*/
 static void app_tmb_WaitForButtonState_onLeftButtonPress(
