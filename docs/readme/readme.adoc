@@ -4,7 +4,6 @@
 :source-highlighter: rouge
 :rouge-style: monokai
 
-[%breakable]
 == Objectives
 
 * Apply OOP in a real project
@@ -21,23 +20,73 @@
 
 image::tiva-board.png[Tiva board, width=600, align="center"]
 
-[%breakable]
 * Logic analyzer: https://www.emag.ro/analizor-logic-saleae-cu-8-canale-elektroweb-24-mhz-1-w-005/pd/D3QC35MBM/?ref=history-shopping_323810473_116388_1[Cheap Saleae logic analyzer]
 
 image::logic-analyzer.png[Logic analyzer, width=300, align="center"]
 
 == Project structure
+
+.Packages
 ----
-├── lib/tivaware: firmware provided by board manufacturer
-└── src:
-    ├── app: package containing apps
+├── lib/TivaWare/ - firmware provided by board manufacturer
+└── src/
+    ├── app/ - package containing apps
     │   ├── blinky
     │   ├── buttons
     │   └── time_bomb
-    ├── board_support: startup code
-    ├── hw_abstraction: abstraction layer over firmware
-    ├── system_infrastructure: kernel configuration, interrupt impl and app init
-    │   └── events: events setup
-    ├── utils: general useful stuff
-    └── very_simple_kernel: a simple non-preemptive kernel
+    ├── board_support/ - startup code
+    ├── hw_abstraction/ - abstraction layer over firmware
+    ├── system_infrastructure/ - kernel configuration, interrupt impl and app init
+    │   └── events/ - events setup
+    ├── utils/ - general useful stuff
+    └── very_simple_kernel/ - a simple non-preemptive kernel
+----
+
+.Namespaces
+In C, namespaces are not a native language feature. However, one way to emulate namespaces in C is by using prefixes. In this project all identifiers (type names, function names etc.) are prefixed with the abbreviation of the package. Example for Task function in very_simple_kernel package:
+----
++++------------- package abbreviation
+||| ++++-------- class name
+||| |||| +++---- method name
+||| |||| |||
+vsk_Task_run
+----
+
+== Very simple kernel (vsk)
+
+VSK is a non-preemptive, run to completion, event driven kernel.
+It is a framework for managing tasks, states, and events within an application. 
+
+The following diagram represents an overview of the kernel, showing how different elements interact in a high-level view.
+
+[plantuml, target=diag-vsk-overview]
+.VSK overview
+----
+App -d--|> vsk_ActiveObject
+App .r.> AppState : "delegates behavior to"
+AppState -d-|> vsk_State
+AppState1 -d-|> AppState
+AppState2 -d-|> AppState
+AppStateN -d-|> AppState
+vsk_StateContext o-r-> vsk_State : "holds the current"
+vsk_State o-l-> vsk_StateContext : "is associated with"
+vsk_ActiveObject -u-|> vsk_StateContext
+vsk_ActiveObject *-l-> vsk_Task : "has"
+vsk_ActiveObject *-d-> vsk_Inbox : "has"
+vsk_ActiveObject *-d-> vsk_EventSubscription : "has"
+vsk_ActiveObject .r.> vsk_OnStartEvent : "subscribes to"
+vsk_Task .u.> vsk_TaskScheduler : "registers self to    "
+vsk_TaskScheduler o-d-> "0..*" vsk_Task : "manages list of    "
+vsk_Inbox o-u-> vsk_Task : "is associated with / \l activates"
+vsk_Inbox o-d-> "0..*" vsk_Message : "manages list of"
+vsk_EventSubscription o-l-> vsk_Inbox : "is associated with / \l posts message to"
+vsk_EventSubscription *-d-> vsk_Message : "has"
+vsk_Event o-l-> "0..*" vsk_EventSubscription : "manages list of"
+vsk_OnStartEvent -d-|> vsk_Event
+vsk_EventTimer -u-|> vsk_Timer
+vsk_EventTimer o-l-> vsk_Event : "is associated with / \l raises"
+vsk_TaskScheduler .r.> vsk_OnStartEvent : "raises"
+vsk_Timer .u.> vsk_TimerSupervisor : "registers self to        "
+vsk_TimerSupervisor o-d-> "0..*" vsk_Timer : "manages list of"
+vsk_Timer .l.> vsk_Time : "uses"
 ----
