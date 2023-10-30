@@ -24,9 +24,9 @@ state Boom {
 }
 Armed --> Defused : right button press
 Defused --> WaitForButton : right button press
-PauseChoice --> Boom : [blinkCounter == 0]
-WaitForButton --> Blink : left button press / set blink counter to 5
+PauseChoice --> Boom : [else]
+WaitForButton --> Blink : left button press / \l set blink counter to 5
 Blink --> Pause : blink timeout
-Pause --> PauseChoice : pause timeout / decrement blink counter
+Pause --> PauseChoice : pause timeout / \l decrement blink counter
 PauseChoice --> Blink : [blinkCounter > 0]
 @enduml
