@@ -2,31 +2,31 @@
 [*] --> Armed
 state Armed {
     [*] --> WaitForButton
-    Armed --> Defused : right button press
     state WaitForButton {
         WaitForButton : entry / set LED green
         WaitForButton : exit / set LED off
-        WaitForButton --> Blink : left button press / set blink counter to 5
     }
     state Blink {
         Blink : entry / set LED red; start blink timer (500ms)
         Blink : exit / set LED off
-        Blink --> Pause : blink timeout
     }
-    state PauseChoice <<choice>>
     state Pause {
         Pause : entry / start pause timer (500ms)
-        Pause --> PauseChoice : pause timeout / decrement blink counter
-        PauseChoice --> Blink : [blinkCounter > 0]
-        PauseChoice --> Boom : [blinkCounter == 0]
     }
+    state PauseChoice <<choice>>
 }
 state Defused {
     Defused : entry / set LED blue
     Defused : exit / set LED off
-    Defused --> WaitForButton : right button press
 }
 state Boom {
     Boom : entry / set LED white
 }
+Armed --> Defused : right button press
+Defused --> WaitForButton : right button press
+PauseChoice --> Boom : [blinkCounter == 0]
+WaitForButton --> Blink : left button press / set blink counter to 5
+Blink --> Pause : blink timeout
+Pause --> PauseChoice : pause timeout / decrement blink counter
+PauseChoice --> Blink : [blinkCounter > 0]
 @enduml

@@ -3,10 +3,10 @@
 state On {
     On : entry / set LED blue; start ON timer (200ms)
     On : exit / set LED off
-    On --> Off : ON timeout
 }
 state Off {
     Off : entry / start OFF timer (200ms)
-    Off --> On : OFF timeout
 }
+On --> Off : ON timeout
+Off --> On : OFF timeout
 @enduml
