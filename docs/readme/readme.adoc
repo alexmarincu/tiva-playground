@@ -115,6 +115,7 @@ class vsk_EventTimer
 class vsk_TaskScheduler << (S,coral) >>
 class vsk_Timer
 class vsk_TimerSupervisor << (S,coral) >>
+class vsk_Time << (S,coral) >>
 vsk_StateContext o-r-> vsk_State : "holds the current"
 vsk_State o-l-> vsk_StateContext : "is associated with"
 vsk_ActiveObject -u-|> vsk_StateContext
