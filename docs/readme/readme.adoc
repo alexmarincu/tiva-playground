@@ -18,28 +18,31 @@
 
 * Board: http://www.ti.com/ww/en/launchpad/launchpads-connected-ek-tm4c123gxl.html[Tiva C Series Launchpad (EK-TM4C123GXL)]
 
+.Board overview
 image::tiva-board.png[Tiva board, width=600, align="center"]
 
 * Logic analyzer: https://www.emag.ro/analizor-logic-saleae-cu-8-canale-elektroweb-24-mhz-1-w-005/pd/D3QC35MBM/?ref=history-shopping_323810473_116388_1[Cheap Saleae logic analyzer]
 
+.Logic analyzer
 image::logic-analyzer.png[Logic analyzer, width=300, align="center"]
 
 == Project structure
 
 .Packages
 ----
-├── lib/TivaWare/ - firmware provided by board manufacturer
-└── src/
-    ├── app/ - package containing apps
-    │   ├── blinky
-    │   ├── buttons
-    │   └── time_bomb
-    ├── board_support/ - startup code
-    ├── hw_abstraction/ - abstraction layer over firmware
-    ├── system_infrastructure/ - kernel configuration, interrupt impl and app init
-    │   └── events/ - events setup
-    ├── utils/ - general useful stuff
-    └── very_simple_kernel/ - a simple non-preemptive kernel
+./
+|-- lib/TivaWare/              - firmware provided by board manufacturer
++-- src/
+    |-- app/                   - package containing apps
+    |   |-- blinky
+    |   |-- buttons
+    |   +-- time_bomb
+    |-- board_support/         - startup code
+    |-- hw_abstraction/        - abstraction layer over firmware
+    |-- system_infrastructure/ - kernel configuration, interrupt impl and app init
+    |   +-- events/            - events setup
+    |-- utils/                 - general useful stuff
+    +-- very_simple_kernel/    - a simple non-preemptive kernel
 ----
 
 .Namespaces
@@ -90,3 +93,10 @@ vsk_Timer .u.> vsk_TimerSupervisor : "registers self to        "
 vsk_TimerSupervisor o-d-> "0..*" vsk_Timer : "manages list of"
 vsk_Timer .l.> vsk_Time : "uses"
 ----
+
+== Active object
+
+An active object is an event-driven, encapsulated software object running in its own thread/task and communicating asynchronously by means of events.
+
+.Active object
+image::active-object.png[Active object, width=500, align="center"]
