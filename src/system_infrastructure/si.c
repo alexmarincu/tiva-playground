@@ -19,15 +19,22 @@
 #include "../utils/ut.h"
 #include "../very_simple_kernel/vsk.h"
 /*............................................................................*/
+#define si_app_blk 0
+#define si_app_tmb 1
+#define si_app si_app_tmb
+#define si_classicDebounce false
 #define si_tickPeriodMillis 10
 /*............................................................................*/
+#if (si_classicDebounce == false)
 static void si_leftButtonIntHandler(void);
 static void si_setupLeftButton(void);
 static void si_rightButtonIntHandler(void);
 static void si_setupRightButton(void);
-// static void si_buttonsTaskOperation(void * const obj);
-// static void si_activateButtonsTask(vsk_Task * const buttonsTask);
-// static void si_setupButtonsTask(void);
+#else
+static void si_buttonsTaskOperation(void * const obj);
+static void si_activateButtonsTask(vsk_Task * const buttonsTask);
+static void si_setupButtonsTask(void);
+#endif
 static void si_setupApps(void);
 static void si_sysTickIntHandler(void);
 static void si_setupSysTick(void);
@@ -36,6 +43,7 @@ static void si_onIdle(void);
 static void si_onCriticalSectionEnter(void);
 static void si_onCriticalSectionExit(void);
 static void si_onAssertFail(void);
+#if (si_classicDebounce == false)
 /*............................................................................*/
 static void si_leftButtonIntHandler(void) {
     vsk_Event_raise((vsk_Event *)si_ev_LeftButtonIntEvent_());
@@ -60,51 +68,59 @@ static void si_setupRightButton(void) {
     ha_RightButton_registerInt(button, si_rightButtonIntHandler);
     ha_RightButton_enableInt(button);
 }
+#else
 /*............................................................................*/
-// static void si_buttonsTaskOperation(void * const obj) {
-//     static uint8_t leftButtonDebounceCount = 0;
-//     static uint8_t rightButtonDebounceCount = 0;
-//     if (ha_LeftButton_isPressed(ha_LeftButton_())) {
-//         leftButtonDebounceCount++;
-//         if (leftButtonDebounceCount == 2) {
-//             vsk_Event_raise((vsk_Event *)si_ev_LeftButtonPressEvent_());
-//         }
-//     } else {
-//         leftButtonDebounceCount = 0;
-//     }
-//     if (ha_RightButton_isPressed(ha_RightButton_())) {
-//         rightButtonDebounceCount++;
-//         if (rightButtonDebounceCount == 2) {
-//             vsk_Event_raise((vsk_Event *)si_ev_RightButtonPressEvent_());
-//         }
-//     } else {
-//         rightButtonDebounceCount = 0;
-//     }
-// }
-// /*............................................................................*/
-// static void si_activateButtonsTask(vsk_Task * const buttonsTask) {
-//     vsk_Task_activate(buttonsTask);
-// }
-// /*............................................................................*/
-// static void si_setupButtonsTask(void) {
-//     static vsk_Task buttonsTask;
-//     vsk_Task_init(
-//         &buttonsTask, (vsk_TaskOperation)si_buttonsTaskOperation, NULL
-//     );
-//     static vsk_Timer buttonsTaskTimer;
-//     vsk_Timer_start(
-//         vsk_Timer_init(
-//             &buttonsTaskTimer, 0, 20,
-//             (vsk_TimerCallback)si_activateButtonsTask, &buttonsTask
-//         )
-//     );
-// }
+static void si_buttonsTaskOperation(void * const obj) {
+    static uint8_t leftButtonDebounceCount = 0;
+    static uint8_t rightButtonDebounceCount = 0;
+    if (ha_LeftButton_isPressed(ha_LeftButton_())) {
+        leftButtonDebounceCount++;
+        if (leftButtonDebounceCount == 2) {
+            vsk_Event_raise((vsk_Event *)si_ev_LeftButtonPressEvent_());
+        }
+    } else {
+        leftButtonDebounceCount = 0;
+    }
+    if (ha_RightButton_isPressed(ha_RightButton_())) {
+        rightButtonDebounceCount++;
+        if (rightButtonDebounceCount == 2) {
+            vsk_Event_raise((vsk_Event *)si_ev_RightButtonPressEvent_());
+        }
+    } else {
+        rightButtonDebounceCount = 0;
+    }
+}
+/*............................................................................*/
+static void si_activateButtonsTask(vsk_Task * const buttonsTask) {
+    vsk_Task_activate(buttonsTask);
+}
+/*............................................................................*/
+static void si_setupButtonsTask(void) {
+    static vsk_Task buttonsTask;
+    vsk_Task_init(
+        &buttonsTask, (vsk_TaskOperation)si_buttonsTaskOperation, NULL
+    );
+    static vsk_Timer buttonsTaskTimer;
+    vsk_Timer_start(
+        vsk_Timer_init(
+            &buttonsTaskTimer, 0, 20,
+            (vsk_TimerCallback)si_activateButtonsTask, &buttonsTask
+        )
+    );
+}
+#endif
 /*............................................................................*/
 static void si_setupApps(void) {
-    // app_blk_BlinkyActObj_init(app_blk_BlinkyActObj_());
-    // si_setupButtonsTask();
+#if (si_app == si_app_blk)
+    app_blk_BlinkyActObj_init(app_blk_BlinkyActObj_());
+#elif (si_app == si_app_tmb)
+#if (si_classicDebounce == true)
+    si_setupButtonsTask();
+#else
     app_btn_ButtonsActObj_init(app_btn_ButtonsActObj_());
+#endif
     app_tmb_TimeBombActObj_init(app_tmb_TimeBombActObj_());
+#endif
 }
 /*............................................................................*/
 static void si_sysTickIntHandler(void) {
@@ -123,8 +139,10 @@ static void si_setupSysTick(void) {
 /*............................................................................*/
 static void si_onStart(void) {
     ha_init();
+#if (si_classicDebounce == false)
     si_setupLeftButton();
     si_setupRightButton();
+#endif
     si_ev_initEvents();
     ha_SysClock_setMaxFrequency();
     si_setupSysTick();
