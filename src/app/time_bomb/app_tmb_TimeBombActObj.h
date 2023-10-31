@@ -19,8 +19,8 @@ struct app_tmb_TimeBombActObj {
         vsk_EventSubscription pauseTimeout;
     } _eventSubscriptions;
     struct {
-        vsk_EventTimer blinkTimeout;
-        vsk_EventTimer pauseTimeout;
+        vsk_EventTimer blink;
+        vsk_EventTimer pause;
     } eventTimers;
     uint32_t blinkCounter;
 };

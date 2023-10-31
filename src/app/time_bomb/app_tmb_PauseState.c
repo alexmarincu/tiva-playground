@@ -27,7 +27,7 @@ app_tmb_PauseState * app_tmb_PauseState_init(
 static void app_tmb_PauseState_onEnter(app_tmb_PauseState * const self) {
     app_tmb_TimeBombActObj * timeBomb =
         (app_tmb_TimeBombActObj *)((vsk_State *)self)->_stateContext;
-    vsk_Timer_start((vsk_Timer *)&timeBomb->eventTimers.pauseTimeout);
+    vsk_Timer_start((vsk_Timer *)&timeBomb->eventTimers.pause);
 }
 /*............................................................................*/
 static void app_tmb_PauseState_onPauseTimeout(app_tmb_PauseState * const self) {
