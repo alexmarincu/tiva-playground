@@ -18,9 +18,7 @@
 #include "../system_infrastructure/events/si_ev_RightButtonPressEvent.h"
 #include "../utils/ut.h"
 #include "../very_simple_kernel/vsk.h"
-#include "../very_simple_kernel/vsk_Time.h"
 /*............................................................................*/
-#define si_buttonIntFilterMillis 30
 #define si_tickPeriodMillis 10
 /*............................................................................*/
 static void si_leftButtonIntHandler(void);
@@ -40,16 +38,7 @@ static void si_onCriticalSectionExit(void);
 static void si_onAssertFail(void);
 /*............................................................................*/
 static void si_leftButtonIntHandler(void) {
-    static vsk_Timer timer;
-    static bool isTimerInitialized = false;
-    if (!isTimerInitialized) {
-        isTimerInitialized = true;
-        vsk_Timer_init(&timer, si_buttonIntFilterMillis, 0, NULL, NULL);
-    }
-    if (!vsk_Timer_isRunning(&timer)) {
-        vsk_Event_raise((vsk_Event *)si_ev_LeftButtonIntEvent_());
-        vsk_Timer_start(&timer);
-    }
+    vsk_Event_raise((vsk_Event *)si_ev_LeftButtonIntEvent_());
     ha_LeftButton_clearIntFlag(ha_LeftButton_());
 }
 /*............................................................................*/
@@ -61,16 +50,7 @@ static void si_setupLeftButton(void) {
 }
 /*............................................................................*/
 static void si_rightButtonIntHandler(void) {
-    static vsk_Timer timer;
-    static bool isTimerInitialized = false;
-    if (!isTimerInitialized) {
-        isTimerInitialized = true;
-        vsk_Timer_init(&timer, si_buttonIntFilterMillis, 0, NULL, NULL);
-    }
-    if (!vsk_Timer_isRunning(&timer)) {
-        vsk_Event_raise((vsk_Event *)si_ev_RightButtonIntEvent_());
-        vsk_Timer_start(&timer);
-    }
+    vsk_Event_raise((vsk_Event *)si_ev_RightButtonIntEvent_());
     ha_RightButton_clearIntFlag(ha_RightButton_());
 }
 /*............................................................................*/
@@ -114,11 +94,8 @@ static void si_setupRightButton(void) {
 //     static vsk_Timer buttonsTaskTimer;
 //     vsk_Timer_start(
 //         vsk_Timer_init(
-//             &buttonsTaskTimer,
-//             0,
-//             20,
-//             (vsk_TimerCallback)si_activateButtonsTask,
-//             &buttonsTask
+//             &buttonsTaskTimer, 0, 20,
+//             (vsk_TimerCallback)si_activateButtonsTask, &buttonsTask
 //         )
 //     );
 // }
@@ -180,13 +157,10 @@ int si_main(void) {
     static vsk_Node nodes[20];
     vsk_start(
         si_tickPeriodMillis,
-        si_onStart,
-        si_onIdle,
-        si_onCriticalSectionEnter,
-        si_onCriticalSectionExit,
+        si_onStart, si_onIdle,
+        si_onCriticalSectionEnter, si_onCriticalSectionExit,
         si_onAssertFail,
-        nodes,
-        ut_lengthOf(nodes)
+        nodes, ut_lengthOf(nodes)
     );
     return 0;
 }

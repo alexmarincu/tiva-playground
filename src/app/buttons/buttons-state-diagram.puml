@@ -1,0 +1,20 @@
+@startuml buttons-state-diagram
+[*] --> WaitForButtonInt
+state WaitForButtonInt {
+}
+state Debouncing {
+    Debouncing : entry / start debounce timer (30ms)
+    state LeftButtonDebouncing
+    state RightButtonDebouncing
+}
+state LeftButtonDebouncingChoice <<choice>>
+state RightButtonDebouncingChoice <<choice>>
+WaitForButtonInt -d-> LeftButtonDebouncing : left button int
+WaitForButtonInt -d-> RightButtonDebouncing : right button int
+LeftButtonDebouncing -l-> LeftButtonDebouncingChoice : debounce timeout
+LeftButtonDebouncingChoice -u-> WaitForButtonInt : [left button pressed] / \l raise left button press event
+LeftButtonDebouncingChoice -u-> WaitForButtonInt : [else]\l
+RightButtonDebouncing -r-> RightButtonDebouncingChoice : debounce timeout
+RightButtonDebouncingChoice -u-> WaitForButtonInt : [right button pressed] / \l raise right button press event
+RightButtonDebouncingChoice -u-> WaitForButtonInt : [else]
+@enduml

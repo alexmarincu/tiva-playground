@@ -15,13 +15,11 @@ struct app_btn_ButtonsActObj {
     struct {
         vsk_EventSubscription leftButtonInt;
         vsk_EventSubscription rightButtonInt;
-        vsk_EventSubscription leftButtonDebounceTimeout;
-        vsk_EventSubscription rightButtonDebounceTimeout;
+        vsk_EventSubscription buttonDebounceTimeout;
     } _eventSubscriptions;
     struct {
-        vsk_EventTimer leftButtonDebounceTimeout;
-        vsk_EventTimer rightButtonDebounceTimeout;
-    } _eventTimers;
+        vsk_EventTimer buttonDebounce;
+    } eventTimers;
 };
 /*............................................................................*/
 app_btn_ButtonsActObj * app_btn_ButtonsActObj_(void);
