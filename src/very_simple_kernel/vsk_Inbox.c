@@ -2,10 +2,12 @@
 #include "vsk_Inbox.h"
 /*............................................................................*/
 #include "vsk_CriticalSection.h"
+#include "vsk_InboxSupervisor.h"
 /*............................................................................*/
 vsk_Inbox * vsk_Inbox_init(vsk_Inbox * const self, vsk_Task * const task) {
-    self->task = task;
+    self->_task = task;
     vsk_LinkedQueue_init(&self->_messageQueue);
+    vsk_InboxSupervisor_register(vsk_InboxSupervisor_(), self);
     return self;
 }
 /*............................................................................*/
@@ -22,7 +24,7 @@ void vsk_Inbox_postMessage(
 ) {
     vsk_CriticalSection_enter(vsk_CriticalSection_());
     vsk_LinkedQueue_enqueue(&self->_messageQueue, message);
-    vsk_Task_activate(self->task);
+    vsk_Task_activate(self->_task);
     vsk_CriticalSection_exit(vsk_CriticalSection_());
 }
 /*............................................................................*/
@@ -38,4 +40,10 @@ void vsk_Inbox_clear(vsk_Inbox * const self) {
     vsk_CriticalSection_enter(vsk_CriticalSection_());
     vsk_LinkedQueue_clear(&self->_messageQueue);
     vsk_CriticalSection_exit(vsk_CriticalSection_());
+}
+/*............................................................................*/
+void vsk_Inbox_onSysTick(vsk_Inbox * const self) {
+    if (!vsk_Inbox_isEmpty(self)) {
+        vsk_Task_activate(self->_task);
+    }
 }

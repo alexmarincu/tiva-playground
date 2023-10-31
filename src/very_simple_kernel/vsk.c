@@ -1,6 +1,7 @@
 /*............................................................................*/
 #include "vsk.h"
 /*............................................................................*/
+#include "vsk_InboxSupervisor.h"
 #include "vsk_NodeClass.h"
 #include "vsk_OnStartEvent.h"
 #include "vsk_Time.h"
@@ -19,6 +20,7 @@ void vsk_start(
     vsk_Time_init(vsk_Time_(), tickPeriodMillis);
     vsk_TaskScheduler_init(vsk_TaskScheduler_(), onStart, onIdle);
     vsk_TimerSupervisor_init(vsk_TimerSupervisor_());
+    vsk_InboxSupervisor_init(vsk_InboxSupervisor_());
     vsk_CriticalSection_init(
         vsk_CriticalSection_(), onCriticalSectionEnter, onCriticalSectionExit
     );
@@ -31,4 +33,5 @@ void vsk_start(
 void vsk_onSysTick(void) {
     vsk_Time_onSysTick(vsk_Time_());
     vsk_TimerSupervisor_onSysTick(vsk_TimerSupervisor_());
+    vsk_InboxSupervisor_onSysTick(vsk_InboxSupervisor_());
 }

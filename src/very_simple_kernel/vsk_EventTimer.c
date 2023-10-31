@@ -12,11 +12,8 @@ vsk_EventTimer * vsk_EventTimer_init(
     vsk_Event * const event
 ) {
     vsk_Timer_init(
-        (vsk_Timer *)self,
-        delayMillis,
-        periodMillis,
-        (vsk_TimerCallback)vsk_raiseEvent,
-        self
+        (vsk_Timer *)self, delayMillis, periodMillis,
+        (vsk_TimerCallback)vsk_raiseEvent, self
     );
     self->_event = event;
     return self;
