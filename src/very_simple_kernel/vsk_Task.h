@@ -18,9 +18,9 @@ struct vsk_Task {
     vsk_TaskOperation _operation;
     void * _obj;
     vsk_TaskState _state;
-    uint32_t _timeAtLastRun;
-    uint32_t _maxRunTime;
-    uint32_t _minPeriod;
+    uint32_t _lastStartTimeMillis;
+    uint32_t _maxRunTimeMillis;
+    uint32_t _minPeriodMillis;
     uint32_t _cpuLoad;
 };
 /*............................................................................*/
