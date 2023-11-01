@@ -23,7 +23,7 @@
 #define si_app_tmb 1
 #define si_app si_app_tmb
 #define si_classicDebounce false
-#define si_tickPeriodMillis 10
+#define si_tickPeriodMillis 1
 /*............................................................................*/
 #if (si_classicDebounce == false)
 static void si_leftButtonIntHandler(void);

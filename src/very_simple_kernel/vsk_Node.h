@@ -10,7 +10,6 @@ typedef struct vsk_Node vsk_Node;
 /*............................................................................*/
 struct vsk_Node {
     vsk_NodeClass * _klass;
-    bool _isUsed;
     void * obj;
     vsk_Node * next;
     vsk_Node * prev;
