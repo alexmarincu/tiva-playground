@@ -22,10 +22,20 @@
 image::tiva-board.png[Tiva board, width=600, align="center"]
 
 <<<
-* Logic analyzer: https://www.emag.ro/analizor-logic-saleae-cu-8-canale-elektroweb-24-mhz-1-w-005/pd/D3QC35MBM/?ref=history-shopping_323810473_116388_1[Cheap Saleae logic analyzer]
+* Logic analyzer: https://www.emag.ro/analizor-logic-saleae-cu-8-canale-elektroweb-24-mhz-1-w-005/pd/D3QC35MBM/?ref=history-shopping_323810473_116388_1[Cheap Saleae compatible logic analyzer]
 
 .Logic analyzer
 image::logic-analyzer.png[Logic analyzer, width=300, align="center"]
+
+== SW setup
+
+* http://www.throwtheswitch.org/ceedling[ceedling] (needs ruby) - build system for C projects
+* https://developer.arm.com/Tools%20and%20Software/GNU%20Toolchain[gcc-arm-none-eabi] - GNU Arm Embedded Toolchain
+* https://www.ti.com/tool/STELLARIS_ICDI_DRIVERS[Stellaris ICDI Drivers] - driver for integrated In-Circuit Debug Interface for Texas Instruments Tiva C Series board
+* https://www.ti.com/tool/LMFLASHPROGRAMMER[LMFlash] - free flashing utility for Texas Instruments Tiva C Series board
+* https://openocd.org/[OpenOCD] (Open On-Chip Debugger) - open-source tool for debugging microcontrollers
+* https://support.saleae.com/logic-software/driver-install[Saleae Logic Drivers] - driver for the logic analyzer
+* http://sigrok.org/wiki/PulseView[PulseView] - open-source tool for visualizing and analyzing signals captured by measurement instruments.
 
 == Project structure
 
@@ -56,7 +66,6 @@ In C, namespaces are not a native language feature. However, one way to emulate 
 vsk_Task_run
 ----
 
-<<<
 == Key concept: Active object
 
 An active object is an event-driven, encapsulated software object running in its own thread/task and communicating asynchronously by means of events. These events are added to a queue or a message passing mechanism that the active object processes sequentially. This decouples the sender and receiver, allowing for non-blocking communication. When an event is received, the active object processes it in its own time, and the sender does not need to wait for an immediate response. This is especially valuable in scenarios where certain operations might take a significant amount of time to complete. They are particularly useful in systems where multiple tasks need to be performed concurrently, and a structured approach to handling asynchronous events is required to ensure modularity and maintainability in the codebase.
@@ -90,7 +99,6 @@ The event-driven, decoupled architecture also makes the system more scalable. As
 .Reduced Complexity:
 In complex software systems, the decoupled communication model reduces the complexity of managing inter-object dependencies. Active objects can focus on their core responsibilities, making the system more comprehensible and maintainable.
 
-<<<
 == Very simple kernel (vsk)
 
 VSK is a non-preemptive, run to completion, event driven kernel.
@@ -101,16 +109,16 @@ The following diagram represents an overview of the kernel, showing how differen
 [plantuml, target=diag-vsk-overview, align="center"]
 .VSK overview
 ----
-class vsk_StateContext
-class vsk_State
-class vsk_ActiveObject
+abstract class vsk_StateContext
+abstract class vsk_State
+abstract class vsk_ActiveObject
 class vsk_Task
 class vsk_TaskScheduler << (S,coral) >>
 class vsk_Inbox
 class vsk_InboxSupervisor << (S,coral) >>
 class vsk_Message
 class vsk_EventSubscription
-class vsk_Event
+abstract class vsk_Event
 class vsk_OnStartEvent << (S,coral) >>
 class vsk_EventTimer
 class vsk_TaskScheduler << (S,coral) >>
@@ -142,7 +150,6 @@ vsk_TimerSupervisor o-d-> "0..*" vsk_Timer : "manages list of / \l ticks"
 vsk_Timer .l.> vsk_Time : "uses"
 ----
 
-<<<
 == Creating a VSK app
 
 Creating an app using VSK can be done in 2 ways:
@@ -155,30 +162,34 @@ Create the needed active objects by extending `vsk_ActiveObject` class. If a sta
 
 The following diagram shows how to extend the active object class.
 
-[plantuml, target=diag-extending-active-object, width=400, align="center"]
+[plantuml, target=diag-extending-active-object, width=500, align="center"]
 .Extending active object
 ----
 class App << (S,coral) >>
-class AppState
-class AppState1
-class AppState11 << (S,coral) >>
-class AppState12 << (S,coral) >>
-class AppState2 << (S,coral) >>
-class vsk_ActiveObject
-class vsk_StateContext
-class vsk_State
+together {
+    abstract class AppState
+    abstract class AppState1
+    class AppState11 << (S,coral) >>
+    class AppState12 << (S,coral) >>
+    class AppState2 << (S,coral) >>
+}
+class vsk_EventSubscription
+abstract class vsk_ActiveObject
+abstract class vsk_StateContext
+abstract class vsk_State
 App -d-|> vsk_ActiveObject
 App *-d-> "1..*" vsk_EventSubscription : "has"
 App .r.> AppState : "delegates behavior to"
 App .u.> AppState2 : "initializes"
 App .u.> AppState11 : "initializes"
 App .u.> AppState12 : "initializes"
-AppState -d--|> vsk_State
+AppState -d-|> vsk_State
 AppState1 -d-|> AppState
 AppState11 -d-|> AppState1
 AppState12 -d-|> AppState1
 AppState2 -d-|> AppState
-vsk_ActiveObject -d-|> vsk_StateContext
+vsk_ActiveObject -r-|> vsk_StateContext
 vsk_StateContext o-r-> vsk_State : "holds the current"
 vsk_State o-l-> vsk_StateContext : "is associated with"
+vsk_EventSubscription -[hidden]r- vsk_ActiveObject
 ----
