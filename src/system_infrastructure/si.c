@@ -143,7 +143,7 @@ static void si_onStart(void) {
     si_setupLeftButton();
     si_setupRightButton();
 #endif
-    si_ev_initEvents();
+    si_ev_init();
     ha_SysClock_setMaxFrequency();
     si_setupSysTick();
     si_setupApps();
