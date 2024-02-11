@@ -1,0 +1,3 @@
+[submodule "very-simple-kernel"]
+	path = very-simple-kernel
+	url = https://github.com/alexmarincu/very-simple-kernel.git
