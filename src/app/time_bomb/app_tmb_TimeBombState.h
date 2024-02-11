@@ -4,7 +4,7 @@
 /*----------------------------------------------------------------------------*/
 typedef struct app_tmb_TimeBombState app_tmb_TimeBombState;
 /*----------------------------------------------------------------------------*/
-#include "../../very_simple_kernel/vsk_State.h"
+#include "../../../very-simple-kernel/very_simple_kernel/src/vsk_State.h"
 /*----------------------------------------------------------------------------*/
 typedef void (*app_tmb_TimeBombStateHandler)(
     app_tmb_TimeBombState * const self

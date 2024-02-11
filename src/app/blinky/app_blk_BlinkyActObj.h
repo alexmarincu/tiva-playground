@@ -4,9 +4,9 @@
 /*----------------------------------------------------------------------------*/
 typedef struct app_blk_BlinkyActObj app_blk_BlinkyActObj;
 /*----------------------------------------------------------------------------*/
-#include "../../very_simple_kernel/vsk_ActiveObject.h"
-#include "../../very_simple_kernel/vsk_EventSubscription.h"
-#include "../../very_simple_kernel/vsk_EventTimer.h"
+#include "../../../very-simple-kernel/very_simple_kernel/src/vsk_ActiveObject.h"
+#include "../../../very-simple-kernel/very_simple_kernel/src/vsk_EventSubscription.h"
+#include "../../../very-simple-kernel/very_simple_kernel/src/vsk_EventTimer.h"
 /*----------------------------------------------------------------------------*/
 struct app_blk_BlinkyActObj {
     struct {

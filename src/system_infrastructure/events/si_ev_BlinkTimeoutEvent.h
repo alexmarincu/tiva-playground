@@ -4,7 +4,7 @@
 /*----------------------------------------------------------------------------*/
 typedef struct si_ev_BlinkTimeoutEvent si_ev_BlinkTimeoutEvent;
 /*----------------------------------------------------------------------------*/
-#include "../../very_simple_kernel/vsk_Event.h"
+#include "../../../very-simple-kernel/very_simple_kernel/src/vsk_Event.h"
 /*----------------------------------------------------------------------------*/
 struct si_ev_BlinkTimeoutEvent {
     struct {

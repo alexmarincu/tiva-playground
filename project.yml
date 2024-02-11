@@ -26,7 +26,12 @@
         - -:test/support
     :source:
         - src/**
+        - very-simple-kernel/very_simple_kernel/src/**
+        - very-simple-kernel/c_tool_box/c_tool_box/src/**
     :include:
+        - src/**
+        - very-simple-kernel/very_simple_kernel/src/**
+        - very-simple-kernel/c_tool_box/c_tool_box/src/**
         - lib/TivaWare
         - lib/TivaWare/driverlib
     :support:

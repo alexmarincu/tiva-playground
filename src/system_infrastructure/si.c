@@ -1,4 +1,6 @@
 /*----------------------------------------------------------------------------*/
+#include "../../very-simple-kernel/c_tool_box/c_tool_box/src/ctb.h"
+#include "../../very-simple-kernel/very_simple_kernel/src/vsk.h"
 #include "../app/blinky/app_blk_BlinkyActObj.h"
 #include "../app/buttons/app_btn_ButtonsActObj.h"
 #include "../app/time_bomb/app_tmb_TimeBombActObj.h"
@@ -17,8 +19,6 @@
 #include "../system_infrastructure/events/si_ev_LeftButtonPressEvent.h"
 #include "../system_infrastructure/events/si_ev_RightButtonIntEvent.h"
 #include "../system_infrastructure/events/si_ev_RightButtonPressEvent.h"
-#include "../utils/ut.h"
-#include "../very_simple_kernel/vsk.h"
 /*----------------------------------------------------------------------------*/
 #define si_app_blk 0
 #define si_app_tmb 1
@@ -174,13 +174,11 @@ static void si_onAssertFail(void) {
 }
 /*----------------------------------------------------------------------------*/
 int si_main(void) {
-    static vsk_Node nodes[20];
     vsk_start(
         si_tickPeriodMillis,
         si_onStart, si_onIdle,
         si_onCriticalSectionEnter, si_onCriticalSectionExit,
-        si_onAssertFail,
-        nodes, ut_lengthOf(nodes)
+        si_onAssertFail
     );
     return 0;
 }

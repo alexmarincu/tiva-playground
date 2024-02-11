@@ -4,7 +4,7 @@
 /*----------------------------------------------------------------------------*/
 typedef struct app_blk_BlinkyState app_blk_BlinkyState;
 /*----------------------------------------------------------------------------*/
-#include "../../very_simple_kernel/vsk_State.h"
+#include "../../../very-simple-kernel/very_simple_kernel/src/vsk_State.h"
 /*----------------------------------------------------------------------------*/
 typedef void (*app_blk_BlinkyStateHandler)(app_blk_BlinkyState * const self);
 /*----------------------------------------------------------------------------*/

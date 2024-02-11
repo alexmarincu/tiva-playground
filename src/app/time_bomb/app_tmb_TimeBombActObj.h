@@ -4,9 +4,9 @@
 /*----------------------------------------------------------------------------*/
 typedef struct app_tmb_TimeBombActObj app_tmb_TimeBombActObj;
 /*----------------------------------------------------------------------------*/
-#include "../../very_simple_kernel/vsk_ActiveObject.h"
-#include "../../very_simple_kernel/vsk_EventSubscription.h"
-#include "../../very_simple_kernel/vsk_EventTimer.h"
+#include "../../../very-simple-kernel/very_simple_kernel/src/vsk_ActiveObject.h"
+#include "../../../very-simple-kernel/very_simple_kernel/src/vsk_EventSubscription.h"
+#include "../../../very-simple-kernel/very_simple_kernel/src/vsk_EventTimer.h"
 /*----------------------------------------------------------------------------*/
 struct app_tmb_TimeBombActObj {
     struct {

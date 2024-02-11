@@ -4,7 +4,7 @@
 /*----------------------------------------------------------------------------*/
 typedef struct app_btn_ButtonsState app_btn_ButtonsState;
 /*----------------------------------------------------------------------------*/
-#include "../../very_simple_kernel/vsk_State.h"
+#include "../../../very-simple-kernel/very_simple_kernel/src/vsk_State.h"
 /*----------------------------------------------------------------------------*/
 typedef void (*app_btn_ButtonsStateHandler)(
     app_btn_ButtonsState * const self
