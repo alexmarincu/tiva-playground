@@ -1,13 +1,13 @@
-/*............................................................................*/
+/*----------------------------------------------------------------------------*/
 #ifndef APP_TMB_TIMEBOMBACTOBJ_H
 #define APP_TMB_TIMEBOMBACTOBJ_H
-/*............................................................................*/
+/*----------------------------------------------------------------------------*/
 typedef struct app_tmb_TimeBombActObj app_tmb_TimeBombActObj;
-/*............................................................................*/
+/*----------------------------------------------------------------------------*/
 #include "../../very_simple_kernel/vsk_ActiveObject.h"
 #include "../../very_simple_kernel/vsk_EventSubscription.h"
 #include "../../very_simple_kernel/vsk_EventTimer.h"
-/*............................................................................*/
+/*----------------------------------------------------------------------------*/
 struct app_tmb_TimeBombActObj {
     struct {
         vsk_ActiveObject actObj;
@@ -24,7 +24,7 @@ struct app_tmb_TimeBombActObj {
     } eventTimers;
     uint32_t blinkCounter;
 };
-/*............................................................................*/
+/*----------------------------------------------------------------------------*/
 app_tmb_TimeBombActObj * app_tmb_TimeBombActObj_(void);
 app_tmb_TimeBombActObj * app_tmb_TimeBombActObj_init(
     app_tmb_TimeBombActObj * const self

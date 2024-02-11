@@ -1,6 +1,6 @@
-/*............................................................................*/
+/*----------------------------------------------------------------------------*/
 #include "si_ev.h"
-/*............................................................................*/
+/*----------------------------------------------------------------------------*/
 #include "si_ev_BlinkTimeoutEvent.h"
 #include "si_ev_ButtonDebounceTimeoutEvent.h"
 #include "si_ev_LeftButtonIntEvent.h"
@@ -10,7 +10,7 @@
 #include "si_ev_PauseTimeoutEvent.h"
 #include "si_ev_RightButtonIntEvent.h"
 #include "si_ev_RightButtonPressEvent.h"
-/*............................................................................*/
+/*----------------------------------------------------------------------------*/
 void si_ev_init(void) {
     si_ev_LeftButtonIntEvent_init(si_ev_LeftButtonIntEvent_());
     si_ev_LeftButtonPressEvent_init(si_ev_LeftButtonPressEvent_());

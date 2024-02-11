@@ -1,19 +1,19 @@
-/*............................................................................*/
+/*----------------------------------------------------------------------------*/
 #include "app_btn_RightButtonDebouncingState.h"
-/*............................................................................*/
+/*----------------------------------------------------------------------------*/
 #include "../../hw_abstraction/ha_RightButton.h"
 #include "../../system_infrastructure/events/si_ev_RightButtonPressEvent.h"
 #include "app_btn_WaitForButtonIntState.h"
-/*............................................................................*/
+/*----------------------------------------------------------------------------*/
 static void app_btn_RightButtonDebouncingState_onDebounceTimeout(
     app_btn_RightButtonDebouncingState * const self
 );
-/*............................................................................*/
+/*----------------------------------------------------------------------------*/
 app_btn_RightButtonDebouncingState * app_btn_RightButtonDebouncingState_(void) {
     static app_btn_RightButtonDebouncingState self;
     return &self;
 }
-/*............................................................................*/
+/*----------------------------------------------------------------------------*/
 app_btn_RightButtonDebouncingState * app_btn_RightButtonDebouncingState_init(
     app_btn_RightButtonDebouncingState * const self,
     vsk_StateContext * const stateContext
@@ -24,7 +24,7 @@ app_btn_RightButtonDebouncingState * app_btn_RightButtonDebouncingState_init(
             app_btn_RightButtonDebouncingState_onDebounceTimeout;
     return self;
 }
-/*............................................................................*/
+/*----------------------------------------------------------------------------*/
 static void app_btn_RightButtonDebouncingState_onDebounceTimeout(
     app_btn_RightButtonDebouncingState * const self
 ) {

@@ -1,21 +1,21 @@
-/*............................................................................*/
+/*----------------------------------------------------------------------------*/
 #include "app_blk_BlinkyActObj.h"
-/*............................................................................*/
+/*----------------------------------------------------------------------------*/
 #include "../../system_infrastructure/events/si_ev_OffTimeoutEvent.h"
 #include "../../system_infrastructure/events/si_ev_OnTimeoutEvent.h"
 #include "app_blk_OffState.h"
 #include "app_blk_OnState.h"
-/*............................................................................*/
+/*----------------------------------------------------------------------------*/
 static void app_blk_BlinkyActObj_onOnTimeout(app_blk_BlinkyActObj * const self);
 static void app_blk_BlinkyActObj_onOffTimeout(
     app_blk_BlinkyActObj * const self
 );
-/*............................................................................*/
+/*----------------------------------------------------------------------------*/
 app_blk_BlinkyActObj * app_blk_BlinkyActObj_(void) {
     static app_blk_BlinkyActObj self;
     return &self;
 }
-/*............................................................................*/
+/*----------------------------------------------------------------------------*/
 app_blk_BlinkyActObj * app_blk_BlinkyActObj_init(
     app_blk_BlinkyActObj * const self
 ) {
@@ -50,7 +50,7 @@ app_blk_BlinkyActObj * app_blk_BlinkyActObj_init(
     );
     return self;
 }
-/*............................................................................*/
+/*----------------------------------------------------------------------------*/
 static void app_blk_BlinkyActObj_onOnTimeout(
     app_blk_BlinkyActObj * const self
 ) {
@@ -58,7 +58,7 @@ static void app_blk_BlinkyActObj_onOnTimeout(
         (app_blk_BlinkyState *)((vsk_StateContext *)self)->_state
     );
 }
-/*............................................................................*/
+/*----------------------------------------------------------------------------*/
 static void app_blk_BlinkyActObj_onOffTimeout(
     app_blk_BlinkyActObj * const self
 ) {

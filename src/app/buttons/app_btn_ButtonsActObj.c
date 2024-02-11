@@ -1,6 +1,6 @@
-/*............................................................................*/
+/*----------------------------------------------------------------------------*/
 #include "app_btn_ButtonsActObj.h"
-/*............................................................................*/
+/*----------------------------------------------------------------------------*/
 #include "../../hw_abstraction/ha_LeftButton.h"
 #include "../../hw_abstraction/ha_RightButton.h"
 #include "../../system_infrastructure/events/si_ev_ButtonDebounceTimeoutEvent.h"
@@ -11,7 +11,7 @@
 #include "app_btn_LeftButtonDebouncingState.h"
 #include "app_btn_RightButtonDebouncingState.h"
 #include "app_btn_WaitForButtonIntState.h"
-/*............................................................................*/
+/*----------------------------------------------------------------------------*/
 static void app_btn_ButtonsActObj_onLeftButtonInt(
     app_btn_ButtonsActObj * const self
 );
@@ -21,12 +21,12 @@ static void app_btn_ButtonsActObj_onRightButtonInt(
 static void app_btn_ButtonsActObj_onDebounceTimeout(
     app_btn_ButtonsActObj * const self
 );
-/*............................................................................*/
+/*----------------------------------------------------------------------------*/
 app_btn_ButtonsActObj * app_btn_ButtonsActObj_(void) {
     static app_btn_ButtonsActObj self;
     return &self;
 }
-/*............................................................................*/
+/*----------------------------------------------------------------------------*/
 app_btn_ButtonsActObj * app_btn_ButtonsActObj_init(
     app_btn_ButtonsActObj * const self
 ) {
@@ -77,7 +77,7 @@ app_btn_ButtonsActObj * app_btn_ButtonsActObj_init(
     );
     return self;
 }
-/*............................................................................*/
+/*----------------------------------------------------------------------------*/
 static void app_btn_ButtonsActObj_onLeftButtonInt(
     app_btn_ButtonsActObj * const self
 ) {
@@ -85,7 +85,7 @@ static void app_btn_ButtonsActObj_onLeftButtonInt(
         (app_btn_ButtonsState *)((vsk_StateContext *)self)->_state
     );
 }
-/*............................................................................*/
+/*----------------------------------------------------------------------------*/
 static void app_btn_ButtonsActObj_onRightButtonInt(
     app_btn_ButtonsActObj * const self
 ) {
@@ -93,7 +93,7 @@ static void app_btn_ButtonsActObj_onRightButtonInt(
         (app_btn_ButtonsState *)((vsk_StateContext *)self)->_state
     );
 }
-/*............................................................................*/
+/*----------------------------------------------------------------------------*/
 static void app_btn_ButtonsActObj_onDebounceTimeout(
     app_btn_ButtonsActObj * const self
 ) {

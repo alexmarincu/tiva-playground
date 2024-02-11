@@ -1,13 +1,13 @@
-/*............................................................................*/
+/*----------------------------------------------------------------------------*/
 #ifndef HA_BUTTON_H
 #define HA_BUTTON_H
-/*............................................................................*/
+/*----------------------------------------------------------------------------*/
 typedef struct ha_Button ha_Button;
-/*............................................................................*/
+/*----------------------------------------------------------------------------*/
 #include <stdbool.h>
-/*............................................................................*/
+/*----------------------------------------------------------------------------*/
 #include "ha_Interrupt.h"
-/*............................................................................*/
+/*----------------------------------------------------------------------------*/
 typedef void (*ha_ButtonSetIntTypeBothEdges)(ha_Button * const self);
 typedef void (*ha_ButtonRegisterInt)(
     ha_Button * const self, ha_InterruptHandler const intHandler
@@ -17,7 +17,7 @@ typedef void (*ha_ButtonEnableInt)(ha_Button * const self);
 typedef void (*ha_ButtonDisableInt)(ha_Button * const self);
 typedef void (*ha_ButtonClearIntFlag)(ha_Button * const self);
 typedef bool (*ha_ButtonIsPressed)(ha_Button * const self);
-/*............................................................................*/
+/*----------------------------------------------------------------------------*/
 struct ha_Button {
     ha_ButtonSetIntTypeBothEdges _setIntTypeBothEdges;
     ha_ButtonRegisterInt _registerInt;
@@ -27,7 +27,7 @@ struct ha_Button {
     ha_ButtonClearIntFlag _clearIntFlag;
     ha_ButtonIsPressed _isPressed;
 };
-/*............................................................................*/
+/*----------------------------------------------------------------------------*/
 ha_Button * ha_Button_init(
     ha_Button * const self,
     ha_ButtonSetIntTypeBothEdges const setIntTypeBothEdges,

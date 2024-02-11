@@ -1,21 +1,21 @@
-/*............................................................................*/
+/*----------------------------------------------------------------------------*/
 #include "vsk_LinkedList.h"
-/*............................................................................*/
+/*----------------------------------------------------------------------------*/
 #include "../utils/ut.h"
 #include "vsk_Assert.h"
 #include "vsk_LinkedListIterator.h"
-/*............................................................................*/
+/*----------------------------------------------------------------------------*/
 static vsk_Node * vsk_LinkedList_getNodeByIndex(
     vsk_LinkedList * const self, size_t index
 );
-/*............................................................................*/
+/*----------------------------------------------------------------------------*/
 vsk_LinkedList * vsk_LinkedList_init(vsk_LinkedList * const self) {
     self->_first = NULL;
     self->_last = NULL;
     self->_size = 0;
     return self;
 }
-/*............................................................................*/
+/*----------------------------------------------------------------------------*/
 static vsk_Node * vsk_LinkedList_getNodeByIndex(
     vsk_LinkedList * const self, size_t index
 ) {
@@ -34,7 +34,7 @@ static vsk_Node * vsk_LinkedList_getNodeByIndex(
     }
     return node;
 }
-/*............................................................................*/
+/*----------------------------------------------------------------------------*/
 void vsk_LinkedList_addByIndex(
     vsk_LinkedList * const self, void * const obj, size_t const index
 ) {
@@ -65,27 +65,27 @@ void vsk_LinkedList_addByIndex(
     }
     self->_size++;
 }
-/*............................................................................*/
+/*----------------------------------------------------------------------------*/
 void vsk_LinkedList_addFirst(vsk_LinkedList * const self, void * const obj) {
     vsk_LinkedList_addByIndex(self, obj, 0);
 }
-/*............................................................................*/
+/*----------------------------------------------------------------------------*/
 void vsk_LinkedList_addLast(vsk_LinkedList * const self, void * const obj) {
     vsk_LinkedList_addByIndex(self, obj, self->_size);
 }
-/*............................................................................*/
+/*----------------------------------------------------------------------------*/
 void * vsk_LinkedList_getByIndex(vsk_LinkedList * const self, size_t index) {
     return vsk_LinkedList_getNodeByIndex(self, index)->obj;
 }
-/*............................................................................*/
+/*----------------------------------------------------------------------------*/
 void * vsk_LinkedList_getFirst(vsk_LinkedList * const self) {
     return self->_first->obj;
 }
-/*............................................................................*/
+/*----------------------------------------------------------------------------*/
 void * vsk_LinkedList_getLast(vsk_LinkedList * const self) {
     return self->_last->obj;
 }
-/*............................................................................*/
+/*----------------------------------------------------------------------------*/
 void * vsk_LinkedList_removeByIndex(
     vsk_LinkedList * const self, size_t const index
 ) {
@@ -116,22 +116,22 @@ void * vsk_LinkedList_removeByIndex(
     self->_size--;
     return obj;
 }
-/*............................................................................*/
+/*----------------------------------------------------------------------------*/
 void * vsk_LinkedList_removeFirst(vsk_LinkedList * const self) {
     return vsk_LinkedList_removeByIndex(self, 0);
 }
-/*............................................................................*/
+/*----------------------------------------------------------------------------*/
 void * vsk_LinkedList_removeLast(vsk_LinkedList * const self) {
     return vsk_LinkedList_removeByIndex(self, self->_size - 1);
 }
-/*............................................................................*/
+/*----------------------------------------------------------------------------*/
 void * vsk_LinkedList_remove(
     vsk_LinkedList * const self, void * const obj
 ) {
     // TODO
     return NULL;
 }
-/*............................................................................*/
+/*----------------------------------------------------------------------------*/
 size_t vsk_LinkedList_getIndexOf(
     vsk_LinkedList * const self, void * const obj
 ) {
@@ -151,21 +151,21 @@ size_t vsk_LinkedList_getIndexOf(
     }
     return index;
 }
-/*............................................................................*/
+/*----------------------------------------------------------------------------*/
 bool vsk_LinkedList_isEmpty(vsk_LinkedList * const self) {
     return (self->_size == 0);
 }
-/*............................................................................*/
+/*----------------------------------------------------------------------------*/
 size_t vsk_LinkedList_getSize(vsk_LinkedList * const self) {
     return self->_size;
 }
-/*............................................................................*/
+/*----------------------------------------------------------------------------*/
 void vsk_LinkedList_clear(vsk_LinkedList * const self) {
     while (self->_size > 0) {
         vsk_LinkedList_removeLast(self);
     }
 }
-/*............................................................................*/
+/*----------------------------------------------------------------------------*/
 void vsk_LinkedList_forEach(
     vsk_LinkedList * const self,
     vsk_LinkedListIteratorForEachOperation const operation
@@ -174,7 +174,7 @@ void vsk_LinkedList_forEach(
         vsk_LinkedListIterator_init(&ut_stkObj(vsk_LinkedListIterator), self);
     vsk_LinkedListIterator_forEach(iter, operation);
 }
-/*............................................................................*/
+/*----------------------------------------------------------------------------*/
 void * vsk_LinkedList_find(
     vsk_LinkedList * const self,
     vsk_LinkedListIteratorFindPredicate const predicate

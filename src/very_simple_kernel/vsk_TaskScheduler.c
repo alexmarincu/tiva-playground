@@ -1,13 +1,13 @@
-/*............................................................................*/
+/*----------------------------------------------------------------------------*/
 #include "vsk_TaskScheduler.h"
-/*............................................................................*/
+/*----------------------------------------------------------------------------*/
 #include "vsk_OnStartEvent.h"
-/*............................................................................*/
+/*----------------------------------------------------------------------------*/
 vsk_TaskScheduler * vsk_TaskScheduler_(void) {
     static vsk_TaskScheduler self;
     return &self;
 }
-/*............................................................................*/
+/*----------------------------------------------------------------------------*/
 vsk_TaskScheduler * vsk_TaskScheduler_init(
     vsk_TaskScheduler * const self,
     vsk_TaskSchedulerOnStart const onStart,
@@ -18,11 +18,11 @@ vsk_TaskScheduler * vsk_TaskScheduler_init(
     self->_onIdle = onIdle;
     return self;
 }
-/*............................................................................*/
+/*----------------------------------------------------------------------------*/
 static bool vsk_isTaskReady(vsk_Task * const task) {
     return vsk_Task_isReady(task);
 }
-/*............................................................................*/
+/*----------------------------------------------------------------------------*/
 void vsk_TaskScheduler_start(vsk_TaskScheduler * const self) {
     self->_onStart();
     vsk_Event_raise((vsk_Event *)vsk_OnStartEvent_());
@@ -39,7 +39,7 @@ void vsk_TaskScheduler_start(vsk_TaskScheduler * const self) {
         }
     }
 }
-/*............................................................................*/
+/*----------------------------------------------------------------------------*/
 void vsk_TaskScheduler_register(
     vsk_TaskScheduler * const self, vsk_Task * const task
 ) {

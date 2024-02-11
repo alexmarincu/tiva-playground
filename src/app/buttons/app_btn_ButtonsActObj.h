@@ -1,13 +1,13 @@
-/*............................................................................*/
+/*----------------------------------------------------------------------------*/
 #ifndef APP_BTN_BUTTONSACTOBJ_H
 #define APP_BTN_BUTTONSACTOBJ_H
-/*............................................................................*/
+/*----------------------------------------------------------------------------*/
 typedef struct app_btn_ButtonsActObj app_btn_ButtonsActObj;
-/*............................................................................*/
+/*----------------------------------------------------------------------------*/
 #include "../../very_simple_kernel/vsk_ActiveObject.h"
 #include "../../very_simple_kernel/vsk_EventSubscription.h"
 #include "../../very_simple_kernel/vsk_EventTimer.h"
-/*............................................................................*/
+/*----------------------------------------------------------------------------*/
 struct app_btn_ButtonsActObj {
     struct {
         vsk_ActiveObject activeObject;
@@ -21,7 +21,7 @@ struct app_btn_ButtonsActObj {
         vsk_EventTimer buttonDebounce;
     } eventTimers;
 };
-/*............................................................................*/
+/*----------------------------------------------------------------------------*/
 app_btn_ButtonsActObj * app_btn_ButtonsActObj_(void);
 app_btn_ButtonsActObj * app_btn_ButtonsActObj_init(
     app_btn_ButtonsActObj * const self

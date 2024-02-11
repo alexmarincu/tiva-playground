@@ -1,10 +1,10 @@
-/*............................................................................*/
+/*----------------------------------------------------------------------------*/
 #include "app_tmb_WaitForButtonState.h"
-/*............................................................................*/
+/*----------------------------------------------------------------------------*/
 #include "../../hw_abstraction/ha_RgbLed.h"
 #include "app_tmb_BlinkState.h"
 #include "app_tmb_TimeBombActObj.h"
-/*............................................................................*/
+/*----------------------------------------------------------------------------*/
 static void app_tmb_WaitForButtonState_onEnter(
     app_tmb_WaitForButtonState * const self
 );
@@ -14,12 +14,12 @@ static void app_tmb_WaitForButtonState_onExit(
 static void app_tmb_WaitForButtonState_onLeftButtonPress(
     app_tmb_WaitForButtonState * const self
 );
-/*............................................................................*/
+/*----------------------------------------------------------------------------*/
 app_tmb_WaitForButtonState * app_tmb_WaitForButtonState_(void) {
     static app_tmb_WaitForButtonState self;
     return &self;
 }
-/*............................................................................*/
+/*----------------------------------------------------------------------------*/
 app_tmb_WaitForButtonState * app_tmb_WaitForButtonState_init(
     app_tmb_WaitForButtonState * const self,
     vsk_StateContext * const stateContext
@@ -34,19 +34,19 @@ app_tmb_WaitForButtonState * app_tmb_WaitForButtonState_init(
             app_tmb_WaitForButtonState_onLeftButtonPress;
     return self;
 }
-/*............................................................................*/
+/*----------------------------------------------------------------------------*/
 static void app_tmb_WaitForButtonState_onEnter(
     app_tmb_WaitForButtonState * const self
 ) {
     ha_RgbLed_setGreen();
 }
-/*............................................................................*/
+/*----------------------------------------------------------------------------*/
 static void app_tmb_WaitForButtonState_onExit(
     app_tmb_WaitForButtonState * const self
 ) {
     ha_RgbLed_setOff();
 }
-/*............................................................................*/
+/*----------------------------------------------------------------------------*/
 static void app_tmb_WaitForButtonState_onLeftButtonPress(
     app_tmb_WaitForButtonState * const self
 ) {

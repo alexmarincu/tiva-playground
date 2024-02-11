@@ -1,6 +1,6 @@
-/*............................................................................*/
+/*----------------------------------------------------------------------------*/
 #include "app_tmb_TimeBombActObj.h"
-/*............................................................................*/
+/*----------------------------------------------------------------------------*/
 #include "../../system_infrastructure/events/si_ev_BlinkTimeoutEvent.h"
 #include "../../system_infrastructure/events/si_ev_LeftButtonPressEvent.h"
 #include "../../system_infrastructure/events/si_ev_PauseTimeoutEvent.h"
@@ -10,7 +10,7 @@
 #include "app_tmb_DefusedState.h"
 #include "app_tmb_PauseState.h"
 #include "app_tmb_WaitForButtonState.h"
-/*............................................................................*/
+/*----------------------------------------------------------------------------*/
 static void app_tmb_TimeBombActObj_onRightButtonPress(
     app_tmb_TimeBombActObj * const self
 );
@@ -23,12 +23,12 @@ static void app_tmb_TimeBombActObj_onBlinkTimeout(
 static void app_tmb_TimeBombActObj_onPauseTimeout(
     app_tmb_TimeBombActObj * const self
 );
-/*............................................................................*/
+/*----------------------------------------------------------------------------*/
 app_tmb_TimeBombActObj * app_tmb_TimeBombActObj_(void) {
     static app_tmb_TimeBombActObj self;
     return &self;
 }
-/*............................................................................*/
+/*----------------------------------------------------------------------------*/
 app_tmb_TimeBombActObj * app_tmb_TimeBombActObj_init(
     app_tmb_TimeBombActObj * const self
 ) {
@@ -90,7 +90,7 @@ app_tmb_TimeBombActObj * app_tmb_TimeBombActObj_init(
     );
     return self;
 }
-/*............................................................................*/
+/*----------------------------------------------------------------------------*/
 static void app_tmb_TimeBombActObj_onRightButtonPress(
     app_tmb_TimeBombActObj * const self
 ) {
@@ -98,7 +98,7 @@ static void app_tmb_TimeBombActObj_onRightButtonPress(
         (app_tmb_TimeBombState *)((vsk_StateContext *)self)->_state
     );
 }
-/*............................................................................*/
+/*----------------------------------------------------------------------------*/
 static void app_tmb_TimeBombActObj_onLeftButtonPress(
     app_tmb_TimeBombActObj * const self
 ) {
@@ -106,7 +106,7 @@ static void app_tmb_TimeBombActObj_onLeftButtonPress(
         (app_tmb_TimeBombState *)((vsk_StateContext *)self)->_state
     );
 }
-/*............................................................................*/
+/*----------------------------------------------------------------------------*/
 static void app_tmb_TimeBombActObj_onBlinkTimeout(
     app_tmb_TimeBombActObj * const self
 ) {
@@ -114,7 +114,7 @@ static void app_tmb_TimeBombActObj_onBlinkTimeout(
         (app_tmb_TimeBombState *)((vsk_StateContext *)self)->_state
     );
 }
-/*............................................................................*/
+/*----------------------------------------------------------------------------*/
 static void app_tmb_TimeBombActObj_onPauseTimeout(
     app_tmb_TimeBombActObj * const self
 ) {

@@ -1,19 +1,19 @@
-/*............................................................................*/
+/*----------------------------------------------------------------------------*/
 #include "app_tmb_BlinkState.h"
-/*............................................................................*/
+/*----------------------------------------------------------------------------*/
 #include "../../hw_abstraction/ha_RgbLed.h"
 #include "app_tmb_PauseState.h"
 #include "app_tmb_TimeBombActObj.h"
-/*............................................................................*/
+/*----------------------------------------------------------------------------*/
 static void app_tmb_BlinkState_onEnter(app_tmb_BlinkState * const self);
 static void app_tmb_BlinkState_onExit(app_tmb_BlinkState * const self);
 static void app_tmb_BlinkState_onBlinkTimeout(app_tmb_BlinkState * const self);
-/*............................................................................*/
+/*----------------------------------------------------------------------------*/
 app_tmb_BlinkState * app_tmb_BlinkState_(void) {
     static app_tmb_BlinkState self;
     return &self;
 }
-/*............................................................................*/
+/*----------------------------------------------------------------------------*/
 app_tmb_BlinkState * app_tmb_BlinkState_init(
     app_tmb_BlinkState * const self, vsk_StateContext * const stateContext
 ) {
@@ -25,18 +25,18 @@ app_tmb_BlinkState * app_tmb_BlinkState_init(
         (app_tmb_TimeBombStateHandler)app_tmb_BlinkState_onBlinkTimeout;
     return self;
 }
-/*............................................................................*/
+/*----------------------------------------------------------------------------*/
 static void app_tmb_BlinkState_onEnter(app_tmb_BlinkState * const self) {
     ha_RgbLed_setRed();
     app_tmb_TimeBombActObj * timeBomb =
         (app_tmb_TimeBombActObj *)((vsk_State *)self)->_stateContext;
     vsk_Timer_start((vsk_Timer *)&timeBomb->eventTimers.blink);
 }
-/*............................................................................*/
+/*----------------------------------------------------------------------------*/
 static void app_tmb_BlinkState_onExit(app_tmb_BlinkState * const self) {
     ha_RgbLed_setOff();
 }
-/*............................................................................*/
+/*----------------------------------------------------------------------------*/
 static void app_tmb_BlinkState_onBlinkTimeout(app_tmb_BlinkState * const self) {
     vsk_StateContext_transition(
         ((vsk_State *)self)->_stateContext, (vsk_State *)app_tmb_PauseState_()
